@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://ham1y5xvbyj1"]
+
+[ext_resource type="Script" uid="uid://n78x50xlvq1a" path="res://Scenes/Towers/base_tower.gd" id="1_yji8t"]
+[ext_resource type="Texture2D" uid="uid://wijaynr3adxe" path="res://kenney_tower-defense-top-down/PNG/Retina/towerDefense_tile180.png" id="2_m8eit"]
+[ext_resource type="Texture2D" uid="uid://ciq70e40i1m3n" path="res://kenney_tower-defense-top-down/PNG/Retina/towerDefense_tile206.png" id="3_jviep"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jviep"]
+
+[node name="BaseTower" type="Node2D" unique_id=443795488]
+script = ExtResource("1_yji8t")
+attack_range = 750.0
+projectile_scene_path = "uid://bhl7mr5ubdjuc"
+turret_idle_rotation_speed = 0.2
+
+[node name="AttackCooldown" type="Timer" parent="." unique_id=890311040]
+
+[node name="Base" type="Sprite2D" parent="." unique_id=1755470834]
+scale = Vector2(2, 2)
+texture = ExtResource("2_m8eit")
+
+[node name="Turret" type="Sprite2D" parent="Base" unique_id=346350585]
+texture = ExtResource("3_jviep")
+
+[node name="AttackArea2D" type="Area2D" parent="." unique_id=137349660]
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea2D" unique_id=299938142]
+shape = SubResource("CircleShape2D_jviep")
+
+[connection signal="timeout" from="AttackCooldown" to="." method="_on_attack_cooldown_timeout"]
+[connection signal="area_entered" from="AttackArea2D" to="." method="_on_attack_area_2d_area_entered"]
+[connection signal="area_exited" from="AttackArea2D" to="." method="_on_attack_area_2d_area_exited"]

@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://c3is88d7syykb"]
+
+[ext_resource type="Script" uid="uid://c4lhvrrq6ejkf" path="res://Scenes/Enemies/base_enemy.gd" id="1_hkymu"]
+[ext_resource type="Texture2D" uid="uid://n5wurppyeq5" path="res://icon.svg" id="2_b3u8b"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b3u8b"]
+size = Vector2(96, 96)
+
+[node name="BaseEnemy" type="PathFollow2D" unique_id=2135921253]
+rotates = false
+loop = false
+script = ExtResource("1_hkymu")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1481800299]
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("2_b3u8b")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=180118642]
+collision_layer = 2
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=577675058]
+shape = SubResource("RectangleShape2D_b3u8b")
