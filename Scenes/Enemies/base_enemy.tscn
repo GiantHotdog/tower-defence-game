@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://c4lhvrrq6ejkf" path="res://Scenes/Enemies/base_enemy.gd" id="1_hkymu"]
 [ext_resource type="Texture2D" uid="uid://n5wurppyeq5" path="res://icon.svg" id="2_b3u8b"]
+[ext_resource type="PackedScene" uid="uid://djmrts0a0yri2" path="res://Scenes/UI/health_bar.tscn" id="3_oof5d"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b3u8b"]
 size = Vector2(96, 96)
@@ -21,3 +22,9 @@ collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=577675058]
 shape = SubResource("RectangleShape2D_b3u8b")
+
+[node name="HealthBar" parent="." unique_id=1778500361 instance=ExtResource("3_oof5d")]
+offset_left = -64.0
+offset_top = -87.0
+offset_right = 192.0
+offset_bottom = -23.0

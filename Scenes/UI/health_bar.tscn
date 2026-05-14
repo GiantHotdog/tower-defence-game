@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://djmrts0a0yri2"]
+
+[ext_resource type="Texture2D" uid="uid://dwf4q2piol4t2" path="res://Assets/UI/Healthbar/Healthbar.png" id="1_qyqjh"]
+
+[node name="HealthBar" type="TextureProgressBar" unique_id=1778500361]
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(0.5, 0.5)
+value = 100.0
+texture_progress = ExtResource("1_qyqjh")

@@ -18,8 +18,6 @@ enum TargetMode {CLOSEST, FURTHEST, MOST_PROGRESS, LEAST_HEALTH, MOST_HEALTH}
 ## The speed that the turret rotates (in radians per second) when no enemy is in range
 @export var turret_idle_rotation_speed:float = 1.0
 
-
-
 var can_attack = true
 var enemies:Array[BaseEnemy]
 var target:BaseEnemy = null
@@ -30,8 +28,8 @@ var target:BaseEnemy = null
 @onready var attack_area:Area2D = $AttackArea2D
 @onready var attack_area_shape:CircleShape2D = $AttackArea2D/CollisionShape2D.shape
 @onready var projectile_scene:Resource = load(projectile_scene_path)
-@onready var ready_to_fire_turret_texture = load("res://kenney_tower-defense-top-down/PNG/Retina/towerDefense_tile206.png")
-@onready var not_ready_to_fire_turret_texture = load("res://kenney_tower-defense-top-down/PNG/Retina/towerDefense_tile229.png")
+@onready var ready_to_fire_turret_texture = load("res://Assets/kenney_tower-defense-top-down/PNG/Retina/towerDefense_tile206.png")
+@onready var not_ready_to_fire_turret_texture = load("res://Assets/kenney_tower-defense-top-down/PNG/Retina/towerDefense_tile229.png")
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

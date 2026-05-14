@@ -19,7 +19,8 @@ curve = SubResource("Curve2D_5jgm0")
 
 [node name="BaseEnemy" parent="EnemyPath" index="0" unique_id=2135921253 instance=ExtResource("2_36ke7")]
 position = Vector2(-128, 128)
-MAX_HEALTH = 15
 
 [node name="TowerLayer" parent="." index="3" unique_id=1754609170]
 tile_map_data = PackedByteArray("AAAAAAEAAAAAAAAAAQADAAEAAAAAAAAAAQA=")
+
+[editable path="UI"]

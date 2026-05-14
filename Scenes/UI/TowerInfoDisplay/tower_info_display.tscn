@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://da52m13b04qcc"]
 
 [ext_resource type="Script" uid="uid://5pmh12grj4au" path="res://Scenes/UI/TowerInfoDisplay/tower_info_display.gd" id="1_y0tth"]
-[ext_resource type="Texture2D" uid="uid://bgfsjwlq6hy32" path="res://kenney_tower-defense-top-down/PNG/Retina/towerDefense_tile017.png" id="2_flw8c"]
+[ext_resource type="Texture2D" uid="uid://bgfsjwlq6hy32" path="res://Assets/kenney_tower-defense-top-down/PNG/Retina/towerDefense_tile017.png" id="2_flw8c"]
 
 [node name="TowerInfoDisplay" type="Control" unique_id=1776722101]
 layout_mode = 3

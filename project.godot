@@ -26,8 +26,8 @@ window/stretch/mode="viewport"
 [file_customization]
 
 folder_colors={
-"res://Scenes/": "blue",
-"res://kenney_tower-defense-top-down/": "red"
+"res://Assets/kenney_tower-defense-top-down/": "red",
+"res://Scenes/": "blue"
 }
 
 [input]
