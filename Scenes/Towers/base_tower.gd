@@ -3,6 +3,8 @@ extends Node2D
 
 enum TargetMode {CLOSEST, FURTHEST, MOST_PROGRESS, LEAST_HEALTH, MOST_HEALTH}
 
+## The name of the tower, to be displayed in the info display
+@export var display_name:String = "Base Tower"
 ## The number of shots fired per second
 @export var attack_speed:float = 1.0
 ## The damage each shot deals

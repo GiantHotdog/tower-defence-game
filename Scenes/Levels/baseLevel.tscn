@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://dnyjfu7fp8ep0" path="res://Scenes/Levels/base_level.gd" id="1_4b3tm"]
 [ext_resource type="Texture2D" uid="uid://rt6ffa8263ga" path="res://kenney_tower-defense-top-down/Tilesheet/towerDefense_tilesheet.png" id="1_qqh3o"]
 [ext_resource type="PackedScene" uid="uid://ham1y5xvbyj1" path="res://Scenes/Towers/base_tower.tscn" id="2_btcmw"]
+[ext_resource type="PackedScene" uid="uid://biow5t2563pg2" path="res://Scenes/UI/ui.tscn" id="4_0q0li"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_btcmw"]
 texture = ExtResource("1_qqh3o")
@@ -155,4 +156,11 @@ tile_set = SubResource("TileSet_0q0li")
 [node name="SpawnTimer" type="Timer" parent="." unique_id=1193807876]
 autostart = true
 
+[node name="UI" parent="." unique_id=1213322130 instance=ExtResource("4_0q0li")]
+
+[node name="TowerInfoDisplay" parent="UI" index="0" unique_id=1776722101]
+visible = false
+
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]
+
+[editable path="UI"]
