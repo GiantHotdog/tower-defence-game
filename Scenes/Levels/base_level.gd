@@ -1,3 +1,4 @@
+class_name BaseLevel
 extends Node2D
 
 
@@ -5,6 +6,8 @@ extends Node2D
 @onready var enemy_scene:PackedScene = load("res://Scenes/Enemies/base_enemy.tscn")
 @onready var tower_map:TileMapLayer = $TowerLayer
 @onready var tower_info:TowerInfo = $UI/TowerInfoDisplay
+
+var is_tower_info_open:bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -18,8 +21,8 @@ func _process(_delta: float) -> void:
 		var clicked_cell: Vector2i = tower_map.local_to_map(local_click_pos)
 		var scene_node: Node = get_scene_node_at_cell(clicked_cell)
 		if scene_node:
-			tower_info.tower_selected.emit(scene_node)
-		elif Input.is_action_just_pressed("place_tower"):
+			tower_info.tower_selected.emit(scene_node, self)
+		elif Input.is_action_just_pressed("place_tower") and not is_tower_info_open:
 			tower_map.set_cell(clicked_cell, 0, Vector2i(0, 0), 1)
 
 func _on_spawn_timer_timeout() -> void:
