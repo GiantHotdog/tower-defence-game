@@ -14,10 +14,13 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	var direction_to_target:Vector2 = global_position.direction_to(target.global_position) 
-	rotation = direction_to_target.angle() + PI / 2
-	var move_vector = Vector2.UP.rotated(rotation) * move_speed * delta
-	position += move_vector
+	if is_instance_valid(target):
+		var direction_to_target:Vector2 = global_position.direction_to(target.global_position) 
+		rotation = direction_to_target.angle() + PI / 2
+		var move_vector = Vector2.UP.rotated(rotation) * move_speed * delta
+		position += move_vector
+	else:
+		queue_free()
 
 
 func _on_area_2d_area_entered(area: Area2D) -> void:

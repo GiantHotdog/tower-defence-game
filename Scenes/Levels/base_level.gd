@@ -19,7 +19,8 @@ func _process(_delta: float) -> void:
 		var scene_node: Node = get_scene_node_at_cell(clicked_cell)
 		if scene_node:
 			tower_info.tower_selected.emit(scene_node)
-
+		elif Input.is_action_just_pressed("place_tower"):
+			tower_map.set_cell(clicked_cell, 0, Vector2i(0, 0), 1)
 
 func _on_spawn_timer_timeout() -> void:
 	var enemy = enemy_scene.instantiate()

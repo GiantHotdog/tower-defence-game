@@ -8,7 +8,6 @@
 
 [node name="BaseTower" type="Node2D" unique_id=443795488]
 script = ExtResource("1_yji8t")
-attack_speed = 2.0
 attack_range = 750.0
 projectile_scene_path = "uid://bhl7mr5ubdjuc"
 target_mode = 2
