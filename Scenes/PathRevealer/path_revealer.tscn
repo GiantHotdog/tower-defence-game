@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://57gbebo8h72e"]
+
+[ext_resource type="Script" uid="uid://bgun8hdudvdpx" path="res://Scenes/PathRevealer/path_revealer.gd" id="1_ruc4b"]
+[ext_resource type="Texture2D" uid="uid://n5wurppyeq5" path="res://icon.svg" id="2_o5tvd"]
+
+[node name="PathRevealer" type="PathFollow2D" unique_id=662323682]
+rotates = false
+loop = false
+script = ExtResource("1_ruc4b")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=120680112]
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("2_o5tvd")

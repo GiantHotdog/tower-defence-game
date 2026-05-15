@@ -6,6 +6,7 @@ extends Node2D
 @onready var enemy_scene:PackedScene = load("res://Scenes/Enemies/base_enemy.tscn")
 @onready var tower_map:TileMapLayer = $TowerLayer
 @onready var tower_info:TowerInfo = $UI/TowerInfoDisplay
+@onready var path_revealer:PathRevealer = $EnemyPath/PathRevealer
 
 var is_tower_info_open:bool = false
 
