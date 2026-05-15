@@ -154,7 +154,6 @@ curve = SubResource("Curve2D_qqh3o")
 tile_set = SubResource("TileSet_0q0li")
 
 [node name="SpawnTimer" type="Timer" parent="." unique_id=1193807876]
-autostart = true
 
 [node name="UI" parent="." unique_id=1213322130 instance=ExtResource("4_0q0li")]
 

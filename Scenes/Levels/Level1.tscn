@@ -1,7 +1,6 @@
 [gd_scene format=4 uid="uid://cgooce8fh5cw4"]
 
 [ext_resource type="PackedScene" uid="uid://crdqerfs03sfa" path="res://Scenes/Levels/baseLevel.tscn" id="1_5jgm0"]
-[ext_resource type="PackedScene" uid="uid://c3is88d7syykb" path="res://Scenes/Enemies/base_enemy.tscn" id="2_36ke7"]
 
 [sub_resource type="Curve2D" id="Curve2D_5jgm0"]
 _data = {
@@ -16,9 +15,6 @@ tile_map_data = PackedByteArray("AAARAAIAAAABAAQAAAARAAEAAAABAAQAAAARAAAAAAABAAM
 
 [node name="EnemyPath" parent="." index="2" unique_id=1563632205]
 curve = SubResource("Curve2D_5jgm0")
-
-[node name="BaseEnemy" parent="EnemyPath" index="0" unique_id=2135921253 instance=ExtResource("2_36ke7")]
-position = Vector2(-128, 128)
 
 [node name="TowerLayer" parent="." index="3" unique_id=1754609170]
 tile_map_data = PackedByteArray("AAAAAAEAAAAAAAAAAQADAAEAAAAAAAAAAQA=")

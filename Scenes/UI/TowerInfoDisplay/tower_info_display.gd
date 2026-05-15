@@ -40,7 +40,7 @@ func _on_tower_deselected() -> void:
 
 func _on_targeting_mode_item_selected(index: int) -> void:
 	if current_tower:
-		current_tower.target_mode = index
+		current_tower.target_mode = index as BaseTower.TargetMode
 		print("Set ", current_tower, "'s targeting mode to ", current_tower.TargetMode.keys()[index])
 		
 

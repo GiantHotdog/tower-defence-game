@@ -16,14 +16,19 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
-	if Input.is_action_just_pressed("select_tower"):
-		var local_click_pos: Vector2 = get_local_mouse_position()
-		var clicked_cell: Vector2i = tower_map.local_to_map(local_click_pos)
-		var scene_node: Node = get_scene_node_at_cell(clicked_cell)
-		if scene_node:
-			tower_info.tower_selected.emit(scene_node, self)
-		elif Input.is_action_just_pressed("place_tower") and not is_tower_info_open:
-			tower_map.set_cell(clicked_cell, 0, Vector2i(0, 0), 1)
+	if Globals.is_wave_running:
+		if spawn_timer.time_left == 0:
+			spawn_timer.start()
+		if Input.is_action_just_pressed("select_tower"):
+			var local_click_pos: Vector2 = get_local_mouse_position()
+			var clicked_cell: Vector2i = tower_map.local_to_map(local_click_pos)
+			var scene_node: Node = get_scene_node_at_cell(clicked_cell)
+			if scene_node:
+				tower_info.tower_selected.emit(scene_node, self)
+			elif Input.is_action_just_pressed("place_tower") and not is_tower_info_open:
+				tower_map.set_cell(clicked_cell, 0, Vector2i(0, 0), 1)
+	else:
+		spawn_timer.stop()
 
 func _on_spawn_timer_timeout() -> void:
 	var enemy = enemy_scene.instantiate()
