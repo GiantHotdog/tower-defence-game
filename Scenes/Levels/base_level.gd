@@ -1,6 +1,7 @@
 class_name BaseLevel
 extends Node2D
 
+@export var wave_info:WaveInfo
 
 @onready var spawn_timer:Timer = $SpawnTimer
 @onready var enemy_scene:PackedScene = load("res://Scenes/Enemies/base_enemy.tscn")
