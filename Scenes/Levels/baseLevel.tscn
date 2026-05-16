@@ -135,7 +135,7 @@ resource_name = "Towers"
 scenes/1/scene = ExtResource("2_btcmw")
 
 [sub_resource type="TileSet" id="TileSet_0q0li"]
-tile_size = Vector2i(256, 256)
+tile_size = Vector2i(128, 128)
 sources/0 = SubResource("TileSetScenesCollectionSource_4b3tm")
 
 [node name="BaseLevel" type="Node2D" unique_id=555824650]
@@ -156,14 +156,11 @@ curve = SubResource("Curve2D_qqh3o")
 [node name="TowerLayer" type="TileMapLayer" parent="." unique_id=1754609170]
 tile_set = SubResource("TileSet_0q0li")
 
-[node name="SpawnTimer" type="Timer" parent="." unique_id=1193807876]
-
 [node name="UI" parent="." unique_id=1213322130 instance=ExtResource("4_0q0li")]
 
 [node name="TowerInfoDisplay" parent="UI" index="0" unique_id=1776722101]
 visible = false
 
-[connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]
 [connection signal="wave_started" from="UI" to="." method="_on_wave_started"]
 
 [editable path="UI"]

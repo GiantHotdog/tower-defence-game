@@ -4,7 +4,6 @@ extends Node2D
 ## The wave info - the number being the wave, the WaveInfo resource being the spawning delay and number 
 @export var wave_info_dict:Dictionary[int, WaveInfo] = {}
 
-@onready var spawn_timer:Timer = $SpawnTimer
 @onready var base_enemy_scene:PackedScene = load("res://Scenes/Enemies/base_enemy.tscn")
 @onready var tower_map:TileMapLayer = $TowerLayer
 @onready var tower_info:TowerInfo = $UI/TowerInfoDisplay
@@ -28,6 +27,8 @@ func _process(_delta: float) -> void:
 		if Globals.current_wave_number == wave_info_dict.size():
 			Globals.is_level_complete = true
 
+
+func _unhandled_input(_event: InputEvent) -> void:
 	if not Globals.is_level_complete:
 		if Input.is_action_just_pressed("select_tower"):
 			var local_click_pos: Vector2 = get_local_mouse_position()
@@ -37,10 +38,6 @@ func _process(_delta: float) -> void:
 				tower_info.tower_selected.emit(scene_node, self)
 			elif Input.is_action_just_pressed("place_tower") and not is_tower_info_open:
 				tower_map.set_cell(clicked_cell, 0, Vector2i(0, 0), 1)
-
-func _on_spawn_timer_timeout() -> void:
-	var enemy = base_enemy_scene.instantiate()
-	#$EnemyPath.add_child(enemy)
 
 
 func get_scene_node_at_cell(cell_coords: Vector2i) -> Node:

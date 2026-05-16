@@ -26,7 +26,4 @@ curve = SubResource("Curve2D_5jgm0")
 [node name="PathRevealer" parent="EnemyPath" index="0" unique_id=662323682]
 position = Vector2(-128, 128)
 
-[node name="TowerLayer" parent="." index="3" unique_id=1754609170]
-tile_map_data = PackedByteArray("AAAAAAEAAAAAAAAAAQADAAEAAAAAAAAAAQA=")
-
 [editable path="UI"]

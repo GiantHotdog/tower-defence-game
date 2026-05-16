@@ -11,7 +11,7 @@ func _ready() -> void:
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	start_wave_container.visible = not (Globals.is_wave_running or Globals.is_level_complete)
 	level_complete.visible = Globals.is_level_complete
 

@@ -16,7 +16,6 @@ turret_idle_rotation_speed = 0.0
 [node name="AttackCooldown" type="Timer" parent="." unique_id=890311040]
 
 [node name="Base" type="Sprite2D" parent="." unique_id=1755470834]
-scale = Vector2(2, 2)
 texture = ExtResource("2_m8eit")
 
 [node name="Turret" type="Sprite2D" parent="Base" unique_id=346350585]
