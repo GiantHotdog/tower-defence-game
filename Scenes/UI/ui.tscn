@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://da52m13b04qcc" path="res://Scenes/UI/TowerInfoDisplay/tower_info_display.tscn" id="1_ahcct"]
 [ext_resource type="Script" uid="uid://b7va7w2h4wj70" path="res://Scenes/UI/ui.gd" id="1_de23q"]
+[ext_resource type="PackedScene" uid="uid://c5ux6qln5ly46" path="res://Scenes/UI/LevelComplete/levelComplete.tscn" id="3_c7mb3"]
 
 [node name="UI" type="CanvasLayer" unique_id=835526612]
 script = ExtResource("1_de23q")
@@ -9,15 +10,15 @@ script = ExtResource("1_de23q")
 [node name="TowerInfoDisplay" parent="." unique_id=1776722101 instance=ExtResource("1_ahcct")]
 
 [node name="StartWave" type="MarginContainer" parent="." unique_id=513636464]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -104.0
+offset_right = 104.0
+offset_bottom = 85.0
 grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/margin_left = 16
+size_flags_horizontal = 8
 theme_override_constants/margin_top = 16
-theme_override_constants/margin_right = 16
-theme_override_constants/margin_bottom = 16
 
 [node name="PanelContainer" type="PanelContainer" parent="StartWave" unique_id=403123783]
 layout_mode = 2
@@ -28,5 +29,7 @@ size_flags_vertical = 0
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "Start Wave"
+
+[node name="LevelComplete" parent="." unique_id=226032127 instance=ExtResource("3_c7mb3")]
 
 [connection signal="pressed" from="StartWave/PanelContainer/Button" to="." method="_on_button_pressed"]

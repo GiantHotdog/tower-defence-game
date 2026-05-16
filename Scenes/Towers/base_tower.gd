@@ -147,6 +147,18 @@ func get_least_health_enemy():
 	return least_health_node
 
 
+func destroy_self():
+	var parent = get_parent()
+	
+	# Check if the parent is a TileMapLayer or TileMap
+	if parent is TileMapLayer:
+		# Convert own position into the parent's map grid coordinates
+		var cell_coords = parent.local_to_map(position)
+		
+		# Tell the parent to clear this cell (this automatically frees this node)
+		parent.set_cell(cell_coords, -1)
+
+
 func _on_attack_cooldown_timeout() -> void:
 	turret.texture = ready_to_fire_turret_texture
 	turret.queue_redraw()

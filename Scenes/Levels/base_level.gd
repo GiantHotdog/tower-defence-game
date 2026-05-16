@@ -18,17 +18,17 @@ var is_all_enemies_spawned:bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	Globals.is_level_complete = false
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
 	if enemies_in_current_wave == enemies_in_current_wave_killed and is_all_enemies_spawned:
 		Globals.is_wave_running = false
+		if Globals.current_wave_number == wave_info_dict.size():
+			Globals.is_level_complete = true
 
-	if Globals.is_wave_running:
-		if spawn_timer.time_left == 0:
-			spawn_timer.start()
+	if not Globals.is_level_complete:
 		if Input.is_action_just_pressed("select_tower"):
 			var local_click_pos: Vector2 = get_local_mouse_position()
 			var clicked_cell: Vector2i = tower_map.local_to_map(local_click_pos)
@@ -37,8 +37,6 @@ func _process(_delta: float) -> void:
 				tower_info.tower_selected.emit(scene_node, self)
 			elif Input.is_action_just_pressed("place_tower") and not is_tower_info_open:
 				tower_map.set_cell(clicked_cell, 0, Vector2i(0, 0), 1)
-	else:
-		spawn_timer.stop()
 
 func _on_spawn_timer_timeout() -> void:
 	var enemy = base_enemy_scene.instantiate()
@@ -71,7 +69,6 @@ func _on_wave_started(number: int) -> void:
 	enemies_in_current_wave = 0
 	enemies_in_current_wave_killed = 0
 	is_all_enemies_spawned = false
-	print(number)
 	wave_info.all_enemies_spawned.connect(_all_enemies_spawned)
 	wave_info.start_wave(self)
 

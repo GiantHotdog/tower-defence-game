@@ -47,3 +47,8 @@ func _on_targeting_mode_item_selected(index: int) -> void:
 
 func _on_close_button_pressed() -> void:
 	tower_deselected.emit()
+
+
+func _on_delete_button_pressed() -> void:
+	current_tower.destroy_self()
+	_on_tower_deselected()

@@ -3,6 +3,7 @@ extends CanvasLayer
 signal wave_started(number:int)
 
 @onready var start_wave_container:Container = $StartWave
+@onready var level_complete:Control = $LevelComplete
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -11,7 +12,8 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	start_wave_container.visible = not Globals.is_wave_running
+	start_wave_container.visible = not (Globals.is_wave_running or Globals.is_level_complete)
+	level_complete.visible = Globals.is_level_complete
 
 
 func _on_button_pressed() -> void:
