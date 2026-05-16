@@ -18,9 +18,11 @@ enum TargetMode {CLOSEST, FURTHEST, MOST_PROGRESS, LEAST_HEALTH, MOST_HEALTH}
 ## The speed that the turret rotates (in radians per second) when no enemy is in range
 @export var turret_idle_rotation_speed:float = 1.0
 
+
 var can_attack = true
 var enemies:Array[BaseEnemy]
 var target:BaseEnemy = null
+
 
 @onready var cooldown:float = 1 / attack_speed
 @onready var attack_cooldown_timer:Timer = $AttackCooldown

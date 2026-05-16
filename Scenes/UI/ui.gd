@@ -1,5 +1,7 @@
 extends CanvasLayer
 
+signal wave_started(number:int)
+
 @onready var start_wave_container:Container = $StartWave
 
 # Called when the node enters the scene tree for the first time.
@@ -13,4 +15,6 @@ func _process(delta: float) -> void:
 
 
 func _on_button_pressed() -> void:
+	Globals.current_wave_number += 1
 	Globals.is_wave_running = true
+	wave_started.emit(Globals.current_wave_number)

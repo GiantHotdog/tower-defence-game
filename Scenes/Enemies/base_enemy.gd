@@ -1,6 +1,11 @@
 class_name BaseEnemy
 extends PathFollow2D
 
+enum ENEMY_TYPES {BASE_ENEMY}
+
+signal enemy_killed
+
+@export var enemy_type:ENEMY_TYPES
 @export var move_speed:float = 500.0
 @export var MAX_HEALTH:int = 3
 
@@ -21,4 +26,5 @@ func _process(delta: float) -> void:
 		die()
 	
 func die():
+	enemy_killed.emit()
 	queue_free()
