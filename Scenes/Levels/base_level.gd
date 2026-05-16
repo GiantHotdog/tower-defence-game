@@ -32,7 +32,7 @@ func _unhandled_input(_event: InputEvent) -> void:
 	if not Globals.is_level_complete:
 		if Input.is_action_just_pressed("select_tower"):
 			var local_click_pos: Vector2 = get_local_mouse_position()
-			var clicked_cell: Vector2i = tower_map.local_to_map(local_click_pos)
+			var clicked_cell: Vector2i = tower_map.local_to_map(local_click_pos - tower_map.position)
 			var scene_node: Node = get_scene_node_at_cell(clicked_cell)
 			if scene_node:
 				tower_info.tower_selected.emit(scene_node, self)
