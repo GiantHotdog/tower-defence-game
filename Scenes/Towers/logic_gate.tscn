@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://c1kxhpjmb71kn"]
+
+[ext_resource type="PackedScene" uid="uid://ham1y5xvbyj1" path="res://Scenes/Towers/base_tower.tscn" id="1_3din2"]
+[ext_resource type="Script" uid="uid://bd5hyksn3pd10" path="res://Scenes/Towers/logic_gate.gd" id="2_ah1q8"]
+
+[node name="BaseTower" unique_id=443795488 instance=ExtResource("1_3din2")]
+script = ExtResource("2_ah1q8")
+
+[node name="Laser" type="Line2D" parent="." index="3" unique_id=1584768648]

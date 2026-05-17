@@ -1,7 +1,7 @@
 class_name BaseEnemy
 extends PathFollow2D
 
-enum ENEMY_TYPES {BASE_ENEMY}
+enum ENEMY_TYPES {BASE_ENEMY, WEAK_ENEMY}
 
 signal enemy_killed
 

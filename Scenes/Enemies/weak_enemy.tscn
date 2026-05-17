@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://dgrd4kwh8uw3b"]
+
+[ext_resource type="PackedScene" uid="uid://c3is88d7syykb" path="res://Scenes/Enemies/base_enemy.tscn" id="1_2jh1w"]
+[ext_resource type="Script" uid="uid://8jlijb6vie3m" path="res://Scenes/Enemies/weak_enemy.gd" id="2_4a6md"]
+
+[node name="BaseEnemy" unique_id=2135921253 instance=ExtResource("1_2jh1w")]
+script = ExtResource("2_4a6md")
+enemy_type = 1
+MAX_HEALTH = 2
+
+[node name="Sprite2D" parent="." index="0" unique_id=1481800299]
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="." index="3" unique_id=641379406]
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+pivot_offset = Vector2(20, 20)
+color = Color(5, 0, 1.5, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="." index="4" unique_id=1510227065]
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+rotation = 0.7853982
+pivot_offset = Vector2(20, 20)
+color = Color(5, 0, 1.5, 1)

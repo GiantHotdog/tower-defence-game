@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://ham1y5xvbyj1" path="res://Scenes/Towers/base_tower.tscn" id="2_btcmw"]
 [ext_resource type="PackedScene" uid="uid://57gbebo8h72e" path="res://Scenes/PathRevealer/path_revealer.tscn" id="3_p3kkh"]
 [ext_resource type="PackedScene" uid="uid://biow5t2563pg2" path="res://Scenes/UI/ui.tscn" id="4_0q0li"]
+[ext_resource type="PackedScene" uid="uid://c1kxhpjmb71kn" path="res://Scenes/Towers/logic_gate.tscn" id="5_jcyfc"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_btcmw"]
 texture = ExtResource("1_qqh3o")
@@ -133,15 +134,21 @@ sources/0 = SubResource("TileSetAtlasSource_btcmw")
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_4b3tm"]
 resource_name = "Towers"
 scenes/1/scene = ExtResource("2_btcmw")
+scenes/2/scene = ExtResource("5_jcyfc")
 
 [sub_resource type="TileSet" id="TileSet_0q0li"]
 tile_size = Vector2i(128, 128)
 sources/0 = SubResource("TileSetScenesCollectionSource_4b3tm")
 
+[sub_resource type="Environment" id="Environment_jcyfc"]
+background_mode = 3
+glow_enabled = true
+
 [node name="BaseLevel" type="Node2D" unique_id=555824650]
 script = ExtResource("1_4b3tm")
 
 [node name="PathLayer" type="TileMapLayer" parent="." unique_id=1845269339]
+visible = false
 tile_set = SubResource("TileSet_tx02x")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=324976822]
@@ -153,6 +160,11 @@ curve = SubResource("Curve2D_qqh3o")
 
 [node name="PathRevealer" parent="EnemyPath" unique_id=662323682 instance=ExtResource("3_p3kkh")]
 
+[node name="VisualPath" type="Line2D" parent="EnemyPath" unique_id=1004279850]
+width = 40.0
+default_color = Color(0.627451, 0.3529412, 0.17254902, 1)
+joint_mode = 1
+
 [node name="TowerLayer" type="TileMapLayer" parent="." unique_id=1754609170]
 tile_set = SubResource("TileSet_0q0li")
 
@@ -160,6 +172,9 @@ tile_set = SubResource("TileSet_0q0li")
 
 [node name="TowerInfoDisplay" parent="UI" index="0" unique_id=1776722101]
 visible = false
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=2133662861]
+environment = SubResource("Environment_jcyfc")
 
 [connection signal="wave_started" from="UI" to="." method="_on_wave_started"]
 
