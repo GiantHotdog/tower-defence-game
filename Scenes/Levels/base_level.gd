@@ -7,7 +7,8 @@ extends Node2D
 @onready var base_enemy_scene:PackedScene = load("res://Scenes/Enemies/base_enemy.tscn")
 @onready var weak_enemy_scene:PackedScene  = load("res://Scenes/Enemies/weak_enemy.tscn")
 
-@onready var tower_map:TileMapLayer = $TowerLayer
+@onready var tower_map:TileMapLayer = $MapContainer/TowerLayer
+@onready var tower_map_container:Node2D = $MapContainer
 @onready var tower_info:TowerInfo = $UI/TowerInfoDisplay
 @onready var path_revealer:PathRevealer = $EnemyPath/PathRevealer
 @onready var enemy_path:Path2D = $EnemyPath
@@ -40,7 +41,7 @@ func _unhandled_input(_event: InputEvent) -> void:
 	if not Globals.is_level_complete:
 		if Input.is_action_just_pressed("select_tower"):
 			var local_click_pos: Vector2 = get_local_mouse_position()
-			var clicked_cell: Vector2i = tower_map.local_to_map(local_click_pos - tower_map.position)
+			var clicked_cell: Vector2i = tower_map.local_to_map(tower_map.to_local(local_click_pos))
 			var scene_node: Node = get_scene_node_at_cell(clicked_cell)
 			if scene_node:
 				tower_info.tower_selected.emit(scene_node, self)

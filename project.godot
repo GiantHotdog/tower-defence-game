@@ -27,8 +27,10 @@ window/stretch/mode="canvas_items"
 [file_customization]
 
 folder_colors={
+"res://Assets/": "yellow",
 "res://Assets/kenney_tower-defense-top-down/": "red",
-"res://Scenes/": "blue"
+"res://Scenes/": "blue",
+"res://WaveInfo/": "orange"
 }
 
 [input]
@@ -61,3 +63,4 @@ rendering_device/driver.windows="d3d12"
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
 viewport/hdr_2d=true
+environment/defaults/default_clear_color=Color(0.019607844, 0.02745098, 0.043137256, 1)

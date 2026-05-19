@@ -24,7 +24,7 @@ end_cap_mode = 2
 texture = null
 
 [node name="Turret" parent="Base" index="0" unique_id=346350585]
-modulate = Color(0, 2, 3.5, 1)
+modulate = Color(0, 2.285127, 4.0059752, 1)
 scale = Vector2(0.13088612, 0.13088612)
 texture = ExtResource("3_f1h5s")
 
