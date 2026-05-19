@@ -26,6 +26,8 @@ func _process(_delta: float) -> void:
 
 
 func _on_tower_selected(tower: BaseTower, level:BaseLevel) -> void:
+	if current_tower:
+		_on_tower_deselected()
 	current_tower = tower
 	visible = true
 	current_tower.set_range_circle_visible(true)
