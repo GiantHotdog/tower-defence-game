@@ -3,10 +3,13 @@
 [ext_resource type="PackedScene" uid="uid://c3is88d7syykb" path="res://Scenes/Enemies/base_enemy.tscn" id="1_2jh1w"]
 [ext_resource type="Script" uid="uid://8jlijb6vie3m" path="res://Scenes/Enemies/weak_enemy.gd" id="2_4a6md"]
 
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_4a6md"]
+blend_mode = 1
+
 [node name="BaseEnemy" unique_id=2135921253 instance=ExtResource("1_2jh1w")]
+material = SubResource("CanvasItemMaterial_4a6md")
 script = ExtResource("2_4a6md")
 enemy_type = 1
-MAX_HEALTH = 2
 
 [node name="Sprite2D" parent="." index="0" unique_id=1481800299]
 visible = false

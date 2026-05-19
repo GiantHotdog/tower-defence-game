@@ -22,11 +22,11 @@ enum TargetMode {CLOSEST, FURTHEST, MOST_PROGRESS, LEAST_HEALTH, MOST_HEALTH}
 var can_attack = true
 var enemies:Array[BaseEnemy]
 var target:BaseEnemy = null
-
+var is_attacking:bool = false
 
 @onready var cooldown:float = 1 / attack_speed
 @onready var attack_cooldown_timer:Timer = $AttackCooldown
-@onready var turret:Sprite2D = $Base/Turret
+@onready var turret:Node2D = $Base/Turret
 @onready var attack_area:Area2D = $AttackArea2D
 @onready var attack_area_shape:CircleShape2D = $AttackArea2D/CollisionShape2D.shape
 @onready var projectile_scene:Resource = load(projectile_scene_path)
@@ -43,7 +43,8 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	get_target()
 	
-	update_turret_rotation()
+	if not is_attacking:
+		update_turret_rotation()
 	if target:
 		if can_attack:
 			attack()
@@ -161,7 +162,6 @@ func destroy_self():
 
 func _on_attack_cooldown_timeout() -> void:
 	turret.texture = ready_to_fire_turret_texture
-	turret.queue_redraw()
 	can_attack = true
 	update_turret_rotation()
 	await get_tree().create_timer(1.0/60.0).timeout

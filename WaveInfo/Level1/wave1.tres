@@ -5,9 +5,9 @@
 [resource]
 script = ExtResource("1_bqqf4")
 enemy_counts = Dictionary[int, int]({
-1: 5
+1: 6
 })
 enemy_spawn_interval = Dictionary[int, float]({
-1: 1.0
+1: 0.75
 })
 metadata/_custom_type_script = "uid://dq3f0ac1t4eau"

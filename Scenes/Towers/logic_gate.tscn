@@ -2,8 +2,32 @@
 
 [ext_resource type="PackedScene" uid="uid://ham1y5xvbyj1" path="res://Scenes/Towers/base_tower.tscn" id="1_3din2"]
 [ext_resource type="Script" uid="uid://bd5hyksn3pd10" path="res://Scenes/Towers/logic_gate.gd" id="2_ah1q8"]
+[ext_resource type="Texture2D" uid="uid://rldoc5im436k" path="res://Assets/Towers/Logic gate.svg" id="3_f1h5s"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_ah1q8"]
+blend_mode = 1
 
 [node name="BaseTower" unique_id=443795488 instance=ExtResource("1_3din2")]
 script = ExtResource("2_ah1q8")
+laser_line_width = 10.0
+attack_speed = 2.0
+attack_range = 325.0
 
-[node name="Laser" type="Line2D" parent="." index="3" unique_id=1584768648]
+[node name="Laser" type="Line2D" parent="." index="0" unique_id=1584768648]
+material = SubResource("CanvasItemMaterial_ah1q8")
+default_color = Color(5, 5, 5, 1)
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+
+[node name="Base" parent="." index="2" unique_id=1755470834]
+texture = null
+
+[node name="Turret" parent="Base" index="0" unique_id=346350585]
+modulate = Color(0, 2, 3.5, 1)
+scale = Vector2(0.13088612, 0.13088612)
+texture = ExtResource("3_f1h5s")
+
+[node name="LaserSpawn" type="Node2D" parent="Base/Turret" index="0" unique_id=975370730]
+position = Vector2(0, -244.48734)
+scale = Vector2(7.640229, 7.640229)
