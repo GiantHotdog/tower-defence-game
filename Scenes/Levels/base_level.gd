@@ -46,7 +46,7 @@ func _unhandled_input(_event: InputEvent) -> void:
 			if scene_node:
 				tower_info.tower_selected.emit(scene_node, self)
 			elif Input.is_action_just_pressed("place_tower") and not is_tower_info_open:
-				tower_map.set_cell(clicked_cell, 0, Vector2i(0, 0), 2)
+				tower_map.set_cell(clicked_cell, 0, Vector2i(0, 0), 3)
 			else:
 				tower_info.tower_deselected.emit()
 

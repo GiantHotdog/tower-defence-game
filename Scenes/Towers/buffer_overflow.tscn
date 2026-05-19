@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://codfspxbphh32"]
+
+[ext_resource type="PackedScene" uid="uid://ham1y5xvbyj1" path="res://Scenes/Towers/base_tower.tscn" id="1_lnhig"]
+[ext_resource type="Script" uid="uid://c8yhq8dy4gvni" path="res://Scenes/Towers/buffer_overflow.gd" id="2_itdyk"]
+[ext_resource type="Texture2D" uid="uid://cdndvd8yb1csg" path="res://Assets/Towers/Buffer Overflow.svg" id="3_itdyk"]
+
+[node name="BaseTower" unique_id=443795488 instance=ExtResource("1_lnhig")]
+script = ExtResource("2_itdyk")
+attack_speed = 0.25
+damage = 5.0
+attack_range = 500.0
+projectile_scene_path = "uid://cn12itbm5f627"
+
+[node name="Base" parent="." index="1" unique_id=1755470834]
+modulate = Color(4.0001154, 0.41265154, 0, 1)
+scale = Vector2(0.25331774, 0.25331774)
+texture = ExtResource("3_itdyk")
+
+[node name="Turret" parent="Base" index="0" unique_id=346350585]
+visible = false

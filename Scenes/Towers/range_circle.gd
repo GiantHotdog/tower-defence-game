@@ -7,7 +7,7 @@ var attack_range:float = 1:
 		queue_redraw()
 
 func _draw() -> void:
-	var point_count = 64
+	var point_count = 128
 	
 	var line_color:Color = Color.WHITE
 	var line_thickness:float = 1.0

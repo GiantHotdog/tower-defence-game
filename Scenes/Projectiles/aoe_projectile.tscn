@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://cn12itbm5f627"]
+
+[ext_resource type="PackedScene" uid="uid://bhl7mr5ubdjuc" path="res://Scenes/Projectiles/base_projectile.tscn" id="1_h1l37"]
+[ext_resource type="Texture2D" uid="uid://cdndvd8yb1csg" path="res://Assets/Towers/Buffer Overflow.svg" id="2_sl4op"]
+[ext_resource type="Script" uid="uid://tyjhu2arvjye" path="res://Scenes/Projectiles/aoe_projectile.gd" id="3_sibsb"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_fki32"]
+radius = 210.69
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_sibsb"]
+radius = 1411.879
+
+[node name="BaseProjectile" unique_id=1011024061 instance=ExtResource("1_h1l37")]
+modulate = Color(5, 5, 5, 1)
+scale = Vector2(0.12, 0.12)
+texture = ExtResource("2_sl4op")
+script = ExtResource("3_sibsb")
+move_speed = 500.0
+
+[node name="CollisionShape2D" parent="Area2D" parent_id_path=PackedInt32Array(427427662) index="0" unique_id=830661856]
+shape = SubResource("CircleShape2D_fki32")
+
+[node name="AoeArea" type="Area2D" parent="." index="1" unique_id=1945820868]
+collision_layer = 8
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AoeArea" index="0" unique_id=880971122]
+shape = SubResource("CircleShape2D_sibsb")

@@ -8,6 +8,6 @@ enemy_counts = Dictionary[int, int]({
 1: 6
 })
 enemy_spawn_interval = Dictionary[int, float]({
-1: 0.75
+1: 0.2
 })
 metadata/_custom_type_script = "uid://dq3f0ac1t4eau"
