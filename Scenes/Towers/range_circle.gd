@@ -1,7 +1,10 @@
 class_name RangeCircle
 extends Node2D
 
-var attack_range:float = 1
+var attack_range:float = 1:
+	set(value):
+		attack_range = value
+		queue_redraw()
 
 func _draw() -> void:
 	var point_count = 64

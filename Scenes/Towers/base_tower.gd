@@ -10,7 +10,12 @@ enum TargetMode {CLOSEST, FURTHEST, MOST_PROGRESS, LEAST_HEALTH, MOST_HEALTH}
 ## The damage each shot deals
 @export var damage:float = 1.0
 ## The radius (in px) of the area the tower can attack in 
-@export var attack_range:float = 500.0
+@export var attack_range:float = 500.0:
+	set(value):
+		attack_range = value
+		if range_circle:
+			range_circle.attack_range = value
+
 ## The scene used to create projectiles
 @export_file("*.tscn") var projectile_scene_path:String
 ## The targeting mode used by this tower

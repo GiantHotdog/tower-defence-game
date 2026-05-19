@@ -11,7 +11,7 @@ blend_mode = 1
 script = ExtResource("2_ah1q8")
 laser_line_width = 10.0
 attack_speed = 2.0
-attack_range = 325.0
+attack_range = 40.0
 
 [node name="Laser" type="Line2D" parent="." index="0" unique_id=1584768648]
 material = SubResource("CanvasItemMaterial_ah1q8")

@@ -13,8 +13,10 @@ func _ready() -> void:
 	super._ready()
 	laser_line.add_point(laser_line.to_local(laser_spawn.global_position))
 	laser_line.add_point(laser_line.to_local(laser_spawn.global_position))
+	
 	ready_to_fire_turret_texture = load("res://Assets/Towers/Logic gate.svg")
 	not_ready_to_fire_turret_texture = load("res://Assets/Towers/Logic gate.svg")
+	display_name = "Logic Gate"
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
