@@ -42,6 +42,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+color = Color(1, 1, 1, 0)
 metadata/_edit_use_anchors_ = true
 
 [node name="BgLayer" type="TileMapLayer" parent="." unique_id=1845269339]

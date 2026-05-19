@@ -7,9 +7,9 @@
 
 [sub_resource type="Curve2D" id="Curve2D_5jgm0"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, -128, 128, 0, 0, 0, 0, 2176, 128, 0, 0, 0, 0, 2176, 1152, 0, 0, 0, 0, 1664, 1152, 0, 0, 0, 0, 1664, 640, 0, 0, 0, 0, 1152, 640, 0, 0, 0, 0, 1152, 1152, 0, 0, 0, 0, 640, 1152, 0, 0, 0, 0, 640, 640, 0, 0, 0, 0, 128, 640, 0, 0, 0, 0, 128, 1408)
+"points": PackedVector2Array(0, 0, 0, 0, -128, 128, 0, 0, 0, 0, 2176, 128, 0, 0, 0, 0, 2176, 1152, 0, 0, 0, 0, 1792, 1152, 0, 0, 0, 0, 1792, 640, 0, 0, 0, 0, 1408, 640, 0, 0, 0, 0, 1408, 1152, 0, 0, 0, 0, 1024, 1152, 0, 0, 0, 0, 1024, 640, 0, 0, 0, 0, 640, 640, 0, 0, 0, 0, 640, 1152, 0, 0, 0, 0, 384, 1152, 0, 0, 0, 0, 384, 640, 0, 0, 0, 0, 128, 640, 0, 0, 0, 0, 128, 1408)
 }
-point_count = 11
+point_count = 15
 
 [node name="Level1" unique_id=555824650 instance=ExtResource("1_5jgm0")]
 wave_info_dict = Dictionary[int, ExtResource("2_i2byd")]({
@@ -17,7 +17,7 @@ wave_info_dict = Dictionary[int, ExtResource("2_i2byd")]({
 2: ExtResource("4_6ru1v")
 })
 
-[node name="EnemyPath" parent="." index="2" unique_id=1563632205]
+[node name="EnemyPath" parent="." index="3" unique_id=1563632205]
 curve = SubResource("Curve2D_5jgm0")
 
 [node name="PathRevealer" parent="EnemyPath" index="0" unique_id=662323682]
@@ -27,7 +27,7 @@ position = Vector2(-128, 128)
 width = 20.0
 joint_mode = 0
 
-[node name="TowerLayer" parent="." index="3" unique_id=1754609170]
+[node name="TowerLayer" parent="MapContainer" parent_id_path=PackedInt32Array(1923428383) index="0" unique_id=1754609170]
 position = Vector2(0, 64)
 
 [editable path="UI"]

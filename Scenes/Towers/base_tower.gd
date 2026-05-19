@@ -27,6 +27,7 @@ var is_attacking:bool = false
 @onready var cooldown:float = 1 / attack_speed
 @onready var attack_cooldown_timer:Timer = $AttackCooldown
 @onready var turret:Node2D = $Base/Turret
+@onready var range_circle:RangeCircle = $RangeCircle
 @onready var attack_area:Area2D = $AttackArea2D
 @onready var attack_area_shape:CircleShape2D = $AttackArea2D/CollisionShape2D.shape
 @onready var projectile_scene:Resource = load(projectile_scene_path)
@@ -35,6 +36,7 @@ var is_attacking:bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	range_circle.attack_range = attack_range
 	attack_cooldown_timer.wait_time = cooldown
 	attack_area_shape.radius = attack_range
 
@@ -48,6 +50,10 @@ func _process(_delta: float) -> void:
 	if target:
 		if can_attack:
 			attack()
+
+
+func set_range_circle_visible(visiblity:bool):
+	range_circle.visible = visiblity
 
 
 func get_target():

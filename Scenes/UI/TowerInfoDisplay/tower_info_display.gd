@@ -28,11 +28,13 @@ func _process(_delta: float) -> void:
 func _on_tower_selected(tower: BaseTower, level:BaseLevel) -> void:
 	current_tower = tower
 	visible = true
+	current_tower.set_range_circle_visible(true)
 	parent_level = level
 	level.is_tower_info_open = true
 
 
 func _on_tower_deselected() -> void:
+	current_tower.set_range_circle_visible(false)
 	current_tower = null
 	visible = false
 	parent_level.is_tower_info_open = false
