@@ -5,16 +5,17 @@
 [ext_resource type="Script" uid="uid://tyjhu2arvjye" path="res://Scenes/Projectiles/aoe_projectile.gd" id="3_sibsb"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_fki32"]
-radius = 210.69
+radius = 208.33333
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_sibsb"]
-radius = 1411.879
+radius = 1252.2479
 
 [node name="BaseProjectile" unique_id=1011024061 instance=ExtResource("1_h1l37")]
 modulate = Color(5, 5, 5, 1)
 scale = Vector2(0.12, 0.12)
 texture = ExtResource("2_sl4op")
 script = ExtResource("3_sibsb")
+explode_final_scale = 0.5
 move_speed = 500.0
 
 [node name="CollisionShape2D" parent="Area2D" parent_id_path=PackedInt32Array(427427662) index="0" unique_id=830661856]
