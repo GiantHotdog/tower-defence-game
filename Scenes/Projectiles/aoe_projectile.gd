@@ -30,8 +30,8 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 			var enemy:BaseEnemy = attacking.get_parent()
 			enemy.health -= damage
 		var tween = get_tree().create_tween()
-		tween.tween_property(self, "scale", Vector2(explode_final_scale, explode_final_scale), 0.1)
-		#tween.tween_property(self, "scale", Vector2.ZERO, 0.05)
+		tween.tween_property(self, "scale", Vector2(explode_final_scale, explode_final_scale), 0.2)
+		tween.parallel().tween_property(self, "modulate",Color(1, 1, 1, 0), 0.3)
 		tween.tween_callback(_on_tween_finished)
 
 func _on_tween_finished():
