@@ -77,6 +77,7 @@ visible = false
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=2133662861]
 environment = SubResource("Environment_jcyfc")
 
+[connection signal="set_placing" from="UI" to="." method="_on_placing_set"]
 [connection signal="wave_started" from="UI" to="." method="_on_wave_started"]
 
 [editable path="UI"]

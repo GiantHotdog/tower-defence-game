@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://b7met8awny0ff"]
+
+[ext_resource type="Script" uid="uid://b3wbkas1i6rjn" path="res://Scenes/UI/place_menu_item.gd" id="1_emyst"]
+[ext_resource type="Texture2D" uid="uid://rldoc5im436k" path="res://Assets/Towers/Logic gate.svg" id="1_tukcx"]
+
+[node name="PlaceMenuItem" type="VBoxContainer" unique_id=419833881]
+size_flags_horizontal = 3
+script = ExtResource("1_emyst")
+
+[node name="PlaceButton" type="TextureButton" parent="." unique_id=1384100982]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+size_flags_horizontal = 3
+texture_normal = ExtResource("1_tukcx")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="." unique_id=464681195]
+layout_mode = 2
+text = "Base Tower"
+horizontal_alignment = 1
+
+[connection signal="pressed" from="PlaceButton" to="." method="_on_place_button_pressed"]

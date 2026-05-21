@@ -16,7 +16,6 @@ func _ready() -> void:
 	
 	ready_to_fire_turret_texture = load("res://Assets/Towers/Logic gate.svg")
 	not_ready_to_fire_turret_texture = load("res://Assets/Towers/Logic gate.svg")
-	display_name = "Logic Gate"
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

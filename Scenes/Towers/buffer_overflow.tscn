@@ -6,10 +6,12 @@
 
 [node name="BaseTower" unique_id=443795488 instance=ExtResource("1_lnhig")]
 script = ExtResource("2_itdyk")
+display_name = "Buffer Overflow"
 attack_speed = 0.25
 damage = 5.0
 attack_range = 500.0
 projectile_scene_path = "uid://cn12itbm5f627"
+tower_type = 3
 
 [node name="Base" parent="." index="1" unique_id=1755470834]
 modulate = Color(4.0001154, 0.41265154, 0, 1)

@@ -2,6 +2,7 @@ class_name BaseTower
 extends Node2D
 
 enum TargetMode {CLOSEST, FURTHEST, MOST_PROGRESS, LEAST_HEALTH, MOST_HEALTH}
+enum TowerTypes {NONE, BASE_TOWER, LOGIC_GATE, BUFFER_OVERFLOW}
 
 ## The name of the tower, to be displayed in the info display
 @export var display_name:String = "Base Tower"
@@ -23,6 +24,7 @@ enum TargetMode {CLOSEST, FURTHEST, MOST_PROGRESS, LEAST_HEALTH, MOST_HEALTH}
 ## The speed that the turret rotates (in radians per second) when no enemy is in range
 @export var turret_idle_rotation_speed:float = 1.0
 
+@export var tower_type:TowerTypes = TowerTypes.BASE_TOWER
 
 var can_attack = true
 var enemies:Array[BaseEnemy]

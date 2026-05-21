@@ -46,7 +46,8 @@ func _unhandled_input(_event: InputEvent) -> void:
 			if scene_node:
 				tower_info.tower_selected.emit(scene_node, self)
 			elif Input.is_action_just_pressed("place_tower") and not is_tower_info_open:
-				tower_map.set_cell(clicked_cell, 0, Vector2i(0, 0), 3)
+				# Since the enum of towers and the tileset of towers align, we can just pass the enum in directly
+				tower_map.set_cell(clicked_cell, 0, Vector2i(0, 0), Globals.placing)
 			else:
 				tower_info.tower_deselected.emit()
 
@@ -92,3 +93,7 @@ func _on_wave_started(number: int) -> void:
 
 func _all_enemies_spawned():
 	is_all_enemies_spawned = true
+
+
+func _on_placing_set(tower_type:BaseTower.TowerTypes):
+	Globals.placing = tower_type

@@ -1,0 +1,71 @@
+[gd_scene format=3 uid="uid://c7u2q8mdkmy7v"]
+
+[ext_resource type="Script" uid="uid://dwhxmk4ndhaaw" path="res://Scenes/UI/tower_place_menu.gd" id="1_7ryxk"]
+[ext_resource type="PackedScene" uid="uid://b7met8awny0ff" path="res://Scenes/UI/PlaceMenuItem.tscn" id="1_b5314"]
+[ext_resource type="Texture2D" uid="uid://rldoc5im436k" path="res://Assets/Towers/Logic gate.svg" id="2_tkypa"]
+[ext_resource type="Texture2D" uid="uid://bgfsjwlq6hy32" path="res://Assets/kenney_tower-defense-top-down/PNG/Retina/towerDefense_tile017.png" id="2_utht1"]
+[ext_resource type="Texture2D" uid="uid://cdndvd8yb1csg" path="res://Assets/Towers/Buffer Overflow.svg" id="3_7ryxk"]
+
+[node name="TowerPlaceMenu" type="Control" unique_id=652360184]
+layout_mode = 3
+anchors_preset = 9
+anchor_bottom = 1.0
+grow_vertical = 2
+script = ExtResource("1_7ryxk")
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=1404446293]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 201.0
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer" unique_id=1203870101]
+layout_mode = 2
+
+[node name="CloseButton" type="TextureButton" parent="PanelContainer/VBoxContainer" unique_id=93894087]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_horizontal = 0
+texture_normal = ExtResource("2_utht1")
+ignore_texture_size = true
+stretch_mode = 4
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/VBoxContainer" unique_id=1986005796]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/VBoxContainer/MarginContainer" unique_id=446321393]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/MarginContainer/VBoxContainer" unique_id=1645652854]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_font_sizes/font_size = 32
+text = "Place Towers"
+
+[node name="GridContainer" type="GridContainer" parent="PanelContainer/VBoxContainer/MarginContainer/VBoxContainer" unique_id=1255003435]
+layout_mode = 2
+size_flags_vertical = 3
+columns = 2
+
+[node name="PlaceMenuItem" parent="PanelContainer/VBoxContainer/MarginContainer/VBoxContainer/GridContainer" unique_id=419833881 instance=ExtResource("1_b5314")]
+layout_mode = 2
+tower_name = "Logic Gate"
+tower_icon = ExtResource("2_tkypa")
+tower_color = Color(0, 2.285, 4.006, 1)
+tower = 2
+
+[node name="PlaceMenuItem2" parent="PanelContainer/VBoxContainer/MarginContainer/VBoxContainer/GridContainer" unique_id=1832789346 instance=ExtResource("1_b5314")]
+layout_mode = 2
+tower_name = "Buffer Overflow"
+tower_icon = ExtResource("3_7ryxk")
+tower_color = Color(4, 0.413, 0, 1)
+tower = 3
+
+[connection signal="pressed" from="PanelContainer/VBoxContainer/CloseButton" to="." method="_on_close_button_pressed"]
+[connection signal="set_placing" from="PanelContainer/VBoxContainer/MarginContainer/VBoxContainer/GridContainer/PlaceMenuItem" to="." method="_on_placing_set"]
+[connection signal="set_placing" from="PanelContainer/VBoxContainer/MarginContainer/VBoxContainer/GridContainer/PlaceMenuItem2" to="." method="_on_placing_set"]
