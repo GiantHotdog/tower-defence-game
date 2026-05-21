@@ -1,6 +1,7 @@
 @tool
 extends VBoxContainer
 
+## The name of the tower (displayed under the button)
 @export var tower_name:String = "Base Tower":
 	set(value):
 		tower_name = value

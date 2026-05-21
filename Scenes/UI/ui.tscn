@@ -48,6 +48,24 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 24
 text = "Build Towers"
 
+[node name="StopBuild" type="MarginContainer" parent="." unique_id=657646023]
+visible = false
+offset_right = 208.0
+offset_bottom = 85.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_constants/margin_top = 16
+
+[node name="PanelContainer" type="PanelContainer" parent="StopBuild" unique_id=1425245510]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+
+[node name="Button" type="Button" parent="StopBuild/PanelContainer" unique_id=1618946705]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Exit Build mode"
+
 [node name="LevelComplete" parent="." unique_id=226032127 instance=ExtResource("3_c7mb3")]
 
 [node name="TowerPlaceMenu" parent="." unique_id=652360184 instance=ExtResource("4_fo61o")]
@@ -55,4 +73,5 @@ visible = false
 
 [connection signal="pressed" from="StartWave/PanelContainer/Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="Build/PanelContainer/Button" to="." method="_on_build_button_pressed"]
+[connection signal="pressed" from="StopBuild/PanelContainer/Button" to="." method="_on_stop_build_button_pressed"]
 [connection signal="set_placing" from="TowerPlaceMenu" to="." method="_on_placing_set"]

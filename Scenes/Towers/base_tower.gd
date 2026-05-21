@@ -23,7 +23,7 @@ enum TowerTypes {NONE, BASE_TOWER, LOGIC_GATE, BUFFER_OVERFLOW}
 @export var target_mode:TargetMode = TargetMode.CLOSEST
 ## The speed that the turret rotates (in radians per second) when no enemy is in range
 @export var turret_idle_rotation_speed:float = 1.0
-
+## The type of tower that this is
 @export var tower_type:TowerTypes = TowerTypes.BASE_TOWER
 
 var can_attack = true

@@ -43,7 +43,7 @@ func _unhandled_input(_event: InputEvent) -> void:
 			var local_click_pos: Vector2 = get_local_mouse_position()
 			var clicked_cell: Vector2i = tower_map.local_to_map(tower_map.to_local(local_click_pos))
 			var scene_node: Node = get_scene_node_at_cell(clicked_cell)
-			if scene_node:
+			if scene_node and Globals.placing == 0:
 				tower_info.tower_selected.emit(scene_node, self)
 			elif Input.is_action_just_pressed("place_tower") and not is_tower_info_open:
 				# Since the enum of towers and the tileset of towers align, we can just pass the enum in directly
