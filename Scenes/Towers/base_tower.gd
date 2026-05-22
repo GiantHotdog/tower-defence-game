@@ -101,6 +101,7 @@ func get_closest_enemy():
 	var closest_node:BaseEnemy = null
 	var closest_node_distance:float
 	for enemy:BaseEnemy in enemies:
+		# if there is currently no node, just fill in the basic one to avoid a crash by accessing its parameters later
 		if not closest_node:
 			closest_node = enemy
 			closest_node_distance = global_position.distance_to(closest_node.global_position)
@@ -114,6 +115,7 @@ func get_furthest_enemy():
 	var furthest_node:BaseEnemy = null
 	var furthest_node_distance:float
 	for enemy:BaseEnemy in enemies:
+		# if there is currently no node, just fill in the basic one to avoid a crash by accessing its parameters later
 		if not furthest_node:
 			furthest_node = enemy
 			furthest_node_distance = global_position.distance_to(furthest_node.global_position)
@@ -127,6 +129,7 @@ func get_most_progress_enemy():
 	var most_progress_node:BaseEnemy = null
 	var most_progress_node_distance:float
 	for enemy:BaseEnemy in enemies:
+		# if there is currently no node, just fill in the basic one to avoid a crash by accessing its parameters later
 		if not most_progress_node:
 			most_progress_node = enemy
 			most_progress_node_distance = enemy.progress
@@ -140,6 +143,7 @@ func get_most_health_enemy():
 	var most_health_node:BaseEnemy = null
 	var most_health_node_amount:float
 	for enemy:BaseEnemy in enemies:
+		# if there is currently no node, just fill in the basic one to avoid a crash by accessing its parameters later
 		if not most_health_node:
 			most_health_node = enemy
 			most_health_node_amount = enemy.health
@@ -153,6 +157,7 @@ func get_least_health_enemy():
 	var least_health_node:BaseEnemy = null
 	var least_health_node_amount:float
 	for enemy:BaseEnemy in enemies:
+		# if there is currently no node, just fill in the basic one to avoid a crash by accessing its parameters later
 		if not least_health_node:
 			least_health_node = enemy
 			least_health_node_amount = enemy.health
