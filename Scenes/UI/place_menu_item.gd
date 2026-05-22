@@ -33,6 +33,7 @@ signal set_placing(tower_type:BaseTower.TowerTypes)
 func _on_place_button_pressed() -> void:
 	set_placing.emit(tower)
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if not Engine.is_editor_hint():
 		$Label2.text = str(Globals.currency) + " / " + str(cost)
+		$Label2.modulate = Color(0, 1, 0) if Globals.currency >= cost else Color(1, 0, 0)
