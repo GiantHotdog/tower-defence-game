@@ -66,6 +66,27 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 24
 text = "Exit Build mode"
 
+[node name="Currency" type="MarginContainer" parent="." unique_id=1074694505]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -208.0
+offset_bottom = 85.0
+grow_horizontal = 0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_constants/margin_top = 16
+
+[node name="PanelContainer" type="PanelContainer" parent="Currency" unique_id=1274065827]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+
+[node name="Label" type="Label" parent="Currency/PanelContainer" unique_id=17577120]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Currency:"
+
 [node name="LevelComplete" parent="." unique_id=226032127 instance=ExtResource("3_c7mb3")]
 
 [node name="TowerPlaceMenu" parent="." unique_id=652360184 instance=ExtResource("4_fo61o")]

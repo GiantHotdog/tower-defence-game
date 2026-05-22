@@ -9,6 +9,8 @@ signal set_placing(tower_type:BaseTower.TowerTypes)
 @onready var build_button:Control = $Build
 @onready var tower_place_menu:TowerPlaceMenu = $TowerPlaceMenu
 @onready var stop_build_button:Control = $StopBuild
+@onready var currency_label:Label = $Currency/PanelContainer/Label
+@onready var tower_info_display:Control = $TowerInfoDisplay
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -21,6 +23,9 @@ func _process(_delta: float) -> void:
 	level_complete.visible = Globals.is_level_complete
 	build_button.visible = not tower_place_menu.visible and Globals.placing == 0 and not Globals.is_wave_running and not Globals.is_level_complete
 	stop_build_button.visible = Globals.placing != 0
+	
+	currency_label.text = "Currency: " + str(Globals.currency)
+	currency_label.visible = not tower_info_display.visible
 
 
 func _on_button_pressed() -> void:
