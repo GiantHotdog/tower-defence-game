@@ -170,6 +170,12 @@ func destroy_self():
 		# Convert own position into the parent's map grid coordinates
 		var cell_coords = parent.local_to_map(position)
 		
+		
+		var tower_name:String = BaseTower.TowerTypes.keys()[tower_type]
+		var cost = BaseTower.TowerCosts[tower_name]
+		# refund the cost of this tower
+		Globals.currency += cost
+		
 		# Tell the parent to clear this cell (this automatically frees this node)
 		parent.set_cell(cell_coords, -1)
 
