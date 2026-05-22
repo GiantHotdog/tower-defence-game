@@ -10,4 +10,5 @@ enemy_counts = Dictionary[int, int]({
 enemy_spawn_interval = Dictionary[int, float]({
 1: 0.2
 })
+wave_finish_currency_reward = 30
 metadata/_custom_type_script = "uid://dq3f0ac1t4eau"

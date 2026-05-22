@@ -16,7 +16,7 @@ wave_info_dict = Dictionary[int, ExtResource("2_i2byd")]({
 1: ExtResource("3_27y4v"),
 2: ExtResource("4_6ru1v")
 })
-starting_currency = 50
+starting_currency = 60
 
 [node name="EnemyPath" parent="." index="3" unique_id=1563632205]
 curve = SubResource("Curve2D_5jgm0")
