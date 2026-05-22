@@ -28,6 +28,7 @@ window/stretch/mode="canvas_items"
 folder_colors={
 "res://Assets/": "yellow",
 "res://Assets/kenney_tower-defense-top-down/": "red",
+"res://Exports/": "green",
 "res://Scenes/": "blue",
 "res://WaveInfo/": "orange"
 }
