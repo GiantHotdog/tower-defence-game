@@ -3,6 +3,8 @@ extends Node2D
 
 ## The wave info - the number being the wave, the WaveInfo resource being the spawning delay and number 
 @export var wave_info_dict:Dictionary[int, WaveInfo] = {}
+## The amount of currency allocated at the start of the level
+@export var starting_currency:int = 0
 
 @onready var base_enemy_scene:PackedScene = load("res://Scenes/Enemies/base_enemy.tscn")
 @onready var weak_enemy_scene:PackedScene  = load("res://Scenes/Enemies/weak_enemy.tscn")
@@ -18,6 +20,7 @@ var is_tower_info_open:bool = false
 var enemies_in_current_wave:int = 0
 var enemies_in_current_wave_killed:int = 0
 var is_all_enemies_spawned:bool = false
+var wave_info:WaveInfo
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -26,15 +29,18 @@ func _ready() -> void:
 	enemy_path.curve.bake_interval = 200
 	path_line.points = enemy_path.curve.get_baked_points()
 	path_line.antialiased = true
+	Globals.currency = starting_currency
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
 	modulate_path()
-	if enemies_in_current_wave == enemies_in_current_wave_killed and is_all_enemies_spawned:
+	if enemies_in_current_wave == enemies_in_current_wave_killed and is_all_enemies_spawned and Globals.is_wave_running:
 		Globals.is_wave_running = false
 		if Globals.current_wave_number == wave_info_dict.size():
 			Globals.is_level_complete = true
+		Globals.currency += wave_info.wave_finish_currency_reward
+		wave_info = null
 
 
 func _unhandled_input(_event: InputEvent) -> void:
@@ -46,8 +52,12 @@ func _unhandled_input(_event: InputEvent) -> void:
 			if scene_node and Globals.placing == 0:
 				tower_info.tower_selected.emit(scene_node, self)
 			elif Input.is_action_just_pressed("place_tower") and not is_tower_info_open:
-				# Since the enum of towers and the tileset of towers align, we can just pass the enum in directly
-				tower_map.set_cell(clicked_cell, 0, Vector2i(0, 0), Globals.placing)
+				var tower_name:String = BaseTower.TowerTypes.keys()[Globals.placing]
+				var cost = BaseTower.TowerCosts[tower_name]
+				if Globals.currency - cost >= 0:
+					Globals.currency -= cost
+					# Since the enum of towers and the tileset of towers align, we can just pass the enum in directly
+					tower_map.set_cell(clicked_cell, 0, Vector2i(0, 0), Globals.placing)
 			else:
 				tower_info.tower_deselected.emit()
 
@@ -84,7 +94,7 @@ func add_enemy(enemy:BaseEnemy.ENEMY_TYPES):
 
 
 func _on_wave_started(number: int) -> void:
-	var wave_info = wave_info_dict[number]
+	wave_info = wave_info_dict[number]
 	enemies_in_current_wave = 0
 	enemies_in_current_wave_killed = 0
 	is_all_enemies_spawned = false

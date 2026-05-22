@@ -20,4 +20,9 @@ layout_mode = 2
 text = "Base Tower"
 horizontal_alignment = 1
 
+[node name="Label2" type="Label" parent="." unique_id=1247666676]
+layout_mode = 2
+text = "Price"
+horizontal_alignment = 1
+
 [connection signal="pressed" from="PlaceButton" to="." method="_on_place_button_pressed"]

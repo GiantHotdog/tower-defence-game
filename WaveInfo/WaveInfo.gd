@@ -5,6 +5,7 @@ signal all_enemies_spawned
 
 @export var enemy_counts:Dictionary[BaseEnemy.ENEMY_TYPES, int] = {}
 @export var enemy_spawn_interval:Dictionary[BaseEnemy.ENEMY_TYPES, float] = {}
+@export var wave_finish_currency_reward:int = 10
 
 var enemy_spawn_timers:Dictionary[BaseEnemy.ENEMY_TYPES, Timer]
 var enemy_spawn_counts:Dictionary[BaseEnemy.ENEMY_TYPES, int]

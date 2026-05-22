@@ -17,6 +17,14 @@ extends VBoxContainer
 		tower_color = value
 		$PlaceButton.modulate = value
 
+@export var cost:int = 10:
+	set(value):
+		cost = value
+		if not Engine.is_editor_hint():
+			$Label2.text = str(Globals.currency) + " / " + str(value)
+		else:
+			$Label2.text =  "10 / " + str(value)
+
 @export var tower:BaseTower.TowerTypes = BaseTower.TowerTypes.NONE
 
 signal set_placing(tower_type:BaseTower.TowerTypes)
@@ -24,3 +32,7 @@ signal set_placing(tower_type:BaseTower.TowerTypes)
 
 func _on_place_button_pressed() -> void:
 	set_placing.emit(tower)
+
+func _process(delta: float) -> void:
+	if not Engine.is_editor_hint():
+		$Label2.text = str(Globals.currency) + " / " + str(cost)

@@ -7,5 +7,7 @@ var is_level_complete:bool = false
 
 var placing:BaseTower.TowerTypes = BaseTower.TowerTypes.NONE
 
+var currency:int = 0
+
 func set_placing(tower_type:BaseTower.TowerTypes):
 	placing = tower_type

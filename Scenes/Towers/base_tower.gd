@@ -3,6 +3,7 @@ extends Node2D
 
 enum TargetMode {CLOSEST, FURTHEST, MOST_PROGRESS, LEAST_HEALTH, MOST_HEALTH}
 enum TowerTypes {NONE, BASE_TOWER, LOGIC_GATE, BUFFER_OVERFLOW}
+enum TowerCosts {NONE = 0, BASE_TOWER = 5, LOGIC_GATE = 10, BUFFER_OVERFLOW = 20}
 
 ## The name of the tower, to be displayed in the info display
 @export var display_name:String = "Base Tower"
