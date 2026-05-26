@@ -10,13 +10,16 @@ radius = 208.33333
 [sub_resource type="CircleShape2D" id="CircleShape2D_sibsb"]
 radius = 1252.2479
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_ccu0b"]
+radius = 2836.8728
+
 [node name="BaseProjectile" unique_id=1011024061 instance=ExtResource("1_h1l37")]
 modulate = Color(5, 5, 5, 1)
 scale = Vector2(0.12, 0.12)
 texture = ExtResource("2_sl4op")
 script = ExtResource("3_sibsb")
 explode_final_scale = 0.5
-move_speed = 500.0
+move_speed = 1000.0
 
 [node name="CollisionShape2D" parent="Area2D" parent_id_path=PackedInt32Array(427427662) index="0" unique_id=830661856]
 shape = SubResource("CircleShape2D_fki32")
@@ -27,3 +30,10 @@ collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AoeArea" index="0" unique_id=880971122]
 shape = SubResource("CircleShape2D_sibsb")
+
+[node name="TrackArea" type="Area2D" parent="." index="2" unique_id=750431000]
+collision_layer = 8
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TrackArea" index="0" unique_id=252497703]
+shape = SubResource("CircleShape2D_ccu0b")
