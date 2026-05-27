@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="WaveInfo" format=3 uid="uid://ddbhcerv8a2to"]
 
-[ext_resource type="Script" uid="uid://dq3f0ac1t4eau" path="res://WaveInfo/WaveInfo.gd" id="1_bqqf4"]
+[ext_resource type="Script" uid="uid://dq3f0ac1t4eau" path="res://Resources/WaveInfo/WaveInfo.gd" id="1_bqqf4"]
 
 [resource]
 script = ExtResource("1_bqqf4")

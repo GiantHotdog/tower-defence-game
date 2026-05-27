@@ -12,11 +12,7 @@ enum TowerCosts {NONE = 0, BASE_TOWER = 5, LOGIC_GATE = 10, BUFFER_OVERFLOW = 20
 ## The damage each shot deals
 @export var damage:float = 1.0
 ## The radius (in px) of the area the tower can attack in 
-@export var attack_range:float = 500.0:
-	set(value):
-		attack_range = value
-		if range_circle:
-			range_circle.attack_range = value
+@export var attack_range:float = 500.0
 
 ## The scene used to create projectiles
 @export_file("*.tscn") var projectile_scene_path:String
@@ -27,12 +23,43 @@ enum TowerCosts {NONE = 0, BASE_TOWER = 5, LOGIC_GATE = 10, BUFFER_OVERFLOW = 20
 ## The type of tower that this is
 @export var tower_type:TowerTypes = TowerTypes.BASE_TOWER
 
+## An array that holds all upgrades applied to this tower
+@export var upgrades:Array[Upgrade]
+
 var can_attack = true
 var enemies:Array[BaseEnemy]
 var target:BaseEnemy = null
 var is_attacking:bool = false
 
-@onready var cooldown:float = 1 / attack_speed
+## Holds the calculted cumulative effect of all upgrades for each property
+var cumulative_upgrade_dictionary:Dictionary[String, float] = {"range" : 1.0, "damage" : 1.0, "attack_speed": 1.0}
+
+## Holds the range once all range upgrades have been applied
+var calculated_range = attack_range:
+	set(value):
+		calculated_range = value
+		if range_circle:
+			range_circle.attack_range = value
+		attack_area_shape.radius = value
+	
+
+var calculated_damage = damage:
+	set(value):
+		calculated_damage = value
+
+var calculated_attack_speed = attack_speed:
+	set(value):
+		calculated_attack_speed = value
+		calculated_cooldown = 1 / value
+
+var calculated_cooldown = cooldown:
+	set(value):
+		calculated_cooldown = value
+		if attack_cooldown_timer:
+			attack_cooldown_timer.wait_time = value
+
+var cooldown:float = 1 / attack_speed
+
 @onready var attack_cooldown_timer:Timer = $AttackCooldown
 @onready var turret:Node2D = $Base/Turret
 @onready var range_circle:RangeCircle = $RangeCircle
@@ -44,9 +71,10 @@ var is_attacking:bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	range_circle.attack_range = attack_range
+	calculate_upgrades()
+	range_circle.attack_range = calculated_range
 	attack_cooldown_timer.wait_time = cooldown
-	attack_area_shape.radius = attack_range
+	attack_area_shape.radius = calculated_range
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -58,10 +86,31 @@ func _process(_delta: float) -> void:
 	if target:
 		if can_attack:
 			attack()
+	if Input.is_action_just_pressed("upgrade"):
+		var upgrade = Upgrade.new()
+		upgrade.property = Upgrade.Properties.ATTACK_SPEED
+		upgrade.scale = 2
+		add_upgrade(upgrade)
 
 
 func set_range_circle_visible(visiblity:bool):
 	range_circle.visible = visiblity
+
+
+func calculate_upgrades():
+	# Reset the dictionary
+	for key in cumulative_upgrade_dictionary:
+		cumulative_upgrade_dictionary[key] = 1.0
+	for upgrade:Upgrade in upgrades:
+		if upgrade.property == Upgrade.Properties.RANGE:
+			cumulative_upgrade_dictionary["range"] *= upgrade.scale
+			calculated_range = cumulative_upgrade_dictionary["range"] * attack_range
+		elif upgrade.property == Upgrade.Properties.DAMAGE:
+			cumulative_upgrade_dictionary["damage"] *= upgrade.scale
+			calculated_damage = cumulative_upgrade_dictionary["damage"] * damage
+		elif upgrade.property == Upgrade.Properties.ATTACK_SPEED:
+			cumulative_upgrade_dictionary["attack_speed"] *= upgrade.scale
+			calculated_attack_speed = cumulative_upgrade_dictionary["attack_speed"] * attack_speed
 
 
 func get_target():
@@ -84,7 +133,7 @@ func attack():
 	can_attack = false
 	var projectile:BaseProjectile = projectile_scene.instantiate()
 	projectile.target = target
-	projectile.damage = damage
+	projectile.damage = calculated_damage
 	projectile.global_position = global_position
 	add_child(projectile)
 
@@ -165,6 +214,11 @@ func get_least_health_enemy():
 			least_health_node = enemy
 			least_health_node_amount = enemy.health
 	return least_health_node
+
+
+func add_upgrade(upgrade:Upgrade):
+	upgrades.push_back(upgrade)
+	calculate_upgrades()
 
 
 func destroy_self():

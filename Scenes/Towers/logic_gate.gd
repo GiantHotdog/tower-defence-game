@@ -41,7 +41,7 @@ func attack():
 	turret.texture = not_ready_to_fire_turret_texture
 	can_attack = false
 	
-	target.health -= damage
+	target.health -= calculated_damage
 
 
 func update_laser():
