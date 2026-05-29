@@ -2,8 +2,8 @@ class_name BaseTower
 extends Node2D
 
 enum TargetMode {CLOSEST, FURTHEST, MOST_PROGRESS, LEAST_HEALTH, MOST_HEALTH}
-enum TowerTypes {NONE, BASE_TOWER, LOGIC_GATE, BUFFER_OVERFLOW}
-enum TowerCosts {NONE = 0, BASE_TOWER = 5, LOGIC_GATE = 10, BUFFER_OVERFLOW = 20}
+enum TowerTypes {NONE, BASE_TOWER, LOGIC_GATE, BUFFER_OVERFLOW, SIGTERM}
+enum TowerCosts {NONE = 0, BASE_TOWER = 5, LOGIC_GATE = 10, BUFFER_OVERFLOW = 20, SIGTERM = 40}
 
 ## The name of the tower, to be displayed in the info display
 @export var display_name:String = "Base Tower"
@@ -35,7 +35,7 @@ var is_attacking:bool = false
 var cumulative_upgrade_dictionary:Dictionary[String, float] = {"range" : 1.0, "damage" : 1.0, "attack_speed": 1.0}
 
 ## Holds the range once all range upgrades have been applied
-var calculated_range = attack_range:
+@onready var calculated_range = attack_range:
 	set(value):
 		calculated_range = value
 		if range_circle:
@@ -43,22 +43,20 @@ var calculated_range = attack_range:
 		attack_area_shape.radius = value
 	
 
-var calculated_damage = damage:
+@onready var calculated_damage = damage:
 	set(value):
 		calculated_damage = value
 
-var calculated_attack_speed = attack_speed:
+@onready var calculated_attack_speed = attack_speed:
 	set(value):
 		calculated_attack_speed = value
 		calculated_cooldown = 1 / value
 
-var calculated_cooldown = cooldown:
+@onready var calculated_cooldown = 1 / attack_speed:
 	set(value):
 		calculated_cooldown = value
 		if attack_cooldown_timer:
 			attack_cooldown_timer.wait_time = value
-
-var cooldown:float = 1 / attack_speed
 
 @onready var attack_cooldown_timer:Timer = $AttackCooldown
 @onready var turret:Node2D = $Base/Turret
@@ -73,7 +71,7 @@ var cooldown:float = 1 / attack_speed
 func _ready() -> void:
 	calculate_upgrades()
 	range_circle.attack_range = calculated_range
-	attack_cooldown_timer.wait_time = cooldown
+	attack_cooldown_timer.wait_time = calculated_cooldown
 	attack_area_shape.radius = calculated_range
 
 
@@ -111,6 +109,11 @@ func calculate_upgrades():
 		elif upgrade.property == Upgrade.Properties.ATTACK_SPEED:
 			cumulative_upgrade_dictionary["attack_speed"] *= upgrade.scale
 			calculated_attack_speed = cumulative_upgrade_dictionary["attack_speed"] * attack_speed
+	if upgrades.size() == 0:
+		# There are no upgrades to apply
+		calculated_range = attack_range
+		calculated_damage = damage
+		calculated_attack_speed = attack_speed
 
 
 func get_target():

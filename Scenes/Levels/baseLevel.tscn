@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://biow5t2563pg2" path="res://Scenes/UI/ui.tscn" id="4_0q0li"]
 [ext_resource type="PackedScene" uid="uid://c1kxhpjmb71kn" path="res://Scenes/Towers/logic_gate.tscn" id="5_jcyfc"]
 [ext_resource type="PackedScene" uid="uid://codfspxbphh32" path="res://Scenes/Towers/buffer_overflow.tscn" id="6_n1jfr"]
+[ext_resource type="PackedScene" uid="uid://c2kh7bpmtaw52" path="res://Scenes/Towers/sigterm_tower.tscn" id="7_ehmfq"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ehmfq"]
 shader = ExtResource("2_n1jfr")
@@ -21,6 +22,7 @@ resource_name = "Towers"
 scenes/1/scene = ExtResource("2_btcmw")
 scenes/2/scene = ExtResource("5_jcyfc")
 scenes/3/scene = ExtResource("6_n1jfr")
+scenes/4/scene = ExtResource("7_ehmfq")
 
 [sub_resource type="TileSet" id="TileSet_0q0li"]
 tile_size = Vector2i(128, 128)
