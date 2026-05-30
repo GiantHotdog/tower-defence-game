@@ -26,6 +26,9 @@ enum TowerCosts {NONE = 0, BASE_TOWER = 5, LOGIC_GATE = 10, BUFFER_OVERFLOW = 20
 ## An array that holds all upgrades applied to this tower
 @export var upgrades:Array[Upgrade]
 
+## An array that holds the information for all upgrade paths this tower can take
+@export var upgrade_paths:Array[UpgradePath]
+
 var can_attack = true
 var enemies:Array[BaseEnemy]
 var target:BaseEnemy = null
@@ -69,11 +72,15 @@ var cumulative_upgrade_dictionary:Dictionary[String, float] = {"range" : 1.0, "d
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	# Generate a unique attack shape upon instantiation
+	var new_attack_area_shape = attack_area_shape.duplicate()
+	$AttackArea2D/CollisionShape2D.shape = new_attack_area_shape
+	attack_area_shape = $AttackArea2D/CollisionShape2D.shape
+	
 	calculate_upgrades()
 	range_circle.attack_range = calculated_range
 	attack_cooldown_timer.wait_time = calculated_cooldown
 	attack_area_shape.radius = calculated_range
-
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
@@ -86,7 +93,7 @@ func _process(_delta: float) -> void:
 			attack()
 	if Input.is_action_just_pressed("upgrade"):
 		var upgrade = Upgrade.new()
-		upgrade.property = Upgrade.Properties.ATTACK_SPEED
+		upgrade.property = Upgrade.Properties.RANGE
 		upgrade.scale = 2
 		add_upgrade(upgrade)
 
