@@ -6,6 +6,9 @@ signal tower_deselected()
 
 @onready var targeting_mode_button:OptionButton = $PanelContainer/VBoxContainer/MarginContainer/VBoxContainer/TargetingMode
 @onready var name_label:Label = $PanelContainer/VBoxContainer/MarginContainer/VBoxContainer/Name
+@onready var upgrade_paths_container:VBoxContainer = $PanelContainer/VBoxContainer/MarginContainer/VBoxContainer/UpgradePaths
+
+@onready var upgrade_path_scene:PackedScene = load("res://Scenes/UI/visual_upgrade_path.tscn")
 
 var current_tower:BaseTower
 var parent_level:BaseLevel = null
@@ -29,6 +32,15 @@ func _on_tower_selected(tower: BaseTower, level:BaseLevel) -> void:
 	if current_tower:
 		_on_tower_deselected()
 	current_tower = tower
+	
+	var upgrade_paths_count:int = current_tower.upgrade_paths.size()
+	for path in range(upgrade_paths_count):
+		var scene:VisualUpgradePath = upgrade_path_scene.instantiate()
+		scene.path_number = path + 1
+		scene.upgrade_path = current_tower.upgrade_paths[path]
+		scene.tower = current_tower
+		upgrade_paths_container.add_child(scene)
+	
 	visible = true
 	current_tower.set_range_circle_visible(true)
 	parent_level = level
@@ -36,6 +48,10 @@ func _on_tower_selected(tower: BaseTower, level:BaseLevel) -> void:
 
 
 func _on_tower_deselected() -> void:
+	for node in upgrade_paths_container.get_children():
+		upgrade_paths_container.remove_child(node)
+		node.queue_free()
+		
 	current_tower.set_range_circle_visible(false)
 	current_tower = null
 	visible = false

@@ -3,6 +3,40 @@
 [ext_resource type="PackedScene" uid="uid://ham1y5xvbyj1" path="res://Scenes/Towers/base_tower.tscn" id="1_3din2"]
 [ext_resource type="Script" uid="uid://bd5hyksn3pd10" path="res://Scenes/Towers/logic_gate.gd" id="2_ah1q8"]
 [ext_resource type="Texture2D" uid="uid://rldoc5im436k" path="res://Assets/Towers/Logic gate.svg" id="3_f1h5s"]
+[ext_resource type="Script" uid="uid://dodydgnw2sl38" path="res://Resources/UpgradePath/UpgradePath.gd" id="3_wo5yf"]
+[ext_resource type="Script" uid="uid://d4nuqtq88c71p" path="res://Resources/Upgrades/Upgrade.gd" id="4_o1hft"]
+
+[sub_resource type="Resource" id="Resource_dc2c3"]
+script = ExtResource("4_o1hft")
+scale = 1.1
+metadata/_custom_type_script = "uid://d4nuqtq88c71p"
+
+[sub_resource type="Resource" id="Resource_23wel"]
+script = ExtResource("4_o1hft")
+scale = 1.1
+metadata/_custom_type_script = "uid://d4nuqtq88c71p"
+
+[sub_resource type="Resource" id="Resource_y85ff"]
+script = ExtResource("3_wo5yf")
+upgrades = Array[ExtResource("4_o1hft")]([SubResource("Resource_dc2c3"), SubResource("Resource_23wel")])
+metadata/_custom_type_script = "uid://dodydgnw2sl38"
+
+[sub_resource type="Resource" id="Resource_5mxl6"]
+script = ExtResource("4_o1hft")
+property = 1
+scale = 1.2
+metadata/_custom_type_script = "uid://d4nuqtq88c71p"
+
+[sub_resource type="Resource" id="Resource_k458g"]
+script = ExtResource("4_o1hft")
+property = 1
+scale = 1.2
+metadata/_custom_type_script = "uid://d4nuqtq88c71p"
+
+[sub_resource type="Resource" id="Resource_ff4mp"]
+script = ExtResource("3_wo5yf")
+upgrades = Array[ExtResource("4_o1hft")]([SubResource("Resource_5mxl6"), SubResource("Resource_k458g")])
+metadata/_custom_type_script = "uid://dodydgnw2sl38"
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_ah1q8"]
 blend_mode = 1
@@ -15,6 +49,7 @@ attack_speed = 1.5
 damage = 0.75
 attack_range = 325.0
 tower_type = 2
+upgrade_paths = Array[ExtResource("3_wo5yf")]([SubResource("Resource_y85ff"), SubResource("Resource_ff4mp")])
 
 [node name="Laser" type="Line2D" parent="." index="0" unique_id=1584768648]
 material = SubResource("CanvasItemMaterial_ah1q8")
