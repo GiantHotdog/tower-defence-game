@@ -1,0 +1,37 @@
+class_name VisualUpgradePath
+extends Control
+
+@export var upgrade_path:UpgradePath:
+	set(value):
+		upgrade_path = value
+		update_labels()
+
+
+@export var path_number:int = 0:
+	set(value):
+		path_number = value
+		$Label.text = "Path " + str(value) + ":"
+
+var tower:BaseTower
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	$Label.text = "Path " + str(path_number) + ":"
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+
+
+func _on_upgrade_button_pressed() -> void:
+	if upgrade_path:
+		var upgrade:Upgrade = upgrade_path.get_next_upgrade()
+		update_labels()
+		if upgrade:
+			tower.add_upgrade(upgrade)
+
+
+func update_labels() -> void:
+	$PathProgressContainer/CurrentProgress.text = str(upgrade_path.get_current_upgrade_count())
+	$PathProgressContainer/PathLength.text = str(upgrade_path.get_upgrade_count())

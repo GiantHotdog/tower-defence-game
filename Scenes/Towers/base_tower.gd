@@ -26,6 +26,9 @@ enum TowerCosts {NONE = 0, BASE_TOWER = 5, LOGIC_GATE = 10, BUFFER_OVERFLOW = 20
 ## An array that holds all upgrades applied to this tower
 @export var upgrades:Array[Upgrade]
 
+## An array that holds the information for all upgrade paths this tower can take
+@export var upgrade_paths:Array[UpgradePath]
+
 var can_attack = true
 var enemies:Array[BaseEnemy]
 var target:BaseEnemy = null
