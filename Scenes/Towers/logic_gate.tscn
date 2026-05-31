@@ -1,71 +1,25 @@
-[gd_scene format=3 uid="uid://c1kxhpjmb71kn"]
+[gd_scene format=3 uid="uid://c4kvwkm8d4ay7"]
 
-[ext_resource type="PackedScene" uid="uid://ham1y5xvbyj1" path="res://Scenes/Towers/base_tower.tscn" id="1_3din2"]
-[ext_resource type="Script" uid="uid://bd5hyksn3pd10" path="res://Scenes/Towers/logic_gate.gd" id="2_ah1q8"]
-[ext_resource type="Texture2D" uid="uid://rldoc5im436k" path="res://Assets/Towers/Logic gate.svg" id="3_f1h5s"]
-[ext_resource type="Script" uid="uid://dodydgnw2sl38" path="res://Resources/UpgradePath/UpgradePath.gd" id="3_wo5yf"]
-[ext_resource type="Script" uid="uid://d4nuqtq88c71p" path="res://Resources/Upgrades/Upgrade.gd" id="4_o1hft"]
+[ext_resource type="PackedScene" uid="uid://c1kxhpjmb71kn" path="res://Scenes/Towers/laser_tower.tscn" id="1_ah1q8"]
+[ext_resource type="Script" uid="uid://cw4pgj4w45jg1" path="res://Scenes/Towers/logic_gate.gd" id="2_ah1q8"]
+[ext_resource type="Script" uid="uid://dodydgnw2sl38" path="res://Resources/UpgradePath/UpgradePath.gd" id="3_0yyg6"]
+[ext_resource type="Script" uid="uid://d4nuqtq88c71p" path="res://Resources/Upgrades/Upgrade.gd" id="4_wo5yf"]
+
+[sub_resource type="Resource" id="Resource_o1hft"]
+script = ExtResource("4_wo5yf")
+scale = 2.0
+metadata/_custom_type_script = "uid://d4nuqtq88c71p"
 
 [sub_resource type="Resource" id="Resource_dc2c3"]
-script = ExtResource("4_o1hft")
-scale = 1.1
-metadata/_custom_type_script = "uid://d4nuqtq88c71p"
-
-[sub_resource type="Resource" id="Resource_23wel"]
-script = ExtResource("4_o1hft")
-scale = 1.1
-metadata/_custom_type_script = "uid://d4nuqtq88c71p"
-
-[sub_resource type="Resource" id="Resource_y85ff"]
-script = ExtResource("3_wo5yf")
-upgrades = Array[ExtResource("4_o1hft")]([SubResource("Resource_dc2c3"), SubResource("Resource_23wel")])
+script = ExtResource("3_0yyg6")
+upgrades = Array[ExtResource("4_wo5yf")]([SubResource("Resource_o1hft")])
 metadata/_custom_type_script = "uid://dodydgnw2sl38"
 
-[sub_resource type="Resource" id="Resource_5mxl6"]
-script = ExtResource("4_o1hft")
-property = 1
-scale = 1.2
-metadata/_custom_type_script = "uid://d4nuqtq88c71p"
-
-[sub_resource type="Resource" id="Resource_k458g"]
-script = ExtResource("4_o1hft")
-property = 1
-scale = 1.2
-metadata/_custom_type_script = "uid://d4nuqtq88c71p"
-
-[sub_resource type="Resource" id="Resource_ff4mp"]
-script = ExtResource("3_wo5yf")
-upgrades = Array[ExtResource("4_o1hft")]([SubResource("Resource_5mxl6"), SubResource("Resource_k458g")])
-metadata/_custom_type_script = "uid://dodydgnw2sl38"
-
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_ah1q8"]
-blend_mode = 1
-
-[node name="BaseTower" unique_id=443795488 instance=ExtResource("1_3din2")]
+[node name="BaseTower" unique_id=443795488 instance=ExtResource("1_ah1q8")]
 script = ExtResource("2_ah1q8")
-laser_line_width = 10.0
 display_name = "Logic Gate"
-attack_speed = 1.5
-damage = 0.75
-attack_range = 325.0
-tower_type = 2
-upgrade_paths = Array[ExtResource("3_wo5yf")]([SubResource("Resource_y85ff"), SubResource("Resource_ff4mp")])
+tower_type = 3
+upgrade_paths = Array[ExtResource("3_0yyg6")]([SubResource("Resource_dc2c3")])
 
-[node name="Laser" type="Line2D" parent="." index="0" unique_id=1584768648]
-material = SubResource("CanvasItemMaterial_ah1q8")
-default_color = Color(5, 5, 5, 1)
-joint_mode = 2
-begin_cap_mode = 2
-end_cap_mode = 2
-
-[node name="Base" parent="." index="2" unique_id=1755470834]
-texture = null
-
-[node name="Turret" parent="Base" index="0" unique_id=346350585]
-modulate = Color(0, 2.285127, 4.0059752, 1)
-scale = Vector2(0.13088612, 0.13088612)
-texture = ExtResource("3_f1h5s")
-
-[node name="LaserSpawn" type="Node2D" parent="Base/Turret" index="0" unique_id=975370730]
-position = Vector2(0, -244.48734)
-scale = Vector2(7.640229, 7.640229)
+[node name="Turret" parent="Base" parent_id_path=PackedInt32Array(1755470834) index="0" unique_id=346350585]
+modulate = Color(6.818588e-05, 2.633928, 2.2594583, 1)

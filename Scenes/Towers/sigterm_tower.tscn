@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://c2kh7bpmtaw52"]
 
-[ext_resource type="PackedScene" uid="uid://c1kxhpjmb71kn" path="res://Scenes/Towers/logic_gate.tscn" id="1_qhj8y"]
+[ext_resource type="PackedScene" uid="uid://c1kxhpjmb71kn" path="res://Scenes/Towers/laser_tower.tscn" id="1_qhj8y"]
 [ext_resource type="Script" uid="uid://cnt5kf1tfby83" path="res://Scenes/Towers/sigterm_tower.gd" id="2_wgjfj"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wgjfj"]
@@ -11,7 +11,7 @@ display_name = "SIGTERM"
 attack_speed = 0.25
 damage = 10.0
 attack_range = 800.0
-tower_type = 4
+tower_type = 5
 
 [node name="Turret" parent="Base" parent_id_path=PackedInt32Array(1755470834) index="0" unique_id=346350585]
 modulate = Color(4.0059752, 0, 0, 1)

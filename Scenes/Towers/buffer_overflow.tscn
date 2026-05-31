@@ -11,7 +11,7 @@ attack_speed = 0.333
 damage = 5.0
 attack_range = 500.0
 projectile_scene_path = "uid://cn12itbm5f627"
-tower_type = 3
+tower_type = 4
 
 [node name="Base" parent="." index="1" unique_id=1755470834]
 modulate = Color(4.0001154, 0.41265154, 0, 1)

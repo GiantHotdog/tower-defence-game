@@ -1,2 +1,2 @@
 class_name Sigterm
-extends LogicGateTower
+extends LaserTower

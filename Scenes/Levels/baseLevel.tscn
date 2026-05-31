@@ -5,8 +5,9 @@
 [ext_resource type="Shader" uid="uid://4awn4g5nlus0" path="res://Shaders/bgGrid.gdshader" id="2_n1jfr"]
 [ext_resource type="PackedScene" uid="uid://57gbebo8h72e" path="res://Scenes/PathRevealer/path_revealer.tscn" id="3_p3kkh"]
 [ext_resource type="PackedScene" uid="uid://biow5t2563pg2" path="res://Scenes/UI/ui.tscn" id="4_0q0li"]
-[ext_resource type="PackedScene" uid="uid://c1kxhpjmb71kn" path="res://Scenes/Towers/logic_gate.tscn" id="5_jcyfc"]
+[ext_resource type="PackedScene" uid="uid://c1kxhpjmb71kn" path="res://Scenes/Towers/laser_tower.tscn" id="5_jcyfc"]
 [ext_resource type="PackedScene" uid="uid://codfspxbphh32" path="res://Scenes/Towers/buffer_overflow.tscn" id="6_n1jfr"]
+[ext_resource type="PackedScene" uid="uid://c4kvwkm8d4ay7" path="res://Scenes/Towers/logic_gate.tscn" id="6_r6my1"]
 [ext_resource type="PackedScene" uid="uid://c2kh7bpmtaw52" path="res://Scenes/Towers/sigterm_tower.tscn" id="7_ehmfq"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ehmfq"]
@@ -21,8 +22,9 @@ shader_parameter/line_thickness = 1.0
 resource_name = "Towers"
 scenes/1/scene = ExtResource("2_btcmw")
 scenes/2/scene = ExtResource("5_jcyfc")
-scenes/3/scene = ExtResource("6_n1jfr")
-scenes/4/scene = ExtResource("7_ehmfq")
+scenes/3/scene = ExtResource("6_r6my1")
+scenes/4/scene = ExtResource("6_n1jfr")
+scenes/5/scene = ExtResource("7_ehmfq")
 
 [sub_resource type="TileSet" id="TileSet_0q0li"]
 tile_size = Vector2i(128, 128)
