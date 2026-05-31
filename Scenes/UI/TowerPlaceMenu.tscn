@@ -70,7 +70,7 @@ layout_mode = 2
 tower_name = "Logic Gate"
 tower_icon = ExtResource("2_tkypa")
 tower_color = Color(0, 2.285, 4.006, 1)
-tower = 2
+tower = 3
 
 [node name="PlaceMenuItem2" parent="PanelContainer/VBoxContainer/MarginContainer/VBoxContainer/GridContainer" unique_id=1832789346 instance=ExtResource("1_b5314")]
 layout_mode = 2
@@ -78,7 +78,7 @@ tower_name = "Buffer Overflow"
 tower_icon = ExtResource("3_7ryxk")
 tower_color = Color(4, 0.413, 0, 1)
 cost = 20
-tower = 3
+tower = 4
 
 [node name="PlaceMenuItem3" parent="PanelContainer/VBoxContainer/MarginContainer/VBoxContainer/GridContainer" unique_id=653430651 instance=ExtResource("1_b5314")]
 layout_mode = 2
@@ -86,7 +86,7 @@ tower_name = "SIGTERM"
 tower_icon = ExtResource("2_tkypa")
 tower_color = Color(4.006, 0, 0, 1)
 cost = 40
-tower = 4
+tower = 5
 
 [connection signal="pressed" from="PanelContainer/VBoxContainer/CloseButton" to="." method="_on_close_button_pressed"]
 [connection signal="set_placing" from="PanelContainer/VBoxContainer/MarginContainer/VBoxContainer/GridContainer/PlaceMenuItem" to="." method="_on_placing_set"]
