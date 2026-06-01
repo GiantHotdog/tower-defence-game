@@ -81,6 +81,10 @@ func _ready() -> void:
 	range_circle.attack_range = calculated_range
 	attack_cooldown_timer.wait_time = calculated_cooldown
 	attack_area_shape.radius = calculated_range
+	
+	# Make all the upgrade paths unique so progress isn't shared between towers
+	for i in range(upgrade_paths.size()):
+		upgrade_paths[i] = upgrade_paths[i].duplicate()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
