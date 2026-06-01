@@ -21,11 +21,10 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	start_wave_container.visible = not (Globals.is_wave_running or Globals.is_level_complete) and Globals.placing == 0 and not tower_place_menu.visible
 	level_complete.visible = Globals.is_level_complete
-	build_button.visible = not tower_place_menu.visible and Globals.placing == 0 and not Globals.is_wave_running and not Globals.is_level_complete
+	build_button.visible = not tower_place_menu.visible and Globals.placing == 0 and not Globals.is_wave_running and not Globals.is_level_complete and not tower_info_display.visible
 	stop_build_button.visible = Globals.placing != 0
 	
 	currency_label.text = "Currency: " + str(Globals.currency)
-	currency_label.visible = not tower_info_display.visible
 
 
 func _on_button_pressed() -> void:
