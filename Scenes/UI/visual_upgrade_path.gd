@@ -12,11 +12,17 @@ extends Control
 		path_number = value
 		$Label.text = "Path " + str(value) + ":"
 
+@onready var upgrade_button:Button = $UpgradeButton
+
+
 var tower:BaseTower
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	$Label.text = "Path " + str(path_number) + ":"
+	if upgrade_path:
+		var cost:int = upgrade_path.get_next_upgrade_cost()
+		upgrade_button.text = "Cost: " + str(cost)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -33,6 +39,12 @@ func _on_upgrade_button_pressed() -> void:
 			if upgrade:
 				tower.add_upgrade(upgrade)
 				Globals.currency -= cost
+			
+			cost = upgrade_path.get_next_upgrade_cost()
+			if cost < 0:
+				upgrade_button.text = "Fully upgraded"
+			else:
+				upgrade_button.text = "Cost: " + str(cost)
 
 
 func update_labels() -> void:

@@ -27,4 +27,7 @@ func get_current_upgrade_count() -> int:
 
 
 func get_next_upgrade_cost() -> int:
-	return upgrades[current_upgrade].cost
+	if not is_path_finished():
+		return upgrades[current_upgrade].cost
+	else:
+		return -1
