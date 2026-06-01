@@ -7,6 +7,7 @@ signal tower_deselected()
 @onready var targeting_mode_button:OptionButton = $PanelContainer/VBoxContainer/MarginContainer/VBoxContainer/TargetingMode
 @onready var name_label:Label = $PanelContainer/VBoxContainer/MarginContainer/VBoxContainer/Name
 @onready var upgrade_paths_container:VBoxContainer = $PanelContainer/VBoxContainer/MarginContainer/VBoxContainer/UpgradePaths
+@onready var upgrade_paths_label:Label = $PanelContainer/VBoxContainer/MarginContainer/VBoxContainer/UpgradePathsLabel
 
 @onready var upgrade_path_scene:PackedScene = load("res://Scenes/UI/visual_upgrade_path.tscn")
 
@@ -22,7 +23,8 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
-	
+	upgrade_paths_container.visible = Globals.is_upgrades_enabled
+	upgrade_paths_label.visible = Globals.is_upgrades_enabled
 	if current_tower:
 		name_label.text = current_tower.display_name
 		targeting_mode_button.selected = current_tower.target_mode

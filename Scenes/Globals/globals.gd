@@ -9,5 +9,12 @@ var placing:BaseTower.TowerTypes = BaseTower.TowerTypes.NONE
 
 var currency:int = 0
 
+# This set of variables are used to selectively disable parts of the game,
+# likely for tutorial purposes
+
+var is_upgrades_enabled = true
+var is_start_wave_enabled = true
+
+
 func set_placing(tower_type:BaseTower.TowerTypes):
 	placing = tower_type
