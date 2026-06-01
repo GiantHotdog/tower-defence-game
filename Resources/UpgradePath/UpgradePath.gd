@@ -14,6 +14,13 @@ func get_next_upgrade() -> Upgrade:
 	return returning
 
 
+func get_next_upgrade_description() -> String:
+	var returning = null
+	if not is_path_finished():
+		returning = upgrades[current_upgrade].description
+	return returning
+
+
 func is_path_finished() -> bool:
 	return current_upgrade >= get_upgrade_count()
 

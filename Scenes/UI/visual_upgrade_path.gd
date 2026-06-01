@@ -13,7 +13,7 @@ extends Control
 		$Label.text = "Path " + str(value) + ":"
 
 @onready var upgrade_button:Button = $UpgradeButton
-
+@onready var description_label:Label = $DescriptionLabel
 
 var tower:BaseTower
 
@@ -23,6 +23,7 @@ func _ready() -> void:
 	if upgrade_path:
 		var cost:int = upgrade_path.get_next_upgrade_cost()
 		upgrade_button.text = "Cost: " + str(cost)
+	update_description()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -45,8 +46,13 @@ func _on_upgrade_button_pressed() -> void:
 				upgrade_button.text = "Fully upgraded"
 			else:
 				upgrade_button.text = "Cost: " + str(cost)
+			update_description()
 
 
 func update_labels() -> void:
 	$PathProgressContainer/CurrentProgress.text = str(upgrade_path.get_current_upgrade_count())
 	$PathProgressContainer/PathLength.text = str(upgrade_path.get_upgrade_count())
+
+
+func update_description():
+	description_label.text = upgrade_path.get_next_upgrade_description()

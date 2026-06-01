@@ -28,10 +28,11 @@ text = "/"
 layout_mode = 2
 text = "0"
 
-[node name="CostLabel" type="Label" parent="." unique_id=1967926832]
-visible = false
+[node name="DescriptionLabel" type="Label" parent="." unique_id=781911522]
+custom_minimum_size = Vector2(192, 0)
 layout_mode = 2
-text = "Cost: 0"
+text = "Description Description Description Description Description Description Description"
+autowrap_mode = 2
 
 [node name="UpgradeButton" type="Button" parent="." unique_id=165213641]
 layout_mode = 2
