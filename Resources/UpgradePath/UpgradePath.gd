@@ -24,3 +24,7 @@ func get_upgrade_count() -> int:
 
 func get_current_upgrade_count() -> int:
 	return current_upgrade
+
+
+func get_next_upgrade_cost() -> int:
+	return upgrades[current_upgrade].cost

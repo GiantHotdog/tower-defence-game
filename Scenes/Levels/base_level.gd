@@ -108,4 +108,3 @@ func _all_enemies_spawned():
 
 func _on_placing_set(tower_type:BaseTower.TowerTypes):
 	Globals.placing = tower_type
-	print(BaseTower.TowerTypes.keys()[tower_type])

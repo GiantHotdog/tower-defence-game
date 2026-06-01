@@ -26,10 +26,13 @@ func _process(delta: float) -> void:
 
 func _on_upgrade_button_pressed() -> void:
 	if upgrade_path:
-		var upgrade:Upgrade = upgrade_path.get_next_upgrade()
-		update_labels()
-		if upgrade:
-			tower.add_upgrade(upgrade)
+		var cost:int = upgrade_path.get_next_upgrade_cost()
+		if cost <= Globals.currency:
+			var upgrade:Upgrade = upgrade_path.get_next_upgrade()
+			update_labels()
+			if upgrade:
+				tower.add_upgrade(upgrade)
+				Globals.currency -= cost
 
 
 func update_labels() -> void:
