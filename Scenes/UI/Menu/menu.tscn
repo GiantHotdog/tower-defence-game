@@ -1,0 +1,70 @@
+[gd_scene format=3 uid="uid://cd44bcemu0myq"]
+
+[ext_resource type="Script" uid="uid://dnnw2ii1o4sq6" path="res://Scenes/UI/Menu/menu.gd" id="1_vf0ft"]
+
+[node name="Menu" type="Control" unique_id=422016812]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_vf0ft")
+levels = Array[String](["uid://cgooce8fh5cw4"])
+level_names = Array[String](["Level 1"])
+
+[node name="Title" type="MarginContainer" parent="." unique_id=218200880]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 256
+theme_override_constants/margin_top = 128
+theme_override_constants/margin_right = 256
+theme_override_constants/margin_bottom = 128
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Title" unique_id=2137739369]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="Title/VBoxContainer" unique_id=1834765452]
+layout_mode = 2
+theme_override_font_sizes/font_size = 96
+text = "Kernel Panic"
+horizontal_alignment = 1
+
+[node name="PlayButton" type="Button" parent="Title/VBoxContainer" unique_id=987283253]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 64
+text = "Play"
+
+[node name="SelectLevel" type="MarginContainer" parent="." unique_id=1932519434]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 256
+theme_override_constants/margin_top = 128
+theme_override_constants/margin_right = 256
+theme_override_constants/margin_bottom = 128
+
+[node name="VBoxContainer" type="VBoxContainer" parent="SelectLevel" unique_id=1785345359]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="SelectLevel/VBoxContainer" unique_id=1097491201]
+layout_mode = 2
+theme_override_font_sizes/font_size = 96
+text = "Select Level"
+horizontal_alignment = 1
+
+[node name="Levels" type="GridContainer" parent="SelectLevel/VBoxContainer" unique_id=1972686634]
+layout_mode = 2
+columns = 3
+
+[connection signal="pressed" from="Title/VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]

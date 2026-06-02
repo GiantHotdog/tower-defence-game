@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://cgooce8fh5cw4"]
 
-[ext_resource type="PackedScene" uid="uid://crdqerfs03sfa" path="res://Scenes/Levels/baseLevel.tscn" id="1_5jgm0"]
-[ext_resource type="Script" uid="uid://dq3f0ac1t4eau" path="res://Resources/WaveInfo/WaveInfo.gd" id="2_i2byd"]
-[ext_resource type="Resource" uid="uid://ddbhcerv8a2to" path="res://Resources/WaveInfo/Level1/wave1.tres" id="3_27y4v"]
-[ext_resource type="Resource" uid="uid://dnbeksdeq7se4" path="res://Resources/WaveInfo/Level1/wave2.tres" id="4_6ru1v"]
+[ext_resource type="PackedScene" uid="uid://crdqerfs03sfa" path="res://Scenes/Levels/base_level.tscn" id="1_4qeik"]
+[ext_resource type="Script" uid="uid://dq3f0ac1t4eau" path="res://Resources/WaveInfo/WaveInfo.gd" id="2_btxmh"]
+[ext_resource type="Resource" uid="uid://ddbhcerv8a2to" path="res://Resources/WaveInfo/Level1/wave1.tres" id="3_nqjqy"]
+[ext_resource type="Resource" uid="uid://dnbeksdeq7se4" path="res://Resources/WaveInfo/Level1/wave2.tres" id="4_hf8m8"]
 
 [sub_resource type="Curve2D" id="Curve2D_5jgm0"]
 _data = {
@@ -11,10 +11,10 @@ _data = {
 }
 point_count = 15
 
-[node name="Level1" unique_id=555824650 instance=ExtResource("1_5jgm0")]
-wave_info_dict = Dictionary[int, ExtResource("2_i2byd")]({
-1: ExtResource("3_27y4v"),
-2: ExtResource("4_6ru1v")
+[node name="Level1" unique_id=555824650 instance=ExtResource("1_4qeik")]
+wave_info_dict = Dictionary[int, ExtResource("2_btxmh")]({
+1: ExtResource("3_nqjqy"),
+2: ExtResource("4_hf8m8")
 })
 starting_currency = 80
 

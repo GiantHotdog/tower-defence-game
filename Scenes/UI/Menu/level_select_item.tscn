@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://cci0gxk6xd68o"]
+
+[ext_resource type="Script" uid="uid://cbfkki7fyanb5" path="res://Scenes/UI/Menu/level_select_item.gd" id="1_dml0i"]
+[ext_resource type="Texture2D" uid="uid://n5wurppyeq5" path="res://icon.svg" id="2_yqddf"]
+
+[node name="LevelSelect" type="VBoxContainer" unique_id=1202553102]
+offset_right = 40.0
+offset_bottom = 40.0
+size_flags_horizontal = 3
+script = ExtResource("1_dml0i")
+
+[node name="TextureButton" type="TextureButton" parent="." unique_id=1162605064]
+layout_mode = 2
+size_flags_horizontal = 4
+texture_normal = ExtResource("2_yqddf")
+
+[node name="Label" type="Label" parent="." unique_id=2076569778]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Level"
+horizontal_alignment = 1
+
+[connection signal="pressed" from="TextureButton" to="." method="_on_texture_button_pressed"]

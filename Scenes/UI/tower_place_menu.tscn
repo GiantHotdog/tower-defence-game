@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://c7u2q8mdkmy7v"]
 
 [ext_resource type="Script" uid="uid://dwhxmk4ndhaaw" path="res://Scenes/UI/tower_place_menu.gd" id="1_7ryxk"]
-[ext_resource type="PackedScene" uid="uid://b7met8awny0ff" path="res://Scenes/UI/PlaceMenuItem.tscn" id="1_b5314"]
+[ext_resource type="PackedScene" uid="uid://b7met8awny0ff" path="res://Scenes/UI/place_menu_item.tscn" id="1_b5314"]
 [ext_resource type="Texture2D" uid="uid://rldoc5im436k" path="res://Assets/Towers/Logic gate.svg" id="2_tkypa"]
 [ext_resource type="Texture2D" uid="uid://bgfsjwlq6hy32" path="res://Assets/kenney_tower-defense-top-down/PNG/Retina/towerDefense_tile017.png" id="2_utht1"]
 [ext_resource type="Texture2D" uid="uid://cdndvd8yb1csg" path="res://Assets/Towers/Buffer Overflow.svg" id="3_7ryxk"]
