@@ -14,7 +14,14 @@ var currency:int = 0
 
 var is_upgrades_enabled = true
 var is_start_wave_enabled = true
+var is_inspector_enabled = true
 
 
 func set_placing(tower_type:BaseTower.TowerTypes):
 	placing = tower_type
+
+
+func reset_selective_disable_variables():
+	is_start_wave_enabled = true
+	is_inspector_enabled = true
+	is_upgrades_enabled = true

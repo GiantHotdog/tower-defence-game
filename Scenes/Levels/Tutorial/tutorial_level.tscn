@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://bjwp1mhwsvt3s"]
+
+[ext_resource type="PackedScene" uid="uid://crdqerfs03sfa" path="res://Scenes/Levels/base_level.tscn" id="1_rvv8h"]
+[ext_resource type="Script" uid="uid://bbqleic22pdoh" path="res://Scenes/Levels/Tutorial/tutorial_level.gd" id="2_7jnue"]
+[ext_resource type="Script" uid="uid://dq3f0ac1t4eau" path="res://Resources/WaveInfo/WaveInfo.gd" id="3_th7ri"]
+
+[sub_resource type="Resource" id="Resource_qn7il"]
+script = ExtResource("3_th7ri")
+enemy_counts = Dictionary[int, int]({
+1: 1
+})
+enemy_spawn_interval = Dictionary[int, float]({
+1: 0.0
+})
+wave_finish_currency_reward = 5
+metadata/_custom_type_script = "uid://dq3f0ac1t4eau"
+
+[sub_resource type="Curve2D" id="Curve2D_7jnue"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 256, 0, 0, 0, 0, 2048, 256, 0, 0, 0, 0, 2048, 1024, 0, 0, 0, 0, 0, 1024)
+}
+point_count = 4
+
+[node name="BaseLevel" unique_id=555824650 instance=ExtResource("1_rvv8h")]
+script = ExtResource("2_7jnue")
+wave_info_dict = Dictionary[int, ExtResource("3_th7ri")]({
+1: SubResource("Resource_qn7il")
+})
+is_tutorial = true
+
+[node name="EnemyPath" parent="." index="3" unique_id=1563632205]
+curve = SubResource("Curve2D_7jnue")
+
+[node name="PathRevealer" parent="EnemyPath" index="0" unique_id=662323682]
+position = Vector2(0, 256)
+
+[editable path="UI"]
