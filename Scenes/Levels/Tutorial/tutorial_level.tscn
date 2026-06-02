@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://crdqerfs03sfa" path="res://Scenes/Levels/base_level.tscn" id="1_rvv8h"]
 [ext_resource type="Script" uid="uid://bbqleic22pdoh" path="res://Scenes/Levels/Tutorial/tutorial_level.gd" id="2_7jnue"]
 [ext_resource type="Script" uid="uid://dq3f0ac1t4eau" path="res://Resources/WaveInfo/WaveInfo.gd" id="3_th7ri"]
+[ext_resource type="PackedScene" uid="uid://e8grln35akg5" path="res://Scenes/UI/dialogue_box.tscn" id="4_qn7il"]
 
 [sub_resource type="Resource" id="Resource_qn7il"]
 script = ExtResource("3_th7ri")
@@ -10,9 +11,20 @@ enemy_counts = Dictionary[int, int]({
 1: 1
 })
 enemy_spawn_interval = Dictionary[int, float]({
-1: 0.0
+1: 0.1
 })
-wave_finish_currency_reward = 5
+wave_finish_currency_reward = 20
+metadata/_custom_type_script = "uid://dq3f0ac1t4eau"
+
+[sub_resource type="Resource" id="Resource_dbsss"]
+script = ExtResource("3_th7ri")
+enemy_counts = Dictionary[int, int]({
+1: 2
+})
+enemy_spawn_interval = Dictionary[int, float]({
+1: 1.0
+})
+wave_finish_currency_reward = 0
 metadata/_custom_type_script = "uid://dq3f0ac1t4eau"
 
 [sub_resource type="Curve2D" id="Curve2D_7jnue"]
@@ -23,8 +35,12 @@ point_count = 4
 
 [node name="BaseLevel" unique_id=555824650 instance=ExtResource("1_rvv8h")]
 script = ExtResource("2_7jnue")
+placing_tutorial_pos = Vector2i(14, 2)
+dialogues = Array[String](["Hello!", "Welcome to Kernel Panic!", "Click in the top right to place towers", "Well done!", "Click the button at the top to start the wave", "Now we can upgrade our tower", "Click on the tower we just placed", "Now click on 'upgrade'", "Finish the level!"])
+close_dialogue_indexes = Array[int]([3, 5, 7, 8, 9])
 wave_info_dict = Dictionary[int, ExtResource("3_th7ri")]({
-1: SubResource("Resource_qn7il")
+1: SubResource("Resource_qn7il"),
+2: SubResource("Resource_dbsss")
 })
 is_tutorial = true
 
@@ -34,4 +50,18 @@ curve = SubResource("Curve2D_7jnue")
 [node name="PathRevealer" parent="EnemyPath" index="0" unique_id=662323682]
 position = Vector2(0, 256)
 
+[node name="PlaceTutorialGuide" type="Panel" parent="." index="7" unique_id=1199204632]
+custom_minimum_size = Vector2(128, 128)
+offset_right = 64.0
+offset_bottom = 64.0
+mouse_filter = 2
+
+[node name="DialogueBox" parent="." index="8" unique_id=2083244126 instance=ExtResource("4_qn7il")]
+
+[connection signal="wave_complete" from="." to="." method="_on_wave_complete"]
+[connection signal="tower_selected" from="UI/TowerInfoDisplay" to="." method="_on_inspect_window_opened"]
+[connection signal="tower_upgraded" from="UI/TowerInfoDisplay" to="." method="_on_tower_info_display_tower_upgraded"]
+[connection signal="pressed" from="DialogueBox/PanelContainer/MarginContainer/NextDialogue" to="." method="_on_next_dialogue_pressed"]
+
 [editable path="UI"]
+[editable path="DialogueBox"]

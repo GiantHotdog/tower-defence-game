@@ -8,12 +8,14 @@
 [sub_resource type="Resource" id="Resource_o1hft"]
 script = ExtResource("4_wo5yf")
 scale = 1.2
+description = "Adds 20% to this tower's range"
 metadata/_custom_type_script = "uid://d4nuqtq88c71p"
 
 [sub_resource type="Resource" id="Resource_0yyg6"]
 script = ExtResource("4_wo5yf")
 scale = 1.5
 cost = 20
+description = "Adds another 50% to this tower's range"
 metadata/_custom_type_script = "uid://d4nuqtq88c71p"
 
 [sub_resource type="Resource" id="Resource_dc2c3"]
@@ -26,12 +28,14 @@ script = ExtResource("4_wo5yf")
 property = 2
 scale = 1.1
 cost = 5
+description = "Adds 10% to the attack speed"
 metadata/_custom_type_script = "uid://d4nuqtq88c71p"
 
 [sub_resource type="Resource" id="Resource_23wel"]
 script = ExtResource("4_wo5yf")
 property = 2
 scale = 1.1
+description = "Adds 10% to the attack speed"
 metadata/_custom_type_script = "uid://d4nuqtq88c71p"
 
 [sub_resource type="Resource" id="Resource_y85ff"]
@@ -39,6 +43,7 @@ script = ExtResource("4_wo5yf")
 property = 2
 scale = 1.1
 cost = 15
+description = "Adds 10% to the attack speed"
 metadata/_custom_type_script = "uid://d4nuqtq88c71p"
 
 [sub_resource type="Resource" id="Resource_5mxl6"]

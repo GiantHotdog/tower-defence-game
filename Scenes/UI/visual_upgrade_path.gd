@@ -1,6 +1,9 @@
 class_name VisualUpgradePath
 extends Control
 
+
+signal tower_upgraded
+
 @export var upgrade_path:UpgradePath:
 	set(value):
 		upgrade_path = value
@@ -10,16 +13,16 @@ extends Control
 @export var path_number:int = 0:
 	set(value):
 		path_number = value
-		$Label.text = "Path " + str(value) + ":"
+		$VisualUpgradePath/Label.text = "Path " + str(value) + ":"
 
-@onready var upgrade_button:Button = $UpgradeButton
-@onready var description_label:Label = $DescriptionLabel
+@onready var upgrade_button:Button = $VisualUpgradePath/UpgradeButton
+@onready var description_label:Label = $VisualUpgradePath/DescriptionLabel
 
 var tower:BaseTower
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	$Label.text = "Path " + str(path_number) + ":"
+	$VisualUpgradePath/Label.text = "Path " + str(path_number) + ":"
 	if upgrade_path:
 		var cost:int = upgrade_path.get_next_upgrade_cost()
 		upgrade_button.text = "Cost: " + str(cost)
@@ -37,6 +40,7 @@ func _on_upgrade_button_pressed() -> void:
 		if cost <= Globals.currency:
 			var upgrade:Upgrade = upgrade_path.get_next_upgrade()
 			update_labels()
+			tower_upgraded.emit()
 			if upgrade:
 				tower.add_upgrade(upgrade)
 				Globals.currency -= cost
@@ -50,8 +54,8 @@ func _on_upgrade_button_pressed() -> void:
 
 
 func update_labels() -> void:
-	$PathProgressContainer/CurrentProgress.text = str(upgrade_path.get_current_upgrade_count())
-	$PathProgressContainer/PathLength.text = str(upgrade_path.get_upgrade_count())
+	$VisualUpgradePath/PathProgressContainer/CurrentProgress.text = str(upgrade_path.get_current_upgrade_count())
+	$VisualUpgradePath/PathProgressContainer/PathLength.text = str(upgrade_path.get_upgrade_count())
 
 
 func update_description():

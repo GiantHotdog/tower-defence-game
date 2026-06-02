@@ -2,40 +2,45 @@
 
 [ext_resource type="Script" uid="uid://dhqpx0dn8yb7a" path="res://Scenes/UI/visual_upgrade_path.gd" id="1_5e3n8"]
 
-[node name="VisualUpgradePath" type="VBoxContainer" unique_id=857530724]
-offset_right = 54.0
-offset_bottom = 23.0
-size_flags_horizontal = 0
-size_flags_vertical = 0
+[node name="VisualUpgradePath" type="PanelContainer" unique_id=801458811]
+offset_top = 194.0
+offset_right = 192.0
+offset_bottom = 194.0
+mouse_filter = 1
 script = ExtResource("1_5e3n8")
 
-[node name="Label" type="Label" parent="." unique_id=43503256]
+[node name="VisualUpgradePath" type="VBoxContainer" parent="." unique_id=857530724]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="Label" type="Label" parent="VisualUpgradePath" unique_id=43503256]
 layout_mode = 2
 text = "Path 0:"
 
-[node name="PathProgressContainer" type="HBoxContainer" parent="." unique_id=1556195178]
+[node name="PathProgressContainer" type="HBoxContainer" parent="VisualUpgradePath" unique_id=1556195178]
 layout_mode = 2
 
-[node name="CurrentProgress" type="Label" parent="PathProgressContainer" unique_id=1504189645]
+[node name="CurrentProgress" type="Label" parent="VisualUpgradePath/PathProgressContainer" unique_id=1504189645]
 layout_mode = 2
 text = "0"
 
-[node name="divisor" type="Label" parent="PathProgressContainer" unique_id=1786816492]
+[node name="divisor" type="Label" parent="VisualUpgradePath/PathProgressContainer" unique_id=1786816492]
 layout_mode = 2
 text = "/"
 
-[node name="PathLength" type="Label" parent="PathProgressContainer" unique_id=838489504]
+[node name="PathLength" type="Label" parent="VisualUpgradePath/PathProgressContainer" unique_id=838489504]
 layout_mode = 2
 text = "0"
 
-[node name="DescriptionLabel" type="Label" parent="." unique_id=781911522]
+[node name="DescriptionLabel" type="Label" parent="VisualUpgradePath" unique_id=781911522]
 custom_minimum_size = Vector2(192, 0)
 layout_mode = 2
 text = "Description Description Description Description Description Description Description"
 autowrap_mode = 2
 
-[node name="UpgradeButton" type="Button" parent="." unique_id=165213641]
+[node name="UpgradeButton" type="Button" parent="VisualUpgradePath" unique_id=165213641]
 layout_mode = 2
 text = "Upgrade"
 
-[connection signal="pressed" from="UpgradeButton" to="." method="_on_upgrade_button_pressed"]
+[connection signal="pressed" from="VisualUpgradePath/UpgradeButton" to="." method="_on_upgrade_button_pressed"]
