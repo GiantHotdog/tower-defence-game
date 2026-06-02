@@ -1,5 +1,7 @@
 [gd_scene format=3 uid="uid://c5ux6qln5ly46"]
 
+[ext_resource type="Script" uid="uid://cwfr4lx4npaxw" path="res://Scenes/UI/LevelComplete/level_complete.gd" id="1_41mqa"]
+
 [node name="LevelComplete" type="Control" unique_id=226032127]
 layout_mode = 3
 anchors_preset = 15
@@ -7,6 +9,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_41mqa")
 
 [node name="PanelContainer" type="PanelContainer" parent="." unique_id=1893096334]
 layout_mode = 1
@@ -40,3 +43,5 @@ text = "Level Complete"
 [node name="Button" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=1527567678]
 layout_mode = 2
 text = "Main Menu"
+
+[connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/Button" to="." method="_on_button_pressed"]
