@@ -36,6 +36,7 @@ glow_enabled = true
 
 [node name="BaseLevel" type="Node2D" unique_id=555824650]
 script = ExtResource("1_4b3tm")
+starting_currency = 10
 
 [node name="GridBgLayer" type="CanvasLayer" parent="." unique_id=1460440428]
 
@@ -65,12 +66,12 @@ curve = SubResource("Curve2D_qqh3o")
 [node name="VisualPath" type="Line2D" parent="EnemyPath" unique_id=1004279850]
 width = 40.0
 default_color = Color(0.627451, 0.3529412, 0.17254902, 1)
-joint_mode = 1
 
 [node name="MapContainer" type="Node2D" parent="." unique_id=1923428383]
 position = Vector2(0, 64)
 
 [node name="TowerLayer" type="TileMapLayer" parent="MapContainer" unique_id=1754609170]
+position = Vector2(0, 64)
 tile_set = SubResource("TileSet_0q0li")
 
 [node name="UI" parent="." unique_id=1213322130 instance=ExtResource("4_0q0li")]

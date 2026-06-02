@@ -1,10 +1,14 @@
 class_name BaseLevel
 extends Node2D
 
+signal wave_complete(wave_number:int)
+
 ## The wave info - the number being the wave, the WaveInfo resource being the spawning delay and number 
 @export var wave_info_dict:Dictionary[int, WaveInfo] = {}
 ## The amount of currency allocated at the start of the level
 @export var starting_currency:int = 0
+## Is this the tutorial level
+@export var is_tutorial = false
 
 @onready var base_enemy_scene:PackedScene = load("res://Scenes/Enemies/base_enemy.tscn")
 @onready var weak_enemy_scene:PackedScene  = load("res://Scenes/Enemies/weak_enemy.tscn")
@@ -22,14 +26,18 @@ var enemies_in_current_wave_killed:int = 0
 var is_all_enemies_spawned:bool = false
 var wave_info:WaveInfo
 
+var towers_placed = 0
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	Globals.is_level_complete = false
 	path_line.clear_points()
-	enemy_path.curve.bake_interval = 200
+	enemy_path.curve.bake_interval = 100
 	path_line.points = enemy_path.curve.get_baked_points()
 	path_line.antialiased = true
 	Globals.currency = starting_currency
+	if not is_tutorial:
+		Globals.reset_selective_disable_variables()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -39,6 +47,7 @@ func _process(_delta: float) -> void:
 		Globals.is_wave_running = false
 		if Globals.current_wave_number == wave_info_dict.size():
 			Globals.is_level_complete = true
+		wave_complete.emit(wave_info_dict.find_key(wave_info))
 		Globals.currency += wave_info.wave_finish_currency_reward
 		wave_info = null
 
@@ -58,7 +67,8 @@ func _unhandled_input(_event: InputEvent) -> void:
 				if Globals.currency - cost >= 0:
 					Globals.currency -= cost
 					# Since the enum of towers and the tileset of towers align, we can just pass the enum in directly
-					tower_map.set_cell(clicked_cell, 0, Vector2i(0, 0), Globals.placing)
+					tower_map.set_cell(clicked_cell, 0, Vector2i(0, 0), Globals.placing)					
+					towers_placed += 1
 			else:
 				tower_info.tower_deselected.emit()
 

@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://e8grln35akg5"]
+
+[node name="DialogueBox" type="CanvasLayer" unique_id=2083244126]
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=426435361]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="PanelContainer" unique_id=1571867501]
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "Lorum Ipsum Dolor Blah Blah Blah Blah"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer" unique_id=793054308]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 32
+
+[node name="NextDialogue" type="Button" parent="PanelContainer/MarginContainer" unique_id=1834331580]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+theme_override_font_sizes/font_size = 32
+text = "Next"

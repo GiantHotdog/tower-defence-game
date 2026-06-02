@@ -3,6 +3,7 @@ extends Control
 
 signal tower_selected(tower:BaseTower, level:BaseLevel)
 signal tower_deselected()
+signal tower_upgraded()
 
 @onready var targeting_mode_button:OptionButton = $PanelContainer/VBoxContainer/MarginContainer/VBoxContainer/TargetingMode
 @onready var name_label:Label = $PanelContainer/VBoxContainer/MarginContainer/VBoxContainer/Name
@@ -42,6 +43,7 @@ func _on_tower_selected(tower: BaseTower, level:BaseLevel) -> void:
 		scene.upgrade_path = current_tower.upgrade_paths[path]
 		scene.tower = current_tower
 		upgrade_paths_container.add_child(scene)
+		scene.tower_upgraded.connect(_on_tower_upgraded)
 	
 	visible = true
 	current_tower.set_range_circle_visible(true)
@@ -74,3 +76,6 @@ func _on_close_button_pressed() -> void:
 func _on_delete_button_pressed() -> void:
 	current_tower.destroy_self()
 	_on_tower_deselected()
+
+func _on_tower_upgraded():
+	tower_upgraded.emit()
