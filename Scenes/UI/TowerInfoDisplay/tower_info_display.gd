@@ -25,7 +25,6 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
 	upgrade_paths_container.visible = Globals.is_upgrades_enabled
-	upgrade_paths_label.visible = Globals.is_upgrades_enabled
 	if current_tower:
 		name_label.text = current_tower.display_name
 		targeting_mode_button.selected = current_tower.target_mode
@@ -44,6 +43,8 @@ func _on_tower_selected(tower: BaseTower, level:BaseLevel) -> void:
 		scene.tower = current_tower
 		upgrade_paths_container.add_child(scene)
 		scene.tower_upgraded.connect(_on_tower_upgraded)
+	
+	upgrade_paths_label.visible = bool(upgrade_paths_count) and Globals.is_upgrades_enabled
 	
 	visible = true
 	current_tower.set_range_circle_visible(true)
