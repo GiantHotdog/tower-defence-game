@@ -11,6 +11,8 @@ var currency:int = 0
 
 var health = 100
 
+var levels_complete:Array[bool] = [false, false, false, false]
+
 # This set of variables are used to selectively disable parts of the game,
 # likely for tutorial purposes
 

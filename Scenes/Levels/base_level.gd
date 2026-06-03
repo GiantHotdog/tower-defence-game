@@ -10,6 +10,9 @@ signal wave_complete(wave_number:int)
 ## Is this the tutorial level
 @export var is_tutorial = false
 
+## The level ID, used to track if this level has been created
+@export var level_id:int
+
 @onready var base_enemy_scene:PackedScene = load("res://Scenes/Enemies/base_enemy.tscn")
 @onready var weak_enemy_scene:PackedScene  = load("res://Scenes/Enemies/weak_enemy.tscn")
 
@@ -30,6 +33,7 @@ var towers_placed = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	Globals.current_wave_number = 0
 	Globals.health = 100
 	Globals.is_level_complete = false
 	path_line.clear_points()
@@ -48,6 +52,7 @@ func _process(_delta: float) -> void:
 		Globals.is_wave_running = false
 		if Globals.current_wave_number == wave_info_dict.size():
 			Globals.is_level_complete = true
+			Globals.levels_complete[level_id] = true
 		wave_complete.emit(wave_info_dict.find_key(wave_info))
 		Globals.currency += wave_info.wave_finish_currency_reward
 		wave_info = null

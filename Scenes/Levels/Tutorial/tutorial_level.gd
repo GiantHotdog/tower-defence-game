@@ -66,7 +66,7 @@ func _unhandled_input(_event: InputEvent) -> void:
 					tower_map.set_cell(clicked_cell, 0, Vector2i(0, 0), Globals.placing)
 					if Globals.placing:
 						towers_placed += 1
-			else:
+			elif current_tutorial_stage != TutorialStage.UPGRADING:
 				tower_info.tower_deselected.emit()
 
 

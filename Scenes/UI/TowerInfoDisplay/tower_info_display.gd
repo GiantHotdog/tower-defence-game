@@ -50,6 +50,9 @@ func _on_tower_selected(tower: BaseTower, level:BaseLevel) -> void:
 	current_tower.set_range_circle_visible(true)
 	parent_level = level
 	level.is_tower_info_open = true
+	
+	if level is Tutorial:
+		$PanelContainer/VBoxContainer/MarginContainer/VBoxContainer/DeleteButton.visible = false
 
 
 func _on_tower_deselected() -> void:

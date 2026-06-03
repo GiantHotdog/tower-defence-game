@@ -9,6 +9,7 @@ extends Control
 @export_file("*.tscn") var levels:Array[String] = []
 @export var level_icons:Array[Texture2D] = []
 @export var level_names:Array[String] = []
+@export var level_requirements:Array[int] = [] 
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -21,6 +22,10 @@ func _ready() -> void:
 		if i < level_names.size():
 			var level_name:String = level_names.get(i)
 			level_select_item.level_name = level_name
+		
+		var required_level = level_requirements[i]
+		if required_level == -1 or Globals.levels_complete[required_level]:
+			level_select_item.is_locked = false
 		levels_grid_container.add_child(level_select_item)
 
 

@@ -12,6 +12,7 @@ grow_vertical = 2
 script = ExtResource("1_vf0ft")
 levels = Array[String](["uid://bjwp1mhwsvt3s", "uid://cgooce8fh5cw4"])
 level_names = Array[String](["Tutorial", "Level 1"])
+level_requirements = Array[int]([-1, 0])
 
 [node name="Title" type="MarginContainer" parent="." unique_id=218200880]
 visible = false

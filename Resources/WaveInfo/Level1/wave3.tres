@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="WaveInfo" format=3 uid="uid://dbjss3sblaid4"]
+
+[ext_resource type="Script" uid="uid://dq3f0ac1t4eau" path="res://Resources/WaveInfo/WaveInfo.gd" id="1_14hs8"]
+
+[resource]
+script = ExtResource("1_14hs8")
+metadata/_custom_type_script = "uid://dq3f0ac1t4eau"
