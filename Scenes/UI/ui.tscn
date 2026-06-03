@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://b7va7w2h4wj70" path="res://Scenes/UI/ui.gd" id="1_de23q"]
 [ext_resource type="PackedScene" uid="uid://c5ux6qln5ly46" path="res://Scenes/UI/LevelComplete/levelComplete.tscn" id="3_c7mb3"]
 [ext_resource type="PackedScene" uid="uid://c7u2q8mdkmy7v" path="res://Scenes/UI/tower_place_menu.tscn" id="4_fo61o"]
+[ext_resource type="PackedScene" uid="uid://irxxcy0okkqa" path="res://Scenes/UI/Health/health_display.tscn" id="5_alcrr"]
 
 [node name="UI" type="CanvasLayer" unique_id=835526612]
 script = ExtResource("1_de23q")
@@ -97,6 +98,19 @@ mouse_filter = 2
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
 text = "Currency:"
+
+[node name="HealthDisplay" parent="." unique_id=777721120 instance=ExtResource("5_alcrr")]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -186.5
+offset_top = -45.0
+offset_right = 186.5
+offset_bottom = 0.0
+grow_horizontal = 2
+grow_vertical = 0
 
 [connection signal="pressed" from="StartWave/PanelContainer/Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="Build/PanelContainer/Button" to="." method="_on_build_button_pressed"]
