@@ -30,6 +30,7 @@ var towers_placed = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	Globals.health = 100
 	Globals.is_level_complete = false
 	path_line.clear_points()
 	enemy_path.curve.bake_interval = 100
