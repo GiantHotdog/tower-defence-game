@@ -29,9 +29,9 @@ metadata/_custom_type_script = "uid://dq3f0ac1t4eau"
 
 [sub_resource type="Curve2D" id="Curve2D_7jnue"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 0, 256, 0, 0, 0, 0, 2048, 256, 0, 0, 0, 0, 2048, 1024, 0, 0, 0, 0, 0, 1024)
+"points": PackedVector2Array(0, 0, 0, 0, -64, 256, 0, 0, 0, 0, 2048, 256, 0, 0, 0, 0, 2048, 1408)
 }
-point_count = 4
+point_count = 3
 
 [node name="BaseLevel" unique_id=555824650 instance=ExtResource("1_rvv8h")]
 script = ExtResource("2_7jnue")
@@ -48,7 +48,7 @@ is_tutorial = true
 curve = SubResource("Curve2D_7jnue")
 
 [node name="PathRevealer" parent="EnemyPath" index="0" unique_id=662323682]
-position = Vector2(0, 256)
+position = Vector2(-64, 256)
 
 [node name="PlaceTutorialGuide" type="Panel" parent="." index="7" unique_id=1199204632]
 custom_minimum_size = Vector2(128, 128)
