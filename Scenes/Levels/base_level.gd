@@ -51,6 +51,9 @@ func _process(_delta: float) -> void:
 		wave_complete.emit(wave_info_dict.find_key(wave_info))
 		Globals.currency += wave_info.wave_finish_currency_reward
 		wave_info = null
+	
+	if Globals.health <= 0:
+		Globals.health = 0
 
 
 func _unhandled_input(_event: InputEvent) -> void:

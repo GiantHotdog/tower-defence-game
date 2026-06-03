@@ -11,6 +11,7 @@ signal set_placing(tower_type:BaseTower.TowerTypes)
 @onready var stop_build_button:Control = $StopBuild
 @onready var currency_label:Label = $Currency/PanelContainer/Label
 @onready var tower_info_display:Control = $TowerInfoDisplay
+@onready var level_lost:Control = $LevelLost
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -20,7 +21,8 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
 	start_wave_container.visible = not (Globals.is_wave_running or Globals.is_level_complete) and Globals.placing == 0 and not tower_place_menu.visible and Globals.is_start_wave_enabled
-	level_complete.visible = Globals.is_level_complete
+	level_complete.visible = Globals.is_level_complete and not level_lost.visible
+	level_lost.visible = Globals.health <= 0
 	build_button.visible = not tower_place_menu.visible and Globals.placing == 0 and not Globals.is_wave_running and not Globals.is_level_complete and not tower_info_display.visible
 	stop_build_button.visible = Globals.placing != 0
 	
