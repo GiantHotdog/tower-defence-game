@@ -64,7 +64,7 @@ curve = SubResource("Curve2D_qqh3o")
 [node name="PathRevealer" parent="EnemyPath" unique_id=662323682 instance=ExtResource("3_p3kkh")]
 
 [node name="VisualPath" type="Line2D" parent="EnemyPath" unique_id=1004279850]
-width = 40.0
+width = 30.0
 default_color = Color(0.627451, 0.3529412, 0.17254902, 1)
 
 [node name="MapContainer" type="Node2D" parent="." unique_id=1923428383]
