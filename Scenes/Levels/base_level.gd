@@ -30,6 +30,7 @@ var towers_placed = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	Globals.health = 100
 	Globals.is_level_complete = false
 	path_line.clear_points()
 	enemy_path.curve.bake_interval = 100
@@ -50,6 +51,9 @@ func _process(_delta: float) -> void:
 		wave_complete.emit(wave_info_dict.find_key(wave_info))
 		Globals.currency += wave_info.wave_finish_currency_reward
 		wave_info = null
+	
+	if Globals.health <= 0:
+		Globals.health = 0
 
 
 func _unhandled_input(_event: InputEvent) -> void:

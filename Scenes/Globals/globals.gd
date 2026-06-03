@@ -9,6 +9,8 @@ var placing:BaseTower.TowerTypes = BaseTower.TowerTypes.NONE
 
 var currency:int = 0
 
+var health = 100
+
 # This set of variables are used to selectively disable parts of the game,
 # likely for tutorial purposes
 

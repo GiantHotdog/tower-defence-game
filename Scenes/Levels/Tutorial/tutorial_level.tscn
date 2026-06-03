@@ -8,10 +8,10 @@
 [sub_resource type="Resource" id="Resource_qn7il"]
 script = ExtResource("3_th7ri")
 enemy_counts = Dictionary[int, int]({
-1: 1
+1: 2
 })
 enemy_spawn_interval = Dictionary[int, float]({
-1: 0.1
+1: 0.5
 })
 wave_finish_currency_reward = 20
 metadata/_custom_type_script = "uid://dq3f0ac1t4eau"
@@ -36,8 +36,8 @@ point_count = 4
 [node name="BaseLevel" unique_id=555824650 instance=ExtResource("1_rvv8h")]
 script = ExtResource("2_7jnue")
 placing_tutorial_pos = Vector2i(14, 2)
-dialogues = Array[String](["Hello!", "Welcome to Kernel Panic!", "Click in the top right to place towers", "Well done!", "Click the button at the top to start the wave", "Now we can upgrade our tower", "Click on the tower we just placed", "Now click on 'upgrade'", "Finish the level!"])
-close_dialogue_indexes = Array[int]([3, 5, 7, 8, 9])
+dialogues = Array[String](["Hello!", "Welcome to Kernel Panic!", "Click in the top right to place towers", "Well done!", "Click the button at the top to start the wave", "If malware gets past, it reduces our program's integrity", "You can see this at the bottom", "Now we can upgrade our tower", "Click on the tower we just placed", "Now click on 'upgrade'", "Finish the level!"])
+close_dialogue_indexes = Array[int]([3, 5, 9, 10, 11])
 wave_info_dict = Dictionary[int, ExtResource("3_th7ri")]({
 1: SubResource("Resource_qn7il"),
 2: SubResource("Resource_dbsss")

@@ -8,6 +8,7 @@ signal enemy_killed
 @export var enemy_type:ENEMY_TYPES
 @export var move_speed:float = 500.0
 @export var MAX_HEALTH:int = 3
+@export var damage:int = 10
 
 @onready var health:float = MAX_HEALTH
 @onready var health_bar:TextureProgressBar = $HealthBar
@@ -23,6 +24,9 @@ func _process(delta: float) -> void:
 	progress += move_speed * delta
 	health_bar.value = health
 	if health <= 0:
+		die()
+	if progress_ratio == 1.0:
+		Globals.health -= damage
 		die()
 	
 func die():
