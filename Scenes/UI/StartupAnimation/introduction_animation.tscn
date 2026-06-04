@@ -1,0 +1,52 @@
+[gd_scene format=3 uid="uid://ckf7ubmnrfuam"]
+
+[ext_resource type="Script" uid="uid://kbm1lhidn6mq" path="res://Scenes/UI/StartupAnimation/introduction_animation.gd" id="1_yscgy"]
+[ext_resource type="Shader" uid="uid://di66kuuv51roq" path="res://Scenes/UI/StartupAnimation/introduction_animation.gdshader" id="2_sj0qi"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_75qva"]
+shader = ExtResource("2_sj0qi")
+shader_parameter/grid_size = Vector2(60, 40)
+shader_parameter/speed = 20.0
+shader_parameter/bg_color = Color(0.02, 0.027, 0.043, 1)
+shader_parameter/text_color = Color(0, 0.16862746, 0, 1)
+
+[node name="IntroductionAnimation" type="CanvasLayer" unique_id=2128374077]
+script = ExtResource("1_yscgy")
+
+[node name="Bg" type="ColorRect" parent="." unique_id=476132637]
+material = SubResource("ShaderMaterial_75qva")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1688256253]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 32
+
+[node name="Label" type="Label" parent="MarginContainer" unique_id=1826565007]
+layout_mode = 2
+size_flags_vertical = 1
+text = "_"
+
+[node name="TypeTimer" type="Timer" parent="." unique_id=301755626]
+autostart = true
+
+[node name="LineCooldown" type="Timer" parent="." unique_id=639269097]
+one_shot = true
+
+[node name="BlinkTimer" type="Timer" parent="." unique_id=1178447752]
+wait_time = 0.15
+autostart = true
+
+[connection signal="timeout" from="TypeTimer" to="." method="_on_type_timer_timeout"]
+[connection signal="timeout" from="LineCooldown" to="." method="_on_line_cooldown_timeout"]
+[connection signal="timeout" from="BlinkTimer" to="." method="_on_blink_timer_timeout"]
