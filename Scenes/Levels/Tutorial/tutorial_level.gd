@@ -31,7 +31,7 @@ func _ready() -> void:
 	
 	update_tutorial_stage(TutorialStage.PLACING)
 	
-	place_tutorial_guide.position = (placing_tutorial_pos + Vector2i(0, 1)) * 128
+	place_tutorial_guide.position = placing_tutorial_pos * 128
 	
 	load_current_dialogue()
 

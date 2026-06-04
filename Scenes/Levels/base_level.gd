@@ -16,7 +16,7 @@ signal wave_complete(wave_number:int)
 @onready var base_enemy_scene:PackedScene = load("res://Scenes/Enemies/base_enemy.tscn")
 @onready var weak_enemy_scene:PackedScene  = load("res://Scenes/Enemies/weak_enemy.tscn")
 
-@onready var tower_map:TileMapLayer = $MapContainer/TowerLayer
+@onready var tower_map:TileMapLayer = $TowerLayer
 @onready var tower_map_container:Node2D = $MapContainer
 @onready var tower_info:TowerInfo = $UI/TowerInfoDisplay
 @onready var path_revealer:PathRevealer = $EnemyPath/PathRevealer

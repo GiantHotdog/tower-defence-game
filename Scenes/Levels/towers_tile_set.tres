@@ -1,0 +1,19 @@
+[gd_resource type="TileSet" format=3 uid="uid://bnqox73pj7757"]
+
+[ext_resource type="PackedScene" uid="uid://ham1y5xvbyj1" path="res://Scenes/Towers/base_tower.tscn" id="1_ml2hn"]
+[ext_resource type="PackedScene" uid="uid://c1kxhpjmb71kn" path="res://Scenes/Towers/laser_tower.tscn" id="2_vskvh"]
+[ext_resource type="PackedScene" uid="uid://c4kvwkm8d4ay7" path="res://Scenes/Towers/logic_gate.tscn" id="3_4q2cq"]
+[ext_resource type="PackedScene" uid="uid://codfspxbphh32" path="res://Scenes/Towers/buffer_overflow.tscn" id="4_rykqp"]
+[ext_resource type="PackedScene" uid="uid://c2kh7bpmtaw52" path="res://Scenes/Towers/sigterm_tower.tscn" id="5_t2uvl"]
+
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_4b3tm"]
+resource_name = "Towers"
+scenes/1/scene = ExtResource("1_ml2hn")
+scenes/2/scene = ExtResource("2_vskvh")
+scenes/3/scene = ExtResource("3_4q2cq")
+scenes/4/scene = ExtResource("4_rykqp")
+scenes/5/scene = ExtResource("5_t2uvl")
+
+[resource]
+tile_size = Vector2i(128, 128)
+sources/0 = SubResource("TileSetScenesCollectionSource_4b3tm")
