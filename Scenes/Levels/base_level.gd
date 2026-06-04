@@ -17,6 +17,7 @@ signal wave_complete(wave_number:int)
 @onready var weak_enemy_scene:PackedScene  = load("res://Scenes/Enemies/weak_enemy.tscn")
 
 @onready var tower_map:TileMapLayer = $TowerLayer
+@onready var place_assist_map:TileMapLayer = $PlacementAssistLayer
 @onready var tower_info:TowerInfo = $UI/TowerInfoDisplay
 @onready var path_revealer:PathRevealer = $EnemyPath/PathRevealer
 @onready var enemy_path:Path2D = $EnemyPath
@@ -46,6 +47,7 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
+	update_place_assist()
 	modulate_path()
 	if enemies_in_current_wave == enemies_in_current_wave_killed and is_all_enemies_spawned and Globals.is_wave_running:
 		Globals.is_wave_running = false
@@ -65,20 +67,48 @@ func _unhandled_input(_event: InputEvent) -> void:
 		if Input.is_action_just_pressed("select_tower"):
 			var local_click_pos: Vector2 = get_local_mouse_position()
 			var clicked_cell: Vector2i = tower_map.local_to_map(tower_map.to_local(local_click_pos))
-			var scene_node: Node = get_scene_node_at_cell(clicked_cell)
+			var scene_node: Node = get_scene_node_at_cell(clicked_cell, tower_map)
 			if scene_node:
-				if Globals.placing == 0:
+				if Globals.placing == 0 and Globals.is_inspector_enabled:
 					tower_info.tower_selected.emit(scene_node, self)
-			elif Input.is_action_just_pressed("place_tower") and not is_tower_info_open:
+			elif Input.is_action_just_pressed("place_tower") and can_place_tower(clicked_cell):
 				var tower_name:String = BaseTower.TowerTypes.keys()[Globals.placing]
 				var cost = BaseTower.TowerCosts[tower_name]
+				
 				if Globals.currency - cost >= 0:
 					Globals.currency -= cost
 					# Since the enum of towers and the tileset of towers align, we can just pass the enum in directly
-					tower_map.set_cell(clicked_cell, 0, Vector2i(0, 0), Globals.placing)					
-					towers_placed += 1
-			else:
+					tower_map.set_cell(clicked_cell, 0, Vector2i(0, 0), Globals.placing)
+					if Globals.placing:
+						towers_placed += 1
+			elif can_close_inspector():
 				tower_info.tower_deselected.emit()
+
+
+## This always returns true, so exists to be overridden by child classes
+func can_close_inspector() -> bool:
+	return true
+
+
+func update_place_assist():
+	place_assist_map.clear()
+	var mouse_pos:Vector2 = get_local_mouse_position()
+	var cell:Vector2i = place_assist_map.local_to_map(place_assist_map.to_local(mouse_pos))
+	place_assist_map.set_cell(cell, 0, Vector2i(0, 0), Globals.placing)
+	#if can_place_tower(cell):
+		#place_assist_map.modulate = Color(0, 3 , 0, .5)
+	#else:
+		#place_assist_map.modulate = Color(1, 1, 1, .5)
+
+
+func can_place_tower(tower_pos:Vector2i) -> bool:
+	var node_at_pos: Node = get_scene_node_at_cell(tower_pos, tower_map)
+	if node_at_pos:
+		return false
+	if is_tower_info_open:
+		return false
+	
+	return true
 
 
 func modulate_path():
@@ -87,9 +117,9 @@ func modulate_path():
 	path_line.modulate.a = 0.5 + sin(time * 4.0) * 0.15
 
 
-func get_scene_node_at_cell(cell_coords: Vector2i) -> Node:
-	for child in tower_map.get_children():
-		var child_cell: Vector2i = tower_map.local_to_map(child.position)
+func get_scene_node_at_cell(cell_coords: Vector2i, tilemap:TileMapLayer) -> Node:
+	for child in tilemap.get_children():
+		var child_cell: Vector2i = tilemap.local_to_map(child.position)
 		if child_cell == cell_coords:
 			return child
 	return null

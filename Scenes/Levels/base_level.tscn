@@ -37,6 +37,7 @@ color = Color(1, 1, 1, 0)
 metadata/_edit_use_anchors_ = true
 
 [node name="PlacementAssistLayer" type="TileMapLayer" parent="." unique_id=1845269339]
+tile_map_data = PackedByteArray(0, 0, 6, 0, 3, 0, 0, 0, 0, 0, 0, 0, 3, 0)
 tile_set = ExtResource("3_30ow2")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=324976822]

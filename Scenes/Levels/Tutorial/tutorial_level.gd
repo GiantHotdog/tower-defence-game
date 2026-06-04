@@ -43,31 +43,14 @@ func _process(delta: float) -> void:
 		update_tutorial_stage(TutorialStage.STARTING_WAVE)
 
 
-func _unhandled_input(_event: InputEvent) -> void:
-	if not Globals.is_level_complete:
-		if Input.is_action_just_pressed("select_tower"):
-			var local_click_pos: Vector2 = get_local_mouse_position()
-			var clicked_cell: Vector2i = tower_map.local_to_map(tower_map.to_local(local_click_pos))
-			var scene_node: Node = get_scene_node_at_cell(clicked_cell)
-			if scene_node:
-				if Globals.placing == 0 and Globals.is_inspector_enabled:
-					tower_info.tower_selected.emit(scene_node, self)
-			elif Input.is_action_just_pressed("place_tower") and not is_tower_info_open:
-				var tower_name:String = BaseTower.TowerTypes.keys()[Globals.placing]
-				var cost = BaseTower.TowerCosts[tower_name]
-				
-				var is_valid_position:bool = true
-				if current_tutorial_stage == TutorialStage.PLACING and clicked_cell != placing_tutorial_pos:
-					is_valid_position = false
-				
-				if Globals.currency - cost >= 0 and is_valid_position:
-					Globals.currency -= cost
-					# Since the enum of towers and the tileset of towers align, we can just pass the enum in directly
-					tower_map.set_cell(clicked_cell, 0, Vector2i(0, 0), Globals.placing)
-					if Globals.placing:
-						towers_placed += 1
-			elif current_tutorial_stage != TutorialStage.UPGRADING:
-				tower_info.tower_deselected.emit()
+func can_close_inspector():
+	return not (current_tutorial_stage == TutorialStage.PLACING)
+
+
+func can_place_tower(tower_pos:Vector2i) -> bool:
+	if current_tutorial_stage == TutorialStage.PLACING and tower_pos != placing_tutorial_pos:
+		return false
+	return super.can_place_tower(tower_pos)
 
 
 func update_tutorial_stage(tutorial_stage:TutorialStage):

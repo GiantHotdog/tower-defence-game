@@ -6,6 +6,9 @@
 [ext_resource type="Texture2D" uid="uid://ciq70e40i1m3n" path="res://Assets/kenney_tower-defense-top-down/PNG/Retina/towerDefense_tile206.png" id="3_jviep"]
 [ext_resource type="Script" uid="uid://ddeo6yipxf83i" path="res://Scenes/Towers/range_circle.gd" id="4_8u7oj"]
 
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_ks8oh"]
+blend_mode = 1
+
 [sub_resource type="Resource" id="Resource_ks8oh"]
 script = ExtResource("2_ks8oh")
 metadata/_custom_type_script = "uid://d4nuqtq88c71p"
@@ -13,6 +16,7 @@ metadata/_custom_type_script = "uid://d4nuqtq88c71p"
 [sub_resource type="CircleShape2D" id="CircleShape2D_jviep"]
 
 [node name="BaseTower" type="Node2D" unique_id=443795488]
+material = SubResource("CanvasItemMaterial_ks8oh")
 script = ExtResource("1_yji8t")
 attack_range = 750.0
 projectile_scene_path = "uid://bhl7mr5ubdjuc"
