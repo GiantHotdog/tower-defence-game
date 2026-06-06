@@ -1,3 +1,4 @@
+class_name GRUB
 extends Control
 
 signal outro_finished
@@ -24,15 +25,23 @@ func _process(_delta: float) -> void:
 		update_selection(currently_selected - 1)
 	
 	if Input.is_action_just_pressed("menu_select"):
-		match currently_selected:
-			0:
-				play_outro()
-				await outro_finished
-				get_tree().change_scene_to_file("res://Scenes/UI/GRUBMenu/new_menu.tscn")
-			2:
-				play_outro()
-				await outro_finished
-				get_tree().quit()
+		on_menu_select_pressed()
+
+
+func on_menu_select_pressed():
+	match currently_selected:
+		0:
+			play_outro()
+			await outro_finished
+			get_tree().change_scene_to_file("res://Scenes/UI/GRUBMenu/new_menu.tscn")
+		1:
+			play_outro()
+			await outro_finished
+			get_tree().change_scene_to_file("res://Scenes/UI/GRUBMenu/Settings/settings.tscn")
+		2:
+			play_outro()
+			await outro_finished
+			get_tree().quit()
 
 
 func update_selection(new_selection:int):
