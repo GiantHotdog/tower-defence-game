@@ -4,7 +4,7 @@ extends CanvasLayer
 @onready var line_cooldown_timer:Timer = $LineCooldown
 
 var type_speed:float = 60.0
-var line_end_wait:float = 0.5
+var line_end_wait:float = 1
 var start_time:int = 0
 
 var current_type_pos:int = -1
@@ -13,14 +13,14 @@ var is_on_line_cooldown:bool = false
 var is_finished:bool = false
 
 @export var text:Array[String] = [
-	"Initialising Kernel...", 
-	"Loading user profile...", 
-	"Loading UI... ", 
-	"...", 
-	"...", 
-	"...",
-	"Load complete!", 
-	"Press enter to load GRUB:"
+	"Kernel Panic ", 
+	"A tower defence game ", 
+	"Built using the Godot Game Engine ", 
+	"Created for Hack Club Stardance ", 
+	"By @teamlewiscrafty ", 
+	"Loading... ",
+	"Load complete! ", 
+	"Press enter to load menu: "
 ]
 
 
@@ -32,7 +32,11 @@ func _ready() -> void:
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventKey:
 		if event.is_pressed() and event.keycode == KEY_ENTER:
-			get_tree().change_scene_to_file("res://Scenes/UI/GRUBMenu/Grub.tscn")
+			fade_out(change_to_menu)
+
+
+func change_to_menu():
+	get_tree().change_scene_to_file("res://Scenes/UI/GRUBMenu/Grub.tscn")
 
 
 func _on_type_timer_timeout() -> void:
@@ -68,3 +72,8 @@ func _on_blink_timer_timeout() -> void:
 	else:
 		label.text = "_"
 	 
+
+func fade_out(callback:Callable):
+	var tween:Tween = get_tree().create_tween()
+	tween.tween_property($FadeOutRect, "color", Color(), .5)
+	tween.tween_callback(callback)

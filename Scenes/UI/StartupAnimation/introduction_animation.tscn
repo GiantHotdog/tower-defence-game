@@ -15,7 +15,6 @@ font_color = Color(0, 1, 0, 1)
 
 [node name="IntroductionAnimation" type="CanvasLayer" unique_id=2128374077]
 script = ExtResource("1_yscgy")
-text = Array[String](["Kernel Panic", "A tower Defence Game", "Loading UI... ", "...", "...", "...", "Load complete!", "Press enter to load GRUB: "])
 
 [node name="Bg" type="ColorRect" parent="." unique_id=476132637]
 material = SubResource("ShaderMaterial_75qva")
@@ -51,6 +50,14 @@ one_shot = true
 [node name="BlinkTimer" type="Timer" parent="." unique_id=1178447752]
 wait_time = 0.15
 autostart = true
+
+[node name="FadeOutRect" type="ColorRect" parent="." unique_id=1009511886]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0)
 
 [connection signal="timeout" from="TypeTimer" to="." method="_on_type_timer_timeout"]
 [connection signal="timeout" from="LineCooldown" to="." method="_on_line_cooldown_timeout"]
