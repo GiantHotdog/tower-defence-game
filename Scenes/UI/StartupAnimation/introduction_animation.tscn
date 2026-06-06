@@ -12,6 +12,7 @@ shader_parameter/text_color = Color(0, 0.16862746, 0, 1)
 
 [node name="IntroductionAnimation" type="CanvasLayer" unique_id=2128374077]
 script = ExtResource("1_yscgy")
+text = Array[String](["Initialising Kernel...", "Loading user profile...", "Loading UI... ", "...", "...", "...", "Load complete!", "Press enter to load GRUB: "])
 
 [node name="Bg" type="ColorRect" parent="." unique_id=476132637]
 material = SubResource("ShaderMaterial_75qva")

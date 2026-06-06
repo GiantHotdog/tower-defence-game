@@ -4,7 +4,6 @@
 [ext_resource type="Script" uid="uid://dq3f0ac1t4eau" path="res://Resources/WaveInfo/WaveInfo.gd" id="2_btxmh"]
 [ext_resource type="Resource" uid="uid://ddbhcerv8a2to" path="res://Resources/WaveInfo/Level1/wave1.tres" id="3_nqjqy"]
 [ext_resource type="Resource" uid="uid://dnbeksdeq7se4" path="res://Resources/WaveInfo/Level1/wave2.tres" id="4_hf8m8"]
-[ext_resource type="Resource" uid="uid://dbjss3sblaid4" path="res://Resources/WaveInfo/Level1/wave3.tres" id="5_btxmh"]
 
 [sub_resource type="Curve2D" id="Curve2D_5jgm0"]
 _data = {
@@ -15,8 +14,7 @@ point_count = 15
 [node name="Level1" unique_id=555824650 instance=ExtResource("1_4qeik")]
 wave_info_dict = Dictionary[int, ExtResource("2_btxmh")]({
 1: ExtResource("3_nqjqy"),
-2: ExtResource("4_hf8m8"),
-3: ExtResource("5_btxmh")
+2: ExtResource("4_hf8m8")
 })
 starting_currency = 80
 level_id = 1
