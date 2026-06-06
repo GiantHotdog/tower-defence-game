@@ -2,9 +2,11 @@
 
 [ext_resource type="PackedScene" uid="uid://dy48ykb5gmkgi" path="res://Scenes/UI/GRUBMenu/Grub.tscn" id="1_mwwnq"]
 [ext_resource type="Script" uid="uid://dijfn6hbb0nhs" path="res://Scenes/UI/GRUBMenu/Settings/AudioSettings/audio_settings.gd" id="2_dxk1m"]
+[ext_resource type="PackedScene" uid="uid://ypqoy2jrrhnx" path="res://Scenes/UI/GRUBMenu/Settings/slider_control.tscn" id="3_pv7fr"]
 
 [node name="AudioSettings" unique_id=772233900 instance=ExtResource("1_mwwnq")]
 script = ExtResource("2_dxk1m")
+back_level = "uid://lg7f0q631quu"
 
 [node name="Title" parent="VBoxContainer" parent_id_path=PackedInt32Array(2044501199) index="0" unique_id=1470722628]
 text = "
@@ -15,3 +17,7 @@ text = "Back"
 
 [node name="Label2" parent="VBoxContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer" parent_id_path=PackedInt32Array(1192133093) index="1" unique_id=72550295]
 text = "Master Volume"
+
+[node name="Slider2" parent="VBoxContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer" parent_id_path=PackedInt32Array(1192133093) index="2" unique_id=724307709 instance=ExtResource("3_pv7fr")]
+visible = false
+layout_mode = 2
