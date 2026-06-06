@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://bp532h5kgljin"]
+
+[ext_resource type="Script" uid="uid://bp06chwvprw4x" path="res://Scenes/UI/GRUBMenu/grub_level_menu_item.gd" id="1_k6ws5"]
+[ext_resource type="Texture2D" uid="uid://dnhs0pn8ix8if" path="res://Assets/UI/Healthbar/lock.svg" id="2_e5tvf"]
+
+[node name="HBoxContainer" type="HBoxContainer" unique_id=113188419]
+offset_right = 40.0
+offset_bottom = 40.0
+size_flags_horizontal = 3
+script = ExtResource("1_k6ws5")
+
+[node name="Label" type="Label" parent="." unique_id=511519907]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Level Name"
+
+[node name="Control" type="AspectRatioContainer" parent="." unique_id=2098100890]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=131085480]
+layout_mode = 2
+texture = ExtResource("2_e5tvf")
+expand_mode = 3
+stretch_mode = 5

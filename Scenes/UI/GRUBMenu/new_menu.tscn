@@ -1,0 +1,77 @@
+[gd_scene format=3 uid="uid://750cqjkynhn5"]
+
+[ext_resource type="Script" uid="uid://cfkj1f6pymkmq" path="res://Scenes/UI/GRUBMenu/new_menu.gd" id="1_xdtbj"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xdtbj"]
+draw_center = false
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[node name="NewMenu" type="Control" unique_id=1264947417]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_xdtbj")
+levels = Array[String](["uid://bjwp1mhwsvt3s", "uid://cgooce8fh5cw4"])
+names = Array[String](["Tutorial", "Level 1"])
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=2107038147]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=2078273760]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Title" type="Label" parent="VBoxContainer" unique_id=382920163]
+layout_mode = 2
+text = "
+KERNEL MENU        version 0.01-dev-build"
+horizontal_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer" unique_id=1912211350]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 32
+
+[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/MarginContainer" unique_id=1949296234]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_xdtbj")
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/MarginContainer/PanelContainer" unique_id=666564341]
+layout_mode = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/MarginContainer/PanelContainer/MarginContainer" unique_id=1529120312]
+layout_mode = 2
+
+[node name="ColorRect2" type="ColorRect" parent="." unique_id=1761853831]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+color = Color(0, 0, 0, 1)

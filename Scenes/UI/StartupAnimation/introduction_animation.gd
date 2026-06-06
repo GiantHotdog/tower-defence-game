@@ -3,20 +3,36 @@ extends CanvasLayer
 @onready var label:Label = $MarginContainer/Label
 @onready var line_cooldown_timer:Timer = $LineCooldown
 
-var type_speed:float = 100.0
+var type_speed:float = 30.0
 var line_end_wait:float = 0.5
 var start_time:int = 0
 
 var current_type_pos:int = -1
 var current_line:int = 0
 var is_on_line_cooldown:bool = false
+var is_finished:bool = false
 
-@export var text:Array[String] = ["Initialising Kernel...", "Loading user profile...", "Loading UI... ", "...", "...", "Complete!"]
+@export var text:Array[String] = [
+	"Initialising Kernel...", 
+	"Loading user profile...", 
+	"Loading UI... ", 
+	"...", 
+	"...", 
+	"...",
+	"Load complete!", 
+	"Press enter to load GRUB:"
+]
 
 
 func _ready() -> void:
 	$TypeTimer.wait_time = 1 / type_speed
 	line_cooldown_timer.wait_time = line_end_wait
+
+
+func _unhandled_input(event: InputEvent) -> void:
+	if event is InputEventKey:
+		if event.is_pressed() and event.keycode == KEY_ENTER:
+			get_tree().change_scene_to_file("res://Scenes/UI/GRUBMenu/Grub.tscn")
 
 
 func _on_type_timer_timeout() -> void:
@@ -37,6 +53,8 @@ func _on_line_cooldown_timeout() -> void:
 		is_on_line_cooldown = false
 		current_line += 1
 		current_type_pos = -1
+	else:
+		is_finished = true
 
 
 func _on_blink_timer_timeout() -> void:
