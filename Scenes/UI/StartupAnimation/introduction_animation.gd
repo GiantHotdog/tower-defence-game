@@ -3,7 +3,7 @@ extends CanvasLayer
 @onready var label:Label = $MarginContainer/Label
 @onready var line_cooldown_timer:Timer = $LineCooldown
 
-var type_speed:float = 30.0
+var type_speed:float = 60.0
 var line_end_wait:float = 0.5
 var start_time:int = 0
 
