@@ -44,7 +44,7 @@ func _process(delta: float) -> void:
 
 
 func can_close_inspector():
-	return not (current_tutorial_stage == TutorialStage.PLACING)
+	return not (current_tutorial_stage == TutorialStage.UPGRADING)
 
 
 func can_place_tower(tower_pos:Vector2i) -> bool:

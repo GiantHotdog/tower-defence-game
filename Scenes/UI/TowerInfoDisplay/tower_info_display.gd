@@ -60,10 +60,11 @@ func _on_tower_deselected() -> void:
 		upgrade_paths_container.remove_child(node)
 		node.queue_free()
 		
-	current_tower.set_range_circle_visible(false)
-	current_tower = null
-	visible = false
-	parent_level.is_tower_info_open = false
+	if current_tower:
+		current_tower.set_range_circle_visible(false)
+		current_tower = null
+		visible = false
+		parent_level.is_tower_info_open = false
 
 
 func _on_targeting_mode_item_selected(index: int) -> void:
