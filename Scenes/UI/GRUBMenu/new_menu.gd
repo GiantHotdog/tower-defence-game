@@ -4,7 +4,7 @@ signal outro_finished
 
 @export_file("*.tscn") var levels:Array[String] = []
 @export var names:Array[String] = []
-
+@export var level_requirements:Array[int] = []
 
 var currently_selected:int = 0
 var select_theme_override:StyleBoxFlat
@@ -17,6 +17,11 @@ func _ready() -> void:
 	for i:int in levels.size():
 		var label:GrubLevelMenuItem = item.instantiate()
 		label.text = names[i]
+		
+		var required_level = level_requirements[i]
+		if required_level == -1 or Globals.levels_complete[required_level]:
+			label.is_locked = false
+		
 		options_container.add_child(label)
 	
 	

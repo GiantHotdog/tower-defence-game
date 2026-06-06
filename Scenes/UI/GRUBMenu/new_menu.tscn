@@ -21,8 +21,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_xdtbj")
-levels = Array[String](["uid://bjwp1mhwsvt3s", "uid://cgooce8fh5cw4"])
-names = Array[String](["Tutorial", "Level 1"])
+levels = Array[String](["uid://bjwp1mhwsvt3s", "uid://cgooce8fh5cw4", "uid://dy48ykb5gmkgi"])
+names = Array[String](["Tutorial", "Level 1", "Return to main menu"])
+level_requirements = Array[int]([-1, 0, -1])
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=2107038147]
 layout_mode = 1
@@ -61,10 +62,10 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_xdtbj")
 
 [node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/MarginContainer/PanelContainer" unique_id=666564341]
 layout_mode = 2
-theme_override_constants/margin_left = 4
-theme_override_constants/margin_top = 4
-theme_override_constants/margin_right = 4
-theme_override_constants/margin_bottom = 4
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
 
 [node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/MarginContainer/PanelContainer/MarginContainer" unique_id=1529120312]
 layout_mode = 2
