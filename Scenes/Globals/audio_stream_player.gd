@@ -9,9 +9,9 @@ func _ready() -> void:
 	play()
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+func get_volume():
+	var step_size:float = float(max_volume - min_volume) / step_count
+	return (volume_db - min_volume) / step_size
 
 func set_volume(value:int):
 	if value == 0:

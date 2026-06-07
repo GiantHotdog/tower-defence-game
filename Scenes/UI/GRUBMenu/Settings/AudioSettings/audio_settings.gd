@@ -2,6 +2,12 @@ extends GRUB
 
 var currently_open_id:int = -1
 
+
+func _ready() -> void:
+	super._ready()
+	$VBoxContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/Slider2.set_value(GlobalAudio.get_volume())
+
+
 func on_menu_select_pressed():
 	match currently_selected:
 		0:
