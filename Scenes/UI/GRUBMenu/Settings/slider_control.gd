@@ -2,23 +2,34 @@ class_name SliderContainer
 extends MarginContainer
 
 
+@onready var slider:HSlider = $PanelContainer/MarginContainer/HSlider
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
 
 
 func set_value(value):
-	$HSlider.value = value
+	slider.value = value
+
 
 func increment():
-	if $HSlider.value < $HSlider.max_value:
-		$HSlider.value += 1
+	if slider.value < slider.max_value:
+		slider.value += 1
 
 
 func decrement():
-	if $HSlider.value > $HSlider.min_value:
-		$HSlider.value -= 1
+	if slider.value > slider.min_value:
+		slider.value -= 1
 
 
 func get_value():
-	return $HSlider.value
+	return slider.value
+
+
+func get_slider():
+	return slider
+
+
+func get_highlight_panel() -> Panel:
+	return $PanelContainer

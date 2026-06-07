@@ -7,6 +7,7 @@ signal outro_finished
 
 var currently_selected:int = 0
 var select_theme_override:StyleBoxFlat
+var slider_select_theme_override:StyleBoxFlat
 
 @onready var options_container:VBoxContainer = $VBoxContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer
 
@@ -15,6 +16,12 @@ var select_theme_override:StyleBoxFlat
 func _ready() -> void:
 	select_theme_override = StyleBoxFlat.new()
 	select_theme_override.bg_color = Color.WHITE
+	
+	slider_select_theme_override = StyleBoxFlat.new()
+	slider_select_theme_override.border_color = Color(0.8, 0.8, 0.8)
+	slider_select_theme_override.draw_center = false
+	slider_select_theme_override.set_border_width_all(4)
+	slider_select_theme_override.set_corner_radius_all(4)
 	update_selection(0)
 
 

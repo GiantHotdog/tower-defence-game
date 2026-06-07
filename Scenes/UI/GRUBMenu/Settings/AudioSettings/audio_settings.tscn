@@ -13,11 +13,13 @@ text = "
 KERNEL AUDIO SETTINGS        version 0.01-dev-build"
 
 [node name="Label" parent="VBoxContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer" parent_id_path=PackedInt32Array(1192133093) index="0" unique_id=1911810260]
-text = "Back"
-
-[node name="Label2" parent="VBoxContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer" parent_id_path=PackedInt32Array(1192133093) index="1" unique_id=72550295]
 text = "Master Volume"
 
-[node name="Slider2" parent="VBoxContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer" parent_id_path=PackedInt32Array(1192133093) index="2" unique_id=724307709 instance=ExtResource("3_pv7fr")]
-visible = false
+[node name="Slider2" parent="VBoxContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer" parent_id_path=PackedInt32Array(1192133093) index="1" unique_id=724307709 instance=ExtResource("3_pv7fr")]
 layout_mode = 2
+
+[node name="Label2" parent="VBoxContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer" parent_id_path=PackedInt32Array(1192133093) index="2" unique_id=72550295]
+text = "Back"
+
+[node name="Label3" parent="VBoxContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer" parent_id_path=PackedInt32Array(1192133093) index="3" unique_id=505660984]
+text = "Back"
