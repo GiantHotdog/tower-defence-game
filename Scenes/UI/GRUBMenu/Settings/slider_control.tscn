@@ -27,5 +27,6 @@ theme_override_constants/margin_bottom = 8
 layout_mode = 2
 max_value = 10.0
 value = 10.0
+editable = false
 tick_count = 11
 ticks_on_borders = true
