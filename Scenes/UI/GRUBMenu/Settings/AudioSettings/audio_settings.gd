@@ -17,6 +17,7 @@ func on_menu_select_pressed():
 			0:
 				options_container.get_children()[1].get_highlight_panel().add_theme_stylebox_override("panel", slider_select_theme_override)
 				currently_open_id = 1
+				options_container.get_children()[1].visible = true
 			1:
 				play_outro()
 				await outro_finished
@@ -26,20 +27,15 @@ func on_menu_select_pressed():
 				await outro_finished
 				switch_to_previous_scene()
 	else:
-		options_container.get_children()[currently_open_id].get_highlight_panel().remove_theme_stylebox_override("panel")
-		currently_open_id = -1
+		remove_select_themes()
 
 func check_menu_inputs():
-	if Input.is_action_just_pressed("menu_down") and currently_selected < get_children_of_type(options_container, Label).size() - 1:
+	if Input.is_action_just_pressed("menu_down") and currently_selected < get_visible_children_of_type(options_container, Label).size() - 1:
 		update_selection(currently_selected + 1)
-		if currently_open_id >= 0:
-			options_container.get_children()[currently_open_id].get_highlight_panel().remove_theme_stylebox_override("panel")
-			currently_open_id = -1
+		remove_select_themes()
 	elif Input.is_action_just_pressed("menu_up") and currently_selected > 0:
 		update_selection(currently_selected - 1)
-		if currently_open_id >= 0:
-			options_container.get_children()[currently_open_id].get_highlight_panel().remove_theme_stylebox_override("panel")
-			currently_open_id = -1
+		remove_select_themes()
 	
 	if Input.is_action_just_pressed("menu_left"):
 		if currently_open_id:
@@ -48,6 +44,7 @@ func check_menu_inputs():
 				node.decrement()
 				if currently_open_id == 1:
 					GlobalAudio.set_volume(node.get_value())
+					
 	elif Input.is_action_just_pressed("menu_right"):
 		if currently_open_id:
 			var node = options_container.get_children()[currently_open_id]
@@ -56,3 +53,10 @@ func check_menu_inputs():
 				if currently_open_id == 1:
 					GlobalAudio.set_volume(node.get_value())
 	
+
+
+func remove_select_themes():
+	if currently_open_id >= 0:
+		options_container.get_children()[currently_open_id].get_highlight_panel().remove_theme_stylebox_override("panel")
+		options_container.get_children()[currently_open_id].visible = false
+		currently_open_id = -1

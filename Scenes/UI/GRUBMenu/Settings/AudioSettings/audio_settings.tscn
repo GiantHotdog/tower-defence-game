@@ -16,10 +16,12 @@ KERNEL AUDIO SETTINGS        version 0.01-dev-build"
 text = "Master Volume"
 
 [node name="Slider2" parent="VBoxContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer" parent_id_path=PackedInt32Array(1192133093) index="1" unique_id=724307709 instance=ExtResource("3_pv7fr")]
+visible = false
 layout_mode = 2
 
 [node name="Label2" parent="VBoxContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer" parent_id_path=PackedInt32Array(1192133093) index="2" unique_id=72550295]
 text = "Back"
 
 [node name="Label3" parent="VBoxContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer" parent_id_path=PackedInt32Array(1192133093) index="3" unique_id=505660984]
+visible = false
 text = "Back"

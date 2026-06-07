@@ -37,7 +37,7 @@ func _process(_delta: float) -> void:
 
 
 func check_menu_inputs():
-	if Input.is_action_just_pressed("menu_down") and currently_selected < get_children_of_type(options_container, Label).size() - 1:
+	if Input.is_action_just_pressed("menu_down") and currently_selected < get_visible_children_of_type(options_container, Label).size() - 1:
 		update_selection(currently_selected + 1)
 	elif Input.is_action_just_pressed("menu_up") and currently_selected > 0:
 		update_selection(currently_selected - 1)
@@ -66,20 +66,20 @@ func on_menu_select_pressed():
 			get_tree().quit()
 
 
-func get_children_of_type(node:Node, type: Variant) -> Array:
+func get_visible_children_of_type(node:Node, type: Variant) -> Array:
 	var matching_children: Array = []
 	for child in node.get_children():
-		if is_instance_of(child, type):
+		if is_instance_of(child, type) and child.visible:
 			matching_children.append(child)
 	return matching_children
 
 
 func update_selection(new_selection:int):
-	var previous_select_node:Control = get_children_of_type(options_container, Label)[currently_selected]
+	var previous_select_node:Control = get_visible_children_of_type(options_container, Label)[currently_selected]
 	previous_select_node.remove_theme_stylebox_override("normal")
 	previous_select_node.add_theme_color_override("font_color", Color(1,1,1))
 	currently_selected = new_selection
-	var current_select_node:Control = get_children_of_type(options_container, Label)[currently_selected]
+	var current_select_node:Control = get_visible_children_of_type(options_container, Label)[currently_selected]
 	if current_select_node is Label:
 		current_select_node.add_theme_stylebox_override("normal", select_theme_override)
 		current_select_node.add_theme_color_override("font_color", Color(0,0,0))
