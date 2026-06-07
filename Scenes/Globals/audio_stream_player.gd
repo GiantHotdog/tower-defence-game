@@ -14,6 +14,7 @@ func get_volume():
 	return (volume_db - min_volume) / step_size
 
 func set_volume(value:int):
+	Globals.write_config("preferences.cfg", "AudioSettings", "master_audio", value)
 	if value == 0:
 		volume_db = -INF
 	else:

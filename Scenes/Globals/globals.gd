@@ -36,6 +36,12 @@ func reset_selective_disable_variables():
 
 
 func load_config(filepath:String):
+	var config:ConfigFile = get_config(filepath)
+	var master_audio_volume = config.get_value("AudioSettings", "master_audio")
+	GlobalAudio.set_volume(master_audio_volume)
+
+
+func get_config(filepath:String) -> ConfigFile:
 	var dir = DirAccess.open("user://")
 	if not dir.dir_exists("user://config/"):
 		dir.make_dir_recursive("user://config/")
@@ -50,8 +56,13 @@ func load_config(filepath:String):
 		printerr("Creating default config file")
 		# Initialise the default config
 		config.set_value("AudioSettings", "master_audio", 4)
-		config.save(filepath)
+		config.save("user://config/" + filepath)
 	
-	config.load(filepath)
-	var master_audio_volume = config.get_value("AudioSettings", "master_audio")
-	GlobalAudio.set_volume(master_audio_volume)
+	config.load("user://config/" + filepath)
+	return config
+
+
+func write_config(filepath:String, section:String, key:String, value:Variant):
+	var config:ConfigFile = get_config(filepath)
+	config.set_value(section, key, value)
+	config.save("user://config/" + filepath)
