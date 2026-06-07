@@ -32,9 +32,13 @@ func check_menu_inputs():
 			var node = options_container.get_children()[currently_open_id]
 			if node is SliderContainer:
 				node.decrement()
+				if currently_open_id == 2:
+					GlobalAudio.set_volume(node.get_value())
 	elif Input.is_action_just_pressed("menu_right"):
 		if currently_open_id:
 			var node = options_container.get_children()[currently_open_id]
 			if node is SliderContainer:
 				node.increment()
+				if currently_open_id == 2:
+					GlobalAudio.set_volume(node.get_value())
 	

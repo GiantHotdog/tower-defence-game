@@ -20,3 +20,7 @@ func increment():
 func decrement():
 	if $HSlider.value > $HSlider.min_value:
 		$HSlider.value -= 1
+
+
+func get_value():
+	return $HSlider.value
