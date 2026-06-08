@@ -2,6 +2,17 @@ extends GRUB
 
 var currently_open_id:int = -1
 
+
+func _ready() -> void:
+	super._ready()
+	match DisplayServer.window_get_vsync_mode():
+		DisplayServer.VSYNC_ENABLED:
+			$VBoxContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/OptionControl.set_value(0)
+		DisplayServer.VSYNC_DISABLED:
+			$VBoxContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/OptionControl.set_value(1)
+	
+
+
 func _process(delta: float) -> void:
 	super._process(delta)
 
@@ -63,3 +74,5 @@ func update_vsync(node:OptionContainer):
 			DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_ENABLED)
 		1:
 			DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_DISABLED)
+	
+	Globals.write_config("preferences.cfg", "GraphicsSettings", "vsync_mode", node.get_value())

@@ -39,6 +39,12 @@ func load_config(filepath:String):
 	var config:ConfigFile = get_config(filepath)
 	var master_audio_volume = config.get_value("AudioSettings", "master_audio")
 	GlobalAudio.set_volume(master_audio_volume)
+	var vsync = config.get_value("GraphicsSettings", "vsync_mode")
+	match vsync:
+		0:
+			DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_ENABLED)
+		1:
+			DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_DISABLED)
 
 
 func get_config(filepath:String) -> ConfigFile:
@@ -56,6 +62,7 @@ func get_config(filepath:String) -> ConfigFile:
 		printerr("Creating default config file")
 		# Initialise the default config
 		config.set_value("AudioSettings", "master_audio", 4)
+		config.set_value("GraphicsSettings", "vsync_mode", 0)
 		config.save("user://config/" + filepath)
 	
 	config.load("user://config/" + filepath)
