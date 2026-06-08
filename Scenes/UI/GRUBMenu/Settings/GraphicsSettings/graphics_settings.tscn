@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://cv1tcuemcd3ms"]
+
+[ext_resource type="PackedScene" uid="uid://dy48ykb5gmkgi" path="res://Scenes/UI/GRUBMenu/Grub.tscn" id="1_qv52j"]
+[ext_resource type="Script" uid="uid://cm8g8r4ujtofm" path="res://Scenes/UI/GRUBMenu/Settings/GraphicsSettings/graphics_settings.gd" id="2_c2y47"]
+[ext_resource type="PackedScene" uid="uid://d3tnremschif6" path="res://Scenes/UI/GRUBMenu/Settings/GraphicsSettings/option_control.tscn" id="3_yg8dh"]
+
+[node name="GraphicsSettings" unique_id=772233900 instance=ExtResource("1_qv52j")]
+script = ExtResource("2_c2y47")
+back_level = "uid://lg7f0q631quu"
+
+[node name="Label" parent="VBoxContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer" parent_id_path=PackedInt32Array(1192133093) index="0" unique_id=1911810260]
+text = "Vsync mode"
+
+[node name="OptionControl" parent="VBoxContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer" parent_id_path=PackedInt32Array(1192133093) index="1" unique_id=1174202391 instance=ExtResource("3_yg8dh")]
+visible = false
+layout_mode = 2
+
+[node name="OptionButton" parent="VBoxContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/OptionControl/PanelContainer/MarginContainer" parent_id_path=PackedInt32Array(1174202391, 371372345) index="0" unique_id=2109582324]
+item_count = 2
+popup/item_0/text = "On"
+popup/item_0/id = 0
+popup/item_1/text = "Off"
+popup/item_1/id = 1
+
+[node name="Label2" parent="VBoxContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer" parent_id_path=PackedInt32Array(1192133093) index="2" unique_id=72550295]
+visible = false
+
+[node name="Label3" parent="VBoxContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer" parent_id_path=PackedInt32Array(1192133093) index="3" unique_id=505660984]
+text = "Back"
+
+[editable path="VBoxContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/OptionControl"]

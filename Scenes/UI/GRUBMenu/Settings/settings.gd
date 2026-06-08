@@ -1,3 +1,4 @@
+
 extends GRUB
 
 
@@ -11,10 +12,10 @@ func on_menu_select_pressed():
 			play_outro()
 			await outro_finished
 			get_tree().change_scene_to_file("res://Scenes/UI/GRUBMenu/Settings/AudioSettings/audio_settings.tscn")
-		#2:
-			#play_outro()
-			#await outro_finished
-			#get_tree().quit()
+		2:
+			play_outro()
+			await outro_finished
+			get_tree().change_scene_to_file("res://Scenes/UI/GRUBMenu/Settings/GraphicsSettings/graphics_settings.tscn")
 		3:
 			play_outro()
 			await outro_finished

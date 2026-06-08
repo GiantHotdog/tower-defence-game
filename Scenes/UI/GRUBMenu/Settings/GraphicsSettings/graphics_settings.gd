@@ -1,15 +1,9 @@
-class_name AudioSettings
 extends GRUB
 
 var currently_open_id:int = -1
-var slide_select_theme_override:StyleBoxFlat
 
-func _ready() -> void:
-	super._ready()
-	slide_select_theme_override = StyleBoxFlat.new()
-	slide_select_theme_override.border_width_bottom = 5
-	slide_select_theme_override.border_color = Color.WHITE
-	$VBoxContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/Slider2.set_value(GlobalAudio.get_volume())
+func _process(delta: float) -> void:
+	super._process(delta)
 
 
 func on_menu_select_pressed():
@@ -41,18 +35,18 @@ func check_menu_inputs():
 	if Input.is_action_just_pressed("menu_left"):
 		if currently_open_id:
 			var node = options_container.get_children()[currently_open_id]
-			if node is SliderContainer:
+			if node is OptionContainer:
 				node.decrement()
 				if currently_open_id == 1:
-					GlobalAudio.set_volume(node.get_value())
+					update_vsync(node)
 					
 	elif Input.is_action_just_pressed("menu_right"):
 		if currently_open_id:
 			var node = options_container.get_children()[currently_open_id]
-			if node is SliderContainer:
+			if node is OptionContainer:
 				node.increment()
 				if currently_open_id == 1:
-					GlobalAudio.set_volume(node.get_value())
+					update_vsync(node)
 	
 
 
@@ -61,3 +55,11 @@ func remove_select_themes():
 		options_container.get_children()[currently_open_id].get_highlight_panel().remove_theme_stylebox_override("panel")
 		options_container.get_children()[currently_open_id].visible = false
 		currently_open_id = -1
+
+
+func update_vsync(node:OptionContainer):
+	match node.get_value():
+		0:
+			DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_ENABLED)
+		1:
+			DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_DISABLED)
