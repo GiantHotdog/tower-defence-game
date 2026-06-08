@@ -14,7 +14,6 @@ config/name="Tower Defence"
 run/main_scene="uid://ckf7ubmnrfuam"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 config/icon="res://icon.svg"
-boot_splash/minimum_display_time=3000
 
 [audio]
 
