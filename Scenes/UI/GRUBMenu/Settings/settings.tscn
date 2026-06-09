@@ -12,6 +12,7 @@ text = "
 KERNEL SETTINGS        version 0.01-dev-build"
 
 [node name="Label" parent="VBoxContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer" parent_id_path=PackedInt32Array(1192133093) index="0" unique_id=1911810260]
+visible = false
 text = "General"
 
 [node name="Label2" parent="VBoxContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer" parent_id_path=PackedInt32Array(1192133093) index="1" unique_id=72550295]
