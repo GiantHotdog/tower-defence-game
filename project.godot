@@ -41,7 +41,8 @@ folder_colors={
 "res://Exports/": "green",
 "res://Resources/": "orange",
 "res://Resources/WaveInfo/": "orange",
-"res://Scenes/": "blue"
+"res://Scenes/": "blue",
+"res://Screenshots/": "teal"
 }
 
 [gui]
