@@ -8,19 +8,19 @@ func on_menu_select_pressed():
 			#play_outro()
 			#await outro_finished
 			#get_tree().change_scene_to_file("res://Scenes/UI/GRUBMenu/Grub.tscn")
-		1:
+		0:
 			play_outro()
 			await outro_finished
 			get_tree().change_scene_to_file("res://Scenes/UI/GRUBMenu/Settings/AudioSettings/audio_settings.tscn")
-		2:
+		1:
 			play_outro()
 			await outro_finished
 			get_tree().change_scene_to_file("res://Scenes/UI/GRUBMenu/Settings/GraphicsSettings/graphics_settings.tscn")
-		3:
+		2:
 			play_outro()
 			await outro_finished
 			get_tree().change_scene_to_file("res://Scenes/UI/GRUBMenu/Settings/Credits/credits.tscn")
-		4:
+		3:
 			play_outro()
 			await outro_finished
 			get_tree().change_scene_to_file("res://Scenes/UI/GRUBMenu/Grub.tscn")
