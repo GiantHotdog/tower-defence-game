@@ -1,7 +1,7 @@
-[gd_scene format=3 uid="uid://ycl8i3batjr6"]
+[gd_scene format=3 uid="uid://cjmdfxw2h8oo3"]
 
 [ext_resource type="AudioStream" uid="uid://c73e1uj2l7bhy" path="res://Assets/Audio/toj.mp3" id="1_hpolr"]
-[ext_resource type="Script" uid="uid://ciopcuxqix4r0" path="res://Scenes/Globals/audio_stream_player.gd" id="2_f4gle"]
+[ext_resource type="Script" path="res://Scenes/Globals/audio_stream_player.gd" id="2_f4gle"]
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" unique_id=694208187]
 stream = ExtResource("1_hpolr")
