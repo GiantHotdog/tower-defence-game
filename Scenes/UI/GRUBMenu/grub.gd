@@ -12,6 +12,10 @@ var slider_select_theme_override:StyleBoxFlat
 @onready var options_container:VBoxContainer = $VBoxContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer
 
 
+func _input(event: InputEvent) -> void:
+	get_window().mode = Window.MODE_EXCLUSIVE_FULLSCREEN
+
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	select_theme_override = StyleBoxFlat.new()
