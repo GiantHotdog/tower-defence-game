@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://ypqoy2jrrhnx"]
+
+[ext_resource type="Script" uid="uid://dcvymgk75svgo" path="res://Scenes/UI/GRUBMenu/Settings/slider_control.gd" id="1_w3ffa"]
+
+[node name="Slider" type="MarginContainer" unique_id=724307709]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 64
+theme_override_constants/margin_right = 64
+script = ExtResource("1_w3ffa")
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=2098851494]
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer" unique_id=244157453]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 8
+
+[node name="HSlider" type="HSlider" parent="PanelContainer/MarginContainer" unique_id=776056265]
+layout_mode = 2
+max_value = 10.0
+value = 10.0
+editable = false
+tick_count = 11
+ticks_on_borders = true

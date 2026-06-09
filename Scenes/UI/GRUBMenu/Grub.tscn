@@ -79,6 +79,17 @@ text = "Settings"
 layout_mode = 2
 text = "Quit"
 
+[node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer" unique_id=1240966467]
+layout_mode = 2
+theme_override_constants/margin_left = 64
+theme_override_constants/margin_right = 64
+theme_override_constants/margin_bottom = 32
+
+[node name="Label" type="Label" parent="VBoxContainer/MarginContainer2" unique_id=781294957]
+layout_mode = 2
+text = "Use the 'up' and 'down' keys to select which entry is highlighted.
+Press enter to boot the seleted entry"
+
 [node name="ColorRect2" type="ColorRect" parent="." unique_id=1638187580]
 layout_mode = 1
 anchors_preset = 10
