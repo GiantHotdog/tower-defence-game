@@ -37,9 +37,9 @@ func reset_selective_disable_variables():
 
 func load_config(filepath:String):
 	var config:ConfigFile = get_config(filepath)
-	var master_audio_volume = config.get_value("AudioSettings", "master_audio")
+	var master_audio_volume = config.get_value("AudioSettings", "master_audio", 5)
 	GlobalAudio.set_volume(master_audio_volume)
-	var vsync = config.get_value("GraphicsSettings", "vsync_mode")
+	var vsync = config.get_value("GraphicsSettings", "vsync_mode", 0)
 	match vsync:
 		0:
 			DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_ENABLED)
@@ -61,7 +61,7 @@ func get_config(filepath:String) -> ConfigFile:
 	if err == ERR_FILE_NOT_FOUND:
 		printerr("Creating default config file")
 		# Initialise the default config
-		config.set_value("AudioSettings", "master_audio", 4)
+		config.set_value("AudioSettings", "master_audio", 5)
 		config.set_value("GraphicsSettings", "vsync_mode", 0)
 		config.save("user://config/" + filepath)
 	
