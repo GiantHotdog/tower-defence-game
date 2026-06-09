@@ -26,6 +26,7 @@ GlobalAudio="*uid://ycl8i3batjr6"
 
 [display]
 
+window/size/mode=4
 window/stretch/mode="canvas_items"
 
 [editor_plugins]
@@ -42,6 +43,10 @@ folder_colors={
 "res://Resources/WaveInfo/": "orange",
 "res://Scenes/": "blue"
 }
+
+[gui]
+
+theme/custom_font="uid://pu4k11sp8fe2"
 
 [input]
 
