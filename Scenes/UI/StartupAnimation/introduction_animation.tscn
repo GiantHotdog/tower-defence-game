@@ -8,7 +8,7 @@ shader = ExtResource("2_sj0qi")
 shader_parameter/grid_size = Vector2(60, 40)
 shader_parameter/speed = 20.0
 shader_parameter/bg_color = Color(0.02, 0.027, 0.043, 1)
-shader_parameter/text_color = Color(1.5642495e-07, 0.10112458, 0, 1)
+shader_parameter/text_color = Color(0, 0.1, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_sj0qi"]
 font_color = Color(0, 1, 0, 1)
