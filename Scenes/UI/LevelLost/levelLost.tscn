@@ -30,7 +30,7 @@ grow_vertical = 2
 
 [node name="Label" type="Label" parent="MarginContainer" unique_id=1637002428]
 layout_mode = 2
-text = "Kernel Panic!"
+text = "Message goes here"
 
 [node name="ColorRect2" type="ColorRect" parent="." unique_id=1907154266]
 layout_mode = 1

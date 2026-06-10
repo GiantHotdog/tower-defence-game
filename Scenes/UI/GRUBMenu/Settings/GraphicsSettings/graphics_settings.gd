@@ -24,6 +24,7 @@ func on_menu_select_pressed():
 				options_container.get_children()[1].get_highlight_panel().add_theme_stylebox_override("panel", slider_select_theme_override)
 				currently_open_id = 1
 				options_container.get_children()[1].visible = true
+				options_container.get_children()[1].display_options()
 			1:
 				play_outro()
 				await outro_finished
@@ -36,33 +37,48 @@ func on_menu_select_pressed():
 		remove_select_themes()
 
 func check_menu_inputs():
-	if Input.is_action_just_pressed("menu_down") and currently_selected < get_visible_children_of_type(options_container, Label).size() - 1:
-		update_selection(currently_selected + 1)
-		remove_select_themes()
-	elif Input.is_action_just_pressed("menu_up") and currently_selected > 0:
-		update_selection(currently_selected - 1)
-		remove_select_themes()
-	
-	if Input.is_action_just_pressed("menu_left"):
-		if currently_open_id:
-			var node = options_container.get_children()[currently_open_id]
-			if node is OptionContainer:
-				node.decrement()
-				if currently_open_id == 1:
-					update_vsync(node)
-					
-	elif Input.is_action_just_pressed("menu_right"):
-		if currently_open_id:
+	if not options_container.get_children()[currently_open_id] is OptionContainer:
+		if Input.is_action_just_pressed("menu_down") and currently_selected < get_visible_children_of_type(options_container, Label).size() - 1:
+			update_selection(currently_selected + 1)
+			remove_select_themes()
+		elif Input.is_action_just_pressed("menu_up") and currently_selected > 0:
+			update_selection(currently_selected - 1)
+			remove_select_themes()
+	else:
+		if Input.is_action_just_pressed("menu_down"):
 			var node = options_container.get_children()[currently_open_id]
 			if node is OptionContainer:
 				node.increment()
 				if currently_open_id == 1:
 					update_vsync(node)
+		elif Input.is_action_just_pressed("menu_up"):
+			var node = options_container.get_children()[currently_open_id]
+			if node is OptionContainer:
+				node.decrement()
+				if currently_open_id == 1:
+					update_vsync(node)
+	
+	#if Input.is_action_just_pressed("menu_left"):
+		#if currently_open_id:
+			#var node = options_container.get_children()[currently_open_id]
+			#if node is OptionContainer:
+				#node.decrement()
+				#if currently_open_id == 1:
+					#update_vsync(node)
+					
+	#elif Input.is_action_just_pressed("menu_right"):
+		#if currently_open_id:
+			#var node = options_container.get_children()[currently_open_id]
+			#if node is OptionContainer:
+				#node.increment()
+				#if currently_open_id == 1:
+					#update_vsync(node)
 	
 
 
 func remove_select_themes():
 	if currently_open_id >= 0:
+		options_container.get_children()[currently_open_id].hide_options()
 		options_container.get_children()[currently_open_id].get_highlight_panel().remove_theme_stylebox_override("panel")
 		options_container.get_children()[currently_open_id].visible = false
 		currently_open_id = -1

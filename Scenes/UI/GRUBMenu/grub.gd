@@ -51,7 +51,8 @@ func switch_to_previous_scene():
 	if back_level:
 		play_outro()
 		await outro_finished
-		get_tree().change_scene_to_file(back_level)
+		if is_inside_tree():
+			get_tree().change_scene_to_file(back_level)
 
 
 func on_menu_select_pressed():

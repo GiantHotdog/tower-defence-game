@@ -35,7 +35,8 @@ func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("menu_back"):
 		play_outro()
 		await outro_finished
-		get_tree().change_scene_to_file("res://Scenes/UI/GRUBMenu/Grub.tscn")
+		if is_inside_tree():
+			get_tree().change_scene_to_file("res://Scenes/UI/GRUBMenu/Grub.tscn")
 	
 	if Input.is_action_just_pressed("menu_down") and currently_selected < options_container.get_child_count() - 1:
 		update_selection(currently_selected + 1)

@@ -12,7 +12,6 @@ back_level = "uid://lg7f0q631quu"
 text = "Vsync mode"
 
 [node name="OptionControl" parent="VBoxContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer" parent_id_path=PackedInt32Array(1192133093) index="1" unique_id=1174202391 instance=ExtResource("3_yg8dh")]
-visible = false
 layout_mode = 2
 
 [node name="OptionButton" parent="VBoxContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/OptionControl/PanelContainer/MarginContainer" parent_id_path=PackedInt32Array(1174202391, 371372345) index="0" unique_id=2109582324]
