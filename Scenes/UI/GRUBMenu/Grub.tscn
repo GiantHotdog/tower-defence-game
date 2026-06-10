@@ -88,6 +88,7 @@ theme_override_constants/margin_bottom = 32
 [node name="Label" type="Label" parent="VBoxContainer/MarginContainer2" unique_id=781294957]
 layout_mode = 2
 text = "Use the 'up' and 'down' keys to select which entry is highlighted.
+Press 'left' and 'right' keys to modify sliders
 Press enter to boot the seleted entry"
 
 [node name="ColorRect2" type="ColorRect" parent="." unique_id=1638187580]
