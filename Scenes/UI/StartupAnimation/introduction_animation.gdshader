@@ -3,7 +3,7 @@ shader_type canvas_item;
 uniform vec2 grid_size = vec2(60.0, 40.0);
 uniform float speed = 20.0;
 uniform vec4 bg_color: source_color = vec4(0.02, 0.027, 0.043, 1.0);
-uniform vec4 text_color:source_color = vec4(0.0, 0.4, 0.0, 1.0);
+uniform vec4 text_color:source_color = vec4(0.0, 0.1, 0.0, 1.0);
 
 float random(vec2 uv) {
     return fract(sin(dot(uv, vec2(127.1, 311.7))) * 43758.5453123);

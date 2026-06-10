@@ -44,7 +44,7 @@ func _on_type_timer_timeout() -> void:
 	if current_type_pos < text[current_line].length():
 		if not is_on_line_cooldown:
 			label.text += text[current_line][current_type_pos]
-			label.text = label.text.replace("_", "")
+			label.text = label.text.replace("█", "")
 	elif not line_cooldown_timer.time_left:
 		is_on_line_cooldown = true
 		line_cooldown_timer.start()
@@ -65,12 +65,12 @@ func _on_blink_timer_timeout() -> void:
 	var index = label.text.length() - 1
 	if index >= 0:
 		var last_char = label.text[index]
-		if last_char == "_":
+		if last_char == "█":
 			label.text = label.text.substr(0, label.text.length() - 1)
 		else:
-			label.text = label.text + "_"
+			label.text = label.text + "█"
 	else:
-		label.text = "_"
+		label.text = "█"
 	 
 
 func fade_out(callback:Callable):
