@@ -29,6 +29,10 @@ func _ready() -> void:
 	line_cooldown_timer.wait_time = line_end_wait
 
 
+func _input(event: InputEvent) -> void:
+	get_window().mode = Window.MODE_EXCLUSIVE_FULLSCREEN
+
+
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventKey:
 		if event.is_pressed() and event.keycode == KEY_ENTER:
