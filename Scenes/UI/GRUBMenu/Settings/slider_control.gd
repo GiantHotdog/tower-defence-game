@@ -17,7 +17,6 @@ func set_value(value):
 
 
 func increment():
-	print("++")
 	if slider.value < slider.max_value:
 		slider.value += 1
 
