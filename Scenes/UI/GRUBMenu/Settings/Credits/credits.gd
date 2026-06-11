@@ -8,7 +8,7 @@ func _input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
 		var node:Control = get_viewport().gui_get_hovered_control()
 		if node is Label and node.name != "CreditLabel":
-			var id = get_filtered_index(node, "Label")
+			var id = get_filtered_index(node, Label)
 			update_selection(id)
 		else:
 			update_selection(-1)
@@ -28,7 +28,7 @@ func on_menu_select_pressed():
 	switch_to_previous_scene()
 
 
-func get_filtered_index(node: Control, valid_type: StringName) -> int:
+func get_filtered_index(node: Control, valid_type: Variant) -> int:
 	var parent = node.get_parent()
 	if not parent:
 		return -1
@@ -37,7 +37,7 @@ func get_filtered_index(node: Control, valid_type: StringName) -> int:
 	for sibling in parent.get_children():
 		if sibling == node:
 			return filtered_index
-		if sibling.is_class(valid_type) and sibling.visible and sibling.name != "CreditLabel":
+		if is_instance_of(sibling, valid_type) and sibling.visible and sibling.name != "CreditLabel":
 			filtered_index += 1
 			
 	return -1
