@@ -4,7 +4,7 @@ This is a tower defence game prototype built using the Godot engine. It is heavi
 
 ---
 
-**⚠️ The demo is live at [https://gianthotdog.github.io/Kernel-Panic](<http://gianthotdog.github.io/Kernel-Panic](https://gianthotdog.github.io/Kernel-Panic)>)**
+**⚠️ The demo is live at [https://gianthotdog.github.io/Kernel-Panic](<https://gianthotdog.itch.io/Kernel-Panic](https://gianthotdog.itch.io/Kernel-Panic)>)**
 
 ---
 
