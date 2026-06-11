@@ -54,7 +54,7 @@ func _process(_delta: float) -> void:
 		on_menu_select_pressed()
 	if Input.is_action_just_pressed("menu_select_mouse"):
 		var node:Control = get_viewport().gui_get_hovered_control()
-		if node is GrubLevelMenuItem:
+		if node is Label:
 			var id = get_filtered_index(node.get_parent(), GrubLevelMenuItem)
 			update_selection(id)
 		else:
@@ -66,11 +66,12 @@ func _process(_delta: float) -> void:
 
 
 func on_menu_select_pressed():
-	var child:GrubLevelMenuItem = options_container.get_child(currently_selected)
-	if not child.is_locked:
-		play_outro()
-		await outro_finished
-		get_tree().change_scene_to_file(levels[currently_selected])
+	if currently_selected >= 0:
+		var child:GrubLevelMenuItem = options_container.get_child(currently_selected)
+		if not child.is_locked:
+			play_outro()
+			await outro_finished
+			get_tree().change_scene_to_file(levels[currently_selected])
 
 
 func update_selection(new_selection:int):
