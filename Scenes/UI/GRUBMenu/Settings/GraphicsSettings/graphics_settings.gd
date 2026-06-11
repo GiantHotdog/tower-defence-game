@@ -58,22 +58,6 @@ func check_menu_inputs():
 				if currently_open_id == 1:
 					update_vsync(node)
 	
-	#if Input.is_action_just_pressed("menu_left"):
-		#if currently_open_id:
-			#var node = options_container.get_children()[currently_open_id]
-			#if node is OptionContainer:
-				#node.decrement()
-				#if currently_open_id == 1:
-					#update_vsync(node)
-					
-	#elif Input.is_action_just_pressed("menu_right"):
-		#if currently_open_id:
-			#var node = options_container.get_children()[currently_open_id]
-			#if node is OptionContainer:
-				#node.increment()
-				#if currently_open_id == 1:
-					#update_vsync(node)
-	
 
 
 func remove_select_themes():

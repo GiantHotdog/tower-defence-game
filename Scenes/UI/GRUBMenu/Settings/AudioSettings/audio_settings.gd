@@ -13,6 +13,10 @@ func _ready() -> void:
 
 
 func on_menu_select_pressed():
+	var currently_open:Control = options_container.get_children()[currently_open_id]
+	var is_dragging:bool = false
+	if currently_open is SliderContainer:
+		is_dragging = currently_open.dragging
 	if currently_open_id == -1:
 		match currently_selected:
 			0:
@@ -27,7 +31,7 @@ func on_menu_select_pressed():
 				play_outro()
 				await outro_finished
 				switch_to_previous_scene()
-	else:
+	elif not is_dragging:
 		remove_select_themes()
 
 func check_menu_inputs():
@@ -61,3 +65,8 @@ func remove_select_themes():
 		options_container.get_children()[currently_open_id].get_highlight_panel().remove_theme_stylebox_override("panel")
 		options_container.get_children()[currently_open_id].visible = false
 		currently_open_id = -1
+
+
+func _on_dragging_finished(node: SliderContainer) -> void:
+	if currently_open_id == 1:
+		GlobalAudio.set_volume(node.get_value())
