@@ -9,6 +9,7 @@ script = ExtResource("2_c2y47")
 back_level = "uid://lg7f0q631quu"
 
 [node name="Label" parent="VBoxContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer" parent_id_path=PackedInt32Array(1192133093) index="0" unique_id=1911810260]
+mouse_filter = 1
 text = "Vsync mode"
 
 [node name="OptionControl" parent="VBoxContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer" parent_id_path=PackedInt32Array(1192133093) index="1" unique_id=1174202391 instance=ExtResource("3_yg8dh")]
@@ -23,8 +24,10 @@ popup/item_1/id = 1
 
 [node name="Label2" parent="VBoxContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer" parent_id_path=PackedInt32Array(1192133093) index="2" unique_id=72550295]
 visible = false
+mouse_filter = 1
 
 [node name="Label3" parent="VBoxContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer" parent_id_path=PackedInt32Array(1192133093) index="3" unique_id=505660984]
+mouse_filter = 1
 text = "Back"
 
 [editable path="VBoxContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/OptionControl"]

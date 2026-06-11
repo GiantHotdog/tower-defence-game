@@ -35,12 +35,13 @@ func _input(event: InputEvent) -> void:
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventKey:
-		if event.is_pressed() and event.keycode == KEY_ENTER:
+		if event.is_action_pressed("intro_skip"):
 			fade_out(change_to_menu)
 
 
 func change_to_menu():
-	get_tree().change_scene_to_file("res://Scenes/UI/GRUBMenu/Grub.tscn")
+	if is_inside_tree():
+		get_tree().change_scene_to_file("res://Scenes/UI/GRUBMenu/Grub.tscn")
 
 
 func _on_type_timer_timeout() -> void:

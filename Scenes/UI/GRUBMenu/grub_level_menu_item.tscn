@@ -12,10 +12,8 @@ script = ExtResource("1_k6ws5")
 [node name="Label" type="Label" parent="." unique_id=511519907]
 layout_mode = 2
 size_flags_horizontal = 3
+mouse_filter = 1
 text = "Level Name"
-
-[node name="Control" type="AspectRatioContainer" parent="." unique_id=2098100890]
-layout_mode = 2
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=131085480]
 layout_mode = 2
