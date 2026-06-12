@@ -23,8 +23,10 @@ text = "Graphics"
 
 [node name="Label4" type="Label" parent="VBoxContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer" parent_id_path=PackedInt32Array(1192133093) index="3" unique_id=1718681462]
 layout_mode = 2
+mouse_filter = 1
 text = "Credits"
 
 [node name="Label5" type="Label" parent="VBoxContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer" parent_id_path=PackedInt32Array(1192133093) index="4" unique_id=25834057]
 layout_mode = 2
+mouse_filter = 1
 text = "Back"

@@ -1,6 +1,9 @@
 class_name SliderContainer
 extends MarginContainer
 
+signal dragging_finished(node:SliderContainer)
+
+var dragging:bool = false
 
 @onready var slider:HSlider = $PanelContainer/MarginContainer/HSlider
 
@@ -33,3 +36,12 @@ func get_slider():
 
 func get_highlight_panel() -> Panel:
 	return $PanelContainer
+
+
+func _on_h_slider_drag_started() -> void:
+	dragging = true
+
+
+func _on_h_slider_drag_ended(_value_changed: bool) -> void:
+	dragging_finished.emit(self)
+	dragging = false

@@ -24,6 +24,7 @@ script = ExtResource("1_xdtbj")
 levels = Array[String](["uid://bjwp1mhwsvt3s", "uid://cgooce8fh5cw4", "uid://dy48ykb5gmkgi"])
 names = Array[String](["Tutorial", "Level 1", "Return to main menu"])
 level_requirements = Array[int]([-1, 0, -1])
+back_level = "uid://dy48ykb5gmkgi"
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=2107038147]
 layout_mode = 1
@@ -69,6 +70,18 @@ theme_override_constants/margin_bottom = 8
 
 [node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/MarginContainer/PanelContainer/MarginContainer" unique_id=1529120312]
 layout_mode = 2
+
+[node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer" unique_id=1564728947]
+layout_mode = 2
+theme_override_constants/margin_left = 64
+theme_override_constants/margin_right = 64
+theme_override_constants/margin_bottom = 32
+
+[node name="Label" type="Label" parent="VBoxContainer/MarginContainer2" unique_id=2019817974]
+layout_mode = 2
+text = "Use the 'up' and 'down' keys to select which entry is highlighted.
+Press 'left' and 'right' keys to modify sliders
+Press enter to boot the seleted entry"
 
 [node name="ColorRect2" type="ColorRect" parent="." unique_id=1761853831]
 layout_mode = 1

@@ -27,4 +27,6 @@ visible = false
 [node name="Label3" parent="VBoxContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer" parent_id_path=PackedInt32Array(1192133093) index="3" unique_id=505660984]
 text = "Back"
 
+[connection signal="item_selected" from="VBoxContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/OptionControl" to="." method="_on_option_control_item_selected"]
+
 [editable path="VBoxContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/OptionControl"]

@@ -69,14 +69,17 @@ layout_mode = 2
 
 [node name="Label" type="Label" parent="VBoxContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=1911810260]
 layout_mode = 2
+mouse_filter = 1
 text = "Play"
 
 [node name="Label2" type="Label" parent="VBoxContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=72550295]
 layout_mode = 2
+mouse_filter = 1
 text = "Settings"
 
 [node name="Label3" type="Label" parent="VBoxContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=505660984]
 layout_mode = 2
+mouse_filter = 1
 text = "Quit"
 
 [node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer" unique_id=1240966467]

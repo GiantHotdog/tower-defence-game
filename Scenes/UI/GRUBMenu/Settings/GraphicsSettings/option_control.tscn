@@ -20,3 +20,6 @@ theme_override_constants/margin_bottom = 8
 
 [node name="OptionButton" type="OptionButton" parent="PanelContainer/MarginContainer" unique_id=2109582324]
 layout_mode = 2
+allow_reselect = true
+
+[connection signal="item_selected" from="PanelContainer/MarginContainer/OptionButton" to="." method="_on_option_button_item_selected"]
