@@ -3,9 +3,28 @@
 [ext_resource type="Script" uid="uid://c4lhvrrq6ejkf" path="res://Scenes/Enemies/base_enemy.gd" id="1_hkymu"]
 [ext_resource type="Texture2D" uid="uid://n5wurppyeq5" path="res://icon.svg" id="2_b3u8b"]
 [ext_resource type="PackedScene" uid="uid://djmrts0a0yri2" path="res://Scenes/UI/health_bar.tscn" id="3_oof5d"]
+[ext_resource type="PackedScene" uid="uid://c2edem7dvbmi1" path="res://Scenes/Enemies/text_particle.tscn" id="4_t83mw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b3u8b"]
 size = Vector2(64, 64)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_pwtvn"]
+viewport_path = NodePath("GPUParticles2D/TextParticle")
+
+[sub_resource type="Curve" id="Curve_t83mw"]
+_data = [Vector2(0.014423076, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.07269283, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_pwtvn"]
+curve = SubResource("Curve_t83mw")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_glvuq"]
+particle_flag_disable_z = true
+spread = 180.0
+initial_velocity_min = 90.0
+initial_velocity_max = 150.0
+gravity = Vector3(0, 0, 0)
+scale_curve = SubResource("CurveTexture_pwtvn")
 
 [node name="BaseEnemy" type="PathFollow2D" unique_id=2135921253]
 rotates = false
@@ -28,3 +47,14 @@ offset_left = -64.0
 offset_top = -87.0
 offset_right = 192.0
 offset_bottom = -23.0
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="." unique_id=1834652281]
+emitting = false
+texture = SubResource("ViewportTexture_pwtvn")
+one_shot = true
+explosiveness = 1.0
+use_fixed_seed = true
+seed = 1132127438
+process_material = SubResource("ParticleProcessMaterial_glvuq")
+
+[node name="TextParticle" parent="GPUParticles2D" unique_id=255381870 instance=ExtResource("4_t83mw")]

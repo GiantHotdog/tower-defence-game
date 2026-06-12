@@ -15,7 +15,7 @@ func get_next_upgrade() -> Upgrade:
 
 
 func get_next_upgrade_description() -> String:
-	var returning = null
+	var returning = ""
 	if not is_path_finished():
 		returning = upgrades[current_upgrade].description
 	return returning

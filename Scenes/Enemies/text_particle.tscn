@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://c2edem7dvbmi1"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_4aroc"]
+font_size = 32
+font_color = Color(0, 0.74509805, 0, 1)
+
+[node name="TextParticle" type="SubViewport" unique_id=255381870]
+transparent_bg = true
+size = Vector2i(80, 32)
+render_target_update_mode = 4
+
+[node name="Label" type="Label" parent="." unique_id=1086604803]
+offset_right = 40.0
+offset_bottom = 19.0
+text = "0x00"
+label_settings = SubResource("LabelSettings_4aroc")
+horizontal_alignment = 1

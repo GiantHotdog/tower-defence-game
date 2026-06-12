@@ -25,7 +25,10 @@ func _ready() -> void:
 	$VisualUpgradePath/Label.text = "Path " + str(path_number) + ":"
 	if upgrade_path:
 		var cost:int = upgrade_path.get_next_upgrade_cost()
-		upgrade_button.text = "Cost: " + str(cost)
+		if cost < 0:
+			upgrade_button.text = "Fully upgraded"
+		else:
+			upgrade_button.text = "Cost: " + str(cost)
 	update_description()
 
 

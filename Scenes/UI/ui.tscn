@@ -87,6 +87,7 @@ offset_bottom = 85.0
 size_flags_horizontal = 0
 size_flags_vertical = 0
 mouse_filter = 2
+theme_override_constants/margin_left = 16
 theme_override_constants/margin_top = 16
 
 [node name="PanelContainer" type="PanelContainer" parent="Currency" unique_id=1274065827]
@@ -98,7 +99,7 @@ mouse_filter = 2
 [node name="Label" type="Label" parent="Currency/PanelContainer" unique_id=17577120]
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
-text = "Currency:"
+text = "Available Memory:"
 
 [node name="HealthDisplay" parent="." unique_id=777721120 instance=ExtResource("5_alcrr")]
 anchors_preset = 7
@@ -114,6 +115,7 @@ grow_horizontal = 2
 grow_vertical = 0
 
 [node name="LevelLost" parent="." unique_id=2091169056 instance=ExtResource("6_1c2ca")]
+visible = false
 
 [connection signal="pressed" from="StartWave/PanelContainer/Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="Build/PanelContainer/Button" to="." method="_on_build_button_pressed"]

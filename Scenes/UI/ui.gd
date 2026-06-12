@@ -26,7 +26,7 @@ func _process(_delta: float) -> void:
 	build_button.visible = not tower_place_menu.visible and Globals.placing == 0 and not Globals.is_wave_running and not Globals.is_level_complete and not tower_info_display.visible
 	stop_build_button.visible = Globals.placing != 0
 	
-	currency_label.text = "Currency: " + str(Globals.currency)
+	currency_label.text = "Available Memory: " + str(Globals.currency) + "MB"
 
 
 func _on_button_pressed() -> void:

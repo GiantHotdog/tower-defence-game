@@ -1,11 +1,16 @@
 [gd_scene format=3 uid="uid://djmrts0a0yri2"]
 
-[ext_resource type="Texture2D" uid="uid://dwf4q2piol4t2" path="res://Assets/UI/Healthbar/Healthbar.png" id="1_qyqjh"]
+[ext_resource type="Script" uid="uid://c06llk881kqu5" path="res://Scenes/UI/health_bar.gd" id="1_qyqjh"]
 
-[node name="HealthBar" type="TextureProgressBar" unique_id=1778500361]
-offset_right = 40.0
-offset_bottom = 40.0
+[sub_resource type="LabelSettings" id="LabelSettings_qyqjh"]
+font_size = 24
+font_color = Color(7.2196126e-06, 0.74619144, 0, 1)
+
+[node name="HealthBar" type="Label" unique_id=72830044]
+offset_right = 256.0
+offset_bottom = 64.0
 scale = Vector2(0.5, 0.5)
-step = 0.1
-value = 100.0
-texture_progress = ExtResource("1_qyqjh")
+text = "Test"
+label_settings = SubResource("LabelSettings_qyqjh")
+horizontal_alignment = 1
+script = ExtResource("1_qyqjh")
