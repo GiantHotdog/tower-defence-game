@@ -59,7 +59,7 @@ func _process(_delta: float) -> void:
 			update_selection(id)
 		else:
 			update_selection(-1)
-		on_menu_select_pressed()
+		on_mouse_menu_select_pressed()
 	
 	if Input.is_action_just_pressed("menu_back"):
 		switch_to_previous_scene()
@@ -72,6 +72,10 @@ func on_menu_select_pressed():
 			play_outro()
 			await outro_finished
 			get_tree().change_scene_to_file(levels[currently_selected])
+
+
+func on_mouse_menu_select_pressed():
+	on_menu_select_pressed()
 
 
 func update_selection(new_selection:int):

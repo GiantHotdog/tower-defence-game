@@ -40,7 +40,6 @@ func die():
 	enemy_killed.emit()
 	var sub_viewport_label:Label = $GPUParticles2D/TextParticle/Label
 	sub_viewport_label.text = "0x%X%X" % [randi() % 15, randi() % 15]
-	print(sub_viewport_label.text)
 	particles.restart()
 	remove_child(particles)
 	get_parent().add_child(particles)
