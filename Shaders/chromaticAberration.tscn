@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://5f5xoenbd6ry"]
+
+[ext_resource type="Shader" uid="uid://b2ke5uegbkiw3" path="res://Shaders/chromaticAberration.gdshader" id="1_w32y1"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_87yvv"]
+shader = ExtResource("1_w32y1")
+shader_parameter/r_displacement = Vector2(2, 0)
+shader_parameter/g_displacement = Vector2(0, 0)
+shader_parameter/b_displacement = Vector2(-2, 0)
+
+[node name="chromaticAberration" type="ColorRect" unique_id=1314000960]
+material = SubResource("ShaderMaterial_87yvv")
+custom_minimum_size = Vector2(16, 16)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2

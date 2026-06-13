@@ -14,6 +14,7 @@ signal enemy_killed
 	set(value):
 		health = value
 		health_bar.set_progress(health / MAX_HEALTH)
+		_on_hit()
 @onready var health_bar:HealthBar = $HealthBar
 
 
@@ -32,7 +33,8 @@ func _process(delta: float) -> void:
 	if progress_ratio == 1.0:
 		Globals.health -= damage
 		die()
-	
+
+
 func die():
 	var particles:GPUParticles2D = $GPUParticles2D
 	enemy_killed.emit()
@@ -45,3 +47,6 @@ func die():
 	particles.global_position = global_position
 	particles.finished.connect(particles.queue_free)
 	queue_free()
+
+func _on_hit():
+	pass

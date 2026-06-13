@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://dq3f0ac1t4eau" path="res://Resources/WaveInfo/WaveInfo.gd" id="2_btxmh"]
 [ext_resource type="Resource" uid="uid://ddbhcerv8a2to" path="res://Resources/WaveInfo/Level1/wave1.tres" id="3_nqjqy"]
 [ext_resource type="Resource" uid="uid://dnbeksdeq7se4" path="res://Resources/WaveInfo/Level1/wave2.tres" id="4_hf8m8"]
+[ext_resource type="PackedScene" uid="uid://5f5xoenbd6ry" path="res://Shaders/chromaticAberration.tscn" id="5_btxmh"]
 
 [sub_resource type="Curve2D" id="Curve2D_5jgm0"]
 _data = {
@@ -24,5 +25,8 @@ curve = SubResource("Curve2D_5jgm0")
 
 [node name="PathRevealer" parent="EnemyPath" index="0" unique_id=662323682]
 position = Vector2(-128, 128)
+
+[node name="CanvasLayer" parent="." index="7" unique_id=1540000394 instance=ExtResource("5_btxmh")]
+visible = false
 
 [editable path="UI"]

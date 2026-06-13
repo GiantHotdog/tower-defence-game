@@ -2,40 +2,93 @@
 
 [ext_resource type="PackedScene" uid="uid://c3is88d7syykb" path="res://Scenes/Enemies/base_enemy.tscn" id="1_2jh1w"]
 [ext_resource type="Script" uid="uid://8jlijb6vie3m" path="res://Scenes/Enemies/weak_enemy.gd" id="2_4a6md"]
+[ext_resource type="PackedScene" uid="uid://5f5xoenbd6ry" path="res://Shaders/chromaticAberration.tscn" id="3_xkuw6"]
+[ext_resource type="Shader" uid="uid://b2ke5uegbkiw3" path="res://Shaders/chromaticAberration.gdshader" id="4_r4hvb"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_4a6md"]
 blend_mode = 1
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_4a6md"]
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_xkuw6"]
+blend_mode = 1
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_3sgos"]
 viewport_path = NodePath("GPUParticles2D/TextParticle")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xkuw6"]
+shader = ExtResource("4_r4hvb")
+shader_parameter/r_displacement = Vector2(15, 15)
+shader_parameter/g_displacement = Vector2(0, 0)
+shader_parameter/b_displacement = Vector2(-15, -15)
 
 [node name="BaseEnemy" unique_id=2135921253 instance=ExtResource("1_2jh1w")]
 material = SubResource("CanvasItemMaterial_4a6md")
 script = ExtResource("2_4a6md")
+chromatic_offset = Vector2(10, 10)
 enemy_type = 1
 
 [node name="Sprite2D" parent="." index="0" unique_id=1481800299]
 visible = false
 
-[node name="ColorRect" type="ColorRect" parent="." index="3" unique_id=641379406]
+[node name="RedSprite" type="Node2D" parent="." index="3" unique_id=508256077]
+
+[node name="ColorRect" type="ColorRect" parent="RedSprite" index="0" unique_id=641379406]
+material = SubResource("CanvasItemMaterial_xkuw6")
 offset_left = -20.0
 offset_top = -20.0
 offset_right = 20.0
 offset_bottom = 20.0
 pivot_offset = Vector2(20, 20)
-color = Color(5, 0, 1.5, 1)
+color = Color(5, 0, 0, 1)
 
-[node name="ColorRect2" type="ColorRect" parent="." index="4" unique_id=1510227065]
+[node name="ColorRect2" type="ColorRect" parent="RedSprite" index="1" unique_id=1510227065]
+material = SubResource("CanvasItemMaterial_xkuw6")
 offset_left = -20.0
 offset_top = -20.0
 offset_right = 20.0
 offset_bottom = 20.0
 rotation = 0.7853982
 pivot_offset = Vector2(20, 20)
-color = Color(5, 0, 1.5, 1)
+color = Color(5, 0, 0, 1)
+
+[node name="BlueSprite" type="Node2D" parent="." index="4" unique_id=331233237]
+
+[node name="ColorRect3" type="ColorRect" parent="BlueSprite" index="0" unique_id=468127819]
+material = SubResource("CanvasItemMaterial_xkuw6")
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+pivot_offset = Vector2(20, 20)
+color = Color(0, 0, 1.5, 1)
+
+[node name="ColorRect4" type="ColorRect" parent="BlueSprite" index="1" unique_id=1438604628]
+material = SubResource("CanvasItemMaterial_xkuw6")
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+rotation = 0.7853982
+pivot_offset = Vector2(20, 20)
+color = Color(0, 0, 1.5, 1)
 
 [node name="GPUParticles2D" parent="." index="5" unique_id=1834652281]
-texture = SubResource("ViewportTexture_4a6md")
+texture = SubResource("ViewportTexture_3sgos")
 
 [node name="TextParticle" parent="GPUParticles2D" index="0" unique_id=255381870]
 text_color = Color(5, 0, 1.5, 1)
+
+[node name="ChromaticAbberation" parent="." index="6" unique_id=1540000394 instance=ExtResource("3_xkuw6")]
+visible = false
+z_index = 1
+material = SubResource("ShaderMaterial_xkuw6")
+offset_left = -32.0
+offset_top = -32.0
+offset_right = 32.0
+offset_bottom = 32.0
+
+[node name="BackBufferCopy" type="BackBufferCopy" parent="." index="7" unique_id=1102780284]
+visible = false
+z_index = 1
+scale = Vector2(0.32, 0.32)
+
+[editable path="ChromaticAbberation"]
