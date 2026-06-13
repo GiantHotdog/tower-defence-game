@@ -6,6 +6,9 @@
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_4a6md"]
 blend_mode = 1
 
+[sub_resource type="ViewportTexture" id="ViewportTexture_4a6md"]
+viewport_path = NodePath("GPUParticles2D/TextParticle")
+
 [node name="BaseEnemy" unique_id=2135921253 instance=ExtResource("1_2jh1w")]
 material = SubResource("CanvasItemMaterial_4a6md")
 script = ExtResource("2_4a6md")
@@ -30,3 +33,9 @@ offset_bottom = 20.0
 rotation = 0.7853982
 pivot_offset = Vector2(20, 20)
 color = Color(5, 0, 1.5, 1)
+
+[node name="GPUParticles2D" parent="." index="5" unique_id=1834652281]
+texture = SubResource("ViewportTexture_4a6md")
+
+[node name="TextParticle" parent="GPUParticles2D" index="0" unique_id=255381870]
+text_color = Color(5, 0, 1.5, 1)

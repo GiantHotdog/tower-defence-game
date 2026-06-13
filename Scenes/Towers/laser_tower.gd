@@ -29,6 +29,7 @@ func _process(delta: float) -> void:
 func attack():
 	update_turret_rotation()
 	update_laser()
+	#fire_text_laser()
 	
 	is_attacking = true
 	laser_line.width = laser_line_width
@@ -52,3 +53,32 @@ func update_laser():
 
 func _finished_attacking():
 	is_attacking = false
+
+
+func fire_text_laser():
+	var distance = global_position.distance_to(target.global_position)
+	var angle = global_position.angle_to_point(target.global_position)
+	
+	var text_beam:Label = Label.new()
+	text_beam.add_theme_font_size_override("font_size", 24)
+	add_child(text_beam)
+	
+	var character_count = int(distance / 16)
+	var binary_string = ""
+	for i in range(character_count):
+		var rand = randf()
+		if rand <= 0.45:
+			binary_string += "1"
+		elif rand >= 0.55:
+			binary_string += "0"
+		else:
+			binary_string += " "
+		
+	text_beam.text = binary_string
+	text_beam.rotation = angle
+	text_beam.pivot_offset_ratio.y = 0.5
+	print(text_beam.size.y)
+	
+	var tween = create_tween()
+	tween.tween_property(text_beam, "modulate:a", 0.0, 0.1)
+	tween.tween_callback(text_beam.queue_free)
