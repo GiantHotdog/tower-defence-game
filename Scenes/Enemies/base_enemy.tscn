@@ -12,7 +12,7 @@ size = Vector2(64, 64)
 viewport_path = NodePath("GPUParticles2D/TextParticle")
 
 [sub_resource type="Curve" id="Curve_t83mw"]
-_data = [Vector2(0.014423076, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.07269283, 0.0, 0, 0]
+_data = [Vector2(0, 1), 0.0, -1.620236, 0, 0, Vector2(1, 0.5009544), 0.0, 0.0, 0, 0]
 point_count = 2
 
 [sub_resource type="CurveTexture" id="CurveTexture_pwtvn"]
@@ -21,9 +21,11 @@ curve = SubResource("Curve_t83mw")
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_glvuq"]
 particle_flag_disable_z = true
 spread = 180.0
-initial_velocity_min = 90.0
-initial_velocity_max = 150.0
+initial_velocity_min = 160.0
+initial_velocity_max = 200.0
 gravity = Vector3(0, 0, 0)
+damping_min = 200.00002
+damping_max = 300.0
 scale_curve = SubResource("CurveTexture_pwtvn")
 
 [node name="BaseEnemy" type="PathFollow2D" unique_id=2135921253]
@@ -52,7 +54,7 @@ offset_bottom = -23.0
 emitting = false
 texture = SubResource("ViewportTexture_pwtvn")
 one_shot = true
-explosiveness = 1.0
+explosiveness = 0.8
 use_fixed_seed = true
 seed = 1132127438
 process_material = SubResource("ParticleProcessMaterial_glvuq")
