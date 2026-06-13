@@ -15,14 +15,14 @@ Press enter to reboot> █
 var weekdays = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
 var months = ["", "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
 
-func _ready() -> void:
+func refresh_message():
 	var unix_time = Time.get_unix_time_from_system()
 	var date:Dictionary = Time.get_datetime_dict_from_unix_time(unix_time)
 	var time_zone = Time.get_time_zone_from_system()
 	
 	var time = "%02d:%02d:%02d" % [date["hour"], date["minute"], date["second"]]
 	
-	message = message.format({"coreCount":OS.get_processor_count(),
+	$MarginContainer/Label.text = message.format({"coreCount":OS.get_processor_count(),
 		"weekday":weekdays[date["weekday"]],
 		"month":months[date["month"]],
 		"date":date["day"],
@@ -32,7 +32,9 @@ func _ready() -> void:
 		"totalMemory":(OS.get_memory_info()["physical"] / 1024 / 1024 / 1024) + 1,
 		"pid":randi_range(1, 8192)
 		})
-	$MarginContainer/Label.text = message
+
+func _ready() -> void:
+	refresh_message()
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventKey:

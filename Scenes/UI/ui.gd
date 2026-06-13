@@ -45,3 +45,7 @@ func _on_build_button_pressed() -> void:
 
 func _on_stop_build_button_pressed() -> void:
 	tower_place_menu.cancel_place()
+
+
+func game_over():
+	$LevelLost.refresh_message()
