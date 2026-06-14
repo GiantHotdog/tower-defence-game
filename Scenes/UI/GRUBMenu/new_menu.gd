@@ -69,9 +69,10 @@ func on_menu_select_pressed():
 	if currently_selected >= 0:
 		var child:GrubLevelMenuItem = options_container.get_child(currently_selected)
 		if not child.is_locked:
+			var new_level = levels[currently_selected]
 			play_outro()
 			await outro_finished
-			get_tree().change_scene_to_file(levels[currently_selected])
+			get_tree().change_scene_to_file(new_level)
 
 
 func on_mouse_menu_select_pressed():

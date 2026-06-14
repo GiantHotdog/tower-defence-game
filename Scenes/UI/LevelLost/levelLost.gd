@@ -37,13 +37,12 @@ func _ready() -> void:
 	refresh_message()
 
 func _input(event: InputEvent) -> void:
-	if event is InputEventKey:
-		if event.keycode == KEY_ENTER:
-			play_outro()
-			await outro_finished
-			if not is_inside_tree():
-				return
-			get_tree().change_scene_to_file("res://Scenes/UI/GRUBMenu/Grub.tscn")
+	if event.is_action_pressed("intro_skip"):
+		play_outro()
+		await outro_finished
+		if not is_inside_tree():
+			return
+		get_tree().change_scene_to_file("res://Scenes/UI/GRUBMenu/Grub.tscn")
 
 func play_outro():
 	var tween = get_tree().create_tween()
