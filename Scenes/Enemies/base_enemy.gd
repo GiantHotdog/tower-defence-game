@@ -3,7 +3,7 @@ extends PathFollow2D
 
 enum ENEMY_TYPES {BASE_ENEMY, WEAK_ENEMY}
 
-signal enemy_killed
+signal enemy_killed(enemy_pid:int)
 
 @export var enemy_type:ENEMY_TYPES
 @export var move_speed:float = 500.0
@@ -37,7 +37,7 @@ func _process(delta: float) -> void:
 
 func die():
 	var particles:GPUParticles2D = $GPUParticles2D
-	enemy_killed.emit()
+	enemy_killed.emit(get_instance_id())
 	var sub_viewport_label:Label = $GPUParticles2D/TextParticle/Label
 	sub_viewport_label.text = "0x%X%X" % [randi() % 15, randi() % 15]
 	particles.restart()

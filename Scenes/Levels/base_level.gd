@@ -22,6 +22,7 @@ signal wave_complete(wave_number:int)
 @onready var path_revealer:PathRevealer = $EnemyPath/PathRevealer
 @onready var enemy_path:Path2D = $EnemyPath
 @onready var path_line:Line2D = $EnemyPath/VisualPath
+@onready var ui:UI = $UI
 
 var is_tower_info_open:bool = false
 var enemies_in_current_wave:int = 0
@@ -125,8 +126,9 @@ func get_scene_node_at_cell(cell_coords: Vector2i, tilemap:TileMapLayer) -> Node
 	return null
 
 
-func _on_enemy_killed():
+func _on_enemy_killed(enemy_pid:int):
 	enemies_in_current_wave_killed += 1
+	ui.add_log("Malware process [PID: %s] terminated" % enemy_pid)
 
 
 func add_enemy(enemy:BaseEnemy.ENEMY_TYPES):
@@ -143,6 +145,7 @@ func add_enemy(enemy:BaseEnemy.ENEMY_TYPES):
 
 
 func _on_wave_started(number: int) -> void:
+	ui.add_warning("Malware incursion [number %s] detected" % number)
 	wave_info = wave_info_dict[number]
 	enemies_in_current_wave = 0
 	enemies_in_current_wave_killed = 0
@@ -156,3 +159,7 @@ func _all_enemies_spawned():
 
 func _on_placing_set(tower_type:BaseTower.TowerTypes):
 	Globals.placing = tower_type
+
+
+func get_ui():
+	return ui

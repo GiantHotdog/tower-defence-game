@@ -1,3 +1,4 @@
+class_name UI
 extends CanvasLayer
 
 signal wave_started(number:int)
@@ -49,3 +50,11 @@ func _on_stop_build_button_pressed() -> void:
 
 func game_over():
 	$LevelLost.refresh_message()
+
+
+func add_log(message:String) -> void:
+	$TerminalLog.add_log(message)
+
+
+func add_warning(message:String) -> void:
+	$TerminalLog.add_warning(message)
