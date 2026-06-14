@@ -2,8 +2,22 @@
 
 [ext_resource type="Script" uid="uid://ccsnwp45qiuls" path="res://Scenes/UI/Terminal/terminal_log.gd" id="1_21lrs"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_21lrs"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ewuyh"]
+draw_center = false
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
 [node name="PanelContainer" type="PanelContainer" unique_id=1595488411]
-custom_minimum_size = Vector2(0, 192)
+custom_minimum_size = Vector2(0, 128)
 anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
@@ -11,6 +25,7 @@ anchor_bottom = 1.0
 offset_top = -55.0
 grow_horizontal = 2
 grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_21lrs")
 script = ExtResource("1_21lrs")
 
 [node name="TerminalLog" type="MarginContainer" parent="." unique_id=1166986598]
@@ -20,14 +35,18 @@ theme_override_constants/margin_top = 16
 theme_override_constants/margin_right = 16
 theme_override_constants/margin_bottom = 16
 
-[node name="VBoxContainer" type="VBoxContainer" parent="TerminalLog" unique_id=1115891576]
+[node name="PanelContainer" type="PanelContainer" parent="TerminalLog" unique_id=1044924646]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ewuyh")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TerminalLog/PanelContainer" unique_id=1115891576]
 layout_mode = 2
 
-[node name="SystemLog" type="Label" parent="TerminalLog/VBoxContainer" unique_id=1075743592]
+[node name="SystemLog" type="Label" parent="TerminalLog/PanelContainer/VBoxContainer" unique_id=1075743592]
 layout_mode = 2
-text = "System Log"
+text = " System Log "
 
-[node name="RichTextLabel" type="RichTextLabel" parent="TerminalLog/VBoxContainer" unique_id=414856330]
+[node name="RichTextLabel" type="RichTextLabel" parent="TerminalLog/PanelContainer/VBoxContainer" unique_id=414856330]
 layout_mode = 2
 size_flags_vertical = 3
 bbcode_enabled = true

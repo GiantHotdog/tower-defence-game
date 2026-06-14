@@ -1,7 +1,7 @@
 extends Control
 
 
-@onready var text_label:RichTextLabel = $TerminalLog/VBoxContainer/RichTextLabel
+@onready var text_label:RichTextLabel = $TerminalLog/PanelContainer/VBoxContainer/RichTextLabel
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -19,3 +19,7 @@ func add_log(message:String) -> void:
 
 func add_warning(message:String) -> void:
 	text_label.text += "> [color=orange]WARNING:[/color] " + message + "\n"
+
+
+func add_error(message:String) -> void:
+	text_label.text += "> [color=red]ERROR:[/color] " + message + "\n"

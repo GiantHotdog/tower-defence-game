@@ -47,7 +47,7 @@ func can_close_inspector():
 	return not (current_tutorial_stage == TutorialStage.UPGRADING)
 
 
-func can_place_tower(tower_pos:Vector2i) -> bool:
+func can_place_tower(tower_pos:Vector2i, write_to_log:bool = false) -> bool:
 	if current_tutorial_stage == TutorialStage.PLACING and tower_pos != placing_tutorial_pos:
 		return false
 	return super.can_place_tower(tower_pos)

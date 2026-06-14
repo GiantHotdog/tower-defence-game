@@ -58,3 +58,7 @@ func add_log(message:String) -> void:
 
 func add_warning(message:String) -> void:
 	$TerminalLog.add_warning(message)
+
+
+func add_error(message:String):
+	$TerminalLog.add_error(message)
