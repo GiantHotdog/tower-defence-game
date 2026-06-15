@@ -26,6 +26,12 @@ curve = SubResource("Curve2D_5jgm0")
 [node name="PathRevealer" parent="EnemyPath" index="0" unique_id=662323682]
 position = Vector2(-128, 128)
 
+[node name="TowerLayer" parent="." index="4" unique_id=1754609170]
+tile_map_data = PackedByteArray(0, 0, 16, 0, 6, 0, 0, 0, 0, 0, 0, 0, 6, 0, 16, 0, 1, 0, 0, 0, 0, 0, 0, 0, 6, 0)
+
+[node name="StopBuild" parent="UI/PanelContainer/VBoxContainer/PanelContainer/HBoxContainer" parent_id_path=PackedInt32Array(1213322130, 425791765) index="1" unique_id=657646023]
+visible = false
+
 [node name="CanvasLayer" parent="." index="7" unique_id=1540000394 instance=ExtResource("5_btxmh")]
 visible = false
 

@@ -1,3 +1,4 @@
+class_name TerminalLog
 extends Control
 
 

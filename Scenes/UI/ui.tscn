@@ -8,74 +8,16 @@
 [ext_resource type="PackedScene" uid="uid://dhy3yvbbrv3w6" path="res://Scenes/UI/LevelLost/levelLost.tscn" id="6_1c2ca"]
 [ext_resource type="PackedScene" uid="uid://cqsru7x2kfo3r" path="res://Scenes/UI/Terminal/terminal_log.tscn" id="6_duuxe"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jfwrg"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_duuxe"]
+bg_color = Color(0, 0, 0, 1)
+
 [node name="UI" type="CanvasLayer" unique_id=835526612]
 script = ExtResource("1_de23q")
 
 [node name="TowerInfoDisplay" parent="." unique_id=1776722101 instance=ExtResource("1_ahcct")]
-
-[node name="StartWave" type="MarginContainer" parent="." unique_id=513636464]
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -104.0
-offset_right = 104.0
-offset_bottom = 85.0
-grow_horizontal = 2
-size_flags_horizontal = 8
-theme_override_constants/margin_top = 16
-
-[node name="PanelContainer" type="PanelContainer" parent="StartWave" unique_id=403123783]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 0
-
-[node name="Button" type="Button" parent="StartWave/PanelContainer" unique_id=1013122257]
-layout_mode = 2
-theme_override_font_sizes/font_size = 32
-text = "Start Wave"
-
-[node name="Build" type="MarginContainer" parent="." unique_id=106429841]
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -208.0
-offset_bottom = 85.0
-grow_horizontal = 0
-size_flags_horizontal = 0
-size_flags_vertical = 0
-theme_override_constants/margin_top = 16
-
-[node name="PanelContainer" type="PanelContainer" parent="Build" unique_id=1774592922]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 0
-
-[node name="Button" type="Button" parent="Build/PanelContainer" unique_id=106072886]
-layout_mode = 2
-theme_override_font_sizes/font_size = 24
-text = "Build Towers"
-
-[node name="StopBuild" type="MarginContainer" parent="." unique_id=657646023]
-visible = false
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_top = -85.0
-offset_right = 208.0
-grow_vertical = 0
-size_flags_horizontal = 0
-size_flags_vertical = 0
-theme_override_constants/margin_top = 16
-
-[node name="PanelContainer" type="PanelContainer" parent="StopBuild" unique_id=1425245510]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 0
-
-[node name="Button" type="Button" parent="StopBuild/PanelContainer" unique_id=1618946705]
-layout_mode = 2
-theme_override_font_sizes/font_size = 24
-text = "Exit Build mode"
 
 [node name="LevelComplete" parent="." unique_id=226032127 instance=ExtResource("3_c7mb3")]
 
@@ -116,13 +58,88 @@ offset_bottom = 0.0
 grow_horizontal = 2
 grow_vertical = 0
 
-[node name="TerminalLog" parent="." unique_id=1166986598 instance=ExtResource("6_duuxe")]
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=2083380072]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -161.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_jfwrg")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer" unique_id=944320098]
+layout_mode = 2
+
+[node name="TerminalLog" parent="PanelContainer/VBoxContainer" unique_id=1166986598 instance=ExtResource("6_duuxe")]
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="PanelContainer/VBoxContainer" unique_id=821793942]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_duuxe")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer/PanelContainer" unique_id=425791765]
+layout_mode = 2
+
+[node name="Build" type="MarginContainer" parent="PanelContainer/VBoxContainer/PanelContainer/HBoxContainer" unique_id=106429841]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 24
+
+[node name="PanelContainer" type="PanelContainer" parent="PanelContainer/VBoxContainer/PanelContainer/HBoxContainer/Build" unique_id=1774592922]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+
+[node name="Button" type="Button" parent="PanelContainer/VBoxContainer/PanelContainer/HBoxContainer/Build/PanelContainer" unique_id=106072886]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Init processes"
+
+[node name="StopBuild" type="MarginContainer" parent="PanelContainer/VBoxContainer/PanelContainer/HBoxContainer" unique_id=657646023]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 24
+
+[node name="PanelContainer" type="PanelContainer" parent="PanelContainer/VBoxContainer/PanelContainer/HBoxContainer/StopBuild" unique_id=1425245510]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+
+[node name="Button" type="Button" parent="PanelContainer/VBoxContainer/PanelContainer/HBoxContainer/StopBuild/PanelContainer" unique_id=1618946705]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Exit Init mode"
+
+[node name="StartWave" type="MarginContainer" parent="PanelContainer/VBoxContainer/PanelContainer/HBoxContainer" unique_id=513636464]
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 24
+
+[node name="PanelContainer" type="PanelContainer" parent="PanelContainer/VBoxContainer/PanelContainer/HBoxContainer/StartWave" unique_id=403123783]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+
+[node name="Button" type="Button" parent="PanelContainer/VBoxContainer/PanelContainer/HBoxContainer/StartWave/PanelContainer" unique_id=1013122257]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Start Wave"
 
 [node name="LevelLost" parent="." unique_id=2091169056 instance=ExtResource("6_1c2ca")]
 visible = false
 
-[connection signal="pressed" from="StartWave/PanelContainer/Button" to="." method="_on_button_pressed"]
-[connection signal="pressed" from="Build/PanelContainer/Button" to="." method="_on_build_button_pressed"]
-[connection signal="pressed" from="StopBuild/PanelContainer/Button" to="." method="_on_stop_build_button_pressed"]
 [connection signal="set_placing" from="TowerPlaceMenu" to="." method="_on_placing_set"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/PanelContainer/HBoxContainer/Build/PanelContainer/Button" to="." method="_on_build_button_pressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/PanelContainer/HBoxContainer/StopBuild/PanelContainer/Button" to="." method="_on_stop_build_button_pressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/PanelContainer/HBoxContainer/StartWave/PanelContainer/Button" to="." method="_on_button_pressed"]
 [connection signal="visibility_changed" from="LevelLost" to="." method="game_over"]

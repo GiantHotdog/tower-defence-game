@@ -3,6 +3,9 @@
 [ext_resource type="Script" uid="uid://5pmh12grj4au" path="res://Scenes/UI/TowerInfoDisplay/tower_info_display.gd" id="1_y0tth"]
 [ext_resource type="Texture2D" uid="uid://bgfsjwlq6hy32" path="res://Assets/kenney_tower-defense-top-down/PNG/Retina/towerDefense_tile017.png" id="2_flw8c"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_aw71p"]
+bg_color = Color(0, 0, 0, 1)
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_flw8c"]
 content_margin_left = 4.0
 content_margin_top = 4.0
@@ -37,6 +40,7 @@ anchor_right = 1.0
 offset_left = -197.0
 offset_bottom = 96.0
 grow_horizontal = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_aw71p")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer" unique_id=963645472]
 layout_mode = 2

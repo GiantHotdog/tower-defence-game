@@ -17,12 +17,12 @@ corner_radius_bottom_right = 3
 corner_radius_bottom_left = 3
 
 [node name="PanelContainer" type="PanelContainer" unique_id=1595488411]
-custom_minimum_size = Vector2(0, 128)
+custom_minimum_size = Vector2(0, 122)
 anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -55.0
+offset_top = -122.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_styles/panel = SubResource("StyleBoxFlat_21lrs")

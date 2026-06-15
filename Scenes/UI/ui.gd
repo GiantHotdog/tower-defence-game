@@ -5,14 +5,15 @@ signal wave_started(number:int)
 signal set_placing(tower_type:BaseTower.TowerTypes)
 
 
-@onready var start_wave_container:Container = $StartWave
+@onready var start_wave_container:Container = $PanelContainer/VBoxContainer/PanelContainer/HBoxContainer/StartWave
 @onready var level_complete:Control = $LevelComplete
-@onready var build_button:Control = $Build
+@onready var build_button:Control = $PanelContainer/VBoxContainer/PanelContainer/HBoxContainer/Build
 @onready var tower_place_menu:TowerPlaceMenu = $TowerPlaceMenu
-@onready var stop_build_button:Control = $StopBuild
+@onready var stop_build_button:Control = $PanelContainer/VBoxContainer/PanelContainer/HBoxContainer/StopBuild
 @onready var currency_label:Label = $Currency/PanelContainer/Label
 @onready var tower_info_display:Control = $TowerInfoDisplay
 @onready var level_lost:Control = $LevelLost
+@onready var terminal:TerminalLog = $PanelContainer/VBoxContainer/TerminalLog
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -21,11 +22,11 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
-	start_wave_container.visible = not (Globals.is_wave_running or Globals.is_level_complete) and Globals.placing == 0 and not tower_place_menu.visible and Globals.is_start_wave_enabled
+	#start_wave_container.visible = not (Globals.is_wave_running or Globals.is_level_complete) and Globals.placing == 0 and not tower_place_menu.visible and Globals.is_start_wave_enabled
 	level_complete.visible = Globals.is_level_complete and not level_lost.visible
 	level_lost.visible = Globals.health <= 0
-	build_button.visible = not tower_place_menu.visible and Globals.placing == 0 and not Globals.is_wave_running and not Globals.is_level_complete and not tower_info_display.visible
-	stop_build_button.visible = Globals.placing != 0
+	build_button.visible = Globals.placing == 0 and not tower_place_menu.visible
+	stop_build_button.visible = Globals.placing != 0 or tower_place_menu.visible
 	
 	currency_label.text = "Available Memory: " + str(Globals.currency) + "MB"
 
@@ -46,6 +47,7 @@ func _on_build_button_pressed() -> void:
 
 func _on_stop_build_button_pressed() -> void:
 	tower_place_menu.cancel_place()
+	tower_place_menu.visible = not tower_place_menu.visible
 
 
 func game_over():
@@ -53,12 +55,12 @@ func game_over():
 
 
 func add_log(message:String) -> void:
-	$TerminalLog.add_log(message)
+	terminal.add_log(message)
 
 
 func add_warning(message:String) -> void:
-	$TerminalLog.add_warning(message)
+	terminal.add_warning(message)
 
 
 func add_error(message:String):
-	$TerminalLog.add_error(message)
+	terminal.add_error(message)
