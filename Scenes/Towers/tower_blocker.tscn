@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://6no7okuh1op6"]
+
+[ext_resource type="Script" uid="uid://bb4gie3rfkmbn" path="res://Scenes/Towers/tower_blocker.gd" id="1_i3hi0"]
+[ext_resource type="Texture2D" uid="uid://n5wurppyeq5" path="res://icon.svg" id="2_ksimh"]
+
+[node name="TowerBlocker" type="Node2D" unique_id=258858157]
+script = ExtResource("1_i3hi0")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=869520283]
+texture = ExtResource("2_ksimh")

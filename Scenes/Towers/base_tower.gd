@@ -2,8 +2,8 @@ class_name BaseTower
 extends Node2D
 
 enum TargetMode {CLOSEST, FURTHEST, MOST_PROGRESS, LEAST_HEALTH, MOST_HEALTH}
-enum TowerTypes {NONE, BASE_TOWER, LASER_TOWER, LOGIC_GATE, BUFFER_OVERFLOW, SIGTERM}
-enum TowerCosts {NONE = 0, BASE_TOWER = 5, LASER_TOWER = 5, LOGIC_GATE = 10, BUFFER_OVERFLOW = 20, SIGTERM = 40}
+enum TowerTypes {NONE, BASE_TOWER, LASER_TOWER, LOGIC_GATE, BUFFER_OVERFLOW, SIGTERM, TOWER_BLOCKER}
+enum TowerCosts {NONE = 0, BASE_TOWER = 5, LASER_TOWER = 5, LOGIC_GATE = 10, BUFFER_OVERFLOW = 20, SIGTERM = 40, TOWER_BLOCKER = 0}
 
 ## The name of the tower, to be displayed in the info display
 @export var display_name:String = "Base Tower"

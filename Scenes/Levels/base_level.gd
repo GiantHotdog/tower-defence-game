@@ -70,7 +70,7 @@ func _unhandled_input(_event: InputEvent) -> void:
 			var clicked_cell: Vector2i = tower_map.local_to_map(tower_map.to_local(local_click_pos))
 			var scene_node: Node = get_scene_node_at_cell(clicked_cell, tower_map)
 			if scene_node:
-				if Globals.placing == 0 and Globals.is_inspector_enabled:
+				if Globals.placing == 0 and Globals.is_inspector_enabled and not scene_node is TowerBlocker:
 					tower_info.tower_selected.emit(scene_node, self)
 				elif Globals.placing != 0:
 					ui.add_error("Cannot init process - memory location occupied")

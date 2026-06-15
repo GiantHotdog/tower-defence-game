@@ -1,0 +1,2 @@
+class_name TowerBlocker
+extends Node2D
