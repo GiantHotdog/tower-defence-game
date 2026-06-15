@@ -37,7 +37,7 @@ func _ready() -> void:
 	refresh_message()
 
 func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("intro_skip"):
+	if visible and event.is_action_pressed("intro_skip"):
 		play_outro()
 		await outro_finished
 		if not is_inside_tree():

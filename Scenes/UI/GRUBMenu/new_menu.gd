@@ -26,7 +26,8 @@ func _ready() -> void:
 
 
 func _input(event: InputEvent) -> void:
-	get_window().mode = Window.MODE_EXCLUSIVE_FULLSCREEN
+	if event is InputEventMouseButton:
+		get_window().mode = Window.MODE_EXCLUSIVE_FULLSCREEN
 	
 	if event is InputEventMouseMotion:
 		var node:Control = get_viewport().gui_get_hovered_control()

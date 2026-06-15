@@ -19,6 +19,7 @@ tower_type = 2
 [node name="Laser" type="Line2D" parent="." index="0" unique_id=1584768648]
 material = SubResource("CanvasItemMaterial_ah1q8")
 default_color = Color(5, 5, 5, 1)
+texture_mode = 1
 joint_mode = 2
 begin_cap_mode = 2
 end_cap_mode = 2

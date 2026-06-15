@@ -22,6 +22,7 @@ signal wave_complete(wave_number:int)
 @onready var path_revealer:PathRevealer = $EnemyPath/PathRevealer
 @onready var enemy_path:Path2D = $EnemyPath
 @onready var path_line:Line2D = $EnemyPath/VisualPath
+@onready var ui:UI = $UI
 
 var is_tower_info_open:bool = false
 var enemies_in_current_wave:int = 0
@@ -71,7 +72,9 @@ func _unhandled_input(_event: InputEvent) -> void:
 			if scene_node:
 				if Globals.placing == 0 and Globals.is_inspector_enabled:
 					tower_info.tower_selected.emit(scene_node, self)
-			elif Input.is_action_just_pressed("place_tower") and can_place_tower(clicked_cell):
+				elif Globals.placing != 0:
+					ui.add_error("Cannot init process - memory location occupied")
+			elif Input.is_action_just_pressed("place_tower") and can_place_tower(clicked_cell, true):
 				var tower_name:String = BaseTower.TowerTypes.keys()[Globals.placing]
 				var cost = BaseTower.TowerCosts[tower_name]
 				
@@ -81,6 +84,8 @@ func _unhandled_input(_event: InputEvent) -> void:
 					tower_map.set_cell(clicked_cell, 0, Vector2i(0, 0), Globals.placing)
 					if Globals.placing:
 						towers_placed += 1
+				else:
+					ui.add_error("Cannot init process - out of memory error")
 			elif can_close_inspector():
 				tower_info.tower_deselected.emit()
 
@@ -101,9 +106,11 @@ func update_place_assist():
 		#place_assist_map.modulate = Color(1, 1, 1, .5)
 
 
-func can_place_tower(tower_pos:Vector2i) -> bool:
+func can_place_tower(tower_pos:Vector2i, write_to_log:bool = false) -> bool:
 	var node_at_pos: Node = get_scene_node_at_cell(tower_pos, tower_map)
 	if node_at_pos:
+		if write_to_log:
+			ui.add_error("Cannot init process - memory location occupied")
 		return false
 	if is_tower_info_open:
 		return false
@@ -125,8 +132,9 @@ func get_scene_node_at_cell(cell_coords: Vector2i, tilemap:TileMapLayer) -> Node
 	return null
 
 
-func _on_enemy_killed():
+func _on_enemy_killed(enemy_pid:int):
 	enemies_in_current_wave_killed += 1
+	ui.add_log("Malware process [color=#ff00ff][PID: %s][/color] terminated" % enemy_pid)
 
 
 func add_enemy(enemy:BaseEnemy.ENEMY_TYPES):
@@ -143,6 +151,7 @@ func add_enemy(enemy:BaseEnemy.ENEMY_TYPES):
 
 
 func _on_wave_started(number: int) -> void:
+	ui.add_warning("Malware incursion [number %s] detected" % number)
 	wave_info = wave_info_dict[number]
 	enemies_in_current_wave = 0
 	enemies_in_current_wave_killed = 0
@@ -156,3 +165,7 @@ func _all_enemies_spawned():
 
 func _on_placing_set(tower_type:BaseTower.TowerTypes):
 	Globals.placing = tower_type
+
+
+func get_ui():
+	return ui
