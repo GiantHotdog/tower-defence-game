@@ -9,7 +9,6 @@ script = ExtResource("2_itdyk")
 display_name = "Buffer Overflow"
 attack_speed = 0.333
 damage = 5.0
-attack_range = 500.0
 projectile_scene_path = "uid://cn12itbm5f627"
 tower_type = 4
 

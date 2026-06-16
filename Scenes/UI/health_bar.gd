@@ -2,7 +2,10 @@ class_name HealthBar
 extends Label
 
 @export var character_count:int = 10
-@export var health_percent:float = 0
+@export var health_percent:float = 0:
+	set(value):
+		health_percent = value
+		_update_label()
 
 var health_full_char:String = "█"
 var health_empty_char:String = "░"

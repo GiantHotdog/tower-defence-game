@@ -22,7 +22,7 @@ func add_error(message:String) -> void:
 
 func get_time_str() -> String:
 	var dict = Time.get_datetime_dict_from_system()
-	return "[color=green][lb]%d:%d:%d[rb][/color]" % [dict["hour"], dict["minute"], dict["second"]]
+	return "[color=green][lb]%02d:%02d:%02d[rb][/color]" % [dict["hour"], dict["minute"], dict["second"]]
 
 
 func append_time_str() -> void:

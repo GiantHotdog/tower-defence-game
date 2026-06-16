@@ -1,9 +1,23 @@
 [gd_scene format=3 uid="uid://irxxcy0okkqa"]
 
 [ext_resource type="Script" uid="uid://bsyqd5bs4718j" path="res://Scenes/UI/Health/health_display.gd" id="1_gbqbv"]
+[ext_resource type="PackedScene" uid="uid://djmrts0a0yri2" path="res://Scenes/UI/health_bar.tscn" id="2_1rjy5"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gbqbv"]
+bg_color = Color(0.011764706, 0.015686275, 0.007843138, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.05882353, 0.09803922, 0.18431373, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
 
 [node name="HealthDisplay" type="PanelContainer" unique_id=777721120]
 offset_bottom = 40.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_gbqbv")
 script = ExtResource("1_gbqbv")
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=623090084]
@@ -16,17 +30,24 @@ theme_override_constants/margin_bottom = 8
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer" unique_id=254132050]
 layout_mode = 2
 
-[node name="Static" type="Label" parent="MarginContainer/HBoxContainer" unique_id=1574841650]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer" unique_id=1179665937]
 layout_mode = 2
-theme_override_font_sizes/font_size = 32
+
+[node name="Static" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer" unique_id=1574841650]
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
 text = "Program integrity:"
 
-[node name="HealthLabel" type="Label" parent="MarginContainer/HBoxContainer" unique_id=889109753]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer" unique_id=1881478705]
 layout_mode = 2
-theme_override_font_sizes/font_size = 32
-text = "100"
 
-[node name="Static2" type="Label" parent="MarginContainer/HBoxContainer" unique_id=559372350]
+[node name="HealthBar" parent="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer" unique_id=72830044 instance=ExtResource("2_1rjy5")]
 layout_mode = 2
-theme_override_font_sizes/font_size = 32
-text = "%"
+size_flags_horizontal = 3
+
+[node name="HealthLabel" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer" unique_id=889109753]
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_font_sizes/font_size = 16
+text = "100%"
+horizontal_alignment = 2

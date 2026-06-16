@@ -35,7 +35,7 @@ point_count = 3
 
 [node name="BaseLevel" unique_id=555824650 instance=ExtResource("1_rvv8h")]
 script = ExtResource("2_7jnue")
-placing_tutorial_pos = Vector2i(14, 3)
+placing_tutorial_pos = Vector2i(7, 3)
 dialogues = Array[String](["Hello!", "Welcome to Kernel Panic!", "Click in the top right to place towers", "Well done!", "Click the button at the top to start the wave", "If malware gets past, it reduces our program's integrity", "You can see this at the bottom", "Now we can upgrade our tower", "Click on the tower we just placed", "Now click on 'upgrade'", "Finish the level!"])
 close_dialogue_indexes = Array[int]([3, 5, 9, 10, 11])
 wave_info_dict = Dictionary[int, ExtResource("3_th7ri")]({

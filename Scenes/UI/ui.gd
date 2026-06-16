@@ -10,7 +10,7 @@ signal set_placing(tower_type:BaseTower.TowerTypes)
 @onready var build_button:Control = $PanelContainer/VBoxContainer/PanelContainer/HBoxContainer/Build
 @onready var tower_place_menu:TowerPlaceMenu = $TowerPlaceMenu
 @onready var stop_build_button:Control = $PanelContainer/VBoxContainer/PanelContainer/HBoxContainer/StopBuild
-@onready var currency_label:Label = $Currency/PanelContainer/Label
+@onready var currency_label:Label = $PanelContainer2/MarginContainer/VBoxContainer/Currency/MarginContainer/VBoxContainer/Label
 @onready var tower_info_display:Control = $TowerInfoDisplay
 @onready var level_lost:Control = $LevelLost
 @onready var terminal:TerminalLog = $PanelContainer/VBoxContainer/TerminalLog

@@ -8,7 +8,7 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ehmfq"]
 shader = ExtResource("2_n1jfr")
-shader_parameter/grid_size = Vector2(64, 64)
+shader_parameter/grid_size = Vector2(32, 32)
 shader_parameter/grid_color = Color(0, 0.5, 0.6, 0.3)
 shader_parameter/line_thickness = 1.0
 
@@ -41,8 +41,8 @@ tile_map_data = PackedByteArray(0, 0, 6, 0, 3, 0, 0, 0, 0, 0, 0, 0, 3, 0)
 tile_set = ExtResource("3_30ow2")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=324976822]
-position = Vector2(1152, 648)
-zoom = Vector2(0.5, 0.5)
+position = Vector2(2304, 1296)
+zoom = Vector2(0.25, 0.25)
 
 [node name="EnemyPath" type="Path2D" parent="." unique_id=1563632205]
 curve = SubResource("Curve2D_qqh3o")

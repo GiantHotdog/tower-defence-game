@@ -9,10 +9,22 @@
 [ext_resource type="PackedScene" uid="uid://cqsru7x2kfo3r" path="res://Scenes/UI/Terminal/terminal_log.tscn" id="6_duuxe"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jfwrg"]
-bg_color = Color(0, 0, 0, 1)
+bg_color = Color(0.011764706, 0.015686275, 0.007843138, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_duuxe"]
-bg_color = Color(0, 0, 0, 1)
+bg_color = Color(0.011764706, 0.015686275, 0.007843138, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mbl0m"]
+bg_color = Color(0.011764706, 0.015686275, 0.007843138, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.05882353, 0.09803922, 0.18431373, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
 
 [node name="UI" type="CanvasLayer" unique_id=835526612]
 script = ExtResource("1_de23q")
@@ -23,40 +35,6 @@ script = ExtResource("1_de23q")
 
 [node name="TowerPlaceMenu" parent="." unique_id=652360184 instance=ExtResource("4_fo61o")]
 visible = false
-
-[node name="Currency" type="MarginContainer" parent="." unique_id=1074694505]
-offset_right = 208.0
-offset_bottom = 85.0
-size_flags_horizontal = 0
-size_flags_vertical = 0
-mouse_filter = 2
-theme_override_constants/margin_left = 16
-theme_override_constants/margin_top = 16
-
-[node name="PanelContainer" type="PanelContainer" parent="Currency" unique_id=1274065827]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 0
-mouse_filter = 2
-
-[node name="Label" type="Label" parent="Currency/PanelContainer" unique_id=17577120]
-layout_mode = 2
-theme_override_font_sizes/font_size = 24
-text = "Available Memory:"
-
-[node name="HealthDisplay" parent="." unique_id=777721120 instance=ExtResource("5_alcrr")]
-visible = false
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -186.5
-offset_top = -45.0
-offset_right = 186.5
-offset_bottom = 0.0
-grow_horizontal = 2
-grow_vertical = 0
 
 [node name="PanelContainer" type="PanelContainer" parent="." unique_id=2083380072]
 anchors_preset = 12
@@ -72,8 +50,8 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_jfwrg")
 layout_mode = 2
 
 [node name="TerminalLog" parent="PanelContainer/VBoxContainer" unique_id=1166986598 instance=ExtResource("6_duuxe")]
-visible = false
 layout_mode = 2
+size_flags_horizontal = 0
 
 [node name="PanelContainer" type="PanelContainer" parent="PanelContainer/VBoxContainer" unique_id=821793942]
 layout_mode = 2
@@ -159,6 +137,58 @@ text = "System Log"
 
 [node name="LevelLost" parent="." unique_id=2091169056 instance=ExtResource("6_1c2ca")]
 visible = false
+
+[node name="PanelContainer2" type="PanelContainer" parent="." unique_id=1223981862]
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -196.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_jfwrg")
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer2" unique_id=1940599907]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer2/MarginContainer" unique_id=955840931]
+layout_mode = 2
+
+[node name="Currency" type="PanelContainer" parent="PanelContainer2/MarginContainer/VBoxContainer" unique_id=1274065827]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_mbl0m")
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer2/MarginContainer/VBoxContainer/Currency" unique_id=1074694505]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+mouse_filter = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer2/MarginContainer/VBoxContainer/Currency/MarginContainer" unique_id=1591858703]
+layout_mode = 2
+
+[node name="Static" type="Label" parent="PanelContainer2/MarginContainer/VBoxContainer/Currency/MarginContainer/VBoxContainer" unique_id=17577120]
+layout_mode = 2
+text = "Available Memory:"
+
+[node name="Label" type="Label" parent="PanelContainer2/MarginContainer/VBoxContainer/Currency/MarginContainer/VBoxContainer" unique_id=265412105]
+layout_mode = 2
+text = "0MB"
+horizontal_alignment = 2
+
+[node name="HealthDisplay" parent="PanelContainer2/MarginContainer/VBoxContainer" unique_id=777721120 instance=ExtResource("5_alcrr")]
+layout_mode = 2
 
 [connection signal="set_placing" from="TowerPlaceMenu" to="." method="_on_placing_set"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/PanelContainer/HBoxContainer/Build/PanelContainer/Button" to="." method="_on_build_button_pressed"]
