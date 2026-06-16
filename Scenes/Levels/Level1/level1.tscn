@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://cgooce8fh5cw4"]
+[gd_scene format=4 uid="uid://cgooce8fh5cw4"]
 
 [ext_resource type="PackedScene" uid="uid://crdqerfs03sfa" path="res://Scenes/Levels/base_level.tscn" id="1_4qeik"]
 [ext_resource type="Script" uid="uid://dq3f0ac1t4eau" path="res://Resources/WaveInfo/WaveInfo.gd" id="2_btxmh"]
@@ -27,10 +27,7 @@ curve = SubResource("Curve2D_5jgm0")
 position = Vector2(-128, 128)
 
 [node name="TowerLayer" parent="." index="4" unique_id=1754609170]
-tile_map_data = PackedByteArray(0, 0, 16, 0, 6, 0, 0, 0, 0, 0, 0, 0, 6, 0, 16, 0, 1, 0, 0, 0, 0, 0, 0, 0, 6, 0)
-
-[node name="StopBuild" parent="UI/PanelContainer/VBoxContainer/PanelContainer/HBoxContainer" parent_id_path=PackedInt32Array(1213322130, 425791765) index="1" unique_id=657646023]
-visible = false
+tile_map_data = PackedByteArray("AAAAAAkAAAAAAAAABgABAAkAAAAAAAAABgACAAkAAAAAAAAABgADAAkAAAAAAAAABgAEAAkAAAAAAAAABgAFAAkAAAAAAAAABgAGAAkAAAAAAAAABgAHAAkAAAAAAAAABgAIAAkAAAAAAAAABgAJAAkAAAAAAAAABgAKAAkAAAAAAAAABgALAAkAAAAAAAAABgAMAAkAAAAAAAAABgANAAkAAAAAAAAABgAOAAkAAAAAAAAABgAPAAkAAAAAAAAABgAQAAkAAAAAAAAABgARAAkAAAAAAAAABgA=")
 
 [node name="CanvasLayer" parent="." index="7" unique_id=1540000394 instance=ExtResource("5_btxmh")]
 visible = false
