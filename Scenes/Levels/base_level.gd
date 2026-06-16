@@ -95,6 +95,10 @@ func can_close_inspector() -> bool:
 	return true
 
 
+func _on_enemy_reached_end_of_path(enemy_pid:int, enemy_damage:int):
+	ui.add_error("Kernel corrupted by process [color=#ff00ff][PID: %d, integrity lost: %d%%][/color]" % [enemy_pid, enemy_damage])
+
+
 func update_place_assist():
 	place_assist_map.clear()
 	var mouse_pos:Vector2 = get_local_mouse_position()
@@ -139,15 +143,16 @@ func _on_enemy_killed(enemy_pid:int):
 
 func add_enemy(enemy:BaseEnemy.ENEMY_TYPES):
 	enemies_in_current_wave += 1
+	var spawning:BaseEnemy
 	match enemy:
 		BaseEnemy.ENEMY_TYPES.BASE_ENEMY:
-			var spawning:BaseEnemy = base_enemy_scene.instantiate()
-			spawning.enemy_killed.connect(_on_enemy_killed)
-			enemy_path.add_child(spawning)
+			spawning = base_enemy_scene.instantiate()
 		BaseEnemy.ENEMY_TYPES.WEAK_ENEMY:
-			var spawning:BaseEnemy = weak_enemy_scene.instantiate()
-			spawning.enemy_killed.connect(_on_enemy_killed)
-			enemy_path.add_child(spawning)
+			spawning = weak_enemy_scene.instantiate()
+	if spawning:
+		spawning.enemy_killed.connect(_on_enemy_killed)
+		spawning.reached_end_of_path.connect(_on_enemy_reached_end_of_path)
+		enemy_path.add_child(spawning)
 
 
 func _on_wave_started(number: int) -> void:

@@ -4,6 +4,7 @@ extends PathFollow2D
 enum ENEMY_TYPES {BASE_ENEMY, WEAK_ENEMY}
 
 signal enemy_killed(enemy_pid:int)
+signal reached_end_of_path(enemy_pid:int, damage_dealt:int)
 
 @export var enemy_type:ENEMY_TYPES
 @export var move_speed:float = 500.0
@@ -32,12 +33,15 @@ func _process(delta: float) -> void:
 		die()
 	if progress_ratio == 1.0:
 		Globals.health -= damage
-		die()
+		die(true)
 
 
-func die():
+func die(is_at_end_of_path:bool = false):
 	var particles:GPUParticles2D = $GPUParticles2D
-	enemy_killed.emit(get_instance_id())
+	if is_at_end_of_path:
+		reached_end_of_path.emit(get_instance_id(), damage)
+	else:
+		enemy_killed.emit(get_instance_id())
 	var sub_viewport_label:Label = $GPUParticles2D/TextParticle/Label
 	sub_viewport_label.text = "0x%X%X" % [randi() % 15, randi() % 15]
 	particles.restart()
