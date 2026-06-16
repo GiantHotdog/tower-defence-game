@@ -14,11 +14,19 @@ signal set_placing(tower_type:BaseTower.TowerTypes)
 @onready var tower_info_display:Control = $TowerInfoDisplay
 @onready var level_lost:Control = $LevelLost
 @onready var terminal:TerminalLog = $PanelContainer/VBoxContainer/TerminalLog
+@onready var terminal_button_container:PanelContainer = $PanelContainer/VBoxContainer/PanelContainer/HBoxContainer/ShowTerminal/PanelContainer
+
+var new_log_hint_panel:StyleBoxFlat
+var tween:Tween
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass
-
+	new_log_hint_panel = StyleBoxFlat.new()
+	new_log_hint_panel.set_border_width_all(3)
+	new_log_hint_panel.set_corner_radius_all(3)
+	new_log_hint_panel.draw_center = false
+	new_log_hint_panel.border_color = Color(1, 1, 1, 0)
+	terminal_button_container.add_theme_stylebox_override("panel", new_log_hint_panel)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
@@ -56,16 +64,28 @@ func game_over():
 
 
 func add_log(message:String) -> void:
+	new_terminal_log_hint(Color(1.0, 1.0, 1.0, 1.0))
 	terminal.add_log(message)
 
 
 func add_warning(message:String) -> void:
+	new_terminal_log_hint(Color(1.0, 0.647, 0.0, 1.0))
 	terminal.add_warning(message)
 
 
 func add_error(message:String):
+	new_terminal_log_hint(Color(0.985, 0.002, 0.0, 1.0))
 	terminal.add_error(message)
 
 
 func _on_system_log_pressed() -> void:
 	terminal.visible = not terminal.visible
+
+
+func new_terminal_log_hint(color:Color = Color(1, 1, 1)):
+	new_log_hint_panel.border_color = Color(color.r, color.g, color.b, 0)
+	if tween:
+		tween.kill()
+	tween = get_tree().create_tween()
+	tween.tween_property(new_log_hint_panel, "border_color", color, 0.5)
+	tween.tween_property(new_log_hint_panel, "border_color", Color(color.r, color.g, color.b, 0), 0.5)
