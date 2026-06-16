@@ -4,23 +4,26 @@ extends Control
 
 @onready var text_label:RichTextLabel = $TerminalLog/PanelContainer/VBoxContainer/RichTextLabel
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-
 
 func add_log(message:String) -> void:
-	text_label.text += "> " + message + "\n"
+	append_time_str()
+	text_label.text += " > " + message + "\n"
 
 
 func add_warning(message:String) -> void:
-	text_label.text += "> [color=orange]WARNING:[/color] " + message + "\n"
+	append_time_str()
+	text_label.text += " > [color=orange]WARNING:[/color] " + message + "\n"
 
 
 func add_error(message:String) -> void:
-	text_label.text += "> [color=red]ERROR:[/color] " + message + "\n"
+	append_time_str()
+	text_label.text += " > [color=red]ERROR:[/color] " + message + "\n"
+
+
+func get_time_str() -> String:
+	var dict = Time.get_datetime_dict_from_system()
+	return "[color=green][lb]%d:%d:%d[rb][/color]" % [dict["hour"], dict["minute"], dict["second"]]
+
+
+func append_time_str() -> void:
+	text_label.text += get_time_str()
