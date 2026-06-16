@@ -96,6 +96,7 @@ func can_close_inspector() -> bool:
 
 
 func _on_enemy_reached_end_of_path(enemy_pid:int, enemy_damage:int):
+	enemies_in_current_wave_killed += 1
 	ui.add_error("Kernel corrupted by process [color=#ff00ff][PID: %d, integrity lost: %d%%][/color]" % [enemy_pid, enemy_damage])
 
 

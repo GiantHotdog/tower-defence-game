@@ -33,8 +33,9 @@ func _process(_delta: float) -> void:
 
 func _on_button_pressed() -> void:
 	Globals.current_wave_number += 1
-	Globals.is_wave_running = true
-	wave_started.emit(Globals.current_wave_number)
+	if not Globals.is_wave_running:
+		Globals.is_wave_running = true
+		wave_started.emit(Globals.current_wave_number)
 
 
 func _on_placing_set(tower_type:BaseTower.TowerTypes):
