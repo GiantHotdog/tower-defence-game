@@ -17,7 +17,7 @@ corner_radius_bottom_right = 3
 corner_radius_bottom_left = 3
 
 [node name="PanelContainer" type="PanelContainer" unique_id=1595488411]
-custom_minimum_size = Vector2(0, 122)
+custom_minimum_size = Vector2(0, 192)
 anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0

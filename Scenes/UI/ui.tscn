@@ -63,7 +63,7 @@ anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -161.0
+offset_top = -61.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_styles/panel = SubResource("StyleBoxFlat_jfwrg")
@@ -72,6 +72,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_jfwrg")
 layout_mode = 2
 
 [node name="TerminalLog" parent="PanelContainer/VBoxContainer" unique_id=1166986598 instance=ExtResource("6_duuxe")]
+visible = false
 layout_mode = 2
 
 [node name="PanelContainer" type="PanelContainer" parent="PanelContainer/VBoxContainer" unique_id=821793942]
@@ -86,6 +87,7 @@ layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
 theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
 theme_override_constants/margin_right = 16
 theme_override_constants/margin_bottom = 24
 
@@ -100,10 +102,12 @@ theme_override_font_sizes/font_size = 24
 text = "Init processes"
 
 [node name="StopBuild" type="MarginContainer" parent="PanelContainer/VBoxContainer/PanelContainer/HBoxContainer" unique_id=657646023]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
 theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
 theme_override_constants/margin_right = 16
 theme_override_constants/margin_bottom = 24
 
@@ -121,7 +125,7 @@ text = "Exit Init mode"
 layout_mode = 2
 size_flags_horizontal = 8
 theme_override_constants/margin_left = 16
-theme_override_constants/margin_top = 0
+theme_override_constants/margin_top = 16
 theme_override_constants/margin_right = 16
 theme_override_constants/margin_bottom = 24
 
@@ -135,6 +139,24 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 24
 text = "Start Wave"
 
+[node name="ShowTerminal" type="MarginContainer" parent="PanelContainer/VBoxContainer/PanelContainer/HBoxContainer" unique_id=568055010]
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 24
+
+[node name="PanelContainer" type="PanelContainer" parent="PanelContainer/VBoxContainer/PanelContainer/HBoxContainer/ShowTerminal" unique_id=276731980]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+
+[node name="Button" type="Button" parent="PanelContainer/VBoxContainer/PanelContainer/HBoxContainer/ShowTerminal/PanelContainer" unique_id=1615134958]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "System Log"
+
 [node name="LevelLost" parent="." unique_id=2091169056 instance=ExtResource("6_1c2ca")]
 visible = false
 
@@ -142,4 +164,5 @@ visible = false
 [connection signal="pressed" from="PanelContainer/VBoxContainer/PanelContainer/HBoxContainer/Build/PanelContainer/Button" to="." method="_on_build_button_pressed"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/PanelContainer/HBoxContainer/StopBuild/PanelContainer/Button" to="." method="_on_stop_build_button_pressed"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/PanelContainer/HBoxContainer/StartWave/PanelContainer/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/PanelContainer/HBoxContainer/ShowTerminal/PanelContainer/Button" to="." method="_on_system_log_pressed"]
 [connection signal="visibility_changed" from="LevelLost" to="." method="game_over"]

@@ -64,3 +64,7 @@ func add_warning(message:String) -> void:
 
 func add_error(message:String):
 	terminal.add_error(message)
+
+
+func _on_system_log_pressed() -> void:
+	terminal.visible = not terminal.visible
