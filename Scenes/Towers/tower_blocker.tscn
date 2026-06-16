@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://clu6gvajuc25w" path="res://Assets/Towers/towerBlocker.png" id="2_ksimh"]
 
 [node name="TowerBlocker" type="Node2D" unique_id=258858157]
+visible = false
 script = ExtResource("1_i3hi0")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=869520283]

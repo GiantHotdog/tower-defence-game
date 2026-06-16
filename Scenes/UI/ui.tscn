@@ -50,6 +50,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_jfwrg")
 layout_mode = 2
 
 [node name="TerminalLog" parent="PanelContainer/VBoxContainer" unique_id=1166986598 instance=ExtResource("6_duuxe")]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 0
 

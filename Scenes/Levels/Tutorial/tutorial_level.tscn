@@ -29,9 +29,9 @@ metadata/_custom_type_script = "uid://dq3f0ac1t4eau"
 
 [sub_resource type="Curve2D" id="Curve2D_7jnue"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, -64, 256, 0, 0, 0, 0, 2048, 256, 0, 0, 0, 0, 2048, 1408)
+"points": PackedVector2Array(0, 0, 0, 0, -64, 256, 0, 0, 0, 0, 2048, 256, 0, 0, 0, 0, 2048, 1408, 0, 0, 0, 0, -64, 1408)
 }
-point_count = 3
+point_count = 4
 
 [node name="BaseLevel" unique_id=555824650 instance=ExtResource("1_rvv8h")]
 script = ExtResource("2_7jnue")
