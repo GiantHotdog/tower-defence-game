@@ -36,7 +36,7 @@ func _process(_delta: float) -> void:
 	build_button.visible = Globals.placing == 0 and not tower_place_menu.visible
 	stop_build_button.visible = Globals.placing != 0 or tower_place_menu.visible
 	
-	currency_label.text = "Available Memory: " + str(Globals.currency) + "MB"
+	currency_label.text = str(Globals.currency) + "MB"
 
 
 func _on_button_pressed() -> void:

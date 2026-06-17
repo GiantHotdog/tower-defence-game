@@ -7,12 +7,11 @@
 [ext_resource type="PackedScene" uid="uid://irxxcy0okkqa" path="res://Scenes/UI/Health/health_display.tscn" id="5_alcrr"]
 [ext_resource type="PackedScene" uid="uid://dhy3yvbbrv3w6" path="res://Scenes/UI/LevelLost/levelLost.tscn" id="6_1c2ca"]
 [ext_resource type="PackedScene" uid="uid://cqsru7x2kfo3r" path="res://Scenes/UI/Terminal/terminal_log.tscn" id="6_duuxe"]
+[ext_resource type="PackedScene" uid="uid://bidnn18r1expx" path="res://Scenes/UI/outline.tscn" id="8_jfwrg"]
+[ext_resource type="PackedScene" uid="uid://clxn1cmg1duoh" path="res://Scenes/UI/levelBorder.tscn" id="9_mbl0m"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jfwrg"]
-bg_color = Color(0.011764706, 0.015686275, 0.007843138, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_duuxe"]
-bg_color = Color(0.011764706, 0.015686275, 0.007843138, 1)
+bg_color = Color(0.019607844, 0.019607844, 0.03137255, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mbl0m"]
 bg_color = Color(0.011764706, 0.015686275, 0.007843138, 1)
@@ -27,6 +26,9 @@ corner_radius_bottom_right = 3
 corner_radius_bottom_left = 3
 
 [node name="UI" type="CanvasLayer" unique_id=835526612]
+offset = Vector2(57.6, 32.4)
+scale = Vector2(0.9, 0.9)
+transform = Transform2D(0.9, 0, 0, 0.9, 57.6, 32.4)
 script = ExtResource("1_de23q")
 
 [node name="TowerInfoDisplay" parent="." unique_id=1776722101 instance=ExtResource("1_ahcct")]
@@ -56,7 +58,7 @@ size_flags_horizontal = 0
 
 [node name="PanelContainer" type="PanelContainer" parent="PanelContainer/VBoxContainer" unique_id=821793942]
 layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_duuxe")
+theme_override_styles/panel = SubResource("StyleBoxFlat_jfwrg")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer/PanelContainer" unique_id=425791765]
 layout_mode = 2
@@ -190,6 +192,10 @@ horizontal_alignment = 2
 
 [node name="HealthDisplay" parent="PanelContainer2/MarginContainer/VBoxContainer" unique_id=777721120 instance=ExtResource("5_alcrr")]
 layout_mode = 2
+
+[node name="Outline" parent="." unique_id=1386102631 instance=ExtResource("8_jfwrg")]
+
+[node name="CanvasLayer" parent="." unique_id=619987346 instance=ExtResource("9_mbl0m")]
 
 [connection signal="set_placing" from="TowerPlaceMenu" to="." method="_on_placing_set"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/PanelContainer/HBoxContainer/Build/PanelContainer/Button" to="." method="_on_build_button_pressed"]

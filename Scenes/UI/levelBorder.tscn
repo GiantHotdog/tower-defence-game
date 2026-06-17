@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://clxn1cmg1duoh"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_57kwm"]
+draw_center = false
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.20392157, 0.26666668, 0.32941177, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[node name="LevelBorder" type="CanvasLayer" unique_id=619987346]
+
+[node name="Panel" type="Panel" parent="." unique_id=273034152]
+offset_left = 53.6
+offset_top = 28.4
+offset_right = 879.0
+offset_bottom = 550.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_57kwm")
