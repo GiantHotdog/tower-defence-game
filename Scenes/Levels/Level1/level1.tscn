@@ -30,3 +30,4 @@ position = Vector2(-128, 512)
 visible = false
 
 [editable path="UI"]
+[editable path="UI/PanelContainer2/MarginContainer/VBoxContainer/FirewallProgress"]

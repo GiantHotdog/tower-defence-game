@@ -17,6 +17,7 @@ corner_radius_bottom_left = 4
 [node name="Panel" type="Panel" parent="." unique_id=273034152]
 offset_left = 53.6
 offset_top = 28.4
-offset_right = 879.0
+offset_right = 864.0
 offset_bottom = 550.0
+mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_57kwm")

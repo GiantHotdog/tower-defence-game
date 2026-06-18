@@ -89,3 +89,7 @@ func new_terminal_log_hint(color:Color = Color(1, 1, 1)):
 	tween = get_tree().create_tween()
 	tween.tween_property(new_log_hint_panel, "border_color", color, 0.5)
 	tween.tween_property(new_log_hint_panel, "border_color", Color(color.r, color.g, color.b, 0), 0.5)
+
+
+func get_total_wave_count():
+	return get_parent().get_total_wave_count()

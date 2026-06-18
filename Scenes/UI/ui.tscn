@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://dhy3yvbbrv3w6" path="res://Scenes/UI/LevelLost/levelLost.tscn" id="6_1c2ca"]
 [ext_resource type="PackedScene" uid="uid://cqsru7x2kfo3r" path="res://Scenes/UI/Terminal/terminal_log.tscn" id="6_duuxe"]
 [ext_resource type="PackedScene" uid="uid://bidnn18r1expx" path="res://Scenes/UI/outline.tscn" id="8_jfwrg"]
+[ext_resource type="Script" uid="uid://dy52fpfepd4yd" path="res://Scenes/UI/Health/firewall_progress.gd" id="8_s3gqk"]
 [ext_resource type="PackedScene" uid="uid://clxn1cmg1duoh" path="res://Scenes/UI/levelBorder.tscn" id="9_mbl0m"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jfwrg"]
@@ -193,6 +194,13 @@ horizontal_alignment = 2
 [node name="HealthDisplay" parent="PanelContainer2/MarginContainer/VBoxContainer" unique_id=777721120 instance=ExtResource("5_alcrr")]
 layout_mode = 2
 
+[node name="FirewallProgress" parent="PanelContainer2/MarginContainer/VBoxContainer" unique_id=399582493 instance=ExtResource("5_alcrr")]
+layout_mode = 2
+script = ExtResource("8_s3gqk")
+
+[node name="Static" parent="PanelContainer2/MarginContainer/VBoxContainer/FirewallProgress/MarginContainer/HBoxContainer/VBoxContainer" parent_id_path=PackedInt32Array(399582493, 1179665937) index="0" unique_id=1574841650]
+text = "Firewall progress:"
+
 [node name="Outline" parent="." unique_id=1386102631 instance=ExtResource("8_jfwrg")]
 
 [node name="CanvasLayer" parent="." unique_id=619987346 instance=ExtResource("9_mbl0m")]
@@ -203,3 +211,5 @@ layout_mode = 2
 [connection signal="pressed" from="PanelContainer/VBoxContainer/PanelContainer/HBoxContainer/StartWave/PanelContainer/Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/PanelContainer/HBoxContainer/ShowTerminal/PanelContainer/Button" to="." method="_on_system_log_pressed"]
 [connection signal="visibility_changed" from="LevelLost" to="." method="game_over"]
+
+[editable path="PanelContainer2/MarginContainer/VBoxContainer/FirewallProgress"]
