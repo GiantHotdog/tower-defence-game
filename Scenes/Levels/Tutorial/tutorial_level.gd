@@ -4,12 +4,11 @@ extends BaseLevel
 enum TutorialStage {PLACING, STARTING_WAVE, UPGRADING, FINISHED}
 
 @export var placing_tutorial_pos:Vector2i
-@export var dialogues:Array[String] = []
-@export var close_dialogue_indexes:Array[int] = []
+@export var dialog_boxes:Array[TutorialBox] = []
 var current_dialogue:int = 0
 
 @onready var place_tutorial_guide:Control = $PlaceTutorialGuide
-@onready var dialogue_label = $DialogueBox/PanelContainer/Label
+@onready var start_tutorial_box = $StartTutorialBox
 
 var current_tutorial_stage:TutorialStage = TutorialStage.PLACING
 var highlight_box:StyleBoxFlat
@@ -29,22 +28,19 @@ func _ready() -> void:
 	tween.tween_property(highlight_box, "border_color", Color(1, 1, 1), 1.5)
 	tween.set_loops()
 	
-	update_tutorial_stage(TutorialStage.PLACING)
+	#update_tutorial_stage(TutorialStage.PLACING)
 	
 	place_tutorial_guide.position = placing_tutorial_pos * 128
-	
-	load_current_dialogue()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	super._process(delta)
 	if current_tutorial_stage == TutorialStage.PLACING and towers_placed >= 1:
-		update_tutorial_stage(TutorialStage.STARTING_WAVE)
-
-
-func can_close_inspector():
-	return not (current_tutorial_stage == TutorialStage.UPGRADING)
+		var next:TutorialBox = dialog_boxes.get(2)
+		if next:
+			next.visible = true
+		current_dialogue = 2
 
 
 func can_place_tower(tower_pos:Vector2i, _write_to_log:bool = false) -> bool:
@@ -56,17 +52,17 @@ func can_place_tower(tower_pos:Vector2i, _write_to_log:bool = false) -> bool:
 func update_tutorial_stage(tutorial_stage:TutorialStage):
 	current_tutorial_stage = tutorial_stage
 	if current_tutorial_stage == TutorialStage.PLACING:
-		Globals.is_start_wave_enabled = false
-		Globals.is_inspector_enabled = false
-		Globals.is_upgrades_enabled = false
+		#Globals.is_start_wave_enabled = false
+		#Globals.is_inspector_enabled = false
+		#Globals.is_upgrades_enabled = false
 		
 		$UI/PanelContainer/VBoxContainer/PanelContainer/HBoxContainer/Build/PanelContainer.add_theme_stylebox_override("panel", highlight_box)
 		place_tutorial_guide.add_theme_stylebox_override("panel", highlight_box)
 		
 	elif current_tutorial_stage == TutorialStage.STARTING_WAVE:
-		Globals.is_start_wave_enabled = true
-		Globals.is_inspector_enabled = false
-		Globals.is_upgrades_enabled = false
+		#Globals.is_start_wave_enabled = true
+		#Globals.is_inspector_enabled = false
+		#Globals.is_upgrades_enabled = false
 		
 		$UI/TowerPlaceMenu.cancel_place()
 		$UI/TowerPlaceMenu.close()
@@ -75,64 +71,67 @@ func update_tutorial_stage(tutorial_stage:TutorialStage):
 		place_tutorial_guide.remove_theme_stylebox_override("panel")
 		place_tutorial_guide.visible = false
 		$UI/PanelContainer/VBoxContainer/PanelContainer/HBoxContainer/StartWave/PanelContainer.add_theme_stylebox_override("panel", highlight_box)
-		
-		open_dialogue()
 	
 	elif current_tutorial_stage == TutorialStage.UPGRADING:
-		Globals.is_start_wave_enabled = false
-		Globals.is_inspector_enabled = true
-		Globals.is_upgrades_enabled = true
+		#Globals.is_start_wave_enabled = false
+		#Globals.is_inspector_enabled = true
+		#Globals.is_upgrades_enabled = true
 		
 		$UI/PanelContainer/VBoxContainer/PanelContainer/HBoxContainer/StartWave/PanelContainer.remove_theme_stylebox_override("panel")
 		place_tutorial_guide.add_theme_stylebox_override("panel", highlight_box)
 		place_tutorial_guide.visible = true
-		
-		open_dialogue()
 	elif current_tutorial_stage == TutorialStage.FINISHED:
 		Globals.reset_selective_disable_variables()
 		place_tutorial_guide.visible = false
-
-
-func load_current_dialogue():
-	$DialogueBox/PanelContainer/Label.text = dialogues[current_dialogue]
-
-
-func _on_next_dialogue_pressed() -> void:
-	current_dialogue += 1
-	if current_dialogue in close_dialogue_indexes:
-		$DialogueBox.visible = false
-		$DialogueBox/PanelContainer.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	else:
-		load_current_dialogue()
-
-
-func close_dialogue():
-	$DialogueBox.visible = false
-	$DialogueBox/PanelContainer.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	
-
-func open_dialogue():
-	$DialogueBox.visible = true
-	$DialogueBox/PanelContainer.mouse_filter = Control.MOUSE_FILTER_STOP
-	load_current_dialogue()
+		$UI/PanelContainer/VBoxContainer/PanelContainer/HBoxContainer/Build/PanelContainer.remove_theme_stylebox_override("panel")
 
 
 func _on_wave_complete(wave_number:int):
 	if wave_number == 1:
-		update_tutorial_stage(TutorialStage.UPGRADING)
+		var next:TutorialBox = dialog_boxes.get(3)
+		if next:
+			next.visible = true
+		current_dialogue = 3
 
 
 func _on_inspect_window_opened(_unused, _unused2):
 	if current_tutorial_stage == TutorialStage.UPGRADING:
-		open_dialogue()
 		place_tutorial_guide.remove_theme_stylebox_override("panel")
 		place_tutorial_guide.visible = true
 		$UI/TowerInfoDisplay/PanelContainer/VBoxContainer/MarginContainer/VBoxContainer/UpgradePaths.get_child(0).add_theme_stylebox_override("panel", highlight_box)
-	
 
 
 func _on_tower_info_display_tower_upgraded() -> void:
 	if current_tutorial_stage == TutorialStage.UPGRADING:
-		open_dialogue()
 		$UI/TowerInfoDisplay/PanelContainer/VBoxContainer/MarginContainer/VBoxContainer/UpgradePaths.get_child(0).remove_theme_stylebox_override("panel")
-		update_tutorial_stage(TutorialStage.FINISHED)
+		var next:TutorialBox = dialog_boxes.get(4)
+		if next:
+			next.visible = true
+		current_dialogue = 4
+
+
+func _on_start_tutorial_box_skip_tutorial() -> void:
+	update_tutorial_stage(TutorialStage.FINISHED)
+
+
+func _on_start_tutorial_box_start_tutorial() -> void:
+	var next:TutorialBox = dialog_boxes.get(1)
+	if next:
+		next.visible = true
+	current_dialogue = 1
+
+
+func _on_start_tutorial_box_2_start_tutorial() -> void:
+	update_tutorial_stage(TutorialStage.PLACING)
+
+
+func _on_start_tutorial_box_3_start_tutorial() -> void:
+	update_tutorial_stage(TutorialStage.STARTING_WAVE)
+
+
+func _on_start_tutorial_box_4_start_tutorial() -> void:
+	update_tutorial_stage(TutorialStage.UPGRADING)
+
+
+func _on_start_tutorial_box_5_start_tutorial() -> void:
+	update_tutorial_stage(TutorialStage.FINISHED)

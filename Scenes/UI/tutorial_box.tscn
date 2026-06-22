@@ -1,0 +1,80 @@
+[gd_scene format=3 uid="uid://bphehwrad04m2"]
+
+[ext_resource type="Script" uid="uid://x1quwwyw2u71" path="res://Scenes/UI/tutorial_box.gd" id="1_h1idg"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h1idg"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wjmfr"]
+draw_center = false
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[node name="TutorialBox" type="CanvasLayer" unique_id=257445220]
+script = ExtResource("1_h1idg")
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=684520557]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="CenterContainer" unique_id=207912492]
+custom_minimum_size = Vector2(512, 0)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_h1idg")
+
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/PanelContainer" unique_id=556740092]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="PanelContainer" type="PanelContainer" parent="CenterContainer/PanelContainer/MarginContainer" unique_id=1863064501]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_wjmfr")
+
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/PanelContainer/MarginContainer/PanelContainer" unique_id=32626097]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="HBoxContainer" type="VBoxContainer" parent="CenterContainer/PanelContainer/MarginContainer/PanelContainer/MarginContainer" unique_id=981650530]
+layout_mode = 2
+
+[node name="Label" type="RichTextLabel" parent="CenterContainer/PanelContainer/MarginContainer/PanelContainer/MarginContainer/HBoxContainer" unique_id=1009314230]
+layout_mode = 2
+size_flags_vertical = 6
+bbcode_enabled = true
+text = "Welcome to the [b][color=cyan]Kernel Panic[/color][/b] tutorial level. If you already know how to play, feel free to skip this. Otherwise, please press [b][color=green]begin[/color][/b]"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+
+[node name="VBoxContainer" type="HBoxContainer" parent="CenterContainer/PanelContainer/MarginContainer/PanelContainer/MarginContainer/HBoxContainer" unique_id=1279702825]
+layout_mode = 2
+theme_override_constants/separation = 16
+alignment = 1
+
+[node name="StartButton" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/PanelContainer/MarginContainer/HBoxContainer/VBoxContainer" unique_id=702543855]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0.8745098, 0, 1)
+text = "Begin tutorial"
+
+[node name="SkipButton" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/PanelContainer/MarginContainer/HBoxContainer/VBoxContainer" unique_id=602351183]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.8745098, 0, 0, 1)
+text = "Skip tutorial"
+
+[connection signal="pressed" from="CenterContainer/PanelContainer/MarginContainer/PanelContainer/MarginContainer/HBoxContainer/VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="CenterContainer/PanelContainer/MarginContainer/PanelContainer/MarginContainer/HBoxContainer/VBoxContainer/SkipButton" to="." method="_on_skip_button_pressed"]

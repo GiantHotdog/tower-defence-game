@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://crdqerfs03sfa" path="res://Scenes/Levels/base_level.tscn" id="1_rvv8h"]
 [ext_resource type="Script" uid="uid://bbqleic22pdoh" path="res://Scenes/Levels/Tutorial/tutorial_level.gd" id="2_7jnue"]
 [ext_resource type="Script" uid="uid://dq3f0ac1t4eau" path="res://Resources/WaveInfo/WaveInfo.gd" id="3_th7ri"]
-[ext_resource type="PackedScene" uid="uid://e8grln35akg5" path="res://Scenes/UI/dialogue_box.tscn" id="4_qn7il"]
+[ext_resource type="PackedScene" uid="uid://bphehwrad04m2" path="res://Scenes/UI/tutorial_box.tscn" id="4_qn7il"]
 
 [sub_resource type="Resource" id="Resource_qn7il"]
 script = ExtResource("3_th7ri")
@@ -33,11 +33,10 @@ _data = {
 }
 point_count = 4
 
-[node name="BaseLevel" unique_id=555824650 instance=ExtResource("1_rvv8h")]
+[node name="BaseLevel" unique_id=555824650 node_paths=PackedStringArray("dialog_boxes") instance=ExtResource("1_rvv8h")]
 script = ExtResource("2_7jnue")
 placing_tutorial_pos = Vector2i(7, 3)
-dialogues = Array[String](["Hello!", "Welcome to Kernel Panic!", "Click in the top right to place towers", "Well done!", "Click the button at the top to start the wave", "If malware gets past, it reduces our program's integrity", "You can see this at the bottom", "Now we can upgrade our tower", "Click on the tower we just placed", "Now click on 'upgrade'", "Finish the level!"])
-close_dialogue_indexes = Array[int]([3, 5, 9, 10, 11])
+dialog_boxes = [NodePath("StartTutorialBox"), NodePath("StartTutorialBox2"), NodePath("StartTutorialBox3"), NodePath("StartTutorialBox4"), NodePath("StartTutorialBox5")]
 wave_info_dict = Dictionary[int, ExtResource("3_th7ri")]({
 1: SubResource("Resource_qn7il"),
 2: SubResource("Resource_dbsss")
@@ -56,12 +55,69 @@ offset_right = 64.0
 offset_bottom = 64.0
 mouse_filter = 2
 
-[node name="DialogueBox" parent="." index="8" unique_id=2083244126 instance=ExtResource("4_qn7il")]
+[node name="StartTutorialBox" parent="." index="8" unique_id=257445220 instance=ExtResource("4_qn7il")]
+
+[node name="StartTutorialBox2" parent="." index="9" unique_id=640460169 instance=ExtResource("4_qn7il")]
+visible = false
+
+[node name="Label" parent="StartTutorialBox2/CenterContainer/PanelContainer/MarginContainer/PanelContainer/MarginContainer/HBoxContainer" parent_id_path=PackedInt32Array(640460169, 981650530) index="0" unique_id=1009314230]
+text = "We have to defend our processor from [b][color=magenta]malware[/color][/b] by adding defensive processes until the firewall is constructed. This is done using the [b][color=cyan]Init Processes[/color][/b] button at the bottom of the dashboard"
+
+[node name="StartButton" parent="StartTutorialBox2/CenterContainer/PanelContainer/MarginContainer/PanelContainer/MarginContainer/HBoxContainer/VBoxContainer" parent_id_path=PackedInt32Array(640460169, 1279702825) index="0" unique_id=702543855]
+text = "Next"
+
+[node name="SkipButton" parent="StartTutorialBox2/CenterContainer/PanelContainer/MarginContainer/PanelContainer/MarginContainer/HBoxContainer/VBoxContainer" parent_id_path=PackedInt32Array(640460169, 1279702825) index="1" unique_id=602351183]
+visible = false
+
+[node name="StartTutorialBox3" parent="." index="10" unique_id=912605872 instance=ExtResource("4_qn7il")]
+visible = false
+
+[node name="Label" parent="StartTutorialBox3/CenterContainer/PanelContainer/MarginContainer/PanelContainer/MarginContainer/HBoxContainer" parent_id_path=PackedInt32Array(912605872, 981650530) index="0" unique_id=1009314230]
+text = "Once you are ready, click [b][color=cyan]Start Wave[/color][/b] to begin the next [b][color=magenta]malware[/color][/b] incursion"
+
+[node name="StartButton" parent="StartTutorialBox3/CenterContainer/PanelContainer/MarginContainer/PanelContainer/MarginContainer/HBoxContainer/VBoxContainer" parent_id_path=PackedInt32Array(912605872, 1279702825) index="0" unique_id=702543855]
+text = "Next"
+
+[node name="SkipButton" parent="StartTutorialBox3/CenterContainer/PanelContainer/MarginContainer/PanelContainer/MarginContainer/HBoxContainer/VBoxContainer" parent_id_path=PackedInt32Array(912605872, 1279702825) index="1" unique_id=602351183]
+visible = false
+
+[node name="StartTutorialBox4" parent="." index="11" unique_id=1889734026 instance=ExtResource("4_qn7il")]
+visible = false
+
+[node name="Label" parent="StartTutorialBox4/CenterContainer/PanelContainer/MarginContainer/PanelContainer/MarginContainer/HBoxContainer" parent_id_path=PackedInt32Array(1889734026, 981650530) index="0" unique_id=1009314230]
+text = "Each [b][color=magenta]malware[/color][/b] process terminated frees up more system resources that can be used to instantiate more defensive processes. [b][color=cyan]Inspect[/color][/b] a process by clicking on it and then [b][color=cyan]apply[/color][/b] an upgrade"
+
+[node name="StartButton" parent="StartTutorialBox4/CenterContainer/PanelContainer/MarginContainer/PanelContainer/MarginContainer/HBoxContainer/VBoxContainer" parent_id_path=PackedInt32Array(1889734026, 1279702825) index="0" unique_id=702543855]
+text = "Next"
+
+[node name="SkipButton" parent="StartTutorialBox4/CenterContainer/PanelContainer/MarginContainer/PanelContainer/MarginContainer/HBoxContainer/VBoxContainer" parent_id_path=PackedInt32Array(1889734026, 1279702825) index="1" unique_id=602351183]
+visible = false
+
+[node name="StartTutorialBox5" parent="." index="12" unique_id=2019655590 instance=ExtResource("4_qn7il")]
+visible = false
+
+[node name="Label" parent="StartTutorialBox5/CenterContainer/PanelContainer/MarginContainer/PanelContainer/MarginContainer/HBoxContainer" parent_id_path=PackedInt32Array(2019655590, 981650530) index="0" unique_id=1009314230]
+text = "Continue [b][color=cyan]instantiating[/color][/b] and [b][color=cyan]upgrading[/color][/b] processes until the firewall is complete"
+
+[node name="StartButton" parent="StartTutorialBox5/CenterContainer/PanelContainer/MarginContainer/PanelContainer/MarginContainer/HBoxContainer/VBoxContainer" parent_id_path=PackedInt32Array(2019655590, 1279702825) index="0" unique_id=702543855]
+text = "Next"
+
+[node name="SkipButton" parent="StartTutorialBox5/CenterContainer/PanelContainer/MarginContainer/PanelContainer/MarginContainer/HBoxContainer/VBoxContainer" parent_id_path=PackedInt32Array(2019655590, 1279702825) index="1" unique_id=602351183]
+visible = false
 
 [connection signal="wave_complete" from="." to="." method="_on_wave_complete"]
 [connection signal="tower_selected" from="UI/TowerInfoDisplay" to="." method="_on_inspect_window_opened"]
 [connection signal="tower_upgraded" from="UI/TowerInfoDisplay" to="." method="_on_tower_info_display_tower_upgraded"]
-[connection signal="pressed" from="DialogueBox/PanelContainer/MarginContainer/NextDialogue" to="." method="_on_next_dialogue_pressed"]
+[connection signal="skip_tutorial" from="StartTutorialBox" to="." method="_on_start_tutorial_box_skip_tutorial"]
+[connection signal="start_tutorial" from="StartTutorialBox" to="." method="_on_start_tutorial_box_start_tutorial"]
+[connection signal="start_tutorial" from="StartTutorialBox2" to="." method="_on_start_tutorial_box_2_start_tutorial"]
+[connection signal="start_tutorial" from="StartTutorialBox3" to="." method="_on_start_tutorial_box_3_start_tutorial"]
+[connection signal="start_tutorial" from="StartTutorialBox4" to="." method="_on_start_tutorial_box_4_start_tutorial"]
+[connection signal="start_tutorial" from="StartTutorialBox5" to="." method="_on_start_tutorial_box_5_start_tutorial"]
 
 [editable path="UI"]
-[editable path="DialogueBox"]
+[editable path="UI/PanelContainer2/MarginContainer/VBoxContainer/FirewallProgress"]
+[editable path="StartTutorialBox2"]
+[editable path="StartTutorialBox3"]
+[editable path="StartTutorialBox4"]
+[editable path="StartTutorialBox5"]

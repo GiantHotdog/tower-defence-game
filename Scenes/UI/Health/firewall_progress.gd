@@ -15,3 +15,4 @@ func _process(_delta: float) -> void:
 		current_wave_number -= 1
 	health_label.text = str(int(current_wave_number / float(total_wave_count) * 100)) + "%"
 	health_bar.set_progress(int(current_wave_number / float(total_wave_count) * 100) / 100.0)
+	
