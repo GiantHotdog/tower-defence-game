@@ -1,0 +1,52 @@
+[gd_scene format=3 uid="uid://qakuadn0he3"]
+
+[ext_resource type="PackedScene" uid="uid://c3is88d7syykb" path="res://Scenes/Enemies/base_enemy.tscn" id="1_xvoes"]
+[ext_resource type="Script" uid="uid://dvawx3ojvmqyk" path="res://Scenes/Enemies/zip_bomb.gd" id="2_pq7yh"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_pq7yh"]
+viewport_path = NodePath("GPUParticles2D/TextParticle")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pq7yh"]
+bg_color = Color(0, 0, 0, 0)
+border_width_left = 6
+border_width_top = 6
+border_width_right = 6
+border_width_bottom = 6
+border_color = Color(7.6599646, 0, 2.3259497, 1)
+
+[node name="ZipBomb" unique_id=2135921253 instance=ExtResource("1_xvoes")]
+script = ExtResource("2_pq7yh")
+child_enemy_type = 1
+enemy_type = 2
+move_speed = 200.0
+MAX_HEALTH = 5
+damage = 50
+
+[node name="Sprite2D" parent="." index="0" unique_id=1481800299]
+visible = false
+
+[node name="GPUParticles2D" parent="." index="3" unique_id=1834652281]
+texture = SubResource("ViewportTexture_pq7yh")
+
+[node name="Sprite" type="Node2D" parent="." index="4" unique_id=1262870462]
+
+[node name="ColorRect" type="Panel" parent="Sprite" index="0" unique_id=1373666760]
+offset_left = -32.0
+offset_top = -32.0
+offset_right = 32.0
+offset_bottom = 32.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_pq7yh")
+
+[node name="ColorRect2" type="Panel" parent="Sprite" index="1" unique_id=299352455]
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_pq7yh")
+
+[node name="ColorRect3" type="Panel" parent="Sprite" index="2" unique_id=108318231]
+offset_left = -8.0
+offset_top = -8.0
+offset_right = 8.0
+offset_bottom = 8.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_pq7yh")

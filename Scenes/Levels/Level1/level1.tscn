@@ -5,12 +5,13 @@
 [ext_resource type="Resource" uid="uid://ddbhcerv8a2to" path="res://Resources/WaveInfo/Level1/wave1.tres" id="3_nqjqy"]
 [ext_resource type="Resource" uid="uid://dnbeksdeq7se4" path="res://Resources/WaveInfo/Level1/wave2.tres" id="4_hf8m8"]
 [ext_resource type="PackedScene" uid="uid://5f5xoenbd6ry" path="res://Shaders/chromaticAberration.tscn" id="5_btxmh"]
+[ext_resource type="PackedScene" uid="uid://qakuadn0he3" path="res://Scenes/Enemies/zip_bomb.tscn" id="5_nqjqy"]
 
 [sub_resource type="Curve2D" id="Curve2D_5jgm0"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, -128, 512, 0, 0, 0, 0, 2816, 512, 0, 0, 0, 0, 2816, 1792, 0, 0, 0, 0, 1792, 1792, 0, 0, 0, 0, 1792, 1152, 0, 0, 0, 0, 1408, 1152, 0, 0, 0, 0, 1408, 896, 0, 0, 0, 0, 1024, 896, 0, 0, 0, 0, 1024, 1792, 0, 0, 0, 0, 192, 1792, 0, 0, 0, 0, 192, 1152, 0, 0, 0, 0, -128, 1152)
+"points": PackedVector2Array(0, 0, 0, 0, -128, 512, 0, 0, 0, 0, 2816, 512, 0, 0, 0, 0, 2816, 1792, 0, 0, 0, 0, 1792, 1792, 0, 0, 0, 0, 1792, 1152, 0, 0, 0, 0, 1408, 1152, 0, 0, 0, 0, 1408, 896, 0, 0, 0, 0, 1024, 896, 0, 0, 0, 0, 1024, 1792, 0, 0, 0, 0, 384, 1792)
 }
-point_count = 12
+point_count = 10
 
 [node name="Level1" unique_id=555824650 instance=ExtResource("1_4qeik")]
 wave_info_dict = Dictionary[int, ExtResource("2_btxmh")]({
@@ -24,6 +25,12 @@ level_id = 1
 curve = SubResource("Curve2D_5jgm0")
 
 [node name="PathRevealer" parent="EnemyPath" index="0" unique_id=662323682]
+position = Vector2(-128, 512)
+
+[node name="Mainframe" parent="EnemyPath" index="2" unique_id=582025169]
+position = Vector2(-128, 512)
+
+[node name="ZipBomb" parent="EnemyPath" index="3" unique_id=2135921253 instance=ExtResource("5_nqjqy")]
 position = Vector2(-128, 512)
 
 [node name="CanvasLayer" parent="." index="7" unique_id=1540000394 instance=ExtResource("5_btxmh")]

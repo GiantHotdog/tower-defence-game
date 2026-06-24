@@ -15,6 +15,7 @@ signal wave_complete(wave_number:int)
 
 @onready var base_enemy_scene:PackedScene = load("res://Scenes/Enemies/base_enemy.tscn")
 @onready var weak_enemy_scene:PackedScene  = load("res://Scenes/Enemies/weak_enemy.tscn")
+@onready var zip_bomb_enemy_scene:PackedScene = load("res://Scenes/Enemies/zip_bomb.tscn")
 
 @onready var tower_map:TileMapLayer = $TowerLayer
 @onready var place_assist_map:TileMapLayer = $PlacementAssistLayer
@@ -129,7 +130,6 @@ func can_place_tower(tower_pos:Vector2i, write_to_log:bool = false) -> bool:
 
 func modulate_path():
 	var time = Time.get_ticks_msec() / 1000.0
-	# Oscillates alpha smoothly between 0.5 and 0.7
 	path_line.modulate.a = 0.5 + sin(time * 4.0) * 0.15
 
 
@@ -146,18 +146,29 @@ func _on_enemy_killed(enemy_pid:int):
 	ui.add_log("Malware process [color=#ff00ff][PID: %s][/color] terminated" % enemy_pid)
 
 
-func add_enemy(enemy:BaseEnemy.ENEMY_TYPES):
+func add_enemy(enemy:BaseEnemy.ENEMY_TYPES) -> BaseEnemy:
 	enemies_in_current_wave += 1
-	var spawning:BaseEnemy
+	var spawning:BaseEnemy = null
 	match enemy:
 		BaseEnemy.ENEMY_TYPES.BASE_ENEMY:
 			spawning = base_enemy_scene.instantiate()
 		BaseEnemy.ENEMY_TYPES.WEAK_ENEMY:
 			spawning = weak_enemy_scene.instantiate()
+		BaseEnemy.ENEMY_TYPES.ZIP_BOMB_ENEMY:
+			spawning = zip_bomb_enemy_scene.instantiate()
+			spawning.children_add.connect(_on_zip_bomb_enemy_children_add)
 	if spawning:
 		spawning.enemy_killed.connect(_on_enemy_killed)
 		spawning.reached_end_of_path.connect(_on_enemy_reached_end_of_path)
 		enemy_path.add_child(spawning)
+	return spawning
+
+
+func _on_zip_bomb_enemy_children_add(count:int, type:BaseEnemy.ENEMY_TYPES, parent_progress:float):
+	for i in range(count):
+		var rand_offset = randi_range(-120, 120)
+		var child:BaseEnemy = add_enemy(type)
+		child.progress = parent_progress + rand_offset
 
 
 func _on_wave_started(number: int) -> void:
