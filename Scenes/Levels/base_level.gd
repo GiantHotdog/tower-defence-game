@@ -155,6 +155,7 @@ func add_enemy(enemy:BaseEnemy.ENEMY_TYPES) -> BaseEnemy:
 		BaseEnemy.ENEMY_TYPES.WEAK_ENEMY:
 			spawning = weak_enemy_scene.instantiate()
 		BaseEnemy.ENEMY_TYPES.ZIP_BOMB_ENEMY:
+			print("Zip")
 			spawning = zip_bomb_enemy_scene.instantiate()
 			spawning.children_add.connect(_on_zip_bomb_enemy_children_add)
 	if spawning:

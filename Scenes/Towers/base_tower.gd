@@ -2,8 +2,8 @@ class_name BaseTower
 extends Node2D
 
 enum TargetMode {CLOSEST, FURTHEST, MOST_PROGRESS, LEAST_HEALTH, MOST_HEALTH}
-enum TowerTypes {NONE, BASE_TOWER, LASER_TOWER, LOGIC_GATE, BUFFER_OVERFLOW, SIGTERM, TOWER_BLOCKER}
-enum TowerCosts {NONE = 0, BASE_TOWER = 5, LASER_TOWER = 5, LOGIC_GATE = 10, BUFFER_OVERFLOW = 20, SIGTERM = 40, TOWER_BLOCKER = 0}
+enum TowerTypes {NONE, BASE_TOWER, LASER_TOWER, LOGIC_GATE, BUFFER_OVERFLOW, SIGTERM, TOWER_BLOCKER, DEFRAGMENTER}
+enum TowerCosts {NONE = 0, BASE_TOWER = 5, LASER_TOWER = 5, LOGIC_GATE = 10, BUFFER_OVERFLOW = 20, SIGTERM = 40, TOWER_BLOCKER = 0, DEFRAGMENTER = 15}
 
 ## The name of the tower, to be displayed in the info display
 @export var display_name:String = "Base Tower"
@@ -28,6 +28,11 @@ enum TowerCosts {NONE = 0, BASE_TOWER = 5, LASER_TOWER = 5, LOGIC_GATE = 10, BUF
 
 ## An array that holds the information for all upgrade paths this tower can take
 @export var upgrade_paths:Array[UpgradePath]
+
+@export var can_attack_cloaked:bool = false
+
+## Passive buff towers do not attack
+@export var is_passive:bool = false
 
 var can_attack = true
 var enemies:Array[BaseEnemy]
@@ -92,9 +97,8 @@ func _process(_delta: float) -> void:
 	
 	if not is_attacking:
 		update_turret_rotation()
-	if target:
-		if can_attack:
-			attack()
+	if target and can_attack and not is_passive:
+		attack()
 	if Input.is_action_just_pressed("upgrade"):
 		var upgrade = Upgrade.new()
 		upgrade.property = Upgrade.Properties.RANGE
@@ -164,6 +168,8 @@ func get_closest_enemy():
 	var closest_node:BaseEnemy = null
 	var closest_node_distance:float
 	for enemy:BaseEnemy in enemies:
+		if enemy.is_cloaked and not can_attack_cloaked:
+			continue
 		# if there is currently no node, just fill in the basic one to avoid a crash by accessing its parameters later
 		if not closest_node:
 			closest_node = enemy
@@ -178,6 +184,8 @@ func get_furthest_enemy():
 	var furthest_node:BaseEnemy = null
 	var furthest_node_distance:float
 	for enemy:BaseEnemy in enemies:
+		if enemy.is_cloaked and not can_attack_cloaked:
+			continue
 		# if there is currently no node, just fill in the basic one to avoid a crash by accessing its parameters later
 		if not furthest_node:
 			furthest_node = enemy
@@ -192,6 +200,8 @@ func get_most_progress_enemy():
 	var most_progress_node:BaseEnemy = null
 	var most_progress_node_distance:float
 	for enemy:BaseEnemy in enemies:
+		if enemy.is_cloaked and not can_attack_cloaked:
+			continue
 		# if there is currently no node, just fill in the basic one to avoid a crash by accessing its parameters later
 		if not most_progress_node:
 			most_progress_node = enemy
@@ -206,6 +216,8 @@ func get_most_health_enemy():
 	var most_health_node:BaseEnemy = null
 	var most_health_node_amount:float
 	for enemy:BaseEnemy in enemies:
+		if enemy.is_cloaked and not can_attack_cloaked:
+			continue
 		# if there is currently no node, just fill in the basic one to avoid a crash by accessing its parameters later
 		if not most_health_node:
 			most_health_node = enemy
@@ -220,6 +232,8 @@ func get_least_health_enemy():
 	var least_health_node:BaseEnemy = null
 	var least_health_node_amount:float
 	for enemy:BaseEnemy in enemies:
+		if enemy.is_cloaked and not can_attack_cloaked:
+			continue
 		# if there is currently no node, just fill in the basic one to avoid a crash by accessing its parameters later
 		if not least_health_node:
 			least_health_node = enemy

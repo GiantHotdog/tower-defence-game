@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://codfspxbphh32" path="res://Scenes/Towers/buffer_overflow.tscn" id="4_rykqp"]
 [ext_resource type="PackedScene" uid="uid://c2kh7bpmtaw52" path="res://Scenes/Towers/sigterm_tower.tscn" id="5_t2uvl"]
 [ext_resource type="PackedScene" uid="uid://6no7okuh1op6" path="res://Scenes/Towers/tower_blocker.tscn" id="6_vskvh"]
+[ext_resource type="PackedScene" uid="uid://c4q1svxkp4btw" path="res://Scenes/Towers/defragmenter.tscn" id="7_4q2cq"]
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_4b3tm"]
 resource_name = "Towers"
@@ -15,6 +16,7 @@ scenes/3/scene = ExtResource("3_4q2cq")
 scenes/4/scene = ExtResource("4_rykqp")
 scenes/5/scene = ExtResource("5_t2uvl")
 scenes/6/scene = ExtResource("6_vskvh")
+scenes/7/scene = ExtResource("7_4q2cq")
 
 [resource]
 tile_size = Vector2i(128, 128)

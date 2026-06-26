@@ -11,7 +11,7 @@ blend_mode = 1
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_xkuw6"]
 blend_mode = 1
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_3sgos"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_xkuw6"]
 viewport_path = NodePath("GPUParticles2D/TextParticle")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_xkuw6"]
@@ -72,7 +72,7 @@ pivot_offset = Vector2(20, 20)
 color = Color(0, 0, 1.5, 1)
 
 [node name="GPUParticles2D" parent="." index="5" unique_id=1834652281]
-texture = SubResource("ViewportTexture_3sgos")
+texture = SubResource("ViewportTexture_xkuw6")
 
 [node name="TextParticle" parent="GPUParticles2D" index="0" unique_id=255381870]
 text_color = Color(5, 0, 1.5, 1)

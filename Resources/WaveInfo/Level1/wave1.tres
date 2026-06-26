@@ -5,10 +5,12 @@
 [resource]
 script = ExtResource("1_bqqf4")
 enemy_counts = Dictionary[int, int]({
-1: 6
+1: 6,
+2: 1
 })
 enemy_spawn_interval = Dictionary[int, float]({
-1: 0.2
+1: 0.2,
+2: 2.0
 })
 wave_finish_currency_reward = 30
 metadata/_custom_type_script = "uid://dq3f0ac1t4eau"

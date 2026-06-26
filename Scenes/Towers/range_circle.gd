@@ -6,6 +6,7 @@ var attack_range:float = 1:
 		attack_range = value
 		queue_redraw()
 
+
 func _draw() -> void:
 	var point_count = 128
 	

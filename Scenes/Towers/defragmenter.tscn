@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://c4q1svxkp4btw"]
+
+[ext_resource type="PackedScene" uid="uid://ham1y5xvbyj1" path="res://Scenes/Towers/base_tower.tscn" id="1_kt32n"]
+[ext_resource type="Script" uid="uid://cl8cfvt61irfo" path="res://Scenes/Towers/defragmenter.gd" id="2_b50jv"]
+[ext_resource type="Texture2D" uid="uid://cdndvd8yb1csg" path="res://Assets/Towers/Buffer Overflow.svg" id="2_fhwf8"]
+[ext_resource type="Script" uid="uid://dc08i6kckblux" path="res://Scenes/Towers/pulse_circle.gd" id="4_b50jv"]
+
+[node name="Defragmenter" unique_id=443795488 instance=ExtResource("1_kt32n")]
+script = ExtResource("2_b50jv")
+display_name = "Defragmenter"
+is_passive = true
+
+[node name="Base" parent="." index="1" unique_id=1755470834]
+self_modulate = Color(5, 5, 0, 1)
+scale = Vector2(0.253, 0.253)
+texture = ExtResource("2_fhwf8")
+
+[node name="Turret" parent="Base" index="0" unique_id=346350585]
+visible = false
+
+[node name="PulseTimer" type="Timer" parent="." index="4" unique_id=1680642372]
+wait_time = 3.0
+autostart = true
+
+[node name="PulseCircle" type="Node2D" parent="." index="5" unique_id=1571811814]
+z_index = -2
+script = ExtResource("4_b50jv")
+
+[connection signal="timeout" from="PulseTimer" to="." method="_on_pulse_timer_timeout"]

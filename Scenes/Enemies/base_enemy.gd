@@ -10,6 +10,7 @@ signal reached_end_of_path(enemy_pid:int, damage_dealt:int)
 @export var move_speed:float = 500.0
 @export var MAX_HEALTH:int = 3
 @export var damage:int = 10
+@export var is_cloaked:bool = false
 
 @onready var health:float = MAX_HEALTH:
 	set(value):

@@ -88,7 +88,16 @@ tower_color = Color(4.006, 0, 0, 1)
 cost = 40
 tower = 5
 
+[node name="PlaceMenuItem4" parent="PanelContainer/VBoxContainer/MarginContainer/VBoxContainer/GridContainer" unique_id=1039974110 instance=ExtResource("1_b5314")]
+layout_mode = 2
+tower_name = "Defragmenter"
+tower_icon = ExtResource("3_7ryxk")
+tower_color = Color(4.0059752, 4.0059752, 0, 1)
+cost = 15
+tower = 7
+
 [connection signal="pressed" from="PanelContainer/VBoxContainer/CloseButton" to="." method="_on_close_button_pressed"]
 [connection signal="set_placing" from="PanelContainer/VBoxContainer/MarginContainer/VBoxContainer/GridContainer/PlaceMenuItem" to="." method="_on_placing_set"]
 [connection signal="set_placing" from="PanelContainer/VBoxContainer/MarginContainer/VBoxContainer/GridContainer/PlaceMenuItem2" to="." method="_on_placing_set"]
 [connection signal="set_placing" from="PanelContainer/VBoxContainer/MarginContainer/VBoxContainer/GridContainer/PlaceMenuItem3" to="." method="_on_placing_set"]
+[connection signal="set_placing" from="PanelContainer/VBoxContainer/MarginContainer/VBoxContainer/GridContainer/PlaceMenuItem4" to="." method="_on_placing_set"]

@@ -15,12 +15,14 @@ border_width_bottom = 6
 border_color = Color(7.6599646, 0, 2.3259497, 1)
 
 [node name="ZipBomb" unique_id=2135921253 instance=ExtResource("1_xvoes")]
+modulate = Color(0.047058824, 0.047058824, 0.047058824, 1)
 script = ExtResource("2_pq7yh")
 child_enemy_type = 1
 enemy_type = 2
 move_speed = 200.0
 MAX_HEALTH = 5
 damage = 50
+is_cloaked = true
 
 [node name="Sprite2D" parent="." index="0" unique_id=1481800299]
 visible = false
