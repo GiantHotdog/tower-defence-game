@@ -1,0 +1,67 @@
+[gd_scene format=3 uid="uid://cr5ftg6wjsdb2"]
+
+[ext_resource type="Script" uid="uid://beq5jgehamcgi" path="res://Scenes/UI/pause_menu.gd" id="1_rrvs5"]
+[ext_resource type="PackedScene" uid="uid://bxnddk8pg5eig" path="res://Scenes/UI/GRUBMenu/Compendium/compendium.tscn" id="2_8rf44"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b1dhq"]
+draw_center = false
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[node name="PauseMenu" type="CanvasLayer" unique_id=1329950595]
+process_mode = 3
+script = ExtResource("1_rrvs5")
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=1392279764]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_b1dhq")
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer" unique_id=143438363]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer" unique_id=477251906]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=1447415863]
+layout_mode = 2
+text = "Simulation paused"
+horizontal_alignment = 1
+
+[node name="Button" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=168032266]
+layout_mode = 2
+text = "Resume simulation"
+
+[node name="Button2" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=706316504]
+layout_mode = 2
+text = "Access compendium"
+
+[node name="Button3" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=1952294540]
+layout_mode = 2
+text = "Return to main menu"
+
+[node name="Compendium" parent="." unique_id=1108488723 instance=ExtResource("2_8rf44")]
+visible = false
+
+[connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/Button2" to="." method="_on_button_2_pressed"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/Button3" to="." method="_on_button_3_pressed"]

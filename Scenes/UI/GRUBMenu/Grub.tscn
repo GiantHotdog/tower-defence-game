@@ -77,7 +77,13 @@ layout_mode = 2
 mouse_filter = 1
 text = "Settings"
 
-[node name="Label3" type="Label" parent="VBoxContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=505660984]
+[node name="Label3" type="Label" parent="VBoxContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=386487076]
+visible = false
+layout_mode = 2
+mouse_filter = 1
+text = "Compendium"
+
+[node name="Label4" type="Label" parent="VBoxContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=505660984]
 layout_mode = 2
 mouse_filter = 1
 text = "Quit"

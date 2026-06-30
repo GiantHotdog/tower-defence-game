@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://bidnn18r1expx" path="res://Scenes/UI/outline.tscn" id="8_jfwrg"]
 [ext_resource type="Script" uid="uid://dy52fpfepd4yd" path="res://Scenes/UI/Health/firewall_progress.gd" id="8_s3gqk"]
 [ext_resource type="PackedScene" uid="uid://clxn1cmg1duoh" path="res://Scenes/UI/levelBorder.tscn" id="9_mbl0m"]
+[ext_resource type="PackedScene" uid="uid://cr5ftg6wjsdb2" path="res://Scenes/UI/pause_menu.tscn" id="11_vy225"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jfwrg"]
 bg_color = Color(0.019607844, 0.019607844, 0.03137255, 1)
@@ -205,11 +206,15 @@ text = "Firewall progress:"
 
 [node name="CanvasLayer" parent="." unique_id=619987346 instance=ExtResource("9_mbl0m")]
 
+[node name="PauseMenu" parent="." unique_id=735244639 instance=ExtResource("11_vy225")]
+visible = false
+
 [connection signal="set_placing" from="TowerPlaceMenu" to="." method="_on_placing_set"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/PanelContainer/HBoxContainer/Build/PanelContainer/Button" to="." method="_on_build_button_pressed"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/PanelContainer/HBoxContainer/StopBuild/PanelContainer/Button" to="." method="_on_stop_build_button_pressed"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/PanelContainer/HBoxContainer/StartWave/PanelContainer/Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/PanelContainer/HBoxContainer/ShowTerminal/PanelContainer/Button" to="." method="_on_system_log_pressed"]
 [connection signal="visibility_changed" from="LevelLost" to="." method="game_over"]
+[connection signal="show_compendium" from="PauseMenu" to="." method="_on_pause_menu_show_compendium"]
 
 [editable path="PanelContainer2/MarginContainer/VBoxContainer/FirewallProgress"]

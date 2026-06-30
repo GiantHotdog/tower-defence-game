@@ -1,0 +1,169 @@
+[gd_scene format=3 uid="uid://bxnddk8pg5eig"]
+
+[ext_resource type="PackedScene" uid="uid://b7met8awny0ff" path="res://Scenes/UI/place_menu_item.tscn" id="1_c8e14"]
+[ext_resource type="Script" uid="uid://c4b1hgno7486b" path="res://Scenes/UI/GRUBMenu/Compendium/compendium.gd" id="2_ihwpl"]
+[ext_resource type="Texture2D" uid="uid://cdndvd8yb1csg" path="res://Assets/Towers/Buffer Overflow.svg" id="3_5qwtj"]
+[ext_resource type="PackedScene" uid="uid://bxwj761ney7wp" path="res://Scenes/UI/GRUBMenu/Compendium/tower_info_screen.tscn" id="4_sowsf"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7o3pg"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c8e14"]
+draw_center = false
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sowsf"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="InputEventKey" id="InputEventKey_r6kbw"]
+device = -1
+keycode = 4194305
+
+[sub_resource type="Shortcut" id="Shortcut_sowsf"]
+events = [SubResource("InputEventKey_r6kbw")]
+
+[node name="Compendium" type="Control" unique_id=1108488723]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_ihwpl")
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=1430041552]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_7o3pg")
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer" unique_id=1177253625]
+layout_mode = 2
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 32
+
+[node name="PanelContainer" type="PanelContainer" parent="PanelContainer/MarginContainer" unique_id=517663234]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_c8e14")
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/MarginContainer/PanelContainer" unique_id=859858828]
+layout_mode = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer/PanelContainer/MarginContainer" unique_id=1361141581]
+layout_mode = 2
+
+[node name="TabContainer" type="TabContainer" parent="PanelContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=1213549967]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_sowsf")
+current_tab = 0
+
+[node name="Towers" type="GridContainer" parent="PanelContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/TabContainer" unique_id=160373855]
+layout_mode = 2
+columns = 2
+metadata/_tab_index = 0
+
+[node name="LogicGate" parent="PanelContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/TabContainer/Towers" unique_id=419833881 instance=ExtResource("1_c8e14")]
+layout_mode = 2
+tower_name = "Logic gate"
+tower_color = Color(0, 2.285, 4.006, 1)
+tower = 3
+
+[node name="PlaceButton" parent="PanelContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/TabContainer/Towers/LogicGate" index="0" unique_id=1384100982]
+modulate = Color(0, 2.285, 4.006, 1)
+
+[node name="Label" parent="PanelContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/TabContainer/Towers/LogicGate" index="1" unique_id=464681195]
+text = "Logic gate"
+
+[node name="Label2" parent="PanelContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/TabContainer/Towers/LogicGate" index="2" unique_id=1247666676]
+visible = false
+
+[node name="BufferOverflow" parent="PanelContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/TabContainer/Towers" unique_id=866268807 instance=ExtResource("1_c8e14")]
+layout_mode = 2
+tower_name = "Buffer Overflow"
+tower_icon = ExtResource("3_5qwtj")
+tower_color = Color(4, 0.413, 0, 1)
+tower = 3
+
+[node name="PlaceButton" parent="PanelContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/TabContainer/Towers/BufferOverflow" index="0" unique_id=1384100982]
+modulate = Color(4, 0.413, 0, 1)
+texture_normal = ExtResource("3_5qwtj")
+
+[node name="Label" parent="PanelContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/TabContainer/Towers/BufferOverflow" index="1" unique_id=464681195]
+text = "Buffer Overflow"
+
+[node name="Label2" parent="PanelContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/TabContainer/Towers/BufferOverflow" index="2" unique_id=1247666676]
+visible = false
+
+[node name="Sigterm" parent="PanelContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/TabContainer/Towers" unique_id=1782040255 instance=ExtResource("1_c8e14")]
+layout_mode = 2
+tower_name = "SIGTERM"
+tower_color = Color(4.006, 0, 0, 1)
+tower = 3
+
+[node name="PlaceButton" parent="PanelContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/TabContainer/Towers/Sigterm" index="0" unique_id=1384100982]
+modulate = Color(4.006, 0, 0, 1)
+
+[node name="Label" parent="PanelContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/TabContainer/Towers/Sigterm" index="1" unique_id=464681195]
+text = "SIGTERM"
+
+[node name="Label2" parent="PanelContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/TabContainer/Towers/Sigterm" index="2" unique_id=1247666676]
+visible = false
+
+[node name="Defragmenter" parent="PanelContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/TabContainer/Towers" unique_id=496387614 instance=ExtResource("1_c8e14")]
+layout_mode = 2
+tower_name = "Defragmenter"
+tower_icon = ExtResource("3_5qwtj")
+tower_color = Color(4.006, 4.006, 0, 1)
+tower = 3
+
+[node name="PlaceButton" parent="PanelContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/TabContainer/Towers/Defragmenter" index="0" unique_id=1384100982]
+modulate = Color(4.006, 4.006, 0, 1)
+texture_normal = ExtResource("3_5qwtj")
+
+[node name="Label" parent="PanelContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/TabContainer/Towers/Defragmenter" index="1" unique_id=464681195]
+text = "Defragmenter"
+
+[node name="Label2" parent="PanelContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/TabContainer/Towers/Defragmenter" index="2" unique_id=1247666676]
+visible = false
+
+[node name="Enemies" type="VBoxContainer" parent="PanelContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/TabContainer" unique_id=1394599233]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 1
+
+[node name="ExitButton" type="Button" parent="PanelContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=1713367148]
+layout_mode = 2
+shortcut = SubResource("Shortcut_sowsf")
+text = "Return to game"
+
+[node name="InfoScreen" parent="." unique_id=1763266291 instance=ExtResource("4_sowsf")]
+visible = false
+layout_mode = 1
+
+[connection signal="set_placing" from="PanelContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/TabContainer/Towers/LogicGate" to="." method="_on_logic_gate_set_placing"]
+[connection signal="set_placing" from="PanelContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/TabContainer/Towers/BufferOverflow" to="." method="_on_buffer_overflow_set_placing"]
+[connection signal="set_placing" from="PanelContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/TabContainer/Towers/Sigterm" to="." method="_on_sigterm_set_placing"]
+[connection signal="set_placing" from="PanelContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/TabContainer/Towers/Defragmenter" to="." method="_on_defragmenter_set_placing"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]
+
+[editable path="PanelContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/TabContainer/Towers/LogicGate"]
+[editable path="PanelContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/TabContainer/Towers/BufferOverflow"]
+[editable path="PanelContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/TabContainer/Towers/Sigterm"]
+[editable path="PanelContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/TabContainer/Towers/Defragmenter"]

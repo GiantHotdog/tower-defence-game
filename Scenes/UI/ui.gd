@@ -19,6 +19,9 @@ signal set_placing(tower_type:BaseTower.TowerTypes)
 var new_log_hint_panel:StyleBoxFlat
 var tween:Tween
 
+static var can_pause:bool = false
+
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	new_log_hint_panel = StyleBoxFlat.new()
@@ -35,8 +38,13 @@ func _process(_delta: float) -> void:
 	level_lost.visible = Globals.health <= 0
 	build_button.visible = Globals.placing == 0 and not tower_place_menu.visible
 	stop_build_button.visible = Globals.placing != 0 or tower_place_menu.visible
+	can_pause = not (tower_info_display.visible or level_complete.visible or level_lost.visible or tower_place_menu.visible)
 	
 	currency_label.text = str(Globals.currency) + "MB"
+	
+	#if Input.is_action_just_pressed("pause"):
+		#$PauseMenu.visible = true
+		#get_tree().paused = true
 
 
 func _on_button_pressed() -> void:
@@ -93,3 +101,7 @@ func new_terminal_log_hint(color:Color = Color(1, 1, 1)):
 
 func get_total_wave_count():
 	return get_parent().get_total_wave_count()
+
+
+func _on_pause_menu_show_compendium() -> void:
+	$PauseMenu/Compendium.visible = true

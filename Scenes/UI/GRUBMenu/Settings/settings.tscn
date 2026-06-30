@@ -18,15 +18,19 @@ text = "General"
 [node name="Label2" parent="VBoxContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer" parent_id_path=PackedInt32Array(1192133093) index="1" unique_id=72550295]
 text = "Audio"
 
-[node name="Label3" parent="VBoxContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer" parent_id_path=PackedInt32Array(1192133093) index="2" unique_id=505660984]
+[node name="Label3" parent="VBoxContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer" parent_id_path=PackedInt32Array(1192133093) index="2" unique_id=386487076]
+visible = true
 text = "Graphics"
 
-[node name="Label4" type="Label" parent="VBoxContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer" parent_id_path=PackedInt32Array(1192133093) index="3" unique_id=1718681462]
+[node name="Label5" type="Label" parent="VBoxContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer" parent_id_path=PackedInt32Array(1192133093) index="3" unique_id=1718681462]
 layout_mode = 2
 mouse_filter = 1
 text = "Credits"
 
-[node name="Label5" type="Label" parent="VBoxContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer" parent_id_path=PackedInt32Array(1192133093) index="4" unique_id=25834057]
+[node name="Label6" type="Label" parent="VBoxContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer" parent_id_path=PackedInt32Array(1192133093) index="4" unique_id=25834057]
 layout_mode = 2
 mouse_filter = 1
 text = "Back"
+
+[node name="Label4" parent="VBoxContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer" parent_id_path=PackedInt32Array(1192133093) index="5" unique_id=505660984]
+visible = false

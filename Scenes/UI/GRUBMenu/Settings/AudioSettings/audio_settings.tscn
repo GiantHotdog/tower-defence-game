@@ -22,8 +22,11 @@ layout_mode = 2
 [node name="Label2" parent="VBoxContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer" parent_id_path=PackedInt32Array(1192133093) index="2" unique_id=72550295]
 text = "Back"
 
-[node name="Label3" parent="VBoxContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer" parent_id_path=PackedInt32Array(1192133093) index="3" unique_id=505660984]
+[node name="Label3" parent="VBoxContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer" parent_id_path=PackedInt32Array(1192133093) index="3" unique_id=386487076]
 visible = false
 text = "Back"
+
+[node name="Label4" parent="VBoxContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer" parent_id_path=PackedInt32Array(1192133093) index="4" unique_id=505660984]
+visible = false
 
 [connection signal="dragging_finished" from="VBoxContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/Slider2" to="." method="_on_dragging_finished"]

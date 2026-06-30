@@ -4,8 +4,13 @@ extends Label
 @export var character_count:int = 10
 @export var health_percent:float = 0:
 	set(value):
-		health_percent = value
+		health_percent = clamp(value, 0, 1)
+		#health_percent = value
 		_update_label()
+@export var color:Color = Color(0.0, 0.745, 0.0):
+	set(value):
+		color = value
+		label_settings.font_color = value
 
 var health_full_char:String = "█"
 var health_empty_char:String = "░"
@@ -25,7 +30,9 @@ func _update_label():
 		output += health_empty_char
 		
 	text = output
+	label_settings.font_color = color
 
 
 func _ready() -> void:
 	set_progress(1)
+	label_settings = label_settings.duplicate(true)

@@ -85,10 +85,15 @@ func on_menu_select_pressed():
 			play_outro()
 			await outro_finished
 			get_tree().change_scene_to_file("res://Scenes/UI/GRUBMenu/Settings/settings.tscn")
+		#2:
+			#play_outro()
+			#await outro_finished
+			#get_tree().change_scene_to_file("res://Scenes/UI/GRUBMenu/Compendium/compendium.tscn")
 		2:
 			play_outro()
 			await outro_finished
 			get_tree().quit()
+
 
 func on_mouse_menu_select_pressed():
 	on_menu_select_pressed()

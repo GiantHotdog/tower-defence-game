@@ -4,7 +4,7 @@
 
 [sub_resource type="LabelSettings" id="LabelSettings_qyqjh"]
 font_size = 24
-font_color = Color(7.2196126e-06, 0.74619144, 0, 1)
+font_color = Color(0, 0.74509805, 0, 1)
 
 [node name="HealthBar" type="Label" unique_id=72830044]
 offset_right = 256.0

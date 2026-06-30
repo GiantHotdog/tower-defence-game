@@ -55,7 +55,7 @@ metadata/_custom_type_script = "uid://dodydgnw2sl38"
 script = ExtResource("2_ah1q8")
 display_name = "Logic Gate"
 damage = 1.0
-attack_range = 487.5
+attack_range = 480.0
 tower_type = 3
 upgrade_paths = Array[ExtResource("3_0yyg6")]([SubResource("Resource_dc2c3"), SubResource("Resource_5mxl6")])
 
