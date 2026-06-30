@@ -20,8 +20,14 @@ var is_upgrades_enabled = true
 var is_start_wave_enabled = true
 var is_inspector_enabled = true
 
+var version:String = "0.0.0-DEV-BUILD"
+
 
 func _ready() -> void:
+	if FileAccess.file_exists("version.txt"):
+		var file = FileAccess.open("version.txt", FileAccess.READ)
+		version = file.get_as_text()
+		file.close()
 	load_config("preferences.cfg")
 
 

@@ -40,6 +40,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Title" type="Label" parent="VBoxContainer" unique_id=1470722628]
+unique_name_in_owner = true
 layout_mode = 2
 text = "
 KERNEL MENU        version 0.01-dev-build"

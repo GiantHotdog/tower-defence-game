@@ -28,6 +28,9 @@ func _input(event: InputEvent) -> void:
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	%Title.text = "
+KERNEL MENU        version {version}".format({"version":Globals.version})
+	
 	select_theme_override = StyleBoxFlat.new()
 	select_theme_override.bg_color = Color.WHITE
 	
