@@ -146,7 +146,7 @@ func _on_enemy_killed(enemy_pid:int):
 	ui.add_log("Malware process [color=#ff00ff][PID: %s][/color] terminated" % enemy_pid)
 
 
-func add_enemy(enemy:BaseEnemy.ENEMY_TYPES) -> BaseEnemy:
+func add_enemy(enemy:BaseEnemy.ENEMY_TYPES, modifiers:Dictionary[String, Variant] = {}) -> BaseEnemy:
 	enemies_in_current_wave += 1
 	var spawning:BaseEnemy = null
 	match enemy:
@@ -158,6 +158,10 @@ func add_enemy(enemy:BaseEnemy.ENEMY_TYPES) -> BaseEnemy:
 			spawning = zip_bomb_enemy_scene.instantiate()
 			spawning.children_add.connect(_on_zip_bomb_enemy_children_add)
 	if spawning:
+		# Apply modifiers
+		if "cloak" in modifiers.keys():
+			spawning.is_cloaked = modifiers["cloak"]
+		
 		spawning.enemy_killed.connect(_on_enemy_killed)
 		spawning.reached_end_of_path.connect(_on_enemy_reached_end_of_path)
 		enemy_path.add_child(spawning)

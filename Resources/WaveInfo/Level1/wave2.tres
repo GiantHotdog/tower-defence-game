@@ -1,15 +1,25 @@
 [gd_resource type="Resource" script_class="WaveInfo" format=3 uid="uid://dnbeksdeq7se4"]
 
+[ext_resource type="Script" uid="uid://dxkspwruhtret" path="res://Resources/EnemySpawnerInfo/EnemySpawnerInfo.gd" id="1_01o41"]
 [ext_resource type="Script" uid="uid://dq3f0ac1t4eau" path="res://Resources/WaveInfo/WaveInfo.gd" id="1_hndxf"]
+
+[sub_resource type="Resource" id="Resource_01o41"]
+script = ExtResource("1_01o41")
+enemy_count = 10
+enemy_spawn_interval = 0.5
+metadata/_custom_type_script = "uid://dxkspwruhtret"
+
+[sub_resource type="Resource" id="Resource_tafi8"]
+script = ExtResource("1_01o41")
+enemy_count = 2
+enemy_spawn_interval = 2.0
+is_cloaked = true
+metadata/_custom_type_script = "uid://dxkspwruhtret"
 
 [resource]
 script = ExtResource("1_hndxf")
-enemy_counts = Dictionary[int, int]({
-1: 10,
-2: 2
-})
-enemy_spawn_interval = Dictionary[int, float]({
-1: 0.4,
-2: 5.0
+enemy_info = Dictionary[int, ExtResource("1_01o41")]({
+1: SubResource("Resource_01o41"),
+2: SubResource("Resource_tafi8")
 })
 metadata/_custom_type_script = "uid://dq3f0ac1t4eau"

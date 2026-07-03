@@ -3,29 +3,9 @@
 [ext_resource type="PackedScene" uid="uid://crdqerfs03sfa" path="res://Scenes/Levels/base_level.tscn" id="1_rvv8h"]
 [ext_resource type="Script" uid="uid://bbqleic22pdoh" path="res://Scenes/Levels/Tutorial/tutorial_level.gd" id="2_7jnue"]
 [ext_resource type="Script" uid="uid://dq3f0ac1t4eau" path="res://Resources/WaveInfo/WaveInfo.gd" id="3_th7ri"]
+[ext_resource type="Resource" uid="uid://7wu2351oee7k" path="res://Resources/WaveInfo/Tutorial/wave1.tres" id="4_ddnop"]
 [ext_resource type="PackedScene" uid="uid://bphehwrad04m2" path="res://Scenes/UI/tutorial_box.tscn" id="4_qn7il"]
-
-[sub_resource type="Resource" id="Resource_qn7il"]
-script = ExtResource("3_th7ri")
-enemy_counts = Dictionary[int, int]({
-1: 2
-})
-enemy_spawn_interval = Dictionary[int, float]({
-1: 0.5
-})
-wave_finish_currency_reward = 20
-metadata/_custom_type_script = "uid://dq3f0ac1t4eau"
-
-[sub_resource type="Resource" id="Resource_dbsss"]
-script = ExtResource("3_th7ri")
-enemy_counts = Dictionary[int, int]({
-1: 2
-})
-enemy_spawn_interval = Dictionary[int, float]({
-1: 1.0
-})
-wave_finish_currency_reward = 0
-metadata/_custom_type_script = "uid://dq3f0ac1t4eau"
+[ext_resource type="Resource" uid="uid://d3unhga3t3pdb" path="res://Resources/WaveInfo/Tutorial/wave2.tres" id="5_xtent"]
 
 [sub_resource type="Curve2D" id="Curve2D_7jnue"]
 _data = {
@@ -38,8 +18,8 @@ script = ExtResource("2_7jnue")
 placing_tutorial_pos = Vector2i(7, 3)
 dialog_boxes = [NodePath("StartTutorialBox"), NodePath("StartTutorialBox2"), NodePath("StartTutorialBox3"), NodePath("StartTutorialBox4"), NodePath("StartTutorialBox5")]
 wave_info_dict = Dictionary[int, ExtResource("3_th7ri")]({
-1: SubResource("Resource_qn7il"),
-2: SubResource("Resource_dbsss")
+1: ExtResource("4_ddnop"),
+2: ExtResource("5_xtent")
 })
 is_tutorial = true
 

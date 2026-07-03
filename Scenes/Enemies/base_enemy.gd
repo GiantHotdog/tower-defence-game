@@ -20,6 +20,9 @@ signal reached_end_of_path(enemy_pid:int, damage_dealt:int)
 @onready var health_bar:HealthBar = $HealthBar
 
 
+var cloaked_color = Color(0.047, 0.047, 0.047)
+
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass
@@ -29,6 +32,10 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	if is_cloaked:
+		modulate = cloaked_color
+	else:
+		modulate = Color(1, 1, 1)
 	progress += move_speed * delta
 	if health <= 0:
 		die()
