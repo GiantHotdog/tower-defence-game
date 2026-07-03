@@ -3,15 +3,15 @@
 [ext_resource type="Script" uid="uid://dxkspwruhtret" path="res://Resources/EnemySpawnerInfo/EnemySpawnerInfo.gd" id="1_7ebgj"]
 [ext_resource type="Script" uid="uid://dq3f0ac1t4eau" path="res://Resources/WaveInfo/WaveInfo.gd" id="2_bws8d"]
 
-[sub_resource type="Resource" id="Resource_xtent"]
+[sub_resource type="Resource" id="Resource_7ebgj"]
 script = ExtResource("1_7ebgj")
 enemy_count = 3
 metadata/_custom_type_script = "uid://dxkspwruhtret"
 
 [resource]
 script = ExtResource("2_bws8d")
-enemy_counts = Dictionary[int, Resource]({
-1: SubResource("Resource_xtent")
+enemy_info = Dictionary[int, ExtResource("1_7ebgj")]({
+1: SubResource("Resource_7ebgj")
 })
 wave_finish_currency_reward = 0
 metadata/_custom_type_script = "uid://dq3f0ac1t4eau"
