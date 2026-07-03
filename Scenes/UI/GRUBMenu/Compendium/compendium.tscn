@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://c4b1hgno7486b" path="res://Scenes/UI/GRUBMenu/Compendium/compendium.gd" id="2_ihwpl"]
 [ext_resource type="Texture2D" uid="uid://cdndvd8yb1csg" path="res://Assets/Towers/Buffer Overflow.svg" id="3_5qwtj"]
 [ext_resource type="PackedScene" uid="uid://bxwj761ney7wp" path="res://Scenes/UI/GRUBMenu/Compendium/tower_info_screen.tscn" id="4_sowsf"]
+[ext_resource type="PackedScene" uid="uid://bvsx56a12y3s3" path="res://Scenes/UI/GRUBMenu/Compendium/enemy_info_screen.tscn" id="5_6nbpi"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7o3pg"]
 bg_color = Color(0, 0, 0, 1)
@@ -22,12 +23,33 @@ corner_radius_bottom_left = 4
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sowsf"]
 bg_color = Color(0, 0, 0, 1)
 
+[sub_resource type="ViewportTexture" id="ViewportTexture_6nbpi"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_6nbpi"]
+blend_mode = 1
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_vmju8"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c14x3"]
+bg_color = Color(0, 0, 0, 0)
+border_width_left = 6
+border_width_top = 6
+border_width_right = 6
+border_width_bottom = 6
+border_color = Color(7.6599646, 0, 2.3259497, 1)
+
 [sub_resource type="InputEventKey" id="InputEventKey_r6kbw"]
 device = -1
 keycode = 4194305
 
 [sub_resource type="Shortcut" id="Shortcut_sowsf"]
 events = [SubResource("InputEventKey_r6kbw")]
+
+[sub_resource type="Environment" id="Environment_sowsf"]
+background_mode = 3
+glow_enabled = true
 
 [node name="Compendium" type="Control" unique_id=1108488723]
 layout_mode = 3
@@ -72,9 +94,10 @@ layout_mode = 2
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_sowsf")
-current_tab = 0
+current_tab = 1
 
 [node name="Towers" type="GridContainer" parent="PanelContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/TabContainer" unique_id=160373855]
+visible = false
 layout_mode = 2
 columns = 2
 metadata/_tab_index = 0
@@ -143,27 +166,155 @@ text = "Defragmenter"
 [node name="Label2" parent="PanelContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/TabContainer/Towers/Defragmenter" index="2" unique_id=1247666676]
 visible = false
 
-[node name="Enemies" type="VBoxContainer" parent="PanelContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/TabContainer" unique_id=1394599233]
-visible = false
+[node name="Enemies" type="GridContainer" parent="PanelContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/TabContainer" unique_id=783870416]
 layout_mode = 2
+columns = 2
 metadata/_tab_index = 1
+
+[node name="WeakEnemy" parent="PanelContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/TabContainer/Enemies" unique_id=239255650 instance=ExtResource("1_c8e14")]
+unique_name_in_owner = true
+layout_mode = 2
+tower_name = "Weak enemy"
+tower_icon = SubResource("ViewportTexture_6nbpi")
+tower_color = Color(5, 0, 1.5, 1)
+tower = 3
+
+[node name="PlaceButton" parent="PanelContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/TabContainer/Enemies/WeakEnemy" index="0" unique_id=1384100982]
+modulate = Color(5, 0, 1.5, 1)
+texture_normal = SubResource("ViewportTexture_6nbpi")
+
+[node name="Label" parent="PanelContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/TabContainer/Enemies/WeakEnemy" index="1" unique_id=464681195]
+text = "Weak enemy"
+
+[node name="Label2" parent="PanelContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/TabContainer/Enemies/WeakEnemy" index="2" unique_id=1247666676]
+visible = false
+
+[node name="SubViewport" type="SubViewport" parent="PanelContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/TabContainer/Enemies/WeakEnemy" unique_id=142845728]
+transparent_bg = true
+size = Vector2i(64, 64)
+
+[node name="RedSprite" type="Node2D" parent="PanelContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/TabContainer/Enemies/WeakEnemy/SubViewport" unique_id=599823959]
+position = Vector2(32, 32)
+
+[node name="ColorRect" type="ColorRect" parent="PanelContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/TabContainer/Enemies/WeakEnemy/SubViewport/RedSprite" unique_id=1755830037]
+material = SubResource("CanvasItemMaterial_6nbpi")
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+pivot_offset = Vector2(20, 20)
+color = Color(5, 0, 0, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="ColorRect2" type="ColorRect" parent="PanelContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/TabContainer/Enemies/WeakEnemy/SubViewport/RedSprite" unique_id=719298842]
+material = SubResource("CanvasItemMaterial_6nbpi")
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+rotation = 0.7853982
+pivot_offset = Vector2(20, 20)
+color = Color(5, 0, 0, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="BlueSprite" type="Node2D" parent="PanelContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/TabContainer/Enemies/WeakEnemy/SubViewport" unique_id=1169879834]
+position = Vector2(32, 32)
+
+[node name="ColorRect3" type="ColorRect" parent="PanelContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/TabContainer/Enemies/WeakEnemy/SubViewport/BlueSprite" unique_id=872712509]
+material = SubResource("CanvasItemMaterial_6nbpi")
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+pivot_offset = Vector2(20, 20)
+color = Color(0, 0, 1.5, 1)
+
+[node name="ColorRect4" type="ColorRect" parent="PanelContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/TabContainer/Enemies/WeakEnemy/SubViewport/BlueSprite" unique_id=137469152]
+material = SubResource("CanvasItemMaterial_6nbpi")
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+rotation = 0.7853982
+pivot_offset = Vector2(20, 20)
+color = Color(0, 0, 1.5, 1)
+
+[node name="ZipBomb" parent="PanelContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/TabContainer/Enemies" unique_id=1200885810 instance=ExtResource("1_c8e14")]
+unique_name_in_owner = true
+layout_mode = 2
+tower_name = "Zip Bomb"
+tower_icon = SubResource("ViewportTexture_vmju8")
+tower_color = Color(5, 0, 1.5, 1)
+tower = 3
+
+[node name="PlaceButton" parent="PanelContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/TabContainer/Enemies/ZipBomb" index="0" unique_id=1384100982]
+modulate = Color(5, 0, 1.5, 1)
+texture_normal = SubResource("ViewportTexture_vmju8")
+
+[node name="Label" parent="PanelContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/TabContainer/Enemies/ZipBomb" index="1" unique_id=464681195]
+text = "Zip Bomb"
+
+[node name="Label2" parent="PanelContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/TabContainer/Enemies/ZipBomb" index="2" unique_id=1247666676]
+visible = false
+
+[node name="SubViewport" type="SubViewport" parent="PanelContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/TabContainer/Enemies/ZipBomb" unique_id=1128744994]
+transparent_bg = true
+size = Vector2i(96, 96)
+
+[node name="Sprite" type="Node2D" parent="PanelContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/TabContainer/Enemies/ZipBomb/SubViewport" unique_id=362477783]
+position = Vector2(48, 48)
+
+[node name="ColorRect" type="Panel" parent="PanelContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/TabContainer/Enemies/ZipBomb/SubViewport/Sprite" unique_id=829509790]
+offset_left = -32.0
+offset_top = -32.0
+offset_right = 32.0
+offset_bottom = 32.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_c14x3")
+metadata/_edit_use_anchors_ = true
+
+[node name="ColorRect2" type="Panel" parent="PanelContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/TabContainer/Enemies/ZipBomb/SubViewport/Sprite" unique_id=786921081]
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_c14x3")
+metadata/_edit_use_anchors_ = true
+
+[node name="ColorRect3" type="Panel" parent="PanelContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/TabContainer/Enemies/ZipBomb/SubViewport/Sprite" unique_id=682904532]
+offset_left = -8.0
+offset_top = -8.0
+offset_right = 8.0
+offset_bottom = 8.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_c14x3")
+metadata/_edit_use_anchors_ = true
 
 [node name="ExitButton" type="Button" parent="PanelContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=1713367148]
 layout_mode = 2
 shortcut = SubResource("Shortcut_sowsf")
 text = "Return to game"
 
-[node name="InfoScreen" parent="." unique_id=1763266291 instance=ExtResource("4_sowsf")]
+[node name="TowerInfoScreen" parent="." unique_id=1763266291 instance=ExtResource("4_sowsf")]
 visible = false
 layout_mode = 1
+
+[node name="EnemyInfoScreen" parent="." unique_id=1713556900 instance=ExtResource("5_6nbpi")]
+visible = false
+layout_mode = 1
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=602375871]
+environment = SubResource("Environment_sowsf")
 
 [connection signal="set_placing" from="PanelContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/TabContainer/Towers/LogicGate" to="." method="_on_logic_gate_set_placing"]
 [connection signal="set_placing" from="PanelContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/TabContainer/Towers/BufferOverflow" to="." method="_on_buffer_overflow_set_placing"]
 [connection signal="set_placing" from="PanelContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/TabContainer/Towers/Sigterm" to="." method="_on_sigterm_set_placing"]
 [connection signal="set_placing" from="PanelContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/TabContainer/Towers/Defragmenter" to="." method="_on_defragmenter_set_placing"]
+[connection signal="set_placing" from="PanelContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/TabContainer/Enemies/WeakEnemy" to="." method="_on_weak_enemy_set_placing"]
+[connection signal="set_placing" from="PanelContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/TabContainer/Enemies/ZipBomb" to="." method="_on_zip_bomb_set_placing"]
 [connection signal="pressed" from="PanelContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]
 
 [editable path="PanelContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/TabContainer/Towers/LogicGate"]
 [editable path="PanelContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/TabContainer/Towers/BufferOverflow"]
 [editable path="PanelContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/TabContainer/Towers/Sigterm"]
 [editable path="PanelContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/TabContainer/Towers/Defragmenter"]
+[editable path="PanelContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/TabContainer/Enemies/WeakEnemy"]
+[editable path="PanelContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/TabContainer/Enemies/ZipBomb"]

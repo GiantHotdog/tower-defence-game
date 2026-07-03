@@ -2,9 +2,11 @@
 
 [ext_resource type="PackedScene" uid="uid://crdqerfs03sfa" path="res://Scenes/Levels/base_level.tscn" id="1_4qeik"]
 [ext_resource type="Script" uid="uid://dq3f0ac1t4eau" path="res://Resources/WaveInfo/WaveInfo.gd" id="2_btxmh"]
+[ext_resource type="Script" uid="uid://g87w7u47x6tl" path="res://Scenes/Levels/Level1/level_1.gd" id="2_nqjqy"]
 [ext_resource type="Resource" uid="uid://ddbhcerv8a2to" path="res://Resources/WaveInfo/Level1/wave1.tres" id="3_nqjqy"]
 [ext_resource type="Resource" uid="uid://dnbeksdeq7se4" path="res://Resources/WaveInfo/Level1/wave2.tres" id="4_hf8m8"]
 [ext_resource type="PackedScene" uid="uid://5f5xoenbd6ry" path="res://Shaders/chromaticAberration.tscn" id="5_btxmh"]
+[ext_resource type="PackedScene" uid="uid://bphehwrad04m2" path="res://Scenes/UI/tutorial_box.tscn" id="7_hf8m8"]
 
 [sub_resource type="Curve2D" id="Curve2D_5jgm0"]
 _data = {
@@ -12,7 +14,9 @@ _data = {
 }
 point_count = 10
 
-[node name="Level1" unique_id=555824650 instance=ExtResource("1_4qeik")]
+[node name="Level1" unique_id=555824650 node_paths=PackedStringArray("dialog_boxes") instance=ExtResource("1_4qeik")]
+script = ExtResource("2_nqjqy")
+dialog_boxes = []
 wave_info_dict = Dictionary[int, ExtResource("2_btxmh")]({
 1: ExtResource("3_nqjqy"),
 2: ExtResource("4_hf8m8")
@@ -32,5 +36,17 @@ position = Vector2(-128, 512)
 [node name="CanvasLayer" parent="." index="7" unique_id=1540000394 instance=ExtResource("5_btxmh")]
 visible = false
 
+[node name="TutorialBox" parent="." index="8" unique_id=257445220 instance=ExtResource("7_hf8m8")]
+
+[node name="Label" parent="TutorialBox/CenterContainer/PanelContainer/MarginContainer/PanelContainer/MarginContainer/HBoxContainer" parent_id_path=PackedInt32Array(257445220, 981650530) index="0" unique_id=1009314230]
+text = "[color=magenta][b]Enemies[/b][/color] will sometimes now be cloaked. This means your towers will not be able to see or attack them until they are decloaked by a [color=yellow][b]Defragmenter[/b][/color]"
+
+[node name="StartButton" parent="TutorialBox/CenterContainer/PanelContainer/MarginContainer/PanelContainer/MarginContainer/HBoxContainer/VBoxContainer" parent_id_path=PackedInt32Array(257445220, 1279702825) index="0" unique_id=702543855]
+text = "Next"
+
+[node name="SkipButton" parent="TutorialBox/CenterContainer/PanelContainer/MarginContainer/PanelContainer/MarginContainer/HBoxContainer/VBoxContainer" parent_id_path=PackedInt32Array(257445220, 1279702825) index="1" unique_id=602351183]
+visible = false
+
 [editable path="UI"]
 [editable path="UI/PanelContainer2/MarginContainer/VBoxContainer/FirewallProgress"]
+[editable path="TutorialBox"]

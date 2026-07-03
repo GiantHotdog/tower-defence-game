@@ -1,0 +1,263 @@
+[gd_scene format=3 uid="uid://bvsx56a12y3s3"]
+
+[ext_resource type="Script" uid="uid://c5vbyesglw5qp" path="res://Scenes/UI/GRUBMenu/Compendium/enemy_info_screen.gd" id="1_7dvys"]
+[ext_resource type="Texture2D" uid="uid://cdndvd8yb1csg" path="res://Assets/Towers/Buffer Overflow.svg" id="2_b14a7"]
+[ext_resource type="PackedScene" uid="uid://djmrts0a0yri2" path="res://Scenes/UI/health_bar.tscn" id="3_blqrf"]
+[ext_resource type="Texture2D" uid="uid://daun23rgilglp" path="res://Assets/UI/arrow_back.svg" id="4_kdmdq"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7o3pg"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c8e14"]
+draw_center = false
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="LabelSettings" id="LabelSettings_xnv23"]
+font_color = Color(0, 0.74509805, 0, 1)
+
+[sub_resource type="InputEventKey" id="InputEventKey_r6kbw"]
+device = -1
+keycode = 4194305
+
+[sub_resource type="Shortcut" id="Shortcut_xh181"]
+events = [SubResource("InputEventKey_r6kbw")]
+
+[node name="EnemyInfoScreen" type="PanelContainer" unique_id=1763266291]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_7o3pg")
+script = ExtResource("1_7dvys")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=927003968]
+layout_mode = 2
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 32
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer" unique_id=922555218]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_c8e14")
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/PanelContainer" unique_id=675312285]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer" unique_id=1969090378]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer3" unique_id=718309871]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer3/HBoxContainer" unique_id=1448258921]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+
+[node name="EnemyNameLabel" type="RichTextLabel" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer3/HBoxContainer/VBoxContainer" unique_id=267765959]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "Enemy Name"
+fit_content = true
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer3/HBoxContainer/VBoxContainer" unique_id=1242347098]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_c8e14")
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer3/HBoxContainer/VBoxContainer/PanelContainer" unique_id=1341598609]
+layout_mode = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer3/HBoxContainer/VBoxContainer/PanelContainer/MarginContainer" unique_id=1997535201]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer3/HBoxContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=241958901]
+layout_mode = 2
+text = "Preview"
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer3/HBoxContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=845432747]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+texture = ExtResource("2_b14a7")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="PanelContainer2" type="PanelContainer" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer3/HBoxContainer/VBoxContainer" unique_id=1470649472]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_c8e14")
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer3/HBoxContainer/VBoxContainer/PanelContainer2" unique_id=1961186982]
+layout_mode = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer3/HBoxContainer/VBoxContainer/PanelContainer2/MarginContainer" unique_id=1699826981]
+layout_mode = 2
+
+[node name="DescriptionTitle" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer3/HBoxContainer/VBoxContainer/PanelContainer2/MarginContainer/VBoxContainer" unique_id=1136402785]
+unique_name_in_owner = true
+layout_mode = 2
+text = "> man {enemy name}"
+label_settings = SubResource("LabelSettings_xnv23")
+
+[node name="DescriptionLabel" type="RichTextLabel" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer3/HBoxContainer/VBoxContainer/PanelContainer2/MarginContainer/VBoxContainer" unique_id=630926323]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(256, 0)
+layout_mode = 2
+bbcode_enabled = true
+text = "Enemy information continued. This wraps over a line to test the formatting. There is no other reason for this to be here."
+fit_content = true
+
+[node name="PanelContainer2" type="PanelContainer" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer3/HBoxContainer" unique_id=186132170]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_c8e14")
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer3/HBoxContainer/PanelContainer2" unique_id=1931529937]
+layout_mode = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer3/HBoxContainer/PanelContainer2/MarginContainer" unique_id=1137896992]
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="Label" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer3/HBoxContainer/PanelContainer2/MarginContainer/VBoxContainer2" unique_id=519942548]
+layout_mode = 2
+text = "Technical specifications"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer3/HBoxContainer/PanelContainer2/MarginContainer/VBoxContainer2" unique_id=2122640988]
+layout_mode = 2
+
+[node name="MoveSpeedLabel" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer3/HBoxContainer/PanelContainer2/MarginContainer/VBoxContainer2/VBoxContainer" unique_id=945565507]
+layout_mode = 2
+text = "MOVE SPEED"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer3/HBoxContainer/PanelContainer2/MarginContainer/VBoxContainer2/VBoxContainer" unique_id=88668017]
+layout_mode = 2
+
+[node name="MoveSpeedBar" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer3/HBoxContainer/PanelContainer2/MarginContainer/VBoxContainer2/VBoxContainer/HBoxContainer" unique_id=72830044 instance=ExtResource("3_blqrf")]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 0
+health_percent = 1.0
+color = Color(1, 0.6956667, 0.17000002, 1)
+
+[node name="MoveSpeedLabel" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer3/HBoxContainer/PanelContainer2/MarginContainer/VBoxContainer2/VBoxContainer/HBoxContainer" unique_id=610689402]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.69411767, 0.16862746, 1)
+text = "Move Speed"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer3/HBoxContainer/PanelContainer2/MarginContainer/VBoxContainer2" unique_id=1545834537]
+layout_mode = 2
+
+[node name="DamageCategoryLabel" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer3/HBoxContainer/PanelContainer2/MarginContainer/VBoxContainer2/VBoxContainer2" unique_id=1821307949]
+layout_mode = 2
+text = "DAMAGE"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer3/HBoxContainer/PanelContainer2/MarginContainer/VBoxContainer2/VBoxContainer2" unique_id=1851109414]
+layout_mode = 2
+
+[node name="DamageBar" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer3/HBoxContainer/PanelContainer2/MarginContainer/VBoxContainer2/VBoxContainer2/HBoxContainer" unique_id=918636720 instance=ExtResource("3_blqrf")]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 0
+health_percent = 1.0
+color = Color(1, 0.69411767, 0.16862746, 1)
+
+[node name="DamageLabel" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer3/HBoxContainer/PanelContainer2/MarginContainer/VBoxContainer2/VBoxContainer2/HBoxContainer" unique_id=1221224959]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.69411767, 0.16862746, 1)
+text = "Damage"
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer3/HBoxContainer/PanelContainer2/MarginContainer/VBoxContainer2" unique_id=878011653]
+layout_mode = 2
+
+[node name="HealthCategoryLabel" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer3/HBoxContainer/PanelContainer2/MarginContainer/VBoxContainer2/VBoxContainer3" unique_id=660900777]
+layout_mode = 2
+text = "HEALTH"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer3/HBoxContainer/PanelContainer2/MarginContainer/VBoxContainer2/VBoxContainer3" unique_id=993090702]
+layout_mode = 2
+
+[node name="HealthBar" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer3/HBoxContainer/PanelContainer2/MarginContainer/VBoxContainer2/VBoxContainer3/HBoxContainer" unique_id=1338349738 instance=ExtResource("3_blqrf")]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 0
+health_percent = 1.0
+color = Color(1, 0.69411767, 0.16862746, 1)
+
+[node name="HealthLabel" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer3/HBoxContainer/PanelContainer2/MarginContainer/VBoxContainer2/VBoxContainer3/HBoxContainer" unique_id=1089061365]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.69411767, 0.16862746, 1)
+text = "Health"
+
+[node name="VBoxContainer4" type="VBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer3/HBoxContainer/PanelContainer2/MarginContainer/VBoxContainer2" unique_id=1727320138]
+visible = false
+layout_mode = 2
+
+[node name="CostCategoryLabel" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer3/HBoxContainer/PanelContainer2/MarginContainer/VBoxContainer2/VBoxContainer4" unique_id=87913118]
+layout_mode = 2
+text = "PROGRAM SIZE"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer3/HBoxContainer/PanelContainer2/MarginContainer/VBoxContainer2/VBoxContainer4" unique_id=1071560355]
+layout_mode = 2
+
+[node name="CostBar" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer3/HBoxContainer/PanelContainer2/MarginContainer/VBoxContainer2/VBoxContainer4/HBoxContainer" unique_id=950777184 instance=ExtResource("3_blqrf")]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 0
+health_percent = 1.0
+color = Color(1, 0.69411767, 0.16862746, 1)
+
+[node name="CostLabel" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer3/HBoxContainer/PanelContainer2/MarginContainer/VBoxContainer2/VBoxContainer4/HBoxContainer" unique_id=1972991046]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.69411767, 0.16862746, 1)
+text = "Cost"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer3" unique_id=458868226]
+layout_mode = 2
+
+[node name="MalwareDBLabel" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer3/HBoxContainer2" unique_id=386408422]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "OpenMalwareDB-{date}"
+
+[node name="ExitButton" type="Button" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer3/HBoxContainer2" unique_id=675571836]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+shortcut = SubResource("Shortcut_xh181")
+text = "Return to compendium"
+icon = ExtResource("4_kdmdq")
+
+[connection signal="pressed" from="MarginContainer/PanelContainer/MarginContainer/VBoxContainer3/HBoxContainer2/ExitButton" to="." method="_on_exit_button_pressed"]

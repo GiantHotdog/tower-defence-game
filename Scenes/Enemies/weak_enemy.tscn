@@ -39,6 +39,7 @@ offset_right = 20.0
 offset_bottom = 20.0
 pivot_offset = Vector2(20, 20)
 color = Color(5, 0, 0, 1)
+metadata/_edit_use_anchors_ = true
 
 [node name="ColorRect2" type="ColorRect" parent="RedSprite" index="1" unique_id=1510227065]
 material = SubResource("CanvasItemMaterial_xkuw6")
@@ -49,6 +50,7 @@ offset_bottom = 20.0
 rotation = 0.7853982
 pivot_offset = Vector2(20, 20)
 color = Color(5, 0, 0, 1)
+metadata/_edit_use_anchors_ = true
 
 [node name="BlueSprite" type="Node2D" parent="." index="4" unique_id=331233237]
 

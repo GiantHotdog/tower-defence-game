@@ -22,7 +22,6 @@ enemy_type = 2
 move_speed = 200.0
 MAX_HEALTH = 5
 damage = 50
-is_cloaked = true
 
 [node name="Sprite2D" parent="." index="0" unique_id=1481800299]
 visible = false
@@ -38,6 +37,7 @@ offset_top = -32.0
 offset_right = 32.0
 offset_bottom = 32.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_pq7yh")
+metadata/_edit_use_anchors_ = true
 
 [node name="ColorRect2" type="Panel" parent="Sprite" index="1" unique_id=299352455]
 offset_left = -20.0
@@ -45,6 +45,7 @@ offset_top = -20.0
 offset_right = 20.0
 offset_bottom = 20.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_pq7yh")
+metadata/_edit_use_anchors_ = true
 
 [node name="ColorRect3" type="Panel" parent="Sprite" index="2" unique_id=108318231]
 offset_left = -8.0
@@ -52,3 +53,4 @@ offset_top = -8.0
 offset_right = 8.0
 offset_bottom = 8.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_pq7yh")
+metadata/_edit_use_anchors_ = true

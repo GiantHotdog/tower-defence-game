@@ -19,7 +19,7 @@ func _on_exit_button_pressed() -> void:
 func set_tower_name(value:String):
 	%TowerNameLabel.text = value
 	var regex = RegEx.create_from_string("\\[.*?\\]")
-	%DescriptionTitle.text = "> man \"" + regex.sub(value, "", true) + "\""
+	%DescriptionTitle.text = "> man antivirus-db/" + regex.sub(value, "", true).to_kebab_case() + ".info"
 
 
 func set_description(value:String):
@@ -37,7 +37,7 @@ func set_attack_speed(value:float):
 
 
 func set_damage(value:float):
-	%DamageLabel.text = "[%.2f" % value + " damage per attack]"
+	%DamageLabel.text = "[%.2f" % value + " integrity removed per attack]"
 	%DamageBar.set_progress(value / 2.0)
 
 
