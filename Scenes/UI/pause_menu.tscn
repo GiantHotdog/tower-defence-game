@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://bxnddk8pg5eig" path="res://Scenes/UI/GRUBMenu/Compendium/compendium.tscn" id="2_8rf44"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b1dhq"]
-draw_center = false
+bg_color = Color(0, 0, 0, 1)
 border_width_left = 4
 border_width_top = 4
 border_width_right = 4

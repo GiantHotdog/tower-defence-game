@@ -36,6 +36,8 @@ script = ExtResource("1_de23q")
 [node name="TowerInfoDisplay" parent="." unique_id=1776722101 instance=ExtResource("1_ahcct")]
 
 [node name="LevelComplete" parent="." unique_id=226032127 instance=ExtResource("3_c7mb3")]
+offset_right = -258.22217
+offset_bottom = -77.33331
 
 [node name="TowerPlaceMenu" parent="." unique_id=652360184 instance=ExtResource("4_fo61o")]
 visible = false
@@ -141,7 +143,8 @@ theme_override_font_sizes/font_size = 24
 text = "System Log"
 
 [node name="LevelLost" parent="." unique_id=2091169056 instance=ExtResource("6_1c2ca")]
-visible = false
+offset_right = -262.66663
+offset_bottom = -77.33331
 
 [node name="PanelContainer2" type="PanelContainer" parent="." unique_id=1223981862]
 anchors_preset = 11
