@@ -23,6 +23,7 @@ func start_wave(level:BaseLevel):
 func _on_spawn_timer_timeout(enemy:BaseEnemy.ENEMY_TYPES, level:BaseLevel):
 	var modifiers:Dictionary[String, Variant] = {}
 	modifiers["cloak"] = enemy_info[enemy].is_cloaked
+	modifiers["invulnerable"] = enemy_info[enemy].is_invulnerable
 	level.add_enemy(enemy, modifiers)
 	enemy_spawn_counts[enemy] += 1
 	if enemy_spawn_counts[enemy] >= enemy_info[enemy].enemy_count:

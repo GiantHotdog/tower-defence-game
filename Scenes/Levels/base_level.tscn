@@ -38,7 +38,6 @@ color = Color(1, 1, 1, 0)
 metadata/_edit_use_anchors_ = true
 
 [node name="PlacementAssistLayer" type="TileMapLayer" parent="." unique_id=1845269339]
-tile_map_data = PackedByteArray("AAAGAAMAAAAAAAAAAwA=")
 tile_set = ExtResource("3_30ow2")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=324976822]
@@ -62,6 +61,7 @@ tile_map_data = PackedByteArray("AAAAABEAAAAAAAAABgAAABIAAAAAAAAABgAAABMAAAAAAAA
 tile_set = ExtResource("3_30ow2")
 
 [node name="UI" parent="." unique_id=1213322130 instance=ExtResource("4_0q0li")]
+unique_name_in_owner = true
 
 [node name="TowerInfoDisplay" parent="UI" index="0" unique_id=1776722101]
 visible = false

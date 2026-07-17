@@ -10,12 +10,13 @@ signal wave_complete(wave_number:int)
 ## Is this the tutorial level
 @export var is_tutorial = false
 
-## The level ID, used to track if this level has been created
+## The level ID, used to track if this level has been beated
 @export var level_id:int
 
 @onready var base_enemy_scene:PackedScene = load("res://Scenes/Enemies/base_enemy.tscn")
 @onready var weak_enemy_scene:PackedScene  = load("res://Scenes/Enemies/weak_enemy.tscn")
 @onready var zip_bomb_enemy_scene:PackedScene = load("res://Scenes/Enemies/zip_bomb.tscn")
+@onready var zero_day_enemy_scene:PackedScene = load("res://Scenes/Enemies/zero_day.tscn")
 
 @onready var tower_map:TileMapLayer = $TowerLayer
 @onready var place_assist_map:TileMapLayer = $PlacementAssistLayer
@@ -157,10 +158,14 @@ func add_enemy(enemy:BaseEnemy.ENEMY_TYPES, modifiers:Dictionary[String, Variant
 		BaseEnemy.ENEMY_TYPES.ZIP_BOMB_ENEMY:
 			spawning = zip_bomb_enemy_scene.instantiate()
 			spawning.children_add.connect(_on_zip_bomb_enemy_children_add)
+		BaseEnemy.ENEMY_TYPES.ZERO_DAY_ENEMY:
+			spawning = zero_day_enemy_scene.instantiate()
 	if spawning:
 		# Apply modifiers
 		if "cloak" in modifiers.keys():
 			spawning.is_cloaked = modifiers["cloak"]
+		if "invulnerable" in modifiers.keys():
+			spawning.is_invulnerable = modifiers["invulnerable"]
 		
 		spawning.enemy_killed.connect(_on_enemy_killed)
 		spawning.reached_end_of_path.connect(_on_enemy_reached_end_of_path)

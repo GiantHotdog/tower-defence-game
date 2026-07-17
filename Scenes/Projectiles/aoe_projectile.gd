@@ -44,7 +44,8 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 		await get_tree().physics_frame
 		for attacking in AoeArea.get_overlapping_areas():
 			var enemy:BaseEnemy = attacking.get_parent()
-			enemy.health -= damage
+			if not enemy.is_invulnerable and not enemy.is_cloaked:
+				enemy.health -= damage
 		var tween = get_tree().create_tween()
 		tween.tween_property(self, "scale", Vector2(explode_final_scale, explode_final_scale), 0.2)
 		tween.parallel().tween_property(self, "modulate",Color(1, 1, 1, 0), 0.3)

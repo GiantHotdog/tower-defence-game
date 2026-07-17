@@ -27,5 +27,6 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 	var parent = area.get_parent()
 	if parent is BaseEnemy:
 		var enemy:BaseEnemy = parent
-		enemy.health -= damage
+		if not enemy.is_invulnerable:
+			enemy.health -= damage
 		queue_free()

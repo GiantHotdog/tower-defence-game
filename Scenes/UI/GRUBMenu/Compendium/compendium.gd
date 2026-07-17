@@ -16,6 +16,7 @@ var tower_pictures:Dictionary[BaseTower.TowerTypes, Texture2D] = {
 @onready var enemy_pictures:Dictionary[BaseEnemy.ENEMY_TYPES, Texture2D] = {
 	BaseEnemy.ENEMY_TYPES.WEAK_ENEMY : %WeakEnemy.tower_icon,
 	BaseEnemy.ENEMY_TYPES.ZIP_BOMB_ENEMY : %ZipBomb.tower_icon,
+	BaseEnemy.ENEMY_TYPES.ZERO_DAY_ENEMY : %ZeroDay.tower_icon
 	}
 
 
@@ -37,8 +38,10 @@ var tower_bumf:Dictionary[BaseTower.TowerTypes, String] = {
 var enemy_bumf:Dictionary[BaseEnemy.ENEMY_TYPES, String] = {
 	BaseEnemy.ENEMY_TYPES.WEAK_ENEMY : """Has no special properties. Infection progresses at a [color=orange]moderate rate[/color], and deals 
 	[color=orange]medium damage[/color] to mainframe upon completion""",
-	BaseEnemy.ENEMY_TYPES.ZIP_BOMB_ENEMY : """Moves [i]very[/i] slowly. [color=orange]Spawns 5 basic malware enemies[/color] when destroyed. 
+	BaseEnemy.ENEMY_TYPES.ZIP_BOMB_ENEMY : """Infection progresses [i]very[/i] slowly. [color=orange]Spawns 5 pieces of basic malware[/color] when destroyed. 
 	Deals a [color=orange]large amount[/color] of damage to mainframe upon infection completion """,
+	BaseEnemy.ENEMY_TYPES.ZERO_DAY_ENEMY : """Due to only being discovered recently, it takes some time (5 seconds) after release (spawn)
+	for a patch to counter this malware to be released. Prior to this, the zero day is invulnerable to all attacks"""
 }
 
 
@@ -141,9 +144,17 @@ func display_enemy_info(enemy_name:String, enemy_stats:Dictionary[String, float]
 	enemy_info_screen.set_image(image, image_modulate)
 
 
-func _on_zip_bomb_set_placing(tower_type: BaseTower.TowerTypes) -> void:
+func _on_zip_bomb_set_placing(_tower_type: BaseTower.TowerTypes) -> void:
 	display_enemy_info("[color=ff00ff]Zip bomb malware[/color]", 
 			{"move_speed":200, "damage":50, "health":5}, 
 			enemy_bumf[BaseEnemy.ENEMY_TYPES.ZIP_BOMB_ENEMY], 
 			enemy_pictures[BaseEnemy.ENEMY_TYPES.ZIP_BOMB_ENEMY], 
+			Color(5.0, 0.0, 1.5))
+
+
+func _on_zero_day_set_placing(_tower_type: BaseTower.TowerTypes) -> void:
+	display_enemy_info("[color=ff00ff]Zero Day exploit[/color]", 
+			{"move_speed":350, "damage":20, "health":4}, 
+			enemy_bumf[BaseEnemy.ENEMY_TYPES.ZERO_DAY_ENEMY], 
+			enemy_pictures[BaseEnemy.ENEMY_TYPES.ZERO_DAY_ENEMY], 
 			Color(5.0, 0.0, 1.5))

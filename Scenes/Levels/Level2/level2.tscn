@@ -1,0 +1,54 @@
+[gd_scene format=3 uid="uid://c6qe5gacfofur"]
+
+[ext_resource type="PackedScene" uid="uid://crdqerfs03sfa" path="res://Scenes/Levels/base_level.tscn" id="1_8dnq1"]
+[ext_resource type="Script" uid="uid://bwv82sl7yxf4w" path="res://Scenes/Levels/Level2/level_2.gd" id="2_8hkly"]
+[ext_resource type="Script" uid="uid://dq3f0ac1t4eau" path="res://Resources/WaveInfo/WaveInfo.gd" id="2_i86nn"]
+[ext_resource type="Resource" uid="uid://bjgcngx6wqp5o" path="res://Resources/WaveInfo/Level2/wave1.tres" id="3_23cxw"]
+[ext_resource type="Resource" uid="uid://desulcghlo42l" path="res://Resources/WaveInfo/Level2/wave2.tres" id="4_aej36"]
+[ext_resource type="Resource" uid="uid://cr28nn8i4hd41" path="res://Resources/WaveInfo/Level2/wave3.tres" id="5_adqju"]
+[ext_resource type="PackedScene" uid="uid://bphehwrad04m2" path="res://Scenes/UI/tutorial_box.tscn" id="7_7hg0x"]
+
+[sub_resource type="Curve2D" id="Curve2D_8dnq1"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -128, 512, 0, 0, 0, 0, 2816, 512, 0, 0, 0, 0, 2816, 1792, 0, 0, 0, 0, 1792, 1792, 0, 0, 0, 0, 1792, 1024)
+}
+point_count = 5
+
+[node name="BaseLevel" unique_id=555824650 node_paths=PackedStringArray("tutorial_boxes") instance=ExtResource("1_8dnq1")]
+script = ExtResource("2_8hkly")
+tutorial_boxes = [NodePath("TutorialBox")]
+wave_info_dict = Dictionary[int, ExtResource("2_i86nn")]({
+1: ExtResource("3_23cxw"),
+2: ExtResource("4_aej36"),
+3: ExtResource("5_adqju")
+})
+starting_currency = 50
+level_id = 2
+
+[node name="EnemyPath" parent="." index="3" unique_id=1563632205]
+curve = SubResource("Curve2D_8dnq1")
+
+[node name="PathRevealer" parent="EnemyPath" index="0" unique_id=662323682]
+position = Vector2(-128, 512)
+
+[node name="Mainframe" parent="EnemyPath" index="2" unique_id=582025169]
+position = Vector2(-128, 512)
+
+[node name="TutorialBox" parent="." index="7" unique_id=257445220 instance=ExtResource("7_7hg0x")]
+
+[node name="Label" parent="TutorialBox/CenterContainer/PanelContainer/MarginContainer/PanelContainer/MarginContainer/HBoxContainer" parent_id_path=PackedInt32Array(257445220, 981650530) index="0" unique_id=1009314230]
+text = "Information about processes and enemies can be seen in the compendium. This is accessible from the pause menu."
+
+[node name="StartButton" parent="TutorialBox/CenterContainer/PanelContainer/MarginContainer/PanelContainer/MarginContainer/HBoxContainer/VBoxContainer" parent_id_path=PackedInt32Array(257445220, 1279702825) index="0" unique_id=702543855]
+text = "Continue"
+
+[node name="SkipButton" parent="TutorialBox/CenterContainer/PanelContainer/MarginContainer/PanelContainer/MarginContainer/HBoxContainer/VBoxContainer" parent_id_path=PackedInt32Array(257445220, 1279702825) index="1" unique_id=602351183]
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "Open Compendium"
+
+[connection signal="skip_tutorial" from="TutorialBox" to="." method="_on_tutorial_box_skip_tutorial"]
+[connection signal="start_tutorial" from="TutorialBox" to="." method="_on_tutorial_box_start_tutorial"]
+
+[editable path="UI"]
+[editable path="UI/PanelContainer2/MarginContainer/VBoxContainer/FirewallProgress"]
+[editable path="TutorialBox"]

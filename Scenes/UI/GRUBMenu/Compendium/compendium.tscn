@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://c4b1hgno7486b" path="res://Scenes/UI/GRUBMenu/Compendium/compendium.gd" id="2_ihwpl"]
 [ext_resource type="Texture2D" uid="uid://cdndvd8yb1csg" path="res://Assets/Towers/Buffer Overflow.svg" id="3_5qwtj"]
 [ext_resource type="PackedScene" uid="uid://bxwj761ney7wp" path="res://Scenes/UI/GRUBMenu/Compendium/tower_info_screen.tscn" id="4_sowsf"]
+[ext_resource type="Texture2D" uid="uid://crisrxtg52seg" path="res://Assets/Enemies/shield.png" id="4_vmju8"]
 [ext_resource type="PackedScene" uid="uid://bvsx56a12y3s3" path="res://Scenes/UI/GRUBMenu/Compendium/enemy_info_screen.tscn" id="5_6nbpi"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7o3pg"]
@@ -23,13 +24,13 @@ corner_radius_bottom_left = 4
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sowsf"]
 bg_color = Color(0, 0, 0, 1)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_6nbpi"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_c14x3"]
 viewport_path = NodePath("SubViewport")
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_6nbpi"]
 blend_mode = 1
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_vmju8"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_cno08"]
 viewport_path = NodePath("SubViewport")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c14x3"]
@@ -39,6 +40,9 @@ border_width_top = 6
 border_width_right = 6
 border_width_bottom = 6
 border_color = Color(7.6599646, 0, 2.3259497, 1)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_e83el"]
+viewport_path = NodePath("SubViewport")
 
 [sub_resource type="InputEventKey" id="InputEventKey_r6kbw"]
 device = -1
@@ -175,13 +179,13 @@ metadata/_tab_index = 1
 unique_name_in_owner = true
 layout_mode = 2
 tower_name = "Weak enemy"
-tower_icon = SubResource("ViewportTexture_6nbpi")
+tower_icon = SubResource("ViewportTexture_c14x3")
 tower_color = Color(5, 0, 1.5, 1)
 tower = 3
 
 [node name="PlaceButton" parent="PanelContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/TabContainer/Enemies/WeakEnemy" index="0" unique_id=1384100982]
 modulate = Color(5, 0, 1.5, 1)
-texture_normal = SubResource("ViewportTexture_6nbpi")
+texture_normal = SubResource("ViewportTexture_c14x3")
 
 [node name="Label" parent="PanelContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/TabContainer/Enemies/WeakEnemy" index="1" unique_id=464681195]
 text = "Weak enemy"
@@ -243,13 +247,13 @@ color = Color(0, 0, 1.5, 1)
 unique_name_in_owner = true
 layout_mode = 2
 tower_name = "Zip Bomb"
-tower_icon = SubResource("ViewportTexture_vmju8")
+tower_icon = SubResource("ViewportTexture_cno08")
 tower_color = Color(5, 0, 1.5, 1)
 tower = 3
 
 [node name="PlaceButton" parent="PanelContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/TabContainer/Enemies/ZipBomb" index="0" unique_id=1384100982]
 modulate = Color(5, 0, 1.5, 1)
-texture_normal = SubResource("ViewportTexture_vmju8")
+texture_normal = SubResource("ViewportTexture_cno08")
 
 [node name="Label" parent="PanelContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/TabContainer/Enemies/ZipBomb" index="1" unique_id=464681195]
 text = "Zip Bomb"
@@ -288,6 +292,38 @@ offset_bottom = 8.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_c14x3")
 metadata/_edit_use_anchors_ = true
 
+[node name="ZeroDay" parent="PanelContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/TabContainer/Enemies" unique_id=1762790593 instance=ExtResource("1_c8e14")]
+unique_name_in_owner = true
+layout_mode = 2
+tower_name = "Zero Day exploit"
+tower_icon = SubResource("ViewportTexture_e83el")
+tower = 3
+
+[node name="PlaceButton" parent="PanelContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/TabContainer/Enemies/ZeroDay" index="0" unique_id=1384100982]
+texture_normal = SubResource("ViewportTexture_e83el")
+
+[node name="Label" parent="PanelContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/TabContainer/Enemies/ZeroDay" index="1" unique_id=464681195]
+text = "Zero Day exploit"
+
+[node name="Label2" parent="PanelContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/TabContainer/Enemies/ZeroDay" index="2" unique_id=1247666676]
+visible = false
+
+[node name="SubViewport" type="SubViewport" parent="PanelContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/TabContainer/Enemies/ZeroDay" unique_id=1228047615]
+transparent_bg = true
+size = Vector2i(96, 96)
+
+[node name="Sprite" type="Node2D" parent="PanelContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/TabContainer/Enemies/ZeroDay/SubViewport" unique_id=953166277]
+position = Vector2(48, 48)
+
+[node name="Sprite2D" type="Sprite2D" parent="PanelContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/TabContainer/Enemies/ZeroDay/SubViewport/Sprite" unique_id=1176155904]
+modulate = Color(5, 0, 1.5, 1)
+scale = Vector2(0.075, 0.075)
+texture = ExtResource("3_5qwtj")
+
+[node name="ShieldSprite" type="Sprite2D" parent="PanelContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/TabContainer/Enemies/ZeroDay/SubViewport/Sprite" unique_id=1072035838]
+unique_name_in_owner = true
+texture = ExtResource("4_vmju8")
+
 [node name="ExitButton" type="Button" parent="PanelContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=1713367148]
 layout_mode = 2
 shortcut = SubResource("Shortcut_sowsf")
@@ -310,6 +346,7 @@ environment = SubResource("Environment_sowsf")
 [connection signal="set_placing" from="PanelContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/TabContainer/Towers/Defragmenter" to="." method="_on_defragmenter_set_placing"]
 [connection signal="set_placing" from="PanelContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/TabContainer/Enemies/WeakEnemy" to="." method="_on_weak_enemy_set_placing"]
 [connection signal="set_placing" from="PanelContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/TabContainer/Enemies/ZipBomb" to="." method="_on_zip_bomb_set_placing"]
+[connection signal="set_placing" from="PanelContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/TabContainer/Enemies/ZeroDay" to="." method="_on_zero_day_set_placing"]
 [connection signal="pressed" from="PanelContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]
 
 [editable path="PanelContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/TabContainer/Towers/LogicGate"]
@@ -318,3 +355,4 @@ environment = SubResource("Environment_sowsf")
 [editable path="PanelContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/TabContainer/Towers/Defragmenter"]
 [editable path="PanelContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/TabContainer/Enemies/WeakEnemy"]
 [editable path="PanelContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/TabContainer/Enemies/ZipBomb"]
+[editable path="PanelContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/TabContainer/Enemies/ZeroDay"]

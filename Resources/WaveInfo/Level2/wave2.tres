@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="WaveInfo" format=3 uid="uid://desulcghlo42l"]
+
+[ext_resource type="Script" uid="uid://dxkspwruhtret" path="res://Resources/EnemySpawnerInfo/EnemySpawnerInfo.gd" id="1_dw5pi"]
+[ext_resource type="Script" uid="uid://dq3f0ac1t4eau" path="res://Resources/WaveInfo/WaveInfo.gd" id="2_2olub"]
+
+[sub_resource type="Resource" id="Resource_dw5pi"]
+script = ExtResource("1_dw5pi")
+enemy_count = 10
+enemy_spawn_interval = 0.5
+metadata/_custom_type_script = "uid://dxkspwruhtret"
+
+[sub_resource type="Resource" id="Resource_2olub"]
+script = ExtResource("1_dw5pi")
+enemy_count = 2
+enemy_spawn_interval = 3.0
+is_cloaked = true
+metadata/_custom_type_script = "uid://dxkspwruhtret"
+
+[resource]
+script = ExtResource("2_2olub")
+enemy_info = Dictionary[int, ExtResource("1_dw5pi")]({
+1: SubResource("Resource_dw5pi"),
+2: SubResource("Resource_2olub")
+})
+wave_finish_currency_reward = 30
+metadata/_custom_type_script = "uid://dq3f0ac1t4eau"

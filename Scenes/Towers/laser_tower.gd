@@ -42,7 +42,11 @@ func attack():
 	turret.texture = not_ready_to_fire_turret_texture
 	can_attack = false
 	
-	target.health -= calculated_damage
+	if not target.is_invulnerable:
+		target.health -= calculated_damage
+	else:
+		if has_method("play_shield_particles"): 
+			target.play_shield_particles(global_position)
 
 
 func update_laser():

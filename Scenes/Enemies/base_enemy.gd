@@ -1,7 +1,7 @@
 class_name BaseEnemy
 extends PathFollow2D
 
-enum ENEMY_TYPES {BASE_ENEMY, WEAK_ENEMY, ZIP_BOMB_ENEMY}
+enum ENEMY_TYPES {BASE_ENEMY, WEAK_ENEMY, ZIP_BOMB_ENEMY, ZERO_DAY_ENEMY}
 
 signal enemy_killed(enemy_pid:int)
 signal reached_end_of_path(enemy_pid:int, damage_dealt:int)
@@ -11,6 +11,7 @@ signal reached_end_of_path(enemy_pid:int, damage_dealt:int)
 @export var MAX_HEALTH:int = 3
 @export var damage:int = 10
 @export var is_cloaked:bool = false
+@export var is_invulnerable:bool = false
 
 @onready var health:float = MAX_HEALTH:
 	set(value):

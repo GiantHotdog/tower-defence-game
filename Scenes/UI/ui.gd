@@ -104,4 +104,9 @@ func get_total_wave_count():
 
 
 func _on_pause_menu_show_compendium() -> void:
+	show_compendium()
+
+
+func show_compendium() -> void:
+	$PauseMenu.visible = true
 	$PauseMenu/Compendium.visible = true

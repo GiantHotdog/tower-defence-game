@@ -1,0 +1,73 @@
+[gd_scene format=3 uid="uid://8mdy3ci40r7a"]
+
+[ext_resource type="PackedScene" uid="uid://c3is88d7syykb" path="res://Scenes/Enemies/base_enemy.tscn" id="1_bc4vu"]
+[ext_resource type="Script" uid="uid://bpuycmsl4boak" path="res://Scenes/Enemies/zero_day.gd" id="2_ff476"]
+[ext_resource type="Texture2D" uid="uid://cdndvd8yb1csg" path="res://Assets/Towers/Buffer Overflow.svg" id="3_vdaex"]
+[ext_resource type="Texture2D" uid="uid://crisrxtg52seg" path="res://Assets/Enemies/shield.png" id="4_1xc7y"]
+[ext_resource type="Texture2D" uid="uid://dcu7gabv500yb" path="res://Assets/Enemies/shieldedParticle.svg" id="5_3vahi"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_3vahi"]
+viewport_path = NodePath("GPUParticles2D/TextParticle")
+
+[sub_resource type="Curve" id="Curve_3vahi"]
+_data = [Vector2(0, 1), 0.0, -1.0033892, 0, 0, Vector2(1, 0), -0.9587608, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_2aq33"]
+curve = SubResource("Curve_3vahi")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_2aq33"]
+particle_flag_disable_z = true
+inherit_velocity_ratio = 0.2
+initial_velocity_min = 240.0
+initial_velocity_max = 360.0
+gravity = Vector3(0, 0, 0)
+damping_min = 200.00002
+damping_max = 300.0
+alpha_curve = SubResource("CurveTexture_2aq33")
+
+[node name="BaseEnemy" unique_id=2135921253 instance=ExtResource("1_bc4vu")]
+script = ExtResource("2_ff476")
+enemy_type = 3
+move_speed = 350.0
+MAX_HEALTH = 4
+damage = 20
+is_invulnerable = true
+
+[node name="Sprite2D" parent="." index="0" unique_id=1481800299]
+visible = false
+
+[node name="GPUParticles2D" parent="." index="3" unique_id=1834652281]
+texture = SubResource("ViewportTexture_3vahi")
+
+[node name="InvulnerabilityTimer" type="Timer" parent="." index="4" unique_id=1308585822]
+wait_time = 5.0
+one_shot = true
+autostart = true
+
+[node name="Sprite" type="Node2D" parent="." index="5" unique_id=180933935]
+
+[node name="Sprite2D" type="Sprite2D" parent="Sprite" index="0" unique_id=1176353137]
+modulate = Color(5, 0, 1.5, 1)
+scale = Vector2(0.075, 0.075)
+texture = ExtResource("3_vdaex")
+
+[node name="ShieldSprite" type="Sprite2D" parent="Sprite" index="1" unique_id=424040407]
+unique_name_in_owner = true
+texture = ExtResource("4_1xc7y")
+
+[node name="ShieldDamageParticlesPivot" type="Node2D" parent="." index="6" unique_id=646076472]
+unique_name_in_owner = true
+
+[node name="ShieldDamageParticles" type="GPUParticles2D" parent="ShieldDamageParticlesPivot" index="0" unique_id=1836226083]
+unique_name_in_owner = true
+position = Vector2(32, 0)
+emitting = false
+amount = 16
+texture = ExtResource("5_3vahi")
+lifetime = 0.2
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_2aq33")
+
+[connection signal="timeout" from="InvulnerabilityTimer" to="." method="_on_invulnerability_timer_timeout"]

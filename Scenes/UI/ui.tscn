@@ -143,6 +143,7 @@ theme_override_font_sizes/font_size = 24
 text = "System Log"
 
 [node name="LevelLost" parent="." unique_id=2091169056 instance=ExtResource("6_1c2ca")]
+visible = false
 offset_right = -262.66663
 offset_bottom = -77.33331
 
