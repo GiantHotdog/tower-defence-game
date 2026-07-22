@@ -7,6 +7,9 @@
 [ext_resource type="Resource" uid="uid://desulcghlo42l" path="res://Resources/WaveInfo/Level2/wave2.tres" id="4_aej36"]
 [ext_resource type="Resource" uid="uid://cr28nn8i4hd41" path="res://Resources/WaveInfo/Level2/wave3.tres" id="5_adqju"]
 [ext_resource type="PackedScene" uid="uid://bphehwrad04m2" path="res://Scenes/UI/tutorial_box.tscn" id="7_7hg0x"]
+[ext_resource type="Resource" uid="uid://b2xcloy0xtxes" path="res://Resources/WaveInfo/Level2/wave4.tres" id="7_hnv17"]
+[ext_resource type="Resource" uid="uid://da0xu0dnosj4t" path="res://Resources/WaveInfo/Level2/wave5.tres" id="8_qo2of"]
+[ext_resource type="Resource" uid="uid://xmch2jgn4y26" path="res://Resources/WaveInfo/Level2/wave6.tres" id="9_qo2of"]
 
 [sub_resource type="Curve2D" id="Curve2D_8dnq1"]
 _data = {
@@ -20,7 +23,10 @@ tutorial_boxes = [NodePath("TutorialBox")]
 wave_info_dict = Dictionary[int, ExtResource("2_i86nn")]({
 1: ExtResource("3_23cxw"),
 2: ExtResource("4_aej36"),
-3: ExtResource("5_adqju")
+3: ExtResource("5_adqju"),
+4: ExtResource("7_hnv17"),
+5: ExtResource("8_qo2of"),
+6: ExtResource("9_qo2of")
 })
 starting_currency = 50
 level_id = 2

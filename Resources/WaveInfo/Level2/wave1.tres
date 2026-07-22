@@ -5,13 +5,19 @@
 
 [sub_resource type="Resource" id="Resource_8brgi"]
 script = ExtResource("1_8brgi")
-enemy_count = 5
+metadata/_custom_type_script = "uid://dxkspwruhtret"
+
+[sub_resource type="Resource" id="Resource_qo2of"]
+script = ExtResource("1_8brgi")
+enemy_count = 2
+is_invulnerable = true
 metadata/_custom_type_script = "uid://dxkspwruhtret"
 
 [resource]
 script = ExtResource("2_nbga7")
 enemy_info = Dictionary[int, ExtResource("1_8brgi")]({
-1: SubResource("Resource_8brgi")
+1: SubResource("Resource_8brgi"),
+3: SubResource("Resource_qo2of")
 })
 wave_finish_currency_reward = 30
 metadata/_custom_type_script = "uid://dq3f0ac1t4eau"

@@ -11,8 +11,10 @@ extends BaseTower
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	super._ready()
-	laser_line.add_point(laser_line.to_local(laser_spawn.global_position))
-	laser_line.add_point(laser_line.to_local(laser_spawn.global_position))
+	var line_points = laser_line.points
+	line_points.append(laser_line.to_local(laser_spawn.global_position))
+	line_points.append(laser_line.to_local(laser_spawn.global_position))
+	laser_line.points = line_points
 	
 	ready_to_fire_turret_texture = load("res://Assets/Towers/Logic gate.svg")
 	not_ready_to_fire_turret_texture = load("res://Assets/Towers/Logic gate.svg")
@@ -21,7 +23,9 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	super._process(delta)
-	laser_line.points[0] = laser_line.to_local(laser_spawn.global_position)
+	var line_points = laser_line.points
+	line_points[0] = laser_line.to_local(laser_spawn.global_position)
+	laser_line.points = line_points
 	if not is_attacking:
 		update_laser()
 
@@ -43,17 +47,19 @@ func attack():
 	can_attack = false
 	
 	if not target.is_invulnerable:
-		target.health -= calculated_damage
+		target.add_damage(calculated_damage)
 	else:
-		if has_method("play_shield_particles"): 
+		if target.has_method("play_shield_particles"): 
 			target.play_shield_particles(global_position)
 
 
 func update_laser():
+	var line_points = laser_line.points
 	if target:
-		laser_line.points[1] = laser_line.to_local(target.global_position)
+		line_points[1] = laser_line.to_local(target.global_position)
 	else:
-		laser_line.points[1] = laser_line.to_local(laser_spawn.global_position)
+		line_points[1] = laser_line.to_local(laser_spawn.global_position)
+	laser_line.points = line_points
 
 func _finished_attacking():
 	is_attacking = false

@@ -13,3 +13,8 @@ func _on_invulnerability_timer_timeout() -> void:
 func play_shield_particles(attacker_global_pos:Vector2):
 	%ShieldDamageParticlesPivot.look_at(attacker_global_pos)
 	%ShieldDamageParticles.restart()
+
+
+func add_damage(damage:float):
+	super.add_damage(damage)
+	#play_shield_particles(Vector2.ZERO)

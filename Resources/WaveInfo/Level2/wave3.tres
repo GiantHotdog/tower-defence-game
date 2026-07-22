@@ -30,4 +30,5 @@ enemy_info = Dictionary[int, ExtResource("1_4b5ut")]({
 2: SubResource("Resource_7u43c"),
 3: SubResource("Resource_4b5ut")
 })
+wave_finish_currency_reward = 25
 metadata/_custom_type_script = "uid://dq3f0ac1t4eau"

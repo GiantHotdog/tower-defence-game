@@ -17,7 +17,6 @@ signal reached_end_of_path(enemy_pid:int, damage_dealt:int)
 	set(value):
 		health = value
 		health_bar.set_progress(health / MAX_HEALTH)
-		_on_hit()
 @onready var health_bar:HealthBar = $HealthBar
 
 
@@ -60,5 +59,6 @@ func die(is_at_end_of_path:bool = false):
 	particles.finished.connect(particles.queue_free)
 	queue_free()
 
-func _on_hit():
-	pass
+
+func add_damage(damage:float):
+	health -= damage

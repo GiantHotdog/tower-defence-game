@@ -24,13 +24,13 @@ corner_radius_bottom_left = 4
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sowsf"]
 bg_color = Color(0, 0, 0, 1)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_c14x3"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_vmju8"]
 viewport_path = NodePath("SubViewport")
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_6nbpi"]
 blend_mode = 1
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_cno08"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_c14x3"]
 viewport_path = NodePath("SubViewport")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c14x3"]
@@ -41,7 +41,7 @@ border_width_right = 6
 border_width_bottom = 6
 border_color = Color(7.6599646, 0, 2.3259497, 1)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_e83el"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_cno08"]
 viewport_path = NodePath("SubViewport")
 
 [sub_resource type="InputEventKey" id="InputEventKey_r6kbw"]
@@ -179,13 +179,13 @@ metadata/_tab_index = 1
 unique_name_in_owner = true
 layout_mode = 2
 tower_name = "Weak enemy"
-tower_icon = SubResource("ViewportTexture_c14x3")
+tower_icon = SubResource("ViewportTexture_vmju8")
 tower_color = Color(5, 0, 1.5, 1)
 tower = 3
 
 [node name="PlaceButton" parent="PanelContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/TabContainer/Enemies/WeakEnemy" index="0" unique_id=1384100982]
 modulate = Color(5, 0, 1.5, 1)
-texture_normal = SubResource("ViewportTexture_c14x3")
+texture_normal = SubResource("ViewportTexture_vmju8")
 
 [node name="Label" parent="PanelContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/TabContainer/Enemies/WeakEnemy" index="1" unique_id=464681195]
 text = "Weak enemy"
@@ -247,13 +247,13 @@ color = Color(0, 0, 1.5, 1)
 unique_name_in_owner = true
 layout_mode = 2
 tower_name = "Zip Bomb"
-tower_icon = SubResource("ViewportTexture_cno08")
+tower_icon = SubResource("ViewportTexture_c14x3")
 tower_color = Color(5, 0, 1.5, 1)
 tower = 3
 
 [node name="PlaceButton" parent="PanelContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/TabContainer/Enemies/ZipBomb" index="0" unique_id=1384100982]
 modulate = Color(5, 0, 1.5, 1)
-texture_normal = SubResource("ViewportTexture_cno08")
+texture_normal = SubResource("ViewportTexture_c14x3")
 
 [node name="Label" parent="PanelContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/TabContainer/Enemies/ZipBomb" index="1" unique_id=464681195]
 text = "Zip Bomb"
@@ -296,11 +296,11 @@ metadata/_edit_use_anchors_ = true
 unique_name_in_owner = true
 layout_mode = 2
 tower_name = "Zero Day exploit"
-tower_icon = SubResource("ViewportTexture_e83el")
+tower_icon = SubResource("ViewportTexture_cno08")
 tower = 3
 
 [node name="PlaceButton" parent="PanelContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/TabContainer/Enemies/ZeroDay" index="0" unique_id=1384100982]
-texture_normal = SubResource("ViewportTexture_e83el")
+texture_normal = SubResource("ViewportTexture_cno08")
 
 [node name="Label" parent="PanelContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/TabContainer/Enemies/ZeroDay" index="1" unique_id=464681195]
 text = "Zero Day exploit"

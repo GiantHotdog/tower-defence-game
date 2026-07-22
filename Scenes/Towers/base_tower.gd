@@ -49,7 +49,7 @@ var cumulative_upgrade_dictionary:Dictionary[String, float] = {"range" : 1.0, "d
 		if range_circle:
 			range_circle.attack_range = value
 		attack_area_shape.radius = value
-	
+
 
 @onready var calculated_damage = damage:
 	set(value):
