@@ -3,7 +3,7 @@ extends CanvasLayer
 
 signal wave_started(number:int)
 signal set_placing(tower_type:BaseTower.TowerTypes)
-
+signal level_complete_signal()
 
 @onready var start_wave_container:Container = $PanelContainer/VBoxContainer/PanelContainer/HBoxContainer/StartWave
 @onready var level_complete:Control = $LevelComplete
@@ -110,3 +110,7 @@ func _on_pause_menu_show_compendium() -> void:
 func show_compendium() -> void:
 	$PauseMenu.visible = true
 	$PauseMenu/Compendium.visible = true
+
+
+func _on_level_complete_signal() -> void:
+	level_complete_signal.emit()

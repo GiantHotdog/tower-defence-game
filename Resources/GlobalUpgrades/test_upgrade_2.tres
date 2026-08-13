@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="GlobalUpgrade" format=3 uid="uid://dmstllf7eexkc"]
+
+[ext_resource type="Script" uid="uid://db5bx24r4bnm2" path="res://Resources/GlobalUpgrades/globalUpgrade.gd" id="1_h60xi"]
+[ext_resource type="Resource" uid="uid://dj74vmenubwjm" path="res://Resources/GlobalUpgrades/xp_gain_10_pc_increase.tres" id="2_ss6vb"]
+
+[resource]
+script = ExtResource("1_h60xi")
+id = "test"
+name = "Test upgrade"
+description = "This is a test upgrade"
+max_level = 3
+prerequisites = Array[ExtResource("1_h60xi")]([ExtResource("2_ss6vb")])

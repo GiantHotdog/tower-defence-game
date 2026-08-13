@@ -34,7 +34,7 @@ func _input(event: InputEvent) -> void:
 		get_window().mode = Window.MODE_EXCLUSIVE_FULLSCREEN
 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("intro_skip"):
 		fade_out(change_to_menu)
 

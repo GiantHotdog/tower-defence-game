@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://co6wen38hwpkv"]
+
+[ext_resource type="Script" uid="uid://b18nqa4xh62f4" path="res://Scenes/UI/Xp/level_up_particles.gd" id="1_lw3fb"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_1fjua"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="Curve" id="Curve_ygvtp"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.49651977, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_87qfe"]
+curve = SubResource("Curve_ygvtp")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_7i4tb"]
+particle_flag_disable_z = true
+spread = 0.0
+initial_velocity_min = 40.0
+initial_velocity_max = 40.0
+gravity = Vector3(0, -80, 0)
+alpha_curve = SubResource("CurveTexture_87qfe")
+
+[node name="LevelUpParticles" type="GPUParticles2D" unique_id=234757746]
+emitting = false
+amount = 1
+texture = SubResource("ViewportTexture_1fjua")
+one_shot = true
+process_material = SubResource("ParticleProcessMaterial_7i4tb")
+script = ExtResource("1_lw3fb")
+
+[node name="SubViewport" type="SubViewport" parent="." unique_id=638512792]
+transparent_bg = true
+size = Vector2i(96, 24)
+
+[node name="Label" type="Label" parent="SubViewport" unique_id=676022625]
+offset_right = 40.0
+offset_bottom = 19.0
+text = "Level Up!"
+
+[connection signal="finished" from="." to="." method="_on_finished"]

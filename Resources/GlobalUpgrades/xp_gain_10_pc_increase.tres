@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="GlobalUpgrade" format=3 uid="uid://dj74vmenubwjm"]
+
+[ext_resource type="Script" uid="uid://db5bx24r4bnm2" path="res://Resources/GlobalUpgrades/globalUpgrade.gd" id="1_kiv4t"]
+
+[resource]
+script = ExtResource("1_kiv4t")
+id = 1
+name = "XP Gain"
+description = "Increases [color=yellow][b]XP[/b][/color] gained by 10%"

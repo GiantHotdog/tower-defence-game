@@ -5,6 +5,7 @@
 
 [sub_resource type="Resource" id="Resource_8brgi"]
 script = ExtResource("1_8brgi")
+enemy_count = 5
 metadata/_custom_type_script = "uid://dxkspwruhtret"
 
 [sub_resource type="Resource" id="Resource_qo2of"]

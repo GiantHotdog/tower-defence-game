@@ -1,0 +1,296 @@
+[gd_scene format=3 uid="uid://b3jf6tswo8pey"]
+
+[ext_resource type="PackedScene" uid="uid://d0fraje6x8wsh" path="res://Scenes/UI/GlobalUpgradeTree/upgrade_button.tscn" id="1_wpaoq"]
+[ext_resource type="Script" uid="uid://b0ttio7dqkyqy" path="res://Scenes/UI/GlobalUpgradeTree/upgrade_tree.gd" id="1_ywlix"]
+[ext_resource type="Resource" uid="uid://dj74vmenubwjm" path="res://Resources/GlobalUpgrades/xp_gain_10_pc_increase.tres" id="2_sxdsr"]
+[ext_resource type="Resource" uid="uid://dmstllf7eexkc" path="res://Resources/GlobalUpgrades/test_upgrade_2.tres" id="3_ncgts"]
+[ext_resource type="Resource" uid="uid://y0dl5agxlbq8" path="res://Resources/GlobalUpgrades/test_upgrade_3.tres" id="5_w60or"]
+[ext_resource type="Resource" uid="uid://blbdc22e1iyp7" path="res://Resources/GlobalUpgrades/test_upgrade_4.tres" id="6_srj78"]
+[ext_resource type="Resource" uid="uid://cwps733f0l5gp" path="res://Resources/GlobalUpgrades/test_upgrade_5.tres" id="7_ysx62"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_134u2"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wpaoq"]
+draw_center = false
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ysx62"]
+draw_center = false
+border_width_left = 4
+border_width_bottom = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_72gmn"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[node name="UpgradeTree" type="Control" unique_id=2003024478]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ywlix")
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=993772672]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_134u2")
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer" unique_id=862416836]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 32
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer" unique_id=893709488]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 8
+
+[node name="PanelContainer" type="PanelContainer" parent="PanelContainer/MarginContainer/HBoxContainer" unique_id=1180640024]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_wpaoq")
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/MarginContainer/HBoxContainer/PanelContainer" unique_id=258529555]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer/HBoxContainer/PanelContainer/MarginContainer" unique_id=402382457]
+layout_mode = 2
+
+[node name="Upgrades" type="Control" parent="PanelContainer/MarginContainer/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=1551267814]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 2
+
+[node name="XPGain+10PC" parent="PanelContainer/MarginContainer/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer/Upgrades" unique_id=840628816 instance=ExtResource("1_wpaoq")]
+layout_mode = 0
+offset_left = 498.0
+offset_top = 376.0
+offset_right = 574.0
+offset_bottom = 467.0
+upgrade_data = ExtResource("2_sxdsr")
+
+[node name="GlobalUpgradeItem2" parent="PanelContainer/MarginContainer/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer/Upgrades" unique_id=660892537 node_paths=PackedStringArray("prerequisites") instance=ExtResource("1_wpaoq")]
+layout_mode = 0
+offset_left = 392.0
+offset_top = 280.0
+offset_right = 472.0
+offset_bottom = 371.0
+upgrade_data = ExtResource("3_ncgts")
+prerequisites = [NodePath("../XPGain+10PC")]
+
+[node name="GlobalUpgradeItem3" parent="PanelContainer/MarginContainer/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer/Upgrades" unique_id=1332242340 node_paths=PackedStringArray("prerequisites") instance=ExtResource("1_wpaoq")]
+layout_mode = 0
+offset_left = 600.0
+offset_top = 280.0
+offset_right = 676.0
+offset_bottom = 371.0
+upgrade_data = ExtResource("5_w60or")
+prerequisites = [NodePath("../XPGain+10PC")]
+
+[node name="GlobalUpgradeItem4" parent="PanelContainer/MarginContainer/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer/Upgrades" unique_id=517341707 node_paths=PackedStringArray("prerequisites") instance=ExtResource("1_wpaoq")]
+layout_mode = 0
+offset_left = 600.0
+offset_top = 184.0
+offset_right = 676.0
+offset_bottom = 275.0
+upgrade_data = ExtResource("6_srj78")
+prerequisites = [NodePath("../GlobalUpgradeItem3")]
+
+[node name="GlobalUpgradeItem5" parent="PanelContainer/MarginContainer/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer/Upgrades" unique_id=924500374 node_paths=PackedStringArray("prerequisites") instance=ExtResource("1_wpaoq")]
+layout_mode = 0
+offset_left = 392.0
+offset_top = 184.0
+offset_right = 472.0
+offset_bottom = 275.0
+upgrade_data = ExtResource("7_ysx62")
+prerequisites = [NodePath("../GlobalUpgradeItem2")]
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=991847065]
+layout_mode = 2
+
+[node name="MainMenuButton" type="Button" parent="PanelContainer/MarginContainer/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=817447510]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "Return to Main Menu"
+
+[node name="Spacer" type="Label" parent="PanelContainer/MarginContainer/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1103863253]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ResetButton" type="Button" parent="PanelContainer/MarginContainer/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=222148597]
+layout_mode = 2
+size_flags_horizontal = 8
+text = "Reset all upgrades"
+
+[node name="PanelContainer" type="PanelContainer" parent="PanelContainer/MarginContainer/HBoxContainer/PanelContainer" unique_id=1567138965]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_ysx62")
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/MarginContainer/HBoxContainer/PanelContainer/PanelContainer" unique_id=1455727149]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="SkillPointsLabel" type="Label" parent="PanelContainer/MarginContainer/HBoxContainer/PanelContainer/PanelContainer/MarginContainer" unique_id=679340389]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+text = "Skill points: "
+
+[node name="InfoWindow" type="PanelContainer" parent="PanelContainer/MarginContainer/HBoxContainer" unique_id=1481167788]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(256, 0)
+custom_maximum_size = Vector2(256, -1)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_wpaoq")
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/MarginContainer/HBoxContainer/InfoWindow" unique_id=1993511938]
+layout_mode = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer/HBoxContainer/InfoWindow/MarginContainer" unique_id=1942080824]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="NameLabel" type="Label" parent="PanelContainer/MarginContainer/HBoxContainer/InfoWindow/MarginContainer/VBoxContainer" unique_id=1475802004]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Upgrade Info"
+horizontal_alignment = 1
+
+[node name="DescriptionLabel" type="RichTextLabel" parent="PanelContainer/MarginContainer/HBoxContainer/InfoWindow/MarginContainer/VBoxContainer" unique_id=1636764899]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+bbcode_enabled = true
+
+[node name="CostLabel" type="Label" parent="PanelContainer/MarginContainer/HBoxContainer/InfoWindow/MarginContainer/VBoxContainer" unique_id=1002633216]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Cost:"
+horizontal_alignment = 1
+
+[node name="BuyUpgradeButton" type="Button" parent="PanelContainer/MarginContainer/HBoxContainer/InfoWindow/MarginContainer/VBoxContainer" unique_id=373419056]
+layout_mode = 2
+text = "Buy Upgrade"
+
+[node name="ResetConfirmationWindow" type="Control" parent="PanelContainer" unique_id=1321650941]
+unique_name_in_owner = true
+visible = false
+z_index = 2
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="PanelContainer/ResetConfirmationWindow" unique_id=1688624872]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -132.0
+offset_top = -57.5
+offset_right = 132.0
+offset_bottom = 57.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_72gmn")
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/ResetConfirmationWindow/PanelContainer" unique_id=1306407123]
+layout_mode = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/ResetConfirmationWindow/PanelContainer/MarginContainer" unique_id=951871995]
+layout_mode = 2
+
+[node name="Label" type="RichTextLabel" parent="PanelContainer/ResetConfirmationWindow/PanelContainer/MarginContainer/VBoxContainer" unique_id=1601660898]
+custom_minimum_size = Vector2(256, 0)
+layout_mode = 2
+text = "Are you sure you want to reset all unlocked upgrades? (Skill points will be refunded)"
+fit_content = true
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/ResetConfirmationWindow/PanelContainer/MarginContainer/VBoxContainer" unique_id=1569611113]
+layout_mode = 2
+alignment = 1
+
+[node name="ConfirmReset" type="Button" parent="PanelContainer/ResetConfirmationWindow/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=124024073]
+layout_mode = 2
+text = "Confirm"
+
+[node name="CancelReset" type="Button" parent="PanelContainer/ResetConfirmationWindow/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1374159893]
+layout_mode = 2
+text = "Cancel"
+
+[node name="FadeOutColorRect" type="ColorRect" parent="." unique_id=1065162749]
+z_index = 3
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+color = Color(0, 0, 0, 1)
+
+[connection signal="gui_input" from="." to="." method="_on_background_gui_input"]
+[connection signal="upgrade_selected" from="PanelContainer/MarginContainer/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer/Upgrades/XPGain+10PC" to="." method="_on_upgrade_selected"]
+[connection signal="upgrade_unlocked" from="PanelContainer/MarginContainer/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer/Upgrades/XPGain+10PC" to="." method="_on_upgrade_bought"]
+[connection signal="upgrade_selected" from="PanelContainer/MarginContainer/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer/Upgrades/GlobalUpgradeItem2" to="." method="_on_upgrade_selected"]
+[connection signal="upgrade_unlocked" from="PanelContainer/MarginContainer/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer/Upgrades/GlobalUpgradeItem2" to="." method="_on_upgrade_bought"]
+[connection signal="upgrade_selected" from="PanelContainer/MarginContainer/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer/Upgrades/GlobalUpgradeItem3" to="." method="_on_upgrade_selected"]
+[connection signal="upgrade_unlocked" from="PanelContainer/MarginContainer/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer/Upgrades/GlobalUpgradeItem3" to="." method="_on_upgrade_bought"]
+[connection signal="upgrade_selected" from="PanelContainer/MarginContainer/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer/Upgrades/GlobalUpgradeItem4" to="." method="_on_upgrade_selected"]
+[connection signal="upgrade_unlocked" from="PanelContainer/MarginContainer/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer/Upgrades/GlobalUpgradeItem4" to="." method="_on_upgrade_bought"]
+[connection signal="upgrade_selected" from="PanelContainer/MarginContainer/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer/Upgrades/GlobalUpgradeItem5" to="." method="_on_upgrade_selected"]
+[connection signal="upgrade_unlocked" from="PanelContainer/MarginContainer/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer/Upgrades/GlobalUpgradeItem5" to="." method="_on_upgrade_bought"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/MainMenuButton" to="." method="_on_main_menu_button_pressed"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/ResetButton" to="." method="_on_reset_button_pressed"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/HBoxContainer/InfoWindow/MarginContainer/VBoxContainer/BuyUpgradeButton" to="." method="_on_buy_upgrade_button_pressed"]
+[connection signal="pressed" from="PanelContainer/ResetConfirmationWindow/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/ConfirmReset" to="." method="_on_confirm_reset_pressed"]
+[connection signal="pressed" from="PanelContainer/ResetConfirmationWindow/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/CancelReset" to="." method="_on_cancel_reset_pressed"]

@@ -60,5 +60,5 @@ func die(is_at_end_of_path:bool = false):
 	queue_free()
 
 
-func add_damage(damage:float):
-	health -= damage
+func add_damage(attacked_damage:float):
+	health -= attacked_damage

@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="GlobalUpgrade" format=3 uid="uid://cwps733f0l5gp"]
+
+[ext_resource type="Script" uid="uid://db5bx24r4bnm2" path="res://Resources/GlobalUpgrades/globalUpgrade.gd" id="1_7f5k2"]
+[ext_resource type="Resource" uid="uid://dmstllf7eexkc" path="res://Resources/GlobalUpgrades/test_upgrade_2.tres" id="2_7f5k2"]
+
+[resource]
+script = ExtResource("1_7f5k2")
+id = "test"
+name = "Test upgrade"
+description = "This is a test upgrade (5)"
+cost = 0
+prerequisites = Array[ExtResource("1_7f5k2")]([ExtResource("2_7f5k2")])

@@ -13,6 +13,8 @@ var current_dialogue:int = 0
 var current_tutorial_stage:TutorialStage = TutorialStage.PLACING
 var highlight_box:StyleBoxFlat
 
+var tutorial_skipped:bool = false
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	super._ready()
@@ -112,6 +114,7 @@ func _on_tower_info_display_tower_upgraded() -> void:
 
 func _on_start_tutorial_box_skip_tutorial() -> void:
 	update_tutorial_stage(TutorialStage.FINISHED)
+	tutorial_skipped = true
 
 
 func _on_start_tutorial_box_start_tutorial() -> void:

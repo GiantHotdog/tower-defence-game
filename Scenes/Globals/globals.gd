@@ -13,6 +13,12 @@ var health = 100
 
 var levels_complete:Array[bool] = [false, false, false, false]
 
+
+var experience:int = 200
+var initial_level_experience_requirement:int = 20
+var level_experience_requirement_multiplier:float = 1.2
+
+
 # This set of variables are used to selectively disable parts of the game,
 # likely for tutorial purposes
 
@@ -22,6 +28,7 @@ var is_inspector_enabled = true
 
 var version:String = "0.0.0-DEV-BUILD"
 
+var global_upgrades:ConfigFile
 
 func _ready() -> void:
 	if FileAccess.file_exists("version.txt"):
@@ -29,6 +36,9 @@ func _ready() -> void:
 		version = file.get_as_text()
 		file.close()
 	load_config("preferences.cfg")
+	load_global_upgrades()
+	#for xp in range(100):
+		#print("XP:%d, Level:%d, XP gained within level:%d out of %d required" % [xp, calculate_level(xp), calculate_experience_within_level(calculate_level(xp), xp), calculate_experience_required_for_level_up(calculate_level(xp))])
 
 
 func set_placing(tower_type:BaseTower.TowerTypes):
@@ -51,6 +61,22 @@ func load_config(filepath:String):
 			DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_ENABLED)
 		1:
 			DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_DISABLED)
+
+
+func load_global_upgrades(filepath:String = "global_upgrades.cfg"):
+	global_upgrades = get_global_upgrades(filepath)
+
+
+func get_global_upgrade_tier(upgrade_id:GlobalUpgrade.ValidIds) -> int:
+	if global_upgrades:
+		return global_upgrades.get_value("Upgrades", GlobalUpgrade.ValidIds.keys()[upgrade_id])
+	else:
+		return 0
+
+
+func set_global_upgrade_tier(upgrade_id:GlobalUpgrade.ValidIds, current_tier:int, filepath:String = "global_upgrades.cfg"):
+	global_upgrades.set_value("Upgrades", GlobalUpgrade.ValidIds.keys()[upgrade_id], current_tier)
+	global_upgrades.save("user://config/" + filepath)
 
 
 func get_config(filepath:String) -> ConfigFile:
@@ -79,3 +105,76 @@ func write_config(filepath:String, section:String, key:String, value:Variant):
 	var config:ConfigFile = get_config(filepath)
 	config.set_value(section, key, value)
 	config.save("user://config/" + filepath)
+
+
+func get_global_upgrades(filepath:String = "global_upgrades.cfg") -> ConfigFile:
+	var dir = DirAccess.open("user://")
+	if not dir.dir_exists("user://config/"):
+		dir.make_dir_recursive("user://config/")
+		
+	var global_upgrades_cfg:ConfigFile = ConfigFile.new()
+	var err:Error = global_upgrades_cfg.load("user://config/" + filepath)
+	
+	if err != OK:
+		printerr("Error when loading global upgrades file: ", error_string(err))
+	
+	if err == ERR_FILE_NOT_FOUND:
+		printerr("Creating default global upgrades file")
+		# Initialise the default config
+		for key in GlobalUpgrade.ValidIds.keys():
+			global_upgrades_cfg.set_value("Upgrades", key, false)
+		global_upgrades_cfg.save("user://config/" + filepath)
+	
+	global_upgrades_cfg.load("user://config/" + filepath)
+	return global_upgrades_cfg
+
+
+func write_global_upgrades(filepath:String, section:String, key:String, value:Variant):
+	var global_upgrades_cfg:ConfigFile = get_config(filepath)
+	global_upgrades_cfg.set_value(section, key, value)
+	global_upgrades_cfg.save("user://config/" + filepath)
+
+
+func add_experience(amount:int) -> void:
+	experience += amount
+
+
+func set_experience(amount:int) -> void:
+	experience = amount
+
+
+func calculate_level(current_experience:int = experience) -> int:
+	if current_experience <= 0:
+		return 0
+		
+	var level: int = 0
+	while current_experience >= calculate_experience_to_get_to_level(level + 1):
+		level += 1
+	return level
+
+
+func calculate_experience_to_get_to_level(level:int = 0) -> int:
+	if level <= 0:
+		return 0
+	
+	if is_equal_approx(level_experience_requirement_multiplier, 1.0):
+		return int(initial_level_experience_requirement * level)
+	
+	var sum = initial_level_experience_requirement * (pow(level_experience_requirement_multiplier, level) - 1) / (level_experience_requirement_multiplier - 1)
+	return int(sum)
+
+
+func calculate_experience_within_level(current_level:int = 0, current_experience:int = experience) -> int:
+	return current_experience - calculate_experience_to_get_to_level(current_level)
+	
+
+func calculate_experience_required_for_level_up(level:int):
+	return initial_level_experience_requirement * pow(level_experience_requirement_multiplier, level)
+
+
+func get_skill_points():
+	return calculate_level()
+
+
+func calculate_xp_gain_multiplier():
+	return 1 + (0.1 * get_global_upgrade_tier(GlobalUpgrade.ValidIds.XP_GAIN_10_PC_INCREASE))
