@@ -24,9 +24,12 @@ func _on_upgrade_bought(upgrade:GlobalUpgrade, tier:int):
 
 
 func _ready() -> void:
+	$FadeOutColorRect.custom_minimum_size = get_viewport_rect().size
 	refresh_labels()
 	await get_tree().process_frame
 	refresh_upgrade_textures()
+	$FadeOutColorRect.custom_minimum_size = Vector2(0, 0)
+	print($FadeOutColorRect.position)
 
 
 func refresh_labels() -> void:
