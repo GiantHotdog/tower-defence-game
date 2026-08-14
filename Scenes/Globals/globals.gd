@@ -14,7 +14,7 @@ var health = 100
 var levels_complete:Array[bool] = [false, false, false, false]
 
 
-var experience:int = 200
+var _experience:int = 0
 var initial_level_experience_requirement:int = 20
 var level_experience_requirement_multiplier:float = 1.2
 
@@ -65,17 +65,23 @@ func load_config(filepath:String):
 
 func load_global_upgrades(filepath:String = "global_upgrades.cfg"):
 	global_upgrades = get_global_upgrades(filepath)
+	_experience = global_upgrades.get_value("Experience", "Value", 0)
 
 
 func get_global_upgrade_tier(upgrade_id:GlobalUpgrade.ValidIds) -> int:
 	if global_upgrades:
-		return global_upgrades.get_value("Upgrades", GlobalUpgrade.ValidIds.keys()[upgrade_id])
+		return global_upgrades.get_value("Upgrades", GlobalUpgrade.ValidIds.keys()[upgrade_id], 0)
 	else:
 		return 0
 
 
 func set_global_upgrade_tier(upgrade_id:GlobalUpgrade.ValidIds, current_tier:int, filepath:String = "global_upgrades.cfg"):
 	global_upgrades.set_value("Upgrades", GlobalUpgrade.ValidIds.keys()[upgrade_id], current_tier)
+	global_upgrades.save("user://config/" + filepath)
+
+
+func write_experience_gained_to_file(current_value:int, filepath:String = "global_upgrades.cfg"):
+	global_upgrades.set_value("Experience", "Value", current_value)
 	global_upgrades.save("user://config/" + filepath)
 
 
@@ -121,6 +127,7 @@ func get_global_upgrades(filepath:String = "global_upgrades.cfg") -> ConfigFile:
 	if err == ERR_FILE_NOT_FOUND:
 		printerr("Creating default global upgrades file")
 		# Initialise the default config
+		global_upgrades_cfg.set_value("Experience", "Value", 0)
 		for key in GlobalUpgrade.ValidIds.keys():
 			global_upgrades_cfg.set_value("Upgrades", key, false)
 		global_upgrades_cfg.save("user://config/" + filepath)
@@ -136,14 +143,19 @@ func write_global_upgrades(filepath:String, section:String, key:String, value:Va
 
 
 func add_experience(amount:int) -> void:
-	experience += amount
+	_experience += amount
 
 
 func set_experience(amount:int) -> void:
-	experience = amount
+	_experience = amount
+	write_experience_gained_to_file(amount)
 
 
-func calculate_level(current_experience:int = experience) -> int:
+func get_experience() -> int:
+	return _experience
+
+
+func calculate_level(current_experience:int = _experience) -> int:
 	if current_experience <= 0:
 		return 0
 		
@@ -164,7 +176,7 @@ func calculate_experience_to_get_to_level(level:int = 0) -> int:
 	return int(sum)
 
 
-func calculate_experience_within_level(current_level:int = 0, current_experience:int = experience) -> int:
+func calculate_experience_within_level(current_level:int = 0, current_experience:int = _experience) -> int:
 	return current_experience - calculate_experience_to_get_to_level(current_level)
 	
 
@@ -177,4 +189,8 @@ func get_skill_points():
 
 
 func calculate_xp_gain_multiplier():
-	return 1 + (0.1 * get_global_upgrade_tier(GlobalUpgrade.ValidIds.XP_GAIN_10_PC_INCREASE))
+	return (
+		1
+		+ (0.1 * get_global_upgrade_tier(GlobalUpgrade.ValidIds.XP_GAIN_10_PC_INCREASE))
+		+ (0.2 * get_global_upgrade_tier(GlobalUpgrade.ValidIds.XP_GAIN_20_PC_INCREASE))
+	)

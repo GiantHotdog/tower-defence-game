@@ -1,7 +1,7 @@
 class_name GlobalUpgrade
 extends Resource
 
-enum ValidIds { NULL, XP_GAIN_10_PC_INCREASE }
+enum ValidIds { NULL, XP_GAIN_10_PC_INCREASE, XP_GAIN_20_PC_INCREASE}
 
 ## The upgrade's id, used for comparison between upgrades
 @export var id:ValidIds = ValidIds.NULL

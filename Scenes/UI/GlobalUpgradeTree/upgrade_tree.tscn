@@ -102,7 +102,7 @@ offset_right = 574.0
 offset_bottom = 467.0
 upgrade_data = ExtResource("2_sxdsr")
 
-[node name="GlobalUpgradeItem2" parent="PanelContainer/MarginContainer/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer/Upgrades" unique_id=660892537 node_paths=PackedStringArray("prerequisites") instance=ExtResource("1_wpaoq")]
+[node name="XPGain+20PC" parent="PanelContainer/MarginContainer/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer/Upgrades" unique_id=660892537 node_paths=PackedStringArray("prerequisites") instance=ExtResource("1_wpaoq")]
 layout_mode = 0
 offset_left = 392.0
 offset_top = 280.0
@@ -136,7 +136,7 @@ offset_top = 184.0
 offset_right = 472.0
 offset_bottom = 275.0
 upgrade_data = ExtResource("7_ysx62")
-prerequisites = [NodePath("../GlobalUpgradeItem2")]
+prerequisites = [NodePath("../XPGain+20PC")]
 
 [node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=991847065]
 layout_mode = 2
@@ -280,8 +280,8 @@ color = Color(0, 0, 0, 1)
 [connection signal="gui_input" from="." to="." method="_on_background_gui_input"]
 [connection signal="upgrade_selected" from="PanelContainer/MarginContainer/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer/Upgrades/XPGain+10PC" to="." method="_on_upgrade_selected"]
 [connection signal="upgrade_unlocked" from="PanelContainer/MarginContainer/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer/Upgrades/XPGain+10PC" to="." method="_on_upgrade_bought"]
-[connection signal="upgrade_selected" from="PanelContainer/MarginContainer/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer/Upgrades/GlobalUpgradeItem2" to="." method="_on_upgrade_selected"]
-[connection signal="upgrade_unlocked" from="PanelContainer/MarginContainer/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer/Upgrades/GlobalUpgradeItem2" to="." method="_on_upgrade_bought"]
+[connection signal="upgrade_selected" from="PanelContainer/MarginContainer/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer/Upgrades/XPGain+20PC" to="." method="_on_upgrade_selected"]
+[connection signal="upgrade_unlocked" from="PanelContainer/MarginContainer/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer/Upgrades/XPGain+20PC" to="." method="_on_upgrade_bought"]
 [connection signal="upgrade_selected" from="PanelContainer/MarginContainer/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer/Upgrades/GlobalUpgradeItem3" to="." method="_on_upgrade_selected"]
 [connection signal="upgrade_unlocked" from="PanelContainer/MarginContainer/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer/Upgrades/GlobalUpgradeItem3" to="." method="_on_upgrade_bought"]
 [connection signal="upgrade_selected" from="PanelContainer/MarginContainer/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer/Upgrades/GlobalUpgradeItem4" to="." method="_on_upgrade_selected"]

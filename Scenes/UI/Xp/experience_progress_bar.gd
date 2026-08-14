@@ -28,7 +28,7 @@ func _ready() -> void:
 	#gain_xp(50, .5)
 	#await get_tree().create_timer(1).timeout
 	#get_tree().change_scene_to_file("res://Scenes/UI/GlobalUpgradeTree/upgrade_tree.tscn")
-	total_xp = Globals.experience
+	total_xp = Globals.get_experience()
 	visual_xp = total_xp
 	_update_labels(false)
 

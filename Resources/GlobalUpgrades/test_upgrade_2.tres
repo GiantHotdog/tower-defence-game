@@ -5,8 +5,8 @@
 
 [resource]
 script = ExtResource("1_h60xi")
-id = "test"
-name = "Test upgrade"
-description = "This is a test upgrade"
+id = 2
+name = "XP Gain"
+description = "Increases [color=yellow][b]XP[/b][/color] gained by 20%"
 max_level = 3
 prerequisites = Array[ExtResource("1_h60xi")]([ExtResource("2_ss6vb")])
