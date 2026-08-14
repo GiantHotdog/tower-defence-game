@@ -53,6 +53,17 @@ func _level_complete(level_xp_gain = level_complete_xp) -> void:
 				"	":"",
 				"baseGain":level_xp_gain,
 				"multiplier":multiplier,
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
 				"totalGain":total_gain
 			}
 		)

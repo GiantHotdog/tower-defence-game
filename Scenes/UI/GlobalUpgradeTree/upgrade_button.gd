@@ -48,7 +48,9 @@ func is_any_prerequisite_unlocked():
 func update_ui() -> void:
 	if upgrade_data:
 		tooltip_text = upgrade_data.description
-		%UpgradeButton.tooltip_text = upgrade_data.description
+		var regex = RegEx.create_from_string("\\[.*?\\]")
+		var clean_tooltip = regex.sub(upgrade_data.description, "", true)
+		%UpgradeButton.tooltip_text = clean_tooltip
 		%LevelLabel.text = str(upgrade_data.current_level) + "/" + str(upgrade_data.max_level)
 		
 		if upgrade_data.is_unlocked():
