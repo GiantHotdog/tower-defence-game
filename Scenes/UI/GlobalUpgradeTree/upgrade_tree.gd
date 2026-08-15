@@ -7,13 +7,13 @@ var selected_button:UpgradeButton = null
 
 
 func refresh_upgrade_textures():
-	for upgrade:UpgradeButton in %Upgrades.get_children():
+	for upgrade:UpgradeButton in %Upgrades.get_upgrades():
 		upgrade.update()
 
 
 #func refresh_available_skill_points():
 	#var unspent_skill_points = get_unspent_skill_points()
-	#for upgrade:UpgradeButton in %Upgrades.get_children():
+	#for upgrade:UpgradeButton in %Upgrades.get_upgrades():
 		#upgrade.set_unspent_skill_points(unspent_skill_points)
 
 
@@ -29,7 +29,6 @@ func _ready() -> void:
 	await get_tree().process_frame
 	refresh_upgrade_textures()
 	$FadeOutColorRect.custom_minimum_size = Vector2(0, 0)
-	print($FadeOutColorRect.position)
 
 
 func refresh_labels() -> void:
@@ -38,7 +37,7 @@ func refresh_labels() -> void:
 
 func get_total_skill_points_spent() -> int:
 	var total:int = 0
-	for upgrade:UpgradeButton in %Upgrades.get_children():
+	for upgrade:UpgradeButton in %Upgrades.get_upgrades():
 		if upgrade.is_unlocked():
 			total += upgrade.get_cost() * upgrade.get_level()
 	return total
@@ -103,7 +102,8 @@ func _on_background_gui_input(event: InputEvent) -> void:
 
 
 func reset_all_upgrades():
-	for upgrade_button:UpgradeButton in %Upgrades.get_children():
+	for upgrade_button:UpgradeButton in %Upgrades.get_upgrades():
+		print(upgrade_button)
 		Globals.set_global_upgrade_tier(upgrade_button.upgrade_data.id, 0)
 		upgrade_button.upgrade_data.current_level = 0
 	

@@ -1,7 +1,7 @@
 extends Control
 class_name UpgradeButton
 
-signal upgrade_unlocked(upgrade:GlobalUpgrade, current_level:int)
+#signal upgrade_unlocked(upgrade:GlobalUpgrade, current_level:int)
 signal upgrade_selected(button:UpgradeButton)
 
 @export var upgrade_data:GlobalUpgrade

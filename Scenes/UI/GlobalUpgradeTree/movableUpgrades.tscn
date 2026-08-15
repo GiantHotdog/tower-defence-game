@@ -1,0 +1,75 @@
+[gd_scene format=3 uid="uid://bb5bujcldf5fn"]
+
+[ext_resource type="PackedScene" uid="uid://d0fraje6x8wsh" path="res://Scenes/UI/GlobalUpgradeTree/upgrade_button.tscn" id="1_56cav"]
+[ext_resource type="Script" uid="uid://cqa5pvh02ock" path="res://Scenes/UI/GlobalUpgradeTree/movable_upgrades.gd" id="1_narra"]
+[ext_resource type="Resource" uid="uid://dj74vmenubwjm" path="res://Resources/GlobalUpgrades/xp_gain_10_pc_increase.tres" id="2_narra"]
+[ext_resource type="Resource" uid="uid://dmstllf7eexkc" path="res://Resources/GlobalUpgrades/test_upgrade_2.tres" id="3_0ocu6"]
+[ext_resource type="Resource" uid="uid://y0dl5agxlbq8" path="res://Resources/GlobalUpgrades/test_upgrade_3.tres" id="4_osy05"]
+[ext_resource type="Resource" uid="uid://blbdc22e1iyp7" path="res://Resources/GlobalUpgrades/test_upgrade_4.tres" id="5_aluvf"]
+[ext_resource type="Resource" uid="uid://cwps733f0l5gp" path="res://Resources/GlobalUpgrades/test_upgrade_5.tres" id="6_vj5qo"]
+
+[node name="ScrollContainer" type="ScrollContainer" unique_id=203288562]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_scroll_mode = 3
+vertical_scroll_mode = 3
+script = ExtResource("1_narra")
+
+[node name="Upgrades" type="Control" parent="." unique_id=462607590]
+custom_minimum_size = Vector2(5000, 5000)
+layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 2
+
+[node name="XPGain+10PC" parent="Upgrades" unique_id=7593082 instance=ExtResource("1_56cav")]
+layout_mode = 0
+offset_left = 498.0
+offset_top = 376.0
+offset_right = 574.0
+offset_bottom = 467.0
+upgrade_data = ExtResource("2_narra")
+
+[node name="XPGain+20PC" parent="Upgrades" unique_id=1131302706 node_paths=PackedStringArray("prerequisites") instance=ExtResource("1_56cav")]
+layout_mode = 0
+offset_left = 392.0
+offset_top = 280.0
+offset_right = 472.0
+offset_bottom = 371.0
+upgrade_data = ExtResource("3_0ocu6")
+prerequisites = [NodePath("../XPGain+10PC")]
+
+[node name="GlobalUpgradeItem3" parent="Upgrades" unique_id=1819698758 node_paths=PackedStringArray("prerequisites") instance=ExtResource("1_56cav")]
+layout_mode = 0
+offset_left = 600.0
+offset_top = 280.0
+offset_right = 676.0
+offset_bottom = 371.0
+upgrade_data = ExtResource("4_osy05")
+prerequisites = [NodePath("../XPGain+10PC")]
+
+[node name="GlobalUpgradeItem4" parent="Upgrades" unique_id=576046535 node_paths=PackedStringArray("prerequisites") instance=ExtResource("1_56cav")]
+layout_mode = 0
+offset_left = 600.0
+offset_top = 184.0
+offset_right = 676.0
+offset_bottom = 275.0
+upgrade_data = ExtResource("5_aluvf")
+prerequisites = [NodePath("../GlobalUpgradeItem3")]
+
+[node name="GlobalUpgradeItem5" parent="Upgrades" unique_id=1981738123 node_paths=PackedStringArray("prerequisites") instance=ExtResource("1_56cav")]
+layout_mode = 0
+offset_left = 392.0
+offset_top = 184.0
+offset_right = 472.0
+offset_bottom = 275.0
+upgrade_data = ExtResource("6_vj5qo")
+prerequisites = [NodePath("../XPGain+20PC")]
+
+[connection signal="upgrade_selected" from="Upgrades/XPGain+10PC" to="." method="_on_upgrade_selected"]
+[connection signal="upgrade_selected" from="Upgrades/XPGain+20PC" to="." method="_on_upgrade_selected"]
+[connection signal="upgrade_selected" from="Upgrades/GlobalUpgradeItem3" to="." method="_on_upgrade_selected"]
+[connection signal="upgrade_selected" from="Upgrades/GlobalUpgradeItem4" to="." method="_on_upgrade_selected"]
+[connection signal="upgrade_selected" from="Upgrades/GlobalUpgradeItem5" to="." method="_on_upgrade_selected"]

@@ -1,12 +1,7 @@
 [gd_scene format=3 uid="uid://b3jf6tswo8pey"]
 
-[ext_resource type="PackedScene" uid="uid://d0fraje6x8wsh" path="res://Scenes/UI/GlobalUpgradeTree/upgrade_button.tscn" id="1_wpaoq"]
 [ext_resource type="Script" uid="uid://b0ttio7dqkyqy" path="res://Scenes/UI/GlobalUpgradeTree/upgrade_tree.gd" id="1_ywlix"]
-[ext_resource type="Resource" uid="uid://dj74vmenubwjm" path="res://Resources/GlobalUpgrades/xp_gain_10_pc_increase.tres" id="2_sxdsr"]
-[ext_resource type="Resource" uid="uid://dmstllf7eexkc" path="res://Resources/GlobalUpgrades/test_upgrade_2.tres" id="3_ncgts"]
-[ext_resource type="Resource" uid="uid://y0dl5agxlbq8" path="res://Resources/GlobalUpgrades/test_upgrade_3.tres" id="5_w60or"]
-[ext_resource type="Resource" uid="uid://blbdc22e1iyp7" path="res://Resources/GlobalUpgrades/test_upgrade_4.tres" id="6_srj78"]
-[ext_resource type="Resource" uid="uid://cwps733f0l5gp" path="res://Resources/GlobalUpgrades/test_upgrade_5.tres" id="7_ysx62"]
+[ext_resource type="PackedScene" uid="uid://bb5bujcldf5fn" path="res://Scenes/UI/GlobalUpgradeTree/movableUpgrades.tscn" id="2_sxdsr"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_134u2"]
 bg_color = Color(0, 0, 0, 1)
@@ -88,55 +83,10 @@ theme_override_constants/margin_bottom = 8
 [node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer/HBoxContainer/PanelContainer/MarginContainer" unique_id=402382457]
 layout_mode = 2
 
-[node name="Upgrades" type="Control" parent="PanelContainer/MarginContainer/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=1551267814]
+[node name="Upgrades" parent="PanelContainer/MarginContainer/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=462607590 instance=ExtResource("2_sxdsr")]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
-mouse_filter = 2
-
-[node name="XPGain+10PC" parent="PanelContainer/MarginContainer/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer/Upgrades" unique_id=840628816 instance=ExtResource("1_wpaoq")]
-layout_mode = 0
-offset_left = 498.0
-offset_top = 376.0
-offset_right = 574.0
-offset_bottom = 467.0
-upgrade_data = ExtResource("2_sxdsr")
-
-[node name="XPGain+20PC" parent="PanelContainer/MarginContainer/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer/Upgrades" unique_id=660892537 node_paths=PackedStringArray("prerequisites") instance=ExtResource("1_wpaoq")]
-layout_mode = 0
-offset_left = 392.0
-offset_top = 280.0
-offset_right = 472.0
-offset_bottom = 371.0
-upgrade_data = ExtResource("3_ncgts")
-prerequisites = [NodePath("../XPGain+10PC")]
-
-[node name="GlobalUpgradeItem3" parent="PanelContainer/MarginContainer/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer/Upgrades" unique_id=1332242340 node_paths=PackedStringArray("prerequisites") instance=ExtResource("1_wpaoq")]
-layout_mode = 0
-offset_left = 600.0
-offset_top = 280.0
-offset_right = 676.0
-offset_bottom = 371.0
-upgrade_data = ExtResource("5_w60or")
-prerequisites = [NodePath("../XPGain+10PC")]
-
-[node name="GlobalUpgradeItem4" parent="PanelContainer/MarginContainer/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer/Upgrades" unique_id=517341707 node_paths=PackedStringArray("prerequisites") instance=ExtResource("1_wpaoq")]
-layout_mode = 0
-offset_left = 600.0
-offset_top = 184.0
-offset_right = 676.0
-offset_bottom = 275.0
-upgrade_data = ExtResource("6_srj78")
-prerequisites = [NodePath("../GlobalUpgradeItem3")]
-
-[node name="GlobalUpgradeItem5" parent="PanelContainer/MarginContainer/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer/Upgrades" unique_id=924500374 node_paths=PackedStringArray("prerequisites") instance=ExtResource("1_wpaoq")]
-layout_mode = 0
-offset_left = 392.0
-offset_top = 184.0
-offset_right = 472.0
-offset_bottom = 275.0
-upgrade_data = ExtResource("7_ysx62")
-prerequisites = [NodePath("../XPGain+20PC")]
 
 [node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=991847065]
 layout_mode = 2
@@ -278,16 +228,7 @@ grow_horizontal = 2
 color = Color(0, 0, 0, 1)
 
 [connection signal="gui_input" from="." to="." method="_on_background_gui_input"]
-[connection signal="upgrade_selected" from="PanelContainer/MarginContainer/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer/Upgrades/XPGain+10PC" to="." method="_on_upgrade_selected"]
-[connection signal="upgrade_unlocked" from="PanelContainer/MarginContainer/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer/Upgrades/XPGain+10PC" to="." method="_on_upgrade_bought"]
-[connection signal="upgrade_selected" from="PanelContainer/MarginContainer/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer/Upgrades/XPGain+20PC" to="." method="_on_upgrade_selected"]
-[connection signal="upgrade_unlocked" from="PanelContainer/MarginContainer/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer/Upgrades/XPGain+20PC" to="." method="_on_upgrade_bought"]
-[connection signal="upgrade_selected" from="PanelContainer/MarginContainer/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer/Upgrades/GlobalUpgradeItem3" to="." method="_on_upgrade_selected"]
-[connection signal="upgrade_unlocked" from="PanelContainer/MarginContainer/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer/Upgrades/GlobalUpgradeItem3" to="." method="_on_upgrade_bought"]
-[connection signal="upgrade_selected" from="PanelContainer/MarginContainer/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer/Upgrades/GlobalUpgradeItem4" to="." method="_on_upgrade_selected"]
-[connection signal="upgrade_unlocked" from="PanelContainer/MarginContainer/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer/Upgrades/GlobalUpgradeItem4" to="." method="_on_upgrade_bought"]
-[connection signal="upgrade_selected" from="PanelContainer/MarginContainer/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer/Upgrades/GlobalUpgradeItem5" to="." method="_on_upgrade_selected"]
-[connection signal="upgrade_unlocked" from="PanelContainer/MarginContainer/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer/Upgrades/GlobalUpgradeItem5" to="." method="_on_upgrade_bought"]
+[connection signal="upgrade_selected" from="PanelContainer/MarginContainer/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer/Upgrades" to="." method="_on_upgrade_selected"]
 [connection signal="pressed" from="PanelContainer/MarginContainer/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/MainMenuButton" to="." method="_on_main_menu_button_pressed"]
 [connection signal="pressed" from="PanelContainer/MarginContainer/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/ResetButton" to="." method="_on_reset_button_pressed"]
 [connection signal="pressed" from="PanelContainer/MarginContainer/HBoxContainer/InfoWindow/MarginContainer/VBoxContainer/BuyUpgradeButton" to="." method="_on_buy_upgrade_button_pressed"]
