@@ -142,6 +142,28 @@ func write_global_upgrades(filepath:String, section:String, key:String, value:Va
 	global_upgrades_cfg.save("user://config/" + filepath)
 
 
+func get_current_modifier_for(upgradeClass:GlobalUpgrade.UpgradeClass) -> float:
+	if upgradeClass == GlobalUpgrade.UpgradeClass.XP_GAIN:
+		return (
+			1
+			+ (0.1 * get_global_upgrade_tier(GlobalUpgrade.ValidIds.XP_GAIN_10_PC_INCREASE))
+			+ (0.2 * get_global_upgrade_tier(GlobalUpgrade.ValidIds.XP_GAIN_20_PC_INCREASE))
+		)
+	if upgradeClass == GlobalUpgrade.UpgradeClass.SIGTERM_COOLDOWN:
+		return (
+			1 
+			- (0.1 * get_global_upgrade_tier(GlobalUpgrade.ValidIds.SIGTERM_COOLDOWN_10_PC_DECREASE))
+		)
+	return 1.0
+
+
+func get_global_tower_upgrade_level(tower:BaseTower.TowerTypes, property:Upgrade.Properties) -> float:
+	if tower == BaseTower.TowerTypes.SIGTERM:
+		if property == Upgrade.Properties.ATTACK_SPEED:
+			return 1.0 / get_current_modifier_for(GlobalUpgrade.UpgradeClass.SIGTERM_COOLDOWN)
+	return 1.0
+
+
 func add_experience(amount:int) -> void:
 	_experience += amount
 
@@ -186,11 +208,3 @@ func calculate_experience_required_for_level_up(level:int):
 
 func get_skill_points():
 	return calculate_level()
-
-
-func calculate_xp_gain_multiplier():
-	return (
-		1
-		+ (0.1 * get_global_upgrade_tier(GlobalUpgrade.ValidIds.XP_GAIN_10_PC_INCREASE))
-		+ (0.2 * get_global_upgrade_tier(GlobalUpgrade.ValidIds.XP_GAIN_20_PC_INCREASE))
-	)

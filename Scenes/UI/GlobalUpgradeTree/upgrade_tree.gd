@@ -50,7 +50,7 @@ func get_unspent_skill_points() -> int:
 func refresh_info_window(upgrade:GlobalUpgrade):
 	%NameLabel.text = upgrade.name
 	%CostLabel.text = "Cost: %d skill points" % upgrade.cost
-	%DescriptionLabel.text = upgrade.description
+	%DescriptionLabel.text = upgrade.description + " (Currently %.02f)" % Globals.get_current_modifier_for(upgrade.upgradeClass)
 
 
 func hide_info_window():
@@ -103,7 +103,6 @@ func _on_background_gui_input(event: InputEvent) -> void:
 
 func reset_all_upgrades():
 	for upgrade_button:UpgradeButton in %Upgrades.get_upgrades():
-		print(upgrade_button)
 		Globals.set_global_upgrade_tier(upgrade_button.upgrade_data.id, 0)
 		upgrade_button.upgrade_data.current_level = 0
 	

@@ -124,11 +124,15 @@ func calculate_upgrades():
 		elif upgrade.property == Upgrade.Properties.ATTACK_SPEED:
 			cumulative_upgrade_dictionary["attack_speed"] *= upgrade.scale
 			calculated_attack_speed = cumulative_upgrade_dictionary["attack_speed"] * attack_speed
+			print(Globals.get_current_modifier_for(GlobalUpgrade.UpgradeClass.SIGTERM_COOLDOWN))
 	if upgrades.size() == 0:
 		# There are no upgrades to apply
 		calculated_range = attack_range
 		calculated_damage = damage
 		calculated_attack_speed = attack_speed
+	
+	
+	calculated_attack_speed *= (Globals.get_global_tower_upgrade_level(tower_type, Upgrade.Properties.ATTACK_SPEED))
 
 
 func get_target():

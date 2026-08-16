@@ -5,8 +5,9 @@
 
 [resource]
 script = ExtResource("1_3f6fx")
-id = "test"
-name = "Test upgrade"
-description = "This is a test upgrade (3)"
+id = 3
+upgradeClass = 2
+name = "Sigterm Cooldown"
+description = "Decreases the cooldown of the SIGTERM tower by 10%"
 cost = 2
 prerequisites = Array[ExtResource("1_3f6fx")]([ExtResource("2_3f6fx")])

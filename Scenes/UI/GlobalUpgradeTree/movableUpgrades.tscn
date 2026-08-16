@@ -3,8 +3,8 @@
 [ext_resource type="PackedScene" uid="uid://d0fraje6x8wsh" path="res://Scenes/UI/GlobalUpgradeTree/upgrade_button.tscn" id="1_56cav"]
 [ext_resource type="Script" uid="uid://cqa5pvh02ock" path="res://Scenes/UI/GlobalUpgradeTree/movable_upgrades.gd" id="1_narra"]
 [ext_resource type="Resource" uid="uid://dj74vmenubwjm" path="res://Resources/GlobalUpgrades/xp_gain_10_pc_increase.tres" id="2_narra"]
-[ext_resource type="Resource" uid="uid://dmstllf7eexkc" path="res://Resources/GlobalUpgrades/test_upgrade_2.tres" id="3_0ocu6"]
-[ext_resource type="Resource" uid="uid://y0dl5agxlbq8" path="res://Resources/GlobalUpgrades/test_upgrade_3.tres" id="4_osy05"]
+[ext_resource type="Resource" uid="uid://dmstllf7eexkc" path="res://Resources/GlobalUpgrades/xp_gain_20_pc_increase.tres" id="3_0ocu6"]
+[ext_resource type="Resource" uid="uid://y0dl5agxlbq8" path="res://Resources/GlobalUpgrades/sigterm_cooldown_10_pc_decrease.tres" id="4_osy05"]
 [ext_resource type="Resource" uid="uid://blbdc22e1iyp7" path="res://Resources/GlobalUpgrades/test_upgrade_4.tres" id="5_aluvf"]
 [ext_resource type="Resource" uid="uid://cwps733f0l5gp" path="res://Resources/GlobalUpgrades/test_upgrade_5.tres" id="6_vj5qo"]
 
@@ -41,7 +41,7 @@ offset_bottom = 371.0
 upgrade_data = ExtResource("3_0ocu6")
 prerequisites = [NodePath("../XPGain+10PC")]
 
-[node name="GlobalUpgradeItem3" parent="Upgrades" unique_id=1819698758 node_paths=PackedStringArray("prerequisites") instance=ExtResource("1_56cav")]
+[node name="SIGTERMCooldown-10PC" parent="Upgrades" unique_id=1819698758 node_paths=PackedStringArray("prerequisites") instance=ExtResource("1_56cav")]
 layout_mode = 0
 offset_left = 600.0
 offset_top = 280.0
@@ -57,7 +57,7 @@ offset_top = 184.0
 offset_right = 676.0
 offset_bottom = 275.0
 upgrade_data = ExtResource("5_aluvf")
-prerequisites = [NodePath("../GlobalUpgradeItem3")]
+prerequisites = [NodePath("../SIGTERMCooldown-10PC")]
 
 [node name="GlobalUpgradeItem5" parent="Upgrades" unique_id=1981738123 node_paths=PackedStringArray("prerequisites") instance=ExtResource("1_56cav")]
 layout_mode = 0
@@ -70,6 +70,6 @@ prerequisites = [NodePath("../XPGain+20PC")]
 
 [connection signal="upgrade_selected" from="Upgrades/XPGain+10PC" to="." method="_on_upgrade_selected"]
 [connection signal="upgrade_selected" from="Upgrades/XPGain+20PC" to="." method="_on_upgrade_selected"]
-[connection signal="upgrade_selected" from="Upgrades/GlobalUpgradeItem3" to="." method="_on_upgrade_selected"]
+[connection signal="upgrade_selected" from="Upgrades/SIGTERMCooldown-10PC" to="." method="_on_upgrade_selected"]
 [connection signal="upgrade_selected" from="Upgrades/GlobalUpgradeItem4" to="." method="_on_upgrade_selected"]
 [connection signal="upgrade_selected" from="Upgrades/GlobalUpgradeItem5" to="." method="_on_upgrade_selected"]

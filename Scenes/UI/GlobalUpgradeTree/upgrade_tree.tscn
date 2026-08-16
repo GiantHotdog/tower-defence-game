@@ -157,6 +157,13 @@ layout_mode = 2
 size_flags_vertical = 3
 bbcode_enabled = true
 
+[node name="CurrentLevelLabel" type="Label" parent="PanelContainer/MarginContainer/HBoxContainer/InfoWindow/MarginContainer/VBoxContainer" unique_id=718868926]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+text = "Current Level"
+horizontal_alignment = 1
+
 [node name="CostLabel" type="Label" parent="PanelContainer/MarginContainer/HBoxContainer/InfoWindow/MarginContainer/VBoxContainer" unique_id=1002633216]
 unique_name_in_owner = true
 layout_mode = 2

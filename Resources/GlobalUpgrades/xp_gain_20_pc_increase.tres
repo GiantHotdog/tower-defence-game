@@ -6,6 +6,7 @@
 [resource]
 script = ExtResource("1_h60xi")
 id = 2
+upgradeClass = 1
 name = "XP Gain"
 description = "Increases [color=yellow][b]XP[/b][/color] gained by 20%"
 max_level = 3

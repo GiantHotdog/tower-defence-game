@@ -6,7 +6,7 @@ signal breakdown_finished
 
 
 @export var level_complete_xp:int = 50
-@export var multiplier:float = Globals.calculate_xp_gain_multiplier()
+@export var multiplier:float = Globals.get_current_modifier_for(GlobalUpgrade.UpgradeClass.XP_GAIN)
 @export var message_start_point:int = 21
 
 var character_appear_delay:float = 20 #ms
@@ -44,7 +44,7 @@ func _on_button_pressed() -> void:
 
 
 func _level_complete(level_xp_gain = level_complete_xp) -> void:
-	multiplier = Globals.calculate_xp_gain_multiplier()
+	multiplier = Globals.get_current_modifier_for(GlobalUpgrade.UpgradeClass.XP_GAIN)
 	# Game is now over
 	var total_gain:int = int(level_xp_gain * multiplier)
 	%ExperienceProgressBar.gain_xp(total_gain, 1.0, breakdown_finished)
@@ -53,17 +53,6 @@ func _level_complete(level_xp_gain = level_complete_xp) -> void:
 				"	":"",
 				"baseGain":level_xp_gain,
 				"multiplier":multiplier,
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
 				"totalGain":total_gain
 			}
 		)
