@@ -37,6 +37,12 @@ func _ready() -> void:
 	update()
 
 
+func remove_bbcode_from_string(input_string:String):
+	var regex = RegEx.create_from_string("\\[.*?\\]")
+	var clean_tooltip = regex.sub(upgrade_data.description, "", true)
+	return clean_tooltip
+
+
 func is_any_prerequisite_unlocked():
 	for prerequisite in prerequisites:
 		if prerequisite.is_unlocked():
@@ -47,11 +53,10 @@ func is_any_prerequisite_unlocked():
 
 func update_ui() -> void:
 	if upgrade_data:
-		tooltip_text = upgrade_data.description
-		var regex = RegEx.create_from_string("\\[.*?\\]")
-		var clean_tooltip = regex.sub(upgrade_data.description, "", true)
+		var clean_tooltip = remove_bbcode_from_string(upgrade_data.description)
 		%UpgradeButton.tooltip_text = clean_tooltip
 		%LevelLabel.text = str(upgrade_data.current_level) + "/" + str(upgrade_data.max_level)
+		tooltip_text = clean_tooltip
 		
 		if upgrade_data.is_unlocked():
 			%UpgradeButton.modulate = Color(1, 1, 1)

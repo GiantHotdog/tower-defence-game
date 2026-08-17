@@ -4,9 +4,23 @@ extends ScrollContainer
 signal upgrade_selected(button:UpgradeButton)
 
 
+@export var start_centred_on:Control
+
+
 var is_panning: bool = false
 var touch_start_pos: Vector2 = Vector2.ZERO
 var scroll_start_pos: Vector2 = Vector2.ZERO
+
+
+func _ready() -> void:
+	await get_tree().process_frame
+	if start_centred_on:
+		var target_pos: Vector2 = start_centred_on.position
+		target_pos += (start_centred_on.size / 2.0)
+		target_pos -= size / 2
+		scroll_horizontal = int(target_pos.x)
+		scroll_vertical = int(target_pos.y)
+ # (448, 715)
 
 func _gui_input(event: InputEvent) -> void:
 	# Check for Right Mouse Button or Middle Mouse Button to drag the map

@@ -132,6 +132,8 @@ func calculate_upgrades():
 		calculated_attack_speed = attack_speed
 	
 	
+	calculated_range *= (Globals.get_global_tower_upgrade_level(tower_type, Upgrade.Properties.RANGE))
+	calculated_damage *= (Globals.get_global_tower_upgrade_level(tower_type, Upgrade.Properties.DAMAGE))
 	calculated_attack_speed *= (Globals.get_global_tower_upgrade_level(tower_type, Upgrade.Properties.ATTACK_SPEED))
 
 

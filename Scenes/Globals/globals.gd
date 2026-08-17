@@ -149,18 +149,54 @@ func get_current_modifier_for(upgradeClass:GlobalUpgrade.UpgradeClass) -> float:
 			+ (0.1 * get_global_upgrade_tier(GlobalUpgrade.ValidIds.XP_GAIN_10_PC_INCREASE))
 			+ (0.2 * get_global_upgrade_tier(GlobalUpgrade.ValidIds.XP_GAIN_20_PC_INCREASE))
 		)
-	if upgradeClass == GlobalUpgrade.UpgradeClass.SIGTERM_COOLDOWN:
+	elif upgradeClass == GlobalUpgrade.UpgradeClass.SIGTERM_COOLDOWN:
 		return (
 			1 
 			- (0.1 * get_global_upgrade_tier(GlobalUpgrade.ValidIds.SIGTERM_COOLDOWN_10_PC_DECREASE))
 		)
+	elif upgradeClass == GlobalUpgrade.UpgradeClass.SIGTERM_RANGE:
+		return (
+			1 
+			+ (0.15 * get_global_upgrade_tier(GlobalUpgrade.ValidIds.SIGTERM_RANGE_15_PC_INCREASE))
+		)
+	elif upgradeClass == GlobalUpgrade.UpgradeClass.LOGIC_GATE_COOLDOWN:
+		return (
+			1 
+			- (0.2 * get_global_upgrade_tier(GlobalUpgrade.ValidIds.LOGIC_GATE_COOLDOWN_20_PC_DECREASE))
+		)
+	elif upgradeClass == GlobalUpgrade.UpgradeClass.LOGIC_GATE_RANGE:
+		return (
+			1 
+			+ (0.1 * get_global_upgrade_tier(GlobalUpgrade.ValidIds.LOGIC_GATE_RANGE_10_PC_INCREASE))
+		)
 	return 1.0
+
+
+func get_current_message_for(upgradeClass:GlobalUpgrade.UpgradeClass) -> String:
+	if upgradeClass == GlobalUpgrade.UpgradeClass.XP_GAIN:
+		return "x%.02f" % get_current_modifier_for(GlobalUpgrade.UpgradeClass.XP_GAIN)
+	elif upgradeClass == GlobalUpgrade.UpgradeClass.SIGTERM_COOLDOWN:
+		return "%.02f seconds" % (4 * get_current_modifier_for(GlobalUpgrade.UpgradeClass.SIGTERM_COOLDOWN))
+	elif upgradeClass == GlobalUpgrade.UpgradeClass.SIGTERM_RANGE:
+		return "%d px" % (1200 * get_current_modifier_for(GlobalUpgrade.UpgradeClass.SIGTERM_RANGE))
+	elif upgradeClass == GlobalUpgrade.UpgradeClass.LOGIC_GATE_COOLDOWN:
+		return "%.02f seconds" % (1 / 1.5 * get_current_modifier_for(GlobalUpgrade.UpgradeClass.LOGIC_GATE_COOLDOWN))
+	elif upgradeClass == GlobalUpgrade.UpgradeClass.LOGIC_GATE_RANGE:
+		return "%d px" % (480 * get_current_modifier_for(GlobalUpgrade.UpgradeClass.LOGIC_GATE_RANGE))
+	return ""
 
 
 func get_global_tower_upgrade_level(tower:BaseTower.TowerTypes, property:Upgrade.Properties) -> float:
 	if tower == BaseTower.TowerTypes.SIGTERM:
 		if property == Upgrade.Properties.ATTACK_SPEED:
 			return 1.0 / get_current_modifier_for(GlobalUpgrade.UpgradeClass.SIGTERM_COOLDOWN)
+		elif property == Upgrade.Properties.RANGE:
+			return get_current_modifier_for(GlobalUpgrade.UpgradeClass.SIGTERM_RANGE)
+	elif tower == BaseTower.TowerTypes.LOGIC_GATE:
+		if property == Upgrade.Properties.ATTACK_SPEED:
+			return 1.0 / get_current_modifier_for(GlobalUpgrade.UpgradeClass.LOGIC_GATE_COOLDOWN)
+		elif property == Upgrade.Properties.RANGE:
+			return get_current_modifier_for(GlobalUpgrade.UpgradeClass.LOGIC_GATE_RANGE)
 	return 1.0
 
 
