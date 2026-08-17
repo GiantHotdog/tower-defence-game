@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="GlobalUpgrade" format=3 uid="uid://cwps733f0l5gp"]
+
+[ext_resource type="Script" uid="uid://db5bx24r4bnm2" path="res://Resources/GlobalUpgrades/globalUpgrade.gd" id="1_gdbo5"]
+[ext_resource type="Resource" uid="uid://y0dl5agxlbq8" path="res://Resources/GlobalUpgrades/sigterm_cooldown_10_pc_decrease.tres" id="2_pnmo5"]
+
+[resource]
+script = ExtResource("1_gdbo5")
+id = 4
+upgradeClass = 3
+name = "Test upgrade"
+description = "Increases the range of the [color=red][b]SIGTERM[/b][/color] tower by [color=cyan]15%[/color]"
+cost = 2
+prerequisites = Array[ExtResource("1_gdbo5")]([ExtResource("2_pnmo5")])

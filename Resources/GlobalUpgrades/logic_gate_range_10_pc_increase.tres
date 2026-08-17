@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="GlobalUpgrade" format=3 uid="uid://cu2jcy30xwxpw"]
+
+[ext_resource type="Script" uid="uid://db5bx24r4bnm2" path="res://Resources/GlobalUpgrades/globalUpgrade.gd" id="1_hbdhw"]
+
+[resource]
+script = ExtResource("1_hbdhw")
+id = 6
+upgradeClass = 5
+name = "Logic Gate Range boost"
+description = "Increases the range of the [color=cyan][b]Logic Gate[/b][/color] tower by [color=cyan]10%[/color]"
+metadata/_custom_type_script = "uid://db5bx24r4bnm2"
