@@ -24,7 +24,7 @@ func _ready() -> void:
 
 func _gui_input(event: InputEvent) -> void:
 	# Check for Right Mouse Button or Middle Mouse Button to drag the map
-	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_RIGHT:
+	if event is InputEventMouseButton and (event.button_index == MOUSE_BUTTON_RIGHT or event.button_index == MOUSE_BUTTON_MIDDLE):
 		if event.pressed:
 			is_panning = true
 			touch_start_pos = event.position
@@ -40,6 +40,15 @@ func _gui_input(event: InputEvent) -> void:
 		# Subtract distance to push the map in the direction of the drag
 		scroll_horizontal = int(scroll_start_pos.x - drag_distance.x)
 		scroll_vertical = int(scroll_start_pos.y - drag_distance.y)
+	
+	# Consume scrolling events
+	if event is InputEventMouseButton:
+		if event.button_index == MOUSE_BUTTON_WHEEL_UP:
+			#$Upgrades.scale += Vector2(0.1, 0.1)
+			accept_event()
+		elif event.button_index == MOUSE_BUTTON_WHEEL_DOWN:
+			#$Upgrades.scale -= Vector2(0.1, 0.1)
+			accept_event()
 
 
 func get_upgrades() -> Array[UpgradeButton]:
