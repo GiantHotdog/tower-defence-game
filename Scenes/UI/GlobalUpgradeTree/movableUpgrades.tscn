@@ -5,10 +5,16 @@
 [ext_resource type="Resource" uid="uid://dj74vmenubwjm" path="res://Resources/GlobalUpgrades/xp_gain_10_pc_increase.tres" id="2_narra"]
 [ext_resource type="Resource" uid="uid://dmstllf7eexkc" path="res://Resources/GlobalUpgrades/xp_gain_20_pc_increase.tres" id="3_0ocu6"]
 [ext_resource type="Resource" uid="uid://y0dl5agxlbq8" path="res://Resources/GlobalUpgrades/sigterm_cooldown_10_pc_decrease.tres" id="4_osy05"]
+[ext_resource type="Texture2D" uid="uid://djuqh3w1ntve8" path="res://Assets/SkillTree/xpgain.png" id="4_vj5qo"]
 [ext_resource type="Resource" uid="uid://blbdc22e1iyp7" path="res://Resources/GlobalUpgrades/test_upgrade_4.tres" id="5_aluvf"]
+[ext_resource type="Texture2D" uid="uid://ba46ddenvrwtf" path="res://Assets/SkillTree/cooldown.png" id="6_aluvf"]
 [ext_resource type="Resource" uid="uid://cwps733f0l5gp" path="res://Resources/GlobalUpgrades/sigterm_range_10_pc_increase.tres" id="6_vj5qo"]
 [ext_resource type="Resource" uid="uid://t4mfnfjghpo1" path="res://Resources/GlobalUpgrades/logic_gate_attack_speed_20_pc_increase.tres" id="8_0ocu6"]
 [ext_resource type="Resource" uid="uid://cu2jcy30xwxpw" path="res://Resources/GlobalUpgrades/logic_gate_range_10_pc_increase.tres" id="9_osy05"]
+
+[sub_resource type="Environment" id="Environment_aluvf"]
+background_mode = 3
+glow_enabled = true
 
 [node name="ScrollContainer" type="ScrollContainer" unique_id=203288562 node_paths=PackedStringArray("start_centred_on")]
 anchors_preset = 15
@@ -35,6 +41,10 @@ offset_right = 1031.0
 offset_bottom = 559.0
 upgrade_data = ExtResource("2_narra")
 
+[node name="UpgradeButton" parent="Upgrades/XPGain+10PC/VBoxContainer" parent_id_path=PackedInt32Array(7593082, 1332242340) index="0" unique_id=23632606]
+self_modulate = Color(3.1934307, 3.1934307, 0, 1)
+texture_normal = ExtResource("4_vj5qo")
+
 [node name="XPGain+20PC" parent="Upgrades" unique_id=1131302706 node_paths=PackedStringArray("prerequisites") instance=ExtResource("1_56cav")]
 layout_mode = 0
 offset_left = 849.0
@@ -44,6 +54,10 @@ offset_bottom = 463.0
 upgrade_data = ExtResource("3_0ocu6")
 prerequisites = [NodePath("../XPGain+10PC")]
 
+[node name="UpgradeButton" parent="Upgrades/XPGain+20PC/VBoxContainer" parent_id_path=PackedInt32Array(1131302706, 1332242340) index="0" unique_id=23632606]
+self_modulate = Color(3.193, 3.193, 0, 1)
+texture_normal = ExtResource("4_vj5qo")
+
 [node name="SIGTERMCooldown-10PC" parent="Upgrades" unique_id=1819698758 node_paths=PackedStringArray("prerequisites") instance=ExtResource("1_56cav")]
 layout_mode = 0
 offset_left = 1057.0
@@ -52,6 +66,10 @@ offset_right = 1133.0
 offset_bottom = 463.0
 upgrade_data = ExtResource("4_osy05")
 prerequisites = [NodePath("../XPGain+10PC")]
+
+[node name="UpgradeButton" parent="Upgrades/SIGTERMCooldown-10PC/VBoxContainer" parent_id_path=PackedInt32Array(1819698758, 1332242340) index="0" unique_id=23632606]
+self_modulate = Color(5, 0, 0, 1)
+texture_normal = ExtResource("6_aluvf")
 
 [node name="GlobalUpgradeItem4" parent="Upgrades" unique_id=576046535 node_paths=PackedStringArray("prerequisites") instance=ExtResource("1_56cav")]
 layout_mode = 0
@@ -80,6 +98,10 @@ offset_bottom = 655.0
 upgrade_data = ExtResource("8_0ocu6")
 prerequisites = [NodePath("../XPGain+10PC")]
 
+[node name="UpgradeButton" parent="Upgrades/LogicGateAttackSpeed+20PC/VBoxContainer" parent_id_path=PackedInt32Array(1815499653, 1332242340) index="0" unique_id=23632606]
+self_modulate = Color(0, 1.5, 5, 1)
+texture_normal = ExtResource("6_aluvf")
+
 [node name="LogicGateRange+10PC" parent="Upgrades" unique_id=1530441761 node_paths=PackedStringArray("prerequisites") instance=ExtResource("1_56cav")]
 layout_mode = 0
 offset_left = 1057.0
@@ -89,6 +111,9 @@ offset_bottom = 751.0
 upgrade_data = ExtResource("9_osy05")
 prerequisites = [NodePath("../LogicGateAttackSpeed+20PC")]
 
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1253138198]
+environment = SubResource("Environment_aluvf")
+
 [connection signal="upgrade_selected" from="Upgrades/XPGain+10PC" to="." method="_on_upgrade_selected"]
 [connection signal="upgrade_selected" from="Upgrades/XPGain+20PC" to="." method="_on_upgrade_selected"]
 [connection signal="upgrade_selected" from="Upgrades/SIGTERMCooldown-10PC" to="." method="_on_upgrade_selected"]
@@ -96,3 +121,8 @@ prerequisites = [NodePath("../LogicGateAttackSpeed+20PC")]
 [connection signal="upgrade_selected" from="Upgrades/SIGTERMRange+15PC" to="." method="_on_upgrade_selected"]
 [connection signal="upgrade_selected" from="Upgrades/LogicGateAttackSpeed+20PC" to="." method="_on_upgrade_selected"]
 [connection signal="upgrade_selected" from="Upgrades/LogicGateRange+10PC" to="." method="_on_upgrade_selected"]
+
+[editable path="Upgrades/XPGain+10PC"]
+[editable path="Upgrades/XPGain+20PC"]
+[editable path="Upgrades/SIGTERMCooldown-10PC"]
+[editable path="Upgrades/LogicGateAttackSpeed+20PC"]
