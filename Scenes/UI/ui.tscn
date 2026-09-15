@@ -213,6 +213,7 @@ text = "Firewall progress:"
 [node name="PauseMenu" parent="." unique_id=735244639 instance=ExtResource("11_vy225")]
 visible = false
 
+[connection signal="level_complete_signal" from="." to="LevelComplete" method="_level_complete"]
 [connection signal="set_placing" from="TowerPlaceMenu" to="." method="_on_placing_set"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/PanelContainer/HBoxContainer/Build/PanelContainer/Button" to="." method="_on_build_button_pressed"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/PanelContainer/HBoxContainer/StopBuild/PanelContainer/Button" to="." method="_on_stop_build_button_pressed"]

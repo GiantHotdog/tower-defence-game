@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="GlobalUpgrade" format=3 uid="uid://t4mfnfjghpo1"]
+
+[ext_resource type="Script" uid="uid://db5bx24r4bnm2" path="res://Resources/GlobalUpgrades/globalUpgrade.gd" id="1_peb0l"]
+[ext_resource type="Resource" uid="uid://dj74vmenubwjm" path="res://Resources/GlobalUpgrades/xp_gain_10_pc_increase.tres" id="2_l5k5f"]
+
+[resource]
+script = ExtResource("1_peb0l")
+id = 5
+upgradeClass = 4
+name = "Logic Gate Cooldown"
+description = "Decreases the cooldown of the [color=cyan][b]Logic Gate[/b][/color] tower by [color=cyan]20%[/color]"
+prerequisites = Array[ExtResource("1_peb0l")]([ExtResource("2_l5k5f")])
+metadata/_custom_type_script = "uid://db5bx24r4bnm2"

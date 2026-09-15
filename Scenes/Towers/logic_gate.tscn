@@ -60,4 +60,4 @@ tower_type = 3
 upgrade_paths = Array[ExtResource("3_0yyg6")]([SubResource("Resource_dc2c3"), SubResource("Resource_5mxl6")])
 
 [node name="Turret" parent="Base" parent_id_path=PackedInt32Array(1755470834) index="0" unique_id=346350585]
-modulate = Color(6.818588e-05, 2.633928, 2.2594583, 1)
+modulate = Color(0, 2.634, 2.259, 1)

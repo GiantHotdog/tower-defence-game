@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://dffsdon0qbcwh"]
+
+[ext_resource type="Script" uid="uid://ucch862na2w3" path="res://Scenes/UI/Xp/experience_progress_bar.gd" id="1_1fjua"]
+
+[node name="ExperienceProgressBar" type="HBoxContainer" unique_id=621352189]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -99.0
+offset_top = -20.0
+offset_right = 99.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_1fjua")
+
+[node name="BarLabel" type="Label" parent="." unique_id=831306432]
+unique_name_in_owner = true
+layout_mode = 2
+text = "░░░░░░░░░░░░░░░░░░░░"
+
+[node name="XPTextLabel" type="Label" parent="." unique_id=221368104]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="LevelUpParticlesContainer" type="Control" parent="." unique_id=492347472]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 8
+
+[connection signal="level_up" from="." to="." method="_on_level_up"]

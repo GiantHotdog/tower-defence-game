@@ -2,6 +2,7 @@ class_name BaseLevel
 extends Node2D
 
 signal wave_complete(wave_number:int)
+signal level_complete_signal()
 
 ## The wave info - the number being the wave, the WaveInfo resource being the spawning delay and number 
 @export var wave_info_dict:Dictionary[int, WaveInfo] = {}
@@ -56,7 +57,8 @@ func _process(_delta: float) -> void:
 		Globals.is_wave_running = false
 		if Globals.current_wave_number == wave_info_dict.size():
 			Globals.is_level_complete = true
-			Globals.levels_complete[level_id] = true
+			Globals.set_level_complete(level_id, true)
+			level_complete_signal.emit()
 		wave_complete.emit(wave_info_dict.find_key(wave_info))
 		Globals.currency += wave_info.wave_finish_currency_reward
 		wave_info = null
