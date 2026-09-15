@@ -29,6 +29,7 @@ var is_inspector_enabled = true
 var version:String = "0.0.0-DEV-BUILD"
 
 var global_upgrades:ConfigFile
+var completed_levels_cfg:ConfigFile
 
 func _ready() -> void:
 	if FileAccess.file_exists("version.txt"):
@@ -37,12 +38,44 @@ func _ready() -> void:
 		file.close()
 	load_config("preferences.cfg")
 	load_global_upgrades()
+	update_completed_levels()
 	#for xp in range(100):
 		#print("XP:%d, Level:%d, XP gained within level:%d out of %d required" % [xp, calculate_level(xp), calculate_experience_within_level(calculate_level(xp), xp), calculate_experience_required_for_level_up(calculate_level(xp))])
 
 
 func set_placing(tower_type:BaseTower.TowerTypes):
 	placing = tower_type
+
+
+func set_level_complete(level_num:int, is_complete:bool):
+	levels_complete[level_num] = is_complete
+	if completed_levels_cfg:
+		completed_levels_cfg.set_value("Levels", str(level_num), is_complete)
+		completed_levels_cfg.save("user://progress/" + "completed.cfg")
+
+
+func update_completed_levels():
+	var dir = DirAccess.open("user://")
+	if not dir.dir_exists("user://progress/"):
+		dir.make_dir_recursive("user://progress/")
+		
+	completed_levels_cfg = ConfigFile.new()
+	var err:Error = completed_levels_cfg.load("user://progress/" + "completed.cfg")
+	
+	if err != OK:
+		printerr("Error when loading global upgrades file: ", error_string(err))
+	
+	if err == ERR_FILE_NOT_FOUND:
+		printerr("Creating default completed levels file")
+		# Initialise the default config
+		for i in range(levels_complete.size()):
+			completed_levels_cfg.set_value("Levels", str(i), levels_complete[i])
+		completed_levels_cfg.save("user://progress/" + "completed.cfg")
+	
+	completed_levels_cfg.load("user://progress/" + "completed.cfg")
+	for i in range(levels_complete.size()):
+		levels_complete[i] = completed_levels_cfg.get_value("Levels", str(i)) 
+	
 
 
 func reset_selective_disable_variables():
