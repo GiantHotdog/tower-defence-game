@@ -28,6 +28,13 @@ Hold off malware to give your firewall time to be repaired in this tower defence
 
 ---
 
+## **Controls:**
+
+- Enter to skip startup sequence
+- Click to select / interact / modify values
+
+---
+
 ### **AI:**
 
 AI was used to write about 50 lines of code for the two shaders, and very occasionally for solving persistent bugs. It was only used for bug fixes after I tried repeatedly and failed to find a solution myself.
