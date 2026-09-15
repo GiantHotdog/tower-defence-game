@@ -28,7 +28,7 @@ Hold off malware to give your firewall time to be repaired in this tower defence
 
 ---
 
-## **Controls:**
+### **Controls:**
 
 - Enter to skip startup sequence
 - Click to select / interact / modify values
@@ -42,7 +42,7 @@ It was also used for some feedback on aesthetic choices. All assets were designe
 
 ---
 
-## **Credits:**
+### **Credits:**
 
 - Initial prototyping asset pack by [Kenney](https://kenney.nl)
 - Music by iamoneabe: [https://opengameart.org/content/trunkful-of-junk](https://opengameart.org/content/trunkful-of-junk)
