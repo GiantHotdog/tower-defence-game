@@ -23,4 +23,8 @@ func on_menu_select_pressed():
 		3:
 			play_outro()
 			await outro_finished
+			get_tree().change_scene_to_file("res://Scenes/UI/GRUBMenu/reset_all.tscn")
+		4:
+			play_outro()
+			await outro_finished
 			get_tree().change_scene_to_file("res://Scenes/UI/GRUBMenu/Grub.tscn")

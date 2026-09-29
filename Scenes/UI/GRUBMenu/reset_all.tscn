@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://bop3o7rrcf82r"]
+
+[ext_resource type="PackedScene" uid="uid://750cqjkynhn5" path="res://Scenes/UI/GRUBMenu/new_menu.tscn" id="1_gp7uw"]
+[ext_resource type="Script" uid="uid://10u670add4eb" path="res://Scenes/UI/GRUBMenu/reset_all.gd" id="2_07sv2"]
+
+[node name="ResetAll" unique_id=1264947417 instance=ExtResource("1_gp7uw")]
+script = ExtResource("2_07sv2")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer" parent_id_path=PackedInt32Array(1529120312) index="0" unique_id=1237136561]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/normal_font_size = 24
+bbcode_enabled = true
+text = "[color=orange][b][font_size=32]WARNING:[/font_size][/b][/color]
+This will reset all progress
+[color=red]This cannot be undone[/color]
+Proceed?"
+horizontal_alignment = 1
+vertical_alignment = 1
+justification_flags = 162
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer" parent_id_path=PackedInt32Array(1529120312) index="1" unique_id=1169570108]
+layout_mode = 2
+theme_override_constants/separation = 32
+alignment = 1
+
+[node name="Button" type="Button" parent="VBoxContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" index="0" unique_id=1568040344]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_font_sizes/font_size = 32
+text = "Yes"
+
+[node name="Button2" type="Button" parent="VBoxContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" index="1" unique_id=982259332]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0.8745098, 0, 1)
+theme_override_font_sizes/font_size = 32
+text = "No
+"
+
+[connection signal="pressed" from="VBoxContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Button2" to="." method="_on_button_2_pressed"]

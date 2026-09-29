@@ -14,7 +14,7 @@ var health = 100
 var levels_complete:Array[bool] = [false, false, false, false]
 
 
-var _experience:int = 0
+var experience:int = 0
 var initial_level_experience_requirement:int = 20
 var level_experience_requirement_multiplier:float = 1.2
 
@@ -36,11 +36,29 @@ func _ready() -> void:
 		var file = FileAccess.open("version.txt", FileAccess.READ)
 		version = file.get_as_text()
 		file.close()
+	update_values()
+	#for xp in range(100):
+		#print("XP:%d, Level:%d, XP gained within level:%d out of %d required" % [xp, calculate_level(xp), calculate_experience_within_level(calculate_level(xp), xp), calculate_experience_required_for_level_up(calculate_level(xp))])
+
+
+func update_values():
 	load_config("preferences.cfg")
 	load_global_upgrades()
 	update_completed_levels()
-	#for xp in range(100):
-		#print("XP:%d, Level:%d, XP gained within level:%d out of %d required" % [xp, calculate_level(xp), calculate_experience_within_level(calculate_level(xp), xp), calculate_experience_required_for_level_up(calculate_level(xp))])
+
+
+func reset_all_progress_to_default():
+	for i in range(levels_complete.size()):
+		levels_complete[i] = false
+		completed_levels_cfg.set_value("Levels", str(i), false)
+	completed_levels_cfg.save("user://progress/" + "completed.cfg")
+	
+	experience = 0
+	if global_upgrades:
+		global_upgrades.set_value("Experience", "Value", 0)
+		for key in GlobalUpgrade.ValidIds.keys():
+			global_upgrades.set_value("Upgrades", key, false)
+		global_upgrades.save("user://config/" + "global_upgrades.cfg")
 
 
 func set_placing(tower_type:BaseTower.TowerTypes):
@@ -98,7 +116,7 @@ func load_config(filepath:String):
 
 func load_global_upgrades(filepath:String = "global_upgrades.cfg"):
 	global_upgrades = get_global_upgrades(filepath)
-	_experience = global_upgrades.get_value("Experience", "Value", 0)
+	experience = global_upgrades.get_value("Experience", "Value", 0)
 
 
 func get_global_upgrade_tier(upgrade_id:GlobalUpgrade.ValidIds) -> int:
@@ -234,19 +252,19 @@ func get_global_tower_upgrade_level(tower:BaseTower.TowerTypes, property:Upgrade
 
 
 func add_experience(amount:int) -> void:
-	_experience += amount
+	experience += amount
 
 
 func set_experience(amount:int) -> void:
-	_experience = amount
+	experience = amount
 	write_experience_gained_to_file(amount)
 
 
 func get_experience() -> int:
-	return _experience
+	return experience
 
 
-func calculate_level(current_experience:int = _experience) -> int:
+func calculate_level(current_experience:int = experience) -> int:
 	if current_experience <= 0:
 		return 0
 		
@@ -267,7 +285,7 @@ func calculate_experience_to_get_to_level(level:int = 0) -> int:
 	return int(sum)
 
 
-func calculate_experience_within_level(current_level:int = 0, current_experience:int = _experience) -> int:
+func calculate_experience_within_level(current_level:int = 0, current_experience:int = experience) -> int:
 	return current_experience - calculate_experience_to_get_to_level(current_level)
 	
 
