@@ -14,6 +14,8 @@ signal level_complete_signal()
 ## The level ID, used to track if this level has been beated
 @export var level_id:int
 
+@export var tutorial_boxes:Array[TutorialBox] = []
+
 @onready var base_enemy_scene:PackedScene = load("res://Scenes/Enemies/base_enemy.tscn")
 @onready var weak_enemy_scene:PackedScene  = load("res://Scenes/Enemies/weak_enemy.tscn")
 @onready var zip_bomb_enemy_scene:PackedScene = load("res://Scenes/Enemies/zip_bomb.tscn")
@@ -184,6 +186,8 @@ func _on_zip_bomb_enemy_children_add(count:int, type:BaseEnemy.ENEMY_TYPES, pare
 
 func _on_wave_started(number: int) -> void:
 	ui.add_warning("Malware incursion [number %s] detected" % number)
+	if not wave_info_dict.has(number):
+		return
 	wave_info = wave_info_dict[number]
 	enemies_in_current_wave = 0
 	enemies_in_current_wave_killed = 0

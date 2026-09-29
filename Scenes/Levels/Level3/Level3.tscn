@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://cjpt5xnw1ll47"]
+
+[ext_resource type="PackedScene" uid="uid://crdqerfs03sfa" path="res://Scenes/Levels/base_level.tscn" id="1_i473n"]
+[ext_resource type="Script" uid="uid://dq3f0ac1t4eau" path="res://Resources/WaveInfo/WaveInfo.gd" id="2_2wpcy"]
+[ext_resource type="Resource" uid="uid://c7a0mhajblaga" path="res://Resources/WaveInfo/Level3/wave1.tres" id="3_sm2xv"]
+[ext_resource type="Resource" uid="uid://ddnt2dhal1r5y" path="res://Resources/WaveInfo/Level3/wave2.tres" id="4_sm2xv"]
+[ext_resource type="Resource" uid="uid://dafo4ahqfkx2x" path="res://Resources/WaveInfo/Level3/wave3.tres" id="5_rlrpp"]
+
+[sub_resource type="Curve2D" id="Curve2D_rlrpp"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -64, 1280, 0, 0, 0, 0, 2048, 1280, 0, 0, 0, 0, 2048, 1024, 0, 0, 0, 0, 2560, 1024, 0, 0, 0, 0, 2560, 1536, 0, 0, 0, 0, 2304, 1536, 0, 0, 0, 0, 2304, 1280)
+}
+point_count = 7
+
+[node name="BaseLevel" unique_id=555824650 instance=ExtResource("1_i473n")]
+wave_info_dict = Dictionary[int, ExtResource("2_2wpcy")]({
+1: ExtResource("3_sm2xv"),
+2: ExtResource("4_sm2xv"),
+3: ExtResource("5_rlrpp")
+})
+starting_currency = 40
+level_id = 3
+
+[node name="EnemyPath" parent="." index="3" unique_id=1563632205]
+curve = SubResource("Curve2D_rlrpp")
+
+[editable path="UI"]
+[editable path="UI/PanelContainer2/MarginContainer/VBoxContainer/FirewallProgress"]
