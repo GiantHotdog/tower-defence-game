@@ -1,0 +1,34 @@
+[gd_resource type="Resource" script_class="WaveInfo" format=3 uid="uid://c4rp24010rvi"]
+
+[ext_resource type="Script" uid="uid://dxkspwruhtret" path="res://Resources/EnemySpawnerInfo/EnemySpawnerInfo.gd" id="1_wn5t5"]
+[ext_resource type="Script" uid="uid://dq3f0ac1t4eau" path="res://Resources/WaveInfo/WaveInfo.gd" id="2_sosud"]
+
+[sub_resource type="Resource" id="Resource_k0lmg"]
+script = ExtResource("1_wn5t5")
+enemy_count = 6
+enemy_spawn_interval = 2.0
+is_cloaked = true
+metadata/_custom_type_script = "uid://dxkspwruhtret"
+
+[sub_resource type="Resource" id="Resource_lh0qs"]
+script = ExtResource("1_wn5t5")
+enemy_count = 12
+enemy_spawn_interval = 0.75
+metadata/_custom_type_script = "uid://dxkspwruhtret"
+
+[sub_resource type="Resource" id="Resource_n35md"]
+script = ExtResource("1_wn5t5")
+enemy_count = 5
+enemy_spawn_interval = 2.0
+is_invulnerable = true
+metadata/_custom_type_script = "uid://dxkspwruhtret"
+
+[resource]
+script = ExtResource("2_sosud")
+enemy_info = Dictionary[int, ExtResource("1_wn5t5")]({
+1: SubResource("Resource_lh0qs"),
+2: SubResource("Resource_k0lmg"),
+3: SubResource("Resource_n35md")
+})
+wave_finish_currency_reward = 20
+metadata/_custom_type_script = "uid://dq3f0ac1t4eau"
