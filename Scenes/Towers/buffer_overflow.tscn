@@ -2,7 +2,53 @@
 
 [ext_resource type="PackedScene" uid="uid://ham1y5xvbyj1" path="res://Scenes/Towers/base_tower.tscn" id="1_lnhig"]
 [ext_resource type="Script" uid="uid://c8yhq8dy4gvni" path="res://Scenes/Towers/buffer_overflow.gd" id="2_itdyk"]
+[ext_resource type="Script" uid="uid://dodydgnw2sl38" path="res://Resources/UpgradePath/UpgradePath.gd" id="3_8sowh"]
 [ext_resource type="Texture2D" uid="uid://cdndvd8yb1csg" path="res://Assets/Towers/Buffer Overflow.svg" id="3_itdyk"]
+[ext_resource type="Script" uid="uid://d4nuqtq88c71p" path="res://Resources/Upgrades/Upgrade.gd" id="4_vc6ux"]
+
+[sub_resource type="Resource" id="Resource_wo5yf"]
+script = ExtResource("4_vc6ux")
+property = 2
+scale = 1.2
+cost = 5
+description = "Adds 20% to this tower's attack speed"
+metadata/_custom_type_script = "uid://d4nuqtq88c71p"
+
+[sub_resource type="Resource" id="Resource_o1hft"]
+script = ExtResource("4_vc6ux")
+property = 2
+scale = 1.2
+description = "Adds 20% to this tower's attack speed"
+metadata/_custom_type_script = "uid://d4nuqtq88c71p"
+
+[sub_resource type="Resource" id="Resource_dc2c3"]
+script = ExtResource("4_vc6ux")
+property = 2
+scale = 1.2
+cost = 15
+description = "Adds 20% to this tower's attack speed"
+metadata/_custom_type_script = "uid://d4nuqtq88c71p"
+
+[sub_resource type="Resource" id="Resource_23wel"]
+script = ExtResource("4_vc6ux")
+property = 2
+scale = 1.2
+cost = 20
+description = "Adds 20% to this tower's attack speed"
+metadata/_custom_type_script = "uid://d4nuqtq88c71p"
+
+[sub_resource type="Resource" id="Resource_y85ff"]
+script = ExtResource("4_vc6ux")
+property = 2
+scale = 1.2
+cost = 25
+description = "Adds 20% to this tower's attack speed"
+metadata/_custom_type_script = "uid://d4nuqtq88c71p"
+
+[sub_resource type="Resource" id="Resource_0yyg6"]
+script = ExtResource("3_8sowh")
+upgrades = Array[ExtResource("4_vc6ux")]([SubResource("Resource_wo5yf"), SubResource("Resource_o1hft"), SubResource("Resource_dc2c3"), SubResource("Resource_23wel"), SubResource("Resource_y85ff")])
+metadata/_custom_type_script = "uid://dodydgnw2sl38"
 
 [node name="BaseTower" unique_id=443795488 instance=ExtResource("1_lnhig")]
 script = ExtResource("2_itdyk")
@@ -11,6 +57,7 @@ attack_speed = 0.333
 damage = 5.0
 projectile_scene_path = "uid://cn12itbm5f627"
 tower_type = 4
+upgrade_paths = Array[ExtResource("3_8sowh")]([SubResource("Resource_0yyg6")])
 
 [node name="Base" parent="." index="1" unique_id=1755470834]
 modulate = Color(4.0001154, 0.41265154, 0, 1)

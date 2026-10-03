@@ -6,6 +6,7 @@
 offset_top = 194.0
 offset_right = 192.0
 offset_bottom = 194.0
+size_flags_horizontal = 3
 mouse_filter = 1
 script = ExtResource("1_5e3n8")
 
@@ -36,7 +37,7 @@ text = "0"
 [node name="DescriptionLabel" type="Label" parent="VisualUpgradePath" unique_id=781911522]
 custom_minimum_size = Vector2(192, 0)
 layout_mode = 2
-text = "Description Description Description Description Description Description Description"
+text = "Description Description Description Description Description Description Description blah blah blah"
 autowrap_mode = 2
 
 [node name="UpgradeButton" type="Button" parent="VisualUpgradePath" unique_id=165213641]

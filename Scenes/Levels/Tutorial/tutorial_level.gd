@@ -38,7 +38,7 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	super._process(delta)
-	if current_tutorial_stage == TutorialStage.PLACING and towers_placed >= 1:
+	if (current_tutorial_stage == TutorialStage.PLACING and towers_placed >= 1) and not tutorial_skipped:
 		var next:TutorialBox = dialog_boxes.get(2)
 		if next:
 			next.visible = true
@@ -53,39 +53,43 @@ func can_place_tower(tower_pos:Vector2i, _write_to_log:bool = false) -> bool:
 
 func update_tutorial_stage(tutorial_stage:TutorialStage):
 	current_tutorial_stage = tutorial_stage
-	if current_tutorial_stage == TutorialStage.PLACING:
-		#Globals.is_start_wave_enabled = false
-		#Globals.is_inspector_enabled = false
-		#Globals.is_upgrades_enabled = false
+	if not tutorial_skipped:
+		if current_tutorial_stage == TutorialStage.PLACING:
+			#Globals.is_start_wave_enabled = false
+			#Globals.is_inspector_enabled = false
+			#Globals.is_upgrades_enabled = false
+			
+			$UI/PanelContainer/VBoxContainer/PanelContainer/HBoxContainer/Build/PanelContainer.add_theme_stylebox_override("panel", highlight_box)
+			place_tutorial_guide.add_theme_stylebox_override("panel", highlight_box)
+			
+		elif current_tutorial_stage == TutorialStage.STARTING_WAVE:
+			#Globals.is_start_wave_enabled = true
+			#Globals.is_inspector_enabled = false
+			#Globals.is_upgrades_enabled = false
+			
+			$UI/TowerPlaceMenu.cancel_place()
+			$UI/TowerPlaceMenu.close()
+			
+			$UI/PanelContainer/VBoxContainer/PanelContainer/HBoxContainer/Build/PanelContainer.remove_theme_stylebox_override("panel")
+			place_tutorial_guide.remove_theme_stylebox_override("panel")
+			place_tutorial_guide.visible = false
+			$UI/PanelContainer/VBoxContainer/PanelContainer/HBoxContainer/StartWave/PanelContainer.add_theme_stylebox_override("panel", highlight_box)
 		
-		$UI/PanelContainer/VBoxContainer/PanelContainer/HBoxContainer/Build/PanelContainer.add_theme_stylebox_override("panel", highlight_box)
-		place_tutorial_guide.add_theme_stylebox_override("panel", highlight_box)
-		
-	elif current_tutorial_stage == TutorialStage.STARTING_WAVE:
-		#Globals.is_start_wave_enabled = true
-		#Globals.is_inspector_enabled = false
-		#Globals.is_upgrades_enabled = false
-		
-		$UI/TowerPlaceMenu.cancel_place()
-		$UI/TowerPlaceMenu.close()
-		
-		$UI/PanelContainer/VBoxContainer/PanelContainer/HBoxContainer/Build/PanelContainer.remove_theme_stylebox_override("panel")
-		place_tutorial_guide.remove_theme_stylebox_override("panel")
-		place_tutorial_guide.visible = false
-		$UI/PanelContainer/VBoxContainer/PanelContainer/HBoxContainer/StartWave/PanelContainer.add_theme_stylebox_override("panel", highlight_box)
-	
-	elif current_tutorial_stage == TutorialStage.UPGRADING:
-		#Globals.is_start_wave_enabled = false
-		#Globals.is_inspector_enabled = true
-		#Globals.is_upgrades_enabled = true
-		
-		$UI/PanelContainer/VBoxContainer/PanelContainer/HBoxContainer/StartWave/PanelContainer.remove_theme_stylebox_override("panel")
-		place_tutorial_guide.add_theme_stylebox_override("panel", highlight_box)
-		place_tutorial_guide.visible = true
-	elif current_tutorial_stage == TutorialStage.FINISHED:
+		elif current_tutorial_stage == TutorialStage.UPGRADING:
+			#Globals.is_start_wave_enabled = false
+			#Globals.is_inspector_enabled = true
+			#Globals.is_upgrades_enabled = true
+			
+			$UI/PanelContainer/VBoxContainer/PanelContainer/HBoxContainer/StartWave/PanelContainer.remove_theme_stylebox_override("panel")
+			place_tutorial_guide.add_theme_stylebox_override("panel", highlight_box)
+			place_tutorial_guide.visible = true
+		elif current_tutorial_stage == TutorialStage.FINISHED:
+			Globals.reset_selective_disable_variables()
+			place_tutorial_guide.visible = false
+			$UI/PanelContainer/VBoxContainer/PanelContainer/HBoxContainer/Build/PanelContainer.remove_theme_stylebox_override("panel")
+	else:
 		Globals.reset_selective_disable_variables()
 		place_tutorial_guide.visible = false
-		$UI/PanelContainer/VBoxContainer/PanelContainer/HBoxContainer/Build/PanelContainer.remove_theme_stylebox_override("panel")
 
 
 func _on_wave_complete(wave_number:int):
@@ -97,14 +101,14 @@ func _on_wave_complete(wave_number:int):
 
 
 func _on_inspect_window_opened(_unused, _unused2):
-	if current_tutorial_stage == TutorialStage.UPGRADING:
+	if current_tutorial_stage == TutorialStage.UPGRADING and not tutorial_skipped:
 		place_tutorial_guide.remove_theme_stylebox_override("panel")
 		place_tutorial_guide.visible = true
 		$UI/TowerInfoDisplay/PanelContainer/VBoxContainer/MarginContainer/VBoxContainer/UpgradePaths.get_child(0).add_theme_stylebox_override("panel", highlight_box)
 
 
 func _on_tower_info_display_tower_upgraded() -> void:
-	if current_tutorial_stage == TutorialStage.UPGRADING:
+	if current_tutorial_stage == TutorialStage.UPGRADING and not tutorial_skipped:
 		$UI/TowerInfoDisplay/PanelContainer/VBoxContainer/MarginContainer/VBoxContainer/UpgradePaths.get_child(0).remove_theme_stylebox_override("panel")
 		var next:TutorialBox = dialog_boxes.get(4)
 		if next:
